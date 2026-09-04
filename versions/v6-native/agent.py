@@ -1,0 +1,246 @@
+"""AI Chessathon entry: the driver that chooses between two engines and manages the game.
+
+Two engines ship in this zip. ``pyengine`` (python-chess, ~20 knps) is ready the moment it is
+imported. ``nativesearch`` (numba on ``fastboard``, ~2 M nps here) is a hundred times faster but
+needs 20-40 s of compilation, and the runner's 60 s init budget cannot be trusted with that on an
+unknown core: an overrun is a lost game. So the native module compiles in a background thread
+while the python engine answers the first moves, and the driver switches over the instant
+compilation finishes. If the native module ever fails to load, the python engine plays the game.
+
+Between moves the active engine ponders: it keeps searching the position the opponent is looking
+at, so the transposition table already holds what the next call needs. The next request stops
+that search within a millisecond or two (the native search runs without the GIL and polls an
+abort flag at every node). The game is rebuilt move by move from the FENs we are handed, so both
+engines see the repetitions the referee would claim.
+"""
+
+from __future__ import annotations
+
+import os
+
+# Must precede any numba import (fastboard/nativesearch). Level 1 compiles several times faster
+# than the default and costs little at runtime for this kind of code.
+os.environ.setdefault("NUMBA_OPT", "1")
+
+import gc
+import random
+import sys
+import threading
+import time
+import traceback
+from types import ModuleType
+from typing import Any
+
+import chess
+
+import pyengine
+
+# Neither engine allocates reference cycles; the collector's sweeps over a large transposition
+# table would only stall the clock.
+gc.disable()
+
+PONDER = True
+
+# ------------------------------------------------------------------------------------------
+# Native engine, compiled in the background
+# ------------------------------------------------------------------------------------------
+
+_native: ModuleType | None = None
+_native_error: str | None = None
+_started_at = time.perf_counter()
+
+
+def _load_native() -> None:
+    global _native, _native_error
+    try:
+        import nativesearch
+
+        _native = nativesearch
+        elapsed = time.perf_counter() - _started_at
+        print(f"native engine ready after {elapsed:.1f}s", file=sys.stderr)
+    except Exception:
+        _native_error = traceback.format_exc()
+        print(f"native engine unavailable, playing pyengine:\n{_native_error}", file=sys.stderr)
+
+
+_compile_thread = threading.Thread(target=_load_native, name="compile", daemon=True)
+_compile_thread.start()
+
+
+def native_ready() -> bool:
+    return _native is not None
+
+
+def wait_native(timeout: float | None = None) -> bool:
+    """Block until the native engine has compiled (or failed). Benchmarks use this."""
+    _compile_thread.join(timeout)
+    return _native is not None
+
+
+def _engine() -> ModuleType:
+    return _native if _native is not None else pyengine
+
+
+# ------------------------------------------------------------------------------------------
+# Game history, rebuilt from the FENs we are handed
+# ------------------------------------------------------------------------------------------
+
+_game = chess.Board()
+_history: list[str] = []  # FEN of every earlier position in this game, in order
+_key_cache: dict[str, list[Any]] = {"pyengine": [], "nativesearch": []}
+
+
+def _same_position(a: chess.Board, b: chess.Board) -> bool:
+    return (
+        a._transposition_key() == b._transposition_key()
+        and a.halfmove_clock == b.halfmove_clock
+        and a.fullmove_number == b.fullmove_number
+    )
+
+
+def _sync(fen: str) -> chess.Board:
+    """Advance the remembered game to fen, keeping history when the opponent made one move."""
+    global _game, _history
+    target = chess.Board(fen)
+    before = _game.fen()
+    for move in list(_game.legal_moves):
+        _game.push(move)
+        if _same_position(_game, target):
+            _history.append(before)
+            return _game
+        _game.pop()
+    _game = target
+    _history = []
+    for cached in _key_cache.values():
+        cached.clear()
+    return _game
+
+
+def _record(move: chess.Move) -> None:
+    _history.append(_game.fen())
+    _game.push(move)
+
+
+def _reset() -> None:
+    global _game, _history
+    _stop_pondering()
+    _game = chess.Board()
+    _history = []
+    for cached in _key_cache.values():
+        cached.clear()
+
+
+def _repetition_keys(engine: ModuleType) -> list[Any]:
+    """The engine's own repetition key for every earlier position, extended incrementally."""
+    cached = _key_cache[engine.__name__]
+    if len(cached) > len(_history):
+        cached.clear()
+    for fen in _history[len(cached) :]:
+        board = chess.Board(fen)
+        if engine is pyengine:
+            cached.append(board._transposition_key())
+        else:
+            cached.append(engine._native_repetition_key(board))
+    return list(cached)
+
+
+# ------------------------------------------------------------------------------------------
+# Pondering
+# ------------------------------------------------------------------------------------------
+
+_ponder_thread: threading.Thread | None = None
+_ponder_engine: ModuleType | None = None
+
+
+def _ponder(engine: ModuleType, board: chess.Board, keys: list[Any]) -> None:
+    try:
+        if board.is_game_over():
+            return
+        if engine is pyengine:
+            engine.SEARCHER.think(board, float("inf"), float("inf"), keys)
+        else:
+            engine.SEARCHER.ponder(board, keys)
+    except Exception:
+        traceback.print_exc()
+
+
+def _start_pondering(engine: ModuleType) -> None:
+    global _ponder_thread, _ponder_engine
+    # While the native module is still compiling, a pondering python engine would only fight it
+    # for the interpreter; the compile is worth more than a few nodes of lookahead.
+    if not PONDER or _compile_thread.is_alive():
+        return
+    thread = threading.Thread(
+        target=_ponder,
+        args=(engine, _game.copy(), _repetition_keys(engine)),
+        name="ponder",
+        daemon=True,
+    )
+    _ponder_engine = engine
+    _ponder_thread = thread
+    thread.start()
+
+
+def _stop_pondering() -> None:
+    global _ponder_thread, _ponder_engine
+    thread, engine = _ponder_thread, _ponder_engine
+    if thread is None or engine is None:
+        return
+    if engine is pyengine:
+        engine.SEARCHER.abort = True
+    else:
+        engine.SEARCHER.abort()
+    thread.join()
+    _ponder_thread = None
+    _ponder_engine = None
+    if engine is pyengine:
+        engine.SEARCHER.abort = False
+
+
+# ------------------------------------------------------------------------------------------
+# Entry points
+# ------------------------------------------------------------------------------------------
+
+
+def budget(time_left_ms: int) -> tuple[float, float]:
+    soft, hard = _engine().budget(time_left_ms)
+    return float(soft), float(hard)
+
+
+def evaluate(board: chess.Board) -> int:
+    return int(_engine().evaluate(board))
+
+
+def analyse(fen: str, ms: float, max_depth: int = 40) -> Any:
+    """Search one position with the best engine available; benchmarks wait for the native one."""
+    wait_native()
+    return _engine().analyse(fen, ms, max_depth)
+
+
+def get_move(fen: str, time_left_ms: int) -> str:
+    try:
+        _stop_pondering()
+        board = _sync(fen)
+        engine = _engine()
+        soft, hard = engine.budget(time_left_ms)
+        keys = _repetition_keys(engine)
+        result = engine.SEARCHER.think(board, soft, hard, keys)
+        move: chess.Move = result.move
+        if move not in board.legal_moves:
+            raise ValueError(f"search returned illegal move {move}")
+        _record(move)
+        print(
+            f"{engine.__name__} {move.uci()} depth {result.depth} score {result.score} "
+            f"nodes {result.nodes} {result.elapsed_ms:.0f}ms clock {time_left_ms}",
+            file=sys.stderr,
+        )
+        _start_pondering(engine)
+        return move.uci()
+    except Exception:
+        # Whatever went wrong, a legal move beats a crash. History is lost, the game is not.
+        traceback.print_exc()
+        _reset()
+        board = chess.Board(fen)
+        moves = list(board.legal_moves)
+        captures = [move for move in moves if board.is_capture(move)]
+        return random.choice(captures or moves).uci()
