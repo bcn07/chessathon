@@ -1,0 +1,21 @@
+# environments and caches
+.venv/
+__pycache__/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.DS_Store
+
+# generated locally
+submission.zip
+*.pgn
+results/
+
+# reference engines are local builds; only the notes are tracked
+tools/engines/*
+!tools/engines/README.md
+tools/src/
+
+# multi-GB datasets and multi-MB agent transcripts
+work/nnue/data/
+work/*/codex.log
