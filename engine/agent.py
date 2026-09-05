@@ -3,9 +3,9 @@
 Two engines ship in this zip. ``pyengine`` (python-chess, ~20 knps) is ready the moment it is
 imported. ``nativesearch`` (numba on ``fastboard``, ~2 M nps here) is a hundred times faster but
 needs 20-40 s of compilation. The platform allows 90 s before the ready line, so the compile is
-waited for at start-up (capped at 72 s; the platform needs 54-58 s); should it still be running, the python engine answers
-the first moves and the driver switches over the instant compilation finishes. If the native
-module ever fails to load, the python engine plays the game.
+waited for at start-up (capped at 72 s; the platform needs 54-58 s); should it still be
+running, the python engine answers the first moves and the driver switches over the instant
+compilation finishes. If the native module ever fails to load, the python engine plays the game.
 
 Between moves the active engine ponders: it keeps searching the position the opponent is looking
 at, so the transposition table already holds what the next call needs. The next request stops
