@@ -4,6 +4,7 @@ Everything here goes through get_move(fen, time_left_ms), so it holds for any ag
 """
 
 import json
+import os
 import subprocess
 import sys
 import time
@@ -15,6 +16,8 @@ import pytest
 import agent
 
 ROOT = Path(__file__).resolve().parents[1]
+# the engine under test; tests/conftest.py imports `agent` from the same directory
+AGENT_DIR = Path(os.environ.get("CHESSATHON_AGENT_DIR", ROOT)).resolve()
 
 
 def legal(fen: str, uci: str) -> bool:
@@ -102,7 +105,7 @@ def test_converts_a_won_ending_without_repeating() -> None:
 
 def test_runner_protocol_end_to_end() -> None:
     process = subprocess.Popen(
-        [sys.executable, str(ROOT / "harness" / "runner.py"), str(ROOT)],
+        [sys.executable, str(ROOT / "harness" / "runner.py"), str(AGENT_DIR)],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
