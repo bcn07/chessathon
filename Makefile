@@ -53,11 +53,12 @@ BASE ?= 10000
 INC  ?= 100
 TAG  ?= run
 
-.PHONY: condor-sync condor-setup condor-gauntlet condor-status condor-fetch
+.PHONY: condor-sync condor-setup condor-gauntlet condor-status condor-fetch condor-datagen
 
 condor-sync:
 	rsync -az --delete --exclude .venv --exclude .git --exclude __pycache__ --exclude '*.pgn' \
 	  --exclude results --exclude .mypy_cache --exclude .ruff_cache --exclude .pytest_cache \
+	  --exclude work/nnue/data --exclude 'work/*/codex.log' \
 	  ./ $(CLUSTER):$(CLUSTER_ROOT)/
 
 condor-setup:
@@ -69,6 +70,13 @@ condor-setup:
 condor-gauntlet:
 	ssh $(CLUSTER) 'cd $(CLUSTER_ROOT) && $(CONDOR_ENV) && mkdir -p results/condor/$(TAG) && \
 	  condor_submit agent=$(AGENT) opp=$(OPP) games=$(GAMES) jobs=$(JOBS) base=$(BASE) inc=$(INC) tag=$(TAG) condor/gauntlet.submit'
+
+# self-play data for Texel/NNUE: make condor-datagen GAMES=3000 JOBS=100 TAG=gen1
+NODES ?= 20000
+SEED_BASE ?= 1000
+condor-datagen:
+	ssh $(CLUSTER) 'cd $(CLUSTER_ROOT) && $(CONDOR_ENV) && mkdir -p results/datagen/$(TAG) && \
+	  condor_submit games=$(GAMES) jobs=$(JOBS) nodes=$(NODES) seed_base=$(SEED_BASE) tag=$(TAG) condor/datagen.submit'
 
 condor-status:
 	ssh $(CLUSTER) '$(CONDOR_ENV) && condor_q; condor_status -total | tail -3'
