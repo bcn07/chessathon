@@ -2,10 +2,10 @@
 
 Two engines ship in this zip. ``pyengine`` (python-chess, ~20 knps) is ready the moment it is
 imported. ``nativesearch`` (numba on ``fastboard``, ~2 M nps here) is a hundred times faster but
-needs 20-40 s of compilation, and the runner's 60 s init budget cannot be trusted with that on an
-unknown core: an overrun is a lost game. So the native module compiles in a background thread
-while the python engine answers the first moves, and the driver switches over the instant
-compilation finishes. If the native module ever fails to load, the python engine plays the game.
+needs 20-40 s of compilation. The platform allows 90 s before the ready line, so the compile is
+waited for at start-up (capped at 55 s); should it still be running, the python engine answers
+the first moves and the driver switches over the instant compilation finishes. If the native
+module ever fails to load, the python engine plays the game.
 
 Between moves the active engine ponders: it keeps searching the position the opponent is looking
 at, so the transposition table already holds what the next call needs. The next request stops
@@ -65,10 +65,25 @@ def _load_native() -> None:
 
 _compile_thread = threading.Thread(target=_load_native, name="compile", daemon=True)
 _compile_thread.start()
+
+# The platform's validation log (2026-09-05) settled two things the docs left open: "your process
+# is suspended while your opponent moves", so a background compile only progresses during our own
+# moves and shares the core with the python engine (in the smoke games the native engine never
+# came up), and the init budget is 90 s ("ready in 0.6 s of the 90 s init budget"). So the compile
+# is waited for *before* the ready line, capped so that a 60 s budget would still be met; if the
+# cap is hit the hybrid start-up below carries on exactly as before.
+INIT_COMPILE_WAIT_S = float(os.environ.get("CHESSATHON_INIT_COMPILE_WAIT", "55"))
 if os.environ.get("CHESSATHON_NATIVE_ONLY"):
-    # Benchmarking switch: compile before the ready line so fast-clock games measure the native
-    # engine alone. Never set on the platform, where the 60 s init budget cannot be trusted.
+    # Benchmarking switch: compile however long it takes, so fast-clock games measure the native
+    # engine alone.
     _compile_thread.join()
+else:
+    _compile_thread.join(INIT_COMPILE_WAIT_S)
+print(
+    f"init: native engine {'ready' if _native is not None else 'still compiling'} "
+    f"after {time.perf_counter() - _started_at:.1f}s",
+    file=sys.stderr,
+)
 
 
 def native_ready() -> bool:
