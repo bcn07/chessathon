@@ -198,6 +198,145 @@ PASSED_MASKS = _build_passed_masks()
 PASSED_MG = np.array((0, 5, 10, 20, 35, 60, 100, 0), dtype=np.int16)
 PASSED_EG = np.array((0, 10, 20, 35, 60, 100, 160, 0), dtype=np.int16)
 
+# Mobility: safe destination squares per piece, counted against a baseline so a normally placed
+# piece scores zero and only unusual freedom -- or a piece with nowhere to go -- moves the number.
+# Knights and bishops skip squares an enemy pawn covers, because they cannot use them; rooks and
+# queens count every square they see.  Centipawns per square, indexed by piece type PNBRQK, kept
+# in arrays so the weights can be tuned without touching the loop.
+MOBILITY_BASE = np.array((0, 4, 6, 7, 13, 0), dtype=np.int16)
+MOBILITY_MG = np.array((0, 4, 5, 2, 1, 0), dtype=np.int16)
+MOBILITY_EG = np.array((0, 4, 5, 4, 2, 0), dtype=np.int16)
+
+NOT_FILE_A = np.uint64(0xFEFEFEFEFEFEFEFE)
+NOT_FILE_H = np.uint64(0x7F7F7F7F7F7F7F7F)
+FILE_A = np.uint64(0x0101010101010101)
+FILE_B = np.uint64(0x0202020202020202)
+# Multiplying a file's bits (gathered onto the a-file) by this diagonal collects ranks 2..7 into
+# the top six bits; the b-file does the same for a diagonal or an anti-diagonal.  The classic
+# "kindergarten" gathers: two shifts and a multiply replace fastboard's ray scan, which costs the
+# evaluation far too much when it runs on every slider at every node.
+FILE_GATHER = np.uint64(0x0080402010080400)
+
+RANK_LINE, FILE_LINE, DIAGONAL_LINE, ANTIDIAGONAL_LINE = range(4)
+_LINE_STEPS = (((1, 0), (-1, 0)), ((0, 1), (0, -1)), ((1, 1), (-1, -1)), ((1, -1), (-1, 1)))
+
+
+def _line_squares(square: int, line: int) -> int:
+    """The whole line through a square, that square included."""
+    mask = 1 << square
+    file_index, rank_index = square & 7, square >> 3
+    for file_delta, rank_delta in _LINE_STEPS[line]:
+        file_to, rank_to = file_index + file_delta, rank_index + rank_delta
+        while 0 <= file_to < 8 and 0 <= rank_to < 8:
+            mask |= 1 << (rank_to * 8 + file_to)
+            file_to += file_delta
+            rank_to += rank_delta
+    return mask
+
+
+def _line_attacks(square: int, line: int, occupied: int) -> int:
+    """Attacks along one line, stopping on (and including) the first occupied square."""
+    attacks = 0
+    file_index, rank_index = square & 7, square >> 3
+    for file_delta, rank_delta in _LINE_STEPS[line]:
+        file_to, rank_to = file_index + file_delta, rank_index + rank_delta
+        while 0 <= file_to < 8 and 0 <= rank_to < 8:
+            bit = 1 << (rank_to * 8 + file_to)
+            attacks |= bit
+            if occupied & bit:
+                break
+            file_to += file_delta
+            rank_to += rank_delta
+    return attacks
+
+
+def _line_key(square: int, line: int, occupied: int) -> int:
+    """The six-bit table index; mirrors the compiled version in _rook_attacks/_bishop_attacks."""
+    if line == RANK_LINE:
+        return (occupied >> ((square >> 3) * 8 + 1)) & 63
+    if line == FILE_LINE:
+        column = (occupied >> (square & 7)) & int(FILE_A)
+        return ((column * int(FILE_GATHER)) & 0xFFFFFFFFFFFFFFFF) >> 58
+    mask = _DIAGONAL_MASKS[line - DIAGONAL_LINE][square]
+    return (((occupied & mask) * int(FILE_B)) & 0xFFFFFFFFFFFFFFFF) >> 58
+
+
+def _build_diagonal_masks() -> list[list[int]]:
+    """Diagonal and anti-diagonal through each square, that square excluded."""
+    masks = [[0] * 64, [0] * 64]
+    for line in (DIAGONAL_LINE, ANTIDIAGONAL_LINE):
+        for square in range(64):
+            masks[line - DIAGONAL_LINE][square] = _line_squares(square, line) & ~(1 << square)
+    return masks
+
+
+_DIAGONAL_MASKS = _build_diagonal_masks()
+
+
+def _build_line_attacks() -> np.ndarray:
+    """LINE_ATTACKS[line, square, key]: every attack set a line can produce, by six-bit key.
+
+    Enumerating the whole line rather than its inner squares covers the keys that occur in play
+    (the piece's own square is occupied, and diagonal end squares reach the key too); the squares
+    those extra bits describe cannot block, so the collision check below is what proves the key
+    is a perfect hash for this line.
+    """
+    table = np.zeros((4, 64, 64), dtype=np.uint64)
+    for line in range(4):
+        for square in range(64):
+            mask = _line_squares(square, line)
+            seen: dict[int, int] = {}
+            occupied = 0
+            while True:
+                key = _line_key(square, line, occupied)
+                attacks = _line_attacks(square, line, occupied)
+                if seen.get(key, attacks) != attacks:
+                    raise RuntimeError(f"line {line} square {square}: key {key} collides")
+                seen[key] = attacks
+                table[line, square, key] = np.uint64(attacks)
+                occupied = (occupied - mask) & mask  # next subset of mask
+                if occupied == 0:
+                    break
+    return table
+
+
+LINE_ATTACKS = _build_line_attacks()
+DIAGONAL_MASK = np.array(_DIAGONAL_MASKS[0], dtype=np.uint64)
+ANTIDIAGONAL_MASK = np.array(_DIAGONAL_MASKS[1], dtype=np.uint64)
+
+
+@numba.njit(inline="always")
+def _popcount(bitboard: np.uint64) -> int:
+    """SWAR population count: numba exposes no ctpop intrinsic."""
+    counts = bitboard - ((bitboard >> np.uint64(1)) & np.uint64(0x5555555555555555))
+    counts = (counts & np.uint64(0x3333333333333333)) + (
+        (counts >> np.uint64(2)) & np.uint64(0x3333333333333333)
+    )
+    counts = (counts + (counts >> np.uint64(4))) & np.uint64(0x0F0F0F0F0F0F0F0F)
+    return int((counts * np.uint64(0x0101010101010101)) >> np.uint64(56))
+
+
+@numba.njit(inline="always")
+def _rook_attacks(square: int, occupied: np.uint64) -> np.uint64:
+    """Equal to fb.rook_attacks, by two table lookups instead of a scan of four rays."""
+    rank_key = int(
+        (occupied >> (np.uint64(square >> 3) * np.uint64(8) + np.uint64(1))) & np.uint64(63)
+    )
+    column = (occupied >> np.uint64(square & 7)) & FILE_A
+    file_key = int((column * FILE_GATHER) >> np.uint64(58))
+    return LINE_ATTACKS[RANK_LINE, square, rank_key] | LINE_ATTACKS[FILE_LINE, square, file_key]
+
+
+@numba.njit(inline="always")
+def _bishop_attacks(square: int, occupied: np.uint64) -> np.uint64:
+    """Equal to fb.bishop_attacks, by two table lookups instead of a scan of four rays."""
+    diagonal_key = int(((occupied & DIAGONAL_MASK[square]) * FILE_B) >> np.uint64(58))
+    anti_key = int(((occupied & ANTIDIAGONAL_MASK[square]) * FILE_B) >> np.uint64(58))
+    return (
+        LINE_ATTACKS[DIAGONAL_LINE, square, diagonal_key]
+        | LINE_ATTACKS[ANTIDIAGONAL_LINE, square, anti_key]
+    )
+
 
 @numba.njit
 def _mop_up(state: np.ndarray, winner: int, loser: int) -> int:
@@ -235,10 +374,20 @@ def evaluate_state(state: np.ndarray) -> int:
     mg = 0
     eg = 0
     phase = 0
+    occupied = state[fb.ALL_OCC]
+    # Squares each side's pawns cover, two shifts per colour, hoisted out of the piece loop.
+    white_pawn_attacks = ((state[fb.WP] & NOT_FILE_A) << np.uint64(7)) | (
+        (state[fb.WP] & NOT_FILE_H) << np.uint64(9)
+    )
+    black_pawn_attacks = ((state[fb.BP] & NOT_FILE_H) >> np.uint64(7)) | (
+        (state[fb.BP] & NOT_FILE_A) >> np.uint64(9)
+    )
     for piece in range(12):
         color = piece // 6
         piece_type = piece % 6
         sign = 1 if color == fb.WHITE else -1
+        own = state[fb.WHITE_OCC + color]
+        safe = ~own & ~(black_pawn_attacks if color == fb.WHITE else white_pawn_attacks)
         pieces = state[piece]
         while pieces:
             square = fb.lsb_square(pieces)
@@ -255,6 +404,22 @@ def evaluate_state(state: np.ndarray) -> int:
                     )
                     mg += sign * int(PASSED_MG[relative_rank])
                     eg += sign * int(PASSED_EG[relative_rank])
+            elif piece_type != fb.KING:
+                # Mobility rides along with the piece loop: the loop already has the square and
+                # the sign, and a second pass would re-walk every bitboard for them.
+                if piece_type == fb.KNIGHT:
+                    targets = fb.KNIGHT_ATTACKS[square] & safe
+                elif piece_type == fb.BISHOP:
+                    targets = _bishop_attacks(square, occupied) & safe
+                elif piece_type == fb.ROOK:
+                    targets = _rook_attacks(square, occupied) & ~own
+                else:
+                    targets = (
+                        _bishop_attacks(square, occupied) | _rook_attacks(square, occupied)
+                    ) & ~own
+                count = _popcount(targets) - int(MOBILITY_BASE[piece_type])
+                mg += sign * count * int(MOBILITY_MG[piece_type])
+                eg += sign * count * int(MOBILITY_EG[piece_type])
     if phase > PHASE_TOTAL:
         phase = PHASE_TOTAL
     score = _div_toward_zero(mg * phase + eg * (PHASE_TOTAL - phase), PHASE_TOTAL)
@@ -304,6 +469,7 @@ for _depth in range(MAX_DEPTH + 2):
 SEARCH_VALUE = np.array((100, 320, 330, 500, 900, 20_000), dtype=np.int32)
 
 TT_BITS = 22
+QS_STORE_STAND_PAT = False  # also record stand-pat fail-highs (compile-time constant for numba)
 TT_SIZE = 1 << TT_BITS
 TT_MASK = TT_SIZE - 1
 
@@ -450,6 +616,124 @@ def _captured_type(state: np.ndarray, move: np.uint32) -> int:
 
 
 @numba.njit
+def _least_valuable_attacker(
+    state: np.ndarray, occupied: np.uint64, side: int, square: int
+) -> int:
+    """Cheapest piece of ``side`` still standing in ``occupied`` that attacks ``square``.
+
+    Returns ``from_square | (piece_type << 6)``, or -1 when that side has no attacker left.
+    Slider attacks are re-derived from ``occupied`` on every call, so a piece the swap-off has
+    already consumed uncovers whatever stood behind it (the x-ray discovery SEE needs).
+    ``SEARCH_VALUE`` rises with the piece-type index, so scanning P, N, B, R, Q, K in order
+    already yields the least valuable attacker, and the king is only ever reached last.
+    """
+    offset = side * 6
+    pawns = state[offset + fb.PAWN] & occupied & fb.PAWN_ATTACKS[1 - side, square]
+    if pawns:
+        return fb.lsb_square(pawns) | (fb.PAWN << 6)
+    knights = state[offset + fb.KNIGHT] & occupied & fb.KNIGHT_ATTACKS[square]
+    if knights:
+        return fb.lsb_square(knights) | (fb.KNIGHT << 6)
+    diagonal = fb.U64_ZERO
+    if (state[offset + fb.BISHOP] | state[offset + fb.QUEEN]) & occupied:
+        diagonal = fb.bishop_attacks(square, occupied)
+    bishops = state[offset + fb.BISHOP] & occupied & diagonal
+    if bishops:
+        return fb.lsb_square(bishops) | (fb.BISHOP << 6)
+    orthogonal = fb.U64_ZERO
+    if (state[offset + fb.ROOK] | state[offset + fb.QUEEN]) & occupied:
+        orthogonal = fb.rook_attacks(square, occupied)
+    rooks = state[offset + fb.ROOK] & occupied & orthogonal
+    if rooks:
+        return fb.lsb_square(rooks) | (fb.ROOK << 6)
+    queens = state[offset + fb.QUEEN] & occupied & (diagonal | orthogonal)
+    if queens:
+        return fb.lsb_square(queens) | (fb.QUEEN << 6)
+    kings = state[offset + fb.KING] & occupied & fb.KING_ATTACKS[square]
+    if kings:
+        return fb.lsb_square(kings) | (fb.KING << 6)
+    return -1
+
+
+@numba.njit
+def _see_gain(
+    state: np.ndarray, occupied: np.uint64, side: int, square: int, standing: int
+) -> int:
+    """Material ``side`` wins by continuing the exchange on ``square``, in SEARCH_VALUE units.
+
+    ``standing`` is what the piece now sitting on ``square`` is worth.  Recapturing is optional,
+    so a side facing a losing continuation simply stops and the branch is worth nothing; that
+    ``max(0, ...)`` is what makes the swap-off a negamax rather than a plain sum.
+    """
+    packed = _least_valuable_attacker(state, occupied, side, square)
+    if packed < 0:
+        return 0
+    from_square = packed & 63
+    piece_type = packed >> 6
+    remaining = occupied & ~(fb.U64_ONE << np.uint64(from_square))
+    # A king may only take the last defender: stepping onto a square the other side still
+    # attacks is illegal, so the exchange ends here instead of continuing.
+    if piece_type == fb.KING and _least_valuable_attacker(state, remaining, 1 - side, square) >= 0:
+        return 0
+    gain = standing - _see_gain(
+        state, remaining, 1 - side, square, int(SEARCH_VALUE[piece_type])
+    )
+    return gain if gain > 0 else 0
+
+
+@numba.njit
+def see(state: np.ndarray, move: np.uint32) -> int:
+    """Static exchange evaluation of ``move``, in SEARCH_VALUE units (a pawn is 100).
+
+    Plays the move, then lets each side recapture with its least valuable attacker until one
+    prefers to stop.  En passant scores the pawn behind the target; a promotion capture adds the
+    promoted piece's value less a pawn, and leaves the promoted piece standing on the square.
+
+    Deliberate simplifications, shared with the reference in ``test_see.py``: pins and
+    discovered attacks are ignored (as in every SEE), and a pawn that reaches the last rank
+    *during* the swap-off is counted as a pawn.
+    """
+    to_square = fb.move_to(move)
+    from_square = fb.move_from(move)
+    side = int(state[fb.SIDE])
+    occupied = state[fb.ALL_OCC] & ~(fb.U64_ONE << np.uint64(from_square))
+    if int(move) & fb.FLAG_EN_PASSANT:
+        captured_square = to_square - 8 if side == fb.WHITE else to_square + 8
+        occupied &= ~(fb.U64_ONE << np.uint64(captured_square))
+        gain = int(SEARCH_VALUE[fb.PAWN])
+    else:
+        victim = _piece_type_at(state, to_square)
+        gain = 0 if victim == fb.NO_PIECE else int(SEARCH_VALUE[victim])
+    promotion = fb.move_promotion(move)
+    if promotion:
+        gain += int(SEARCH_VALUE[promotion]) - int(SEARCH_VALUE[fb.PAWN])
+        standing = int(SEARCH_VALUE[promotion])
+    else:
+        mover = _piece_type_at(state, from_square)
+        standing = 0 if mover == fb.NO_PIECE else int(SEARCH_VALUE[mover])
+    return gain - _see_gain(state, occupied, 1 - side, to_square, standing)
+
+
+@numba.njit
+def _see_loses_material(state: np.ndarray, move: np.uint32) -> bool:
+    """``see(state, move) < 0``, deciding the cheap cases without running the swap-off.
+
+    Stopping after the first recapture is always available to us, so a capture is worth at least
+    ``victim - attacker``: whenever the victim is the more valuable piece the move cannot lose
+    material and the exchange never has to be walked.  That covers every en-passant capture and
+    every capture-promotion (a promotion wins at least ``victim - pawn``), so those reach the
+    swap-off only through ``see`` itself.
+    """
+    victim = _captured_type(state, move)
+    if victim == fb.NO_PIECE:
+        return False
+    attacker = _piece_type_at(state, fb.move_from(move))
+    if attacker == fb.NO_PIECE or SEARCH_VALUE[victim] >= SEARCH_VALUE[attacker]:
+        return False
+    return see(state, move) < 0
+
+
+@numba.njit
 def _move_score(
     state: np.ndarray,
     move: np.uint32,
@@ -464,6 +748,12 @@ def _move_score(
     promotion = fb.move_promotion(move)
     if victim != fb.NO_PIECE:
         attacker = _piece_type_at(state, fb.move_from(move))
+        # A capture that loses material drops below the killers but stays above every quiet:
+        # it is still forcing, and history scores cannot exceed HISTORY_CAP.
+        if attacker != fb.NO_PIECE and SEARCH_VALUE[victim] < SEARCH_VALUE[attacker]:
+            gain = see(state, move)
+            if gain < 0:
+                return ORDER_KILLER - 1000 + gain
         score = ORDER_CAPTURE + int(SEARCH_VALUE[victim]) * 10
         if attacker != fb.NO_PIECE:
             score -= int(SEARCH_VALUE[attacker]) // 10
@@ -562,6 +852,12 @@ def _quiesce(
     ply: int,
     rep_keys: np.ndarray,
     rep_count: int,
+    tt_keys: np.ndarray,
+    tt_depth: np.ndarray,
+    tt_scores: np.ndarray,
+    tt_flags: np.ndarray,
+    tt_moves: np.ndarray,
+    tt_mask: int,
     killers: np.ndarray,
     history: np.ndarray,
     move_buffers: np.ndarray,
@@ -578,10 +874,34 @@ def _quiesce(
     if ply > 0 and _is_draw(state, ply, rep_keys, rep_count):
         return _draw_score(ply)
 
+    # Transposition table in quiescence: captures transpose constantly, and every stored entry
+    # (main search or an earlier quiescence visit) is at least as deep as this node, so any
+    # bound that fits the window cuts. The stored move leads the capture ordering.
+    raw_key = state[fb.ZOBRIST]
+    slot = int(raw_key & np.uint64(tt_mask))
+    tt_move = np.uint32(0)
+    if tt_depth[slot] >= 0 and tt_keys[slot] == raw_key:
+        tt_move = tt_moves[slot]
+        tt_score = _from_tt(int(tt_scores[slot]), ply)
+        tt_flag = int(tt_flags[slot])
+        if (
+            tt_flag == EXACT
+            or (tt_flag == LOWER and tt_score >= beta)
+            or (tt_flag == UPPER and tt_score <= alpha)
+        ):
+            return tt_score
+    alpha_original = alpha
+
     in_check = fb.is_in_check(state, int(state[fb.SIDE]))
     stand_pat = -INF if in_check else evaluate_state(state)
     if not in_check:
         if stand_pat >= beta:
+            if QS_STORE_STAND_PAT and tt_depth[slot] <= 0:
+                tt_keys[slot] = raw_key
+                tt_depth[slot] = 0
+                tt_scores[slot] = _to_tt(stand_pat, ply)
+                tt_flags[slot] = LOWER
+                tt_moves[slot] = np.uint32(0)
             return stand_pat
         if stand_pat > alpha:
             alpha = stand_pat
@@ -590,10 +910,11 @@ def _quiesce(
     moves = move_buffers[ply]
     scores = score_buffers[ply]
     count = fb.generate_pseudo_into(state, moves)
-    _order_moves(state, moves, scores, count, np.uint32(0), ply, killers, history)
+    _order_moves(state, moves, scores, count, tt_move, ply, killers, history)
     moving_color = int(state[fb.SIDE])
     legal_count = 0
     best = stand_pat
+    best_move = np.uint32(0)
     for index in range(count):
         _pick_next(moves, scores, index, count)
         move = moves[index]
@@ -608,6 +929,16 @@ def _quiesce(
             and stand_pat + int(SEARCH_VALUE[victim]) + 200 <= alpha
         ):
             continue
+        # Losing captures cannot improve a quiescence score, and searching them is what makes
+        # the tree explode.  Promotions and evasions stay in: both change the material picture
+        # in ways the swap-off does not model.
+        if (
+            not in_check
+            and victim != fb.NO_PIECE
+            and promotion == 0
+            and _see_loses_material(state, move)
+        ):
+            continue
         undo = fb.make_move(state, move)
         if fb.is_in_check(state, moving_color):
             fb.unmake_move(state, move, undo)
@@ -620,6 +951,12 @@ def _quiesce(
             ply + 1,
             rep_keys,
             rep_count + 1,
+            tt_keys,
+            tt_depth,
+            tt_scores,
+            tt_flags,
+            tt_moves,
+            tt_mask,
             killers,
             history,
             move_buffers,
@@ -632,12 +969,26 @@ def _quiesce(
             return 0
         if score > best:
             best = score
+            best_move = move
             if score > alpha:
                 alpha = score
                 if score >= beta:
                     break
+    flag = UPPER
     if in_check and legal_count == 0:
-        return -MATE + ply
+        best = -MATE + ply
+        flag = EXACT
+    elif best >= beta:
+        flag = LOWER
+    elif best > alpha_original:
+        flag = EXACT
+    # Depth 0 never evicts a main-search entry: only empty or quiescence slots are overwritten.
+    if tt_depth[slot] <= 0:
+        tt_keys[slot] = raw_key
+        tt_depth[slot] = 0
+        tt_scores[slot] = _to_tt(best, ply)
+        tt_flags[slot] = flag
+        tt_moves[slot] = best_move
     return best
 
 
@@ -683,6 +1034,12 @@ def _negamax(
             ply,
             rep_keys,
             rep_count,
+            tt_keys,
+            tt_depth,
+            tt_scores,
+            tt_flags,
+            tt_moves,
+            tt_mask,
             killers,
             history,
             move_buffers,
@@ -1247,6 +1604,12 @@ def _warm_search() -> float:
     state = fb.from_fen(chess.STARTING_FEN)
     evaluate_state(state)
     _canonical_key(state)
+    # SEE is reached from _move_score below, but compile it explicitly so a future change to
+    # ordering cannot quietly move its compilation into the first game move.
+    exchange = fb.from_fen("r1bqk2r/pppp1ppp/2n2n2/1Bb1p3/4P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 4 5")
+    capture = fb.find_legal_move(exchange, "b5c6")
+    see(exchange, capture)
+    _see_loses_material(exchange, capture)
     probe.stats[:] = 0
     probe._iteration(state, 4, -INF, INF, 0, 20_000)
     probe.tt_depth.fill(-1)
