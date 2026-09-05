@@ -78,14 +78,17 @@ def sprt_llr(wins: int, draws: int, losses: int, elo0: float, elo1: float) -> fl
 
 def play_one(
     game: int, agent: Path, opponent: Path, base_ms: int, increment_ms: int, ply_cap: int
-) -> tuple[int, str, bool, Outcome]:
+) -> tuple[int, str, bool, Outcome, str, str]:
     name, fen = OPENINGS[(game // 2) % len(OPENINGS)]
     plays_white = game % 2 == 0
     white, black = (agent, opponent) if plays_white else (opponent, agent)
+    white_agent, black_agent = local(white), local(black)
     outcome = play_match(
-        local(white), local(black), base_ms, increment_ms, ply_cap=ply_cap, start_fen=fen
+        white_agent, black_agent, base_ms, increment_ms, ply_cap=ply_cap, start_fen=fen
     )
-    return game, name, plays_white, outcome
+    ours = white_agent if plays_white else black_agent
+    theirs = black_agent if plays_white else white_agent
+    return game, name, plays_white, outcome, ours.stderr_tail, theirs.stderr_tail
 
 
 def main() -> None:
@@ -136,8 +139,20 @@ def main() -> None:
     failures: list[str] = []
     pgns: list[str] = []
 
-    def _record(played: tuple[int, str, bool, Outcome]) -> None:
-        game, opening, plays_white, outcome = played
+    tracebacks = {"agent": 0, "opponent": 0}
+    tails_dir = args.pgn.with_suffix(".stderr") if args.pgn else None
+
+    def _record(played: tuple[int, str, bool, Outcome, str, str]) -> None:
+        game, opening, plays_white, outcome, our_tail, their_tail = played
+        # An exception inside get_move is caught by the agent and answered with a random move,
+        # so it never shows as a failure; count the tracebacks to make that visible.
+        tracebacks["agent"] += our_tail.count("Traceback (most recent call last)")
+        tracebacks["opponent"] += their_tail.count("Traceback (most recent call last)")
+        if tails_dir is not None and (our_tail or their_tail):
+            tails_dir.mkdir(exist_ok=True)
+            (tails_dir / f"game_{game + 1}.txt").write_text(
+                f"--- {agent.name}\n{our_tail}\n--- {opponent.name}\n{their_tail}\n"
+            )
         if outcome.result in ("draw", "void"):
             points = 0.5
         else:
@@ -210,6 +225,10 @@ def main() -> None:
     if plies:
         print(f"average game length {sum(plies) / len(plies):.0f} plies")
     print("terminations: " + ", ".join(f"{k} {v}" for k, v in sorted(terminations.items())))
+    print(
+        f"tracebacks (crash → fallback move): agent {tracebacks['agent']}, "
+        f"opponent {tracebacks['opponent']}"
+    )
     if args.pgn:
         args.pgn.write_text("\n\n".join(pgns) + "\n")
         print(f"pgn written to {args.pgn}")
@@ -227,6 +246,7 @@ def main() -> None:
                     "terminations": terminations,
                     "plies": plies,
                     "failures": failures,
+                    "tracebacks": tracebacks,
                 }
             )
         )

@@ -19,6 +19,7 @@ def main(paths: list[str]) -> None:
     terminations: dict[str, int] = {}
     plies: list[int] = []
     failures: list[str] = []
+    tracebacks = {"agent": 0, "opponent": 0}
     header = None
     for path in sorted(paths):
         data = json.loads(Path(path).read_text())
@@ -28,6 +29,8 @@ def main(paths: list[str]) -> None:
         black += data["black"]
         plies += data["plies"]
         failures += [f"{Path(path).name}: {f}" for f in data["failures"]]
+        for side, count in data.get("tracebacks", {}).items():
+            tracebacks[side] += count
         for name, count in data["terminations"].items():
             terminations[name] = terminations.get(name, 0) + count
     if header is None:
@@ -48,6 +51,10 @@ def main(paths: list[str]) -> None:
     if plies:
         print(f"average game length {sum(plies) / len(plies):.0f} plies")
     print("terminations: " + ", ".join(f"{k} {v}" for k, v in sorted(terminations.items())))
+    print(
+        f"tracebacks (crash → fallback move): agent {tracebacks['agent']}, "
+        f"opponent {tracebacks['opponent']}"
+    )
     if failures:
         print("FAILURES:\n  " + "\n  ".join(failures))
 
