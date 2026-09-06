@@ -16,7 +16,6 @@ from __future__ import annotations
 import argparse
 import io
 import json
-import math
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -26,60 +25,23 @@ import chess
 import chess.pgn
 
 import harness.referee
-from bench.openings import OPENINGS
+from bench.openings import load_book
+from bench.stats import SPRT_BOUND, llr, summarise, verdict
 from harness.referee import FAILED_TERMINATIONS, Outcome, play_match
 from harness.rules import PLY_CAP
 from harness.sandbox import local
 
 
-def elo_from_score(score: float) -> float:
-    score = min(max(score, 1e-6), 1 - 1e-6)
-    return -400.0 * math.log10(1.0 / score - 1.0)
-
-
-def summarise(results: list[float]) -> str:
-    """Score with an Elo difference and a 95% interval from the per-game variance."""
-    n = len(results)
-    if n == 0:
-        return "no games"
-    mean = sum(results) / n
-    variance = sum((r - mean) ** 2 for r in results) / max(n - 1, 1)
-    se = math.sqrt(variance / n)
-    low, high = mean - 1.96 * se, mean + 1.96 * se
-    elo = elo_from_score(mean)
-    if low > 0 and high < 1:
-        spread = (elo_from_score(high) - elo_from_score(low)) / 2
-        interval = f"{elo:+.0f} ± {spread:.0f} Elo"
-    else:
-        interval = f"{elo:+.0f} Elo (interval unbounded at this sample size)"
-    return f"score {mean:.1%}, {interval}"
-
-
-def sprt_llr(wins: int, draws: int, losses: int, elo0: float, elo1: float) -> float:
-    """Log-likelihood ratio of H1 (elo1) against H0 (elo0), fishtest's GSPRT approximation."""
-    n = wins + draws + losses
-    if n < 2:
-        return 0.0
-    # Half a pseudo-game in each bin keeps the variance finite when one side wins everything,
-    # so a lopsided result reaches a verdict instead of stalling at zero.
-    total = n + 1.5
-    w, d = (wins + 0.5) / total, (draws + 0.5) / total
-    mean = w + d / 2
-    variance = (w + d / 4) - mean**2
-    if variance <= 0:
-        return 0.0
-
-    def expected(elo: float) -> float:
-        return 1 / (1 + 10 ** (-elo / 400))
-
-    s0, s1 = expected(elo0), expected(elo1)
-    return (s1 - s0) * (2 * mean - s0 - s1) / (2 * variance / total)
-
-
 def play_one(
-    game: int, agent: Path, opponent: Path, base_ms: int, increment_ms: int, ply_cap: int
+    game: int,
+    agent: Path,
+    opponent: Path,
+    base_ms: int,
+    increment_ms: int,
+    ply_cap: int,
+    openings: list[tuple[str, str]],
 ) -> tuple[int, str, bool, Outcome, str, str]:
-    name, fen = OPENINGS[(game // 2) % len(OPENINGS)]
+    name, fen = openings[(game // 2) % len(openings)]
     plays_white = game % 2 == 0
     white, black = (agent, opponent) if plays_white else (opponent, agent)
     white_agent, black_agent = local(white), local(black)
@@ -101,6 +63,13 @@ def main() -> None:
     parser.add_argument("--base-ms", type=int, default=10_000)
     parser.add_argument("--increment-ms", type=int, default=100)
     parser.add_argument("--ply-cap", type=int, default=PLY_CAP)
+    parser.add_argument(
+        "--book",
+        choices=("big", "classic"),
+        default="big",
+        help="opening set: big = bench/book.json (1,000 balanced positions from our games), "
+        "classic = the 24 curated lines; each opening is played with both colours",
+    )
     parser.add_argument("--workers", type=int, default=max(1, min(8, (os.cpu_count() or 2) - 2)))
     parser.add_argument("--pgn", type=Path, default=None, help="write every game here")
     parser.add_argument(
@@ -117,6 +86,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    openings = load_book(args.book)
     agent = args.agent.resolve()
     opponent = args.opponent.resolve()
     games = args.games + args.games % 2
@@ -133,6 +103,7 @@ def main() -> None:
     started = time.monotonic()
 
     results: list[float] = []
+    order: list[int] = []
     by_colour: dict[bool, list[float]] = {True: [], False: []}
     terminations: dict[str, int] = {}
     plies: list[int] = []
@@ -158,6 +129,7 @@ def main() -> None:
         else:
             points = 1.0 if (outcome.result == "white") == plays_white else 0.0
         results.append(points)
+        order.append(game)
         by_colour[plays_white].append(points)
         terminations[outcome.termination] = terminations.get(outcome.termination, 0) + 1
         pgn_game = chess.pgn.read_game(_lines(outcome.pgn))
@@ -179,19 +151,26 @@ def main() -> None:
             flush=True,
         )
 
-    bound = math.log(19)  # alpha = beta = 0.05
-    verdict = None
+    bound = SPRT_BOUND
+    decided = None
     schedule = list(range(args.start, args.start + games))
     done = 0
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         # games go out in waves so a decided SPRT does not keep the pool busy for nothing
         for wave_start in range(0, len(schedule), args.workers * 2):
-            if verdict:
+            if decided:
                 break
             wave = schedule[wave_start : wave_start + args.workers * 2]
             futures = [
                 pool.submit(
-                    play_one, game, agent, opponent, args.base_ms, args.increment_ms, args.ply_cap
+                    play_one,
+                    game,
+                    agent,
+                    opponent,
+                    args.base_ms,
+                    args.increment_ms,
+                    args.ply_cap,
+                    openings,
                 )
                 for game in wave
             ]
@@ -199,23 +178,18 @@ def main() -> None:
                 done += 1
                 _record(future.result())
             if args.sprt:
-                wins = sum(1 for r in results if r == 1.0)
-                draws = sum(1 for r in results if r == 0.5)
-                llr = sprt_llr(wins, draws, len(results) - wins - draws, *args.sprt)
-                print(f"    sprt llr {llr:+.2f} (bounds ±{bound:.2f})", flush=True)
-                if llr >= bound:
-                    verdict = f"H1 accepted: at least {args.sprt[1]:+g} Elo"
-                elif llr <= -bound:
-                    verdict = f"H0 accepted: no better than {args.sprt[0]:+g} Elo"
+                value = llr(results, order, *args.sprt)
+                print(f"    sprt llr {value:+.2f} (bounds ±{bound:.2f})", flush=True)
+                decided = verdict(value, *args.sprt)
     games = len(results)
-    if verdict:
-        print(f"\n{verdict} after {games} games")
+    if decided:
+        print(f"\n{decided} after {games} games")
 
     wins = sum(1 for r in results if r == 1.0)
     draws = sum(1 for r in results if r == 0.5)
     losses = len(results) - wins - draws
     print(f"\n{agent.name} vs {opponent.name}: {games} games in {time.monotonic() - started:.0f}s")
-    print(f"+{wins} ={draws} -{losses}   {summarise(results)}")
+    print(f"+{wins} ={draws} -{losses}   {summarise(results, order)}")
     white = by_colour[True]
     black = by_colour[False]
     print(
@@ -238,6 +212,8 @@ def main() -> None:
                 {
                     "agent": str(agent),
                     "opponent": str(opponent),
+                    "order": order,
+                    "book": args.book,
                     "base_ms": args.base_ms,
                     "increment_ms": args.increment_ms,
                     "results": results,

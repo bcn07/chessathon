@@ -5,6 +5,9 @@ games should too. Each entry is a name and a move sequence; the FENs are derived
 guarantees they are legal. Every opening is played once with each colour by the gauntlet.
 """
 
+import json
+from pathlib import Path
+
 import chess
 
 _LINES: list[tuple[str, str]] = [
@@ -79,6 +82,20 @@ def _fen(moves: str) -> str:
 
 
 OPENINGS: list[tuple[str, str]] = [(name, _fen(moves)) for name, moves in _LINES]
+
+BOOK_FILE = Path(__file__).with_name("book.json")
+
+
+def load_book(name: str = "big") -> list[tuple[str, str]]:
+    """``classic``: the 24 curated lines above. ``big``: ``bench/book.json`` — 1,000 balanced
+    positions taken from our own real-clock games (``bench.build_book``), so a 400-game run
+    plays 200 distinct openings instead of 24 repeated eight times. Falls back to classic."""
+    if name == "classic" or not BOOK_FILE.exists():
+        return OPENINGS
+    if name != "big":
+        raise ValueError(f"unknown book {name!r}")
+    entries = json.loads(BOOK_FILE.read_text())
+    return [(entry["name"], entry["fen"]) for entry in entries]
 
 
 if __name__ == "__main__":

@@ -29,7 +29,7 @@ make test           # contract tests against agent.py
 
 | Command | What it answers |
 |---|---|
-| `make gauntlet OPP=codex GAMES=40` | Who wins. Parallel games from 24 balanced openings, both colours, Elo ± 95% CI, PGN to `gauntlet.pgn`. Fails if our agent crashed, flagged or moved illegally. |
+| `make gauntlet OPP=codex GAMES=40` | Who wins. Parallel games from `bench/book.json` (1,000 balanced positions taken from our own real-clock games; `--book classic` for the 24 curated lines), both colours per opening, Elo ± 95% CI scored by opening pairs, PGN to `gauntlet.pgn`. Fails if our agent crashed, flagged or moved illegally. |
 | `make gauntlet OPP=versions/v1-nullmove GAMES=200 ` | Did this change help, against the last snapshot. A 3% change needs hundreds of games. |
 | `make speed` | How deep in 2 s, and knps, on eight fixed positions. `--depth 5` for reproducible node counts. |
 | `make tactics` | Tactical suite at 3 s per position: solved count and time to solve. Mates are checked by brute force at load. |
@@ -59,10 +59,29 @@ can get locally. Real-clock games against these on the cluster are the reference
 
 ### Deciding A/B tests
 
-`--sprt ELO0 ELO1` stops a gauntlet as soon as a sequential test decides, e.g.
-`uv run python -m bench.gauntlet --opponent versions/v1-nullmove --games 400 --sprt 0 20`
-accepts the change once it is shown to be at least +20 Elo, or rejects it once shown to be no
-better than +0; most runs finish well under the cap.
+Four tiers, cheapest first; a candidate that fails one does not go on.
+
+1. **Laptop, minutes.** `ruff`, `mypy`, `make test`; `bench.speed --depth 8` node counts (identical
+   counts prove a change did not alter the search); `make tactics`. Laptop timings are noise on a
+   loaded machine — use node counts and the pool for anything timed.
+2. **Screen, ~20 min on the pool.** 200 games at 10 s + 0.1 s vs the root, native-only
+   (`env="CHESSATHON_NATIVE_ONLY=1 CHESSATHON_INIT_COMPILE_WAIT=58"`). Drops crashes and anything
+   below about −10 Elo. A fast-clock result is never a verdict (the accumulator engine was +58 fast
+   and −16 at the real clock).
+3. **Decision, 40 min per wave.** `make condor-sprt AGENT=work/<cand> OPP=. TAG=<cand>-vs-root`:
+   waves of 100 jobs × 4 games at 120 s + 0.5 s with pondering off (the platform suspends us between
+   moves), openings continuing through the book, scored by opening pairs (pentanomial), GSPRT with
+   H0 = −5 / H1 = +15 Elo, cap 1,600 games. Simulated: a real +20 is accepted 90% of the time in
+   about 1,000 games, a neutral change 8%, a −20 regression never (rejected in ~700). Ship on
+   "H1 accepted"; undecided at the cap keeps the incumbent unless the estimate is ≥ +10 and the
+   candidate costs nothing extra. `bench.aggregate <files> --sprt -5 15` scores any finished run.
+4. **Per shipped version.** `bench.validate_zip` from a clean unpack, then
+   `make condor-calibrate TAG=v12.x`: 400 real-clock games each vs Loki, Zagreus and Stockfish at
+   UCI_Elo 2600. The strength estimate comes from these, not from chaining self-play deltas, which
+   overstate transfer to other engines.
+
+`bench.build_book` regenerates the book from `results/condor/*/games_*.pgn` (one position per game
+at ply 8–16, |score| ≤ 40 cp at 200 ms, duplicates dropped).
 
 ### Cluster
 

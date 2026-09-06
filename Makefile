@@ -79,6 +79,24 @@ condor-datagen:
 	ssh $(CLUSTER) 'cd $(CLUSTER_ROOT) && $(CONDOR_ENV) && mkdir -p results/datagen/$(TAG) && \
 	  condor_submit games=$(GAMES) jobs=$(JOBS) nodes=$(NODES) seed_base=$(SEED_BASE) tag=$(TAG) engine=$(ENGINE) condor/datagen.submit'
 
+# sequential real-clock A/B on the pool (waves of 400 games, GSPRT -5/+15, cap 1,600):
+#   make condor-sprt AGENT=work/v12-x OPP=. TAG=x-vs-root   (run in the background; ~40 min per wave)
+ELO0 ?= -5
+ELO1 ?= 15
+WAVES ?= 4
+condor-sprt:
+	uv run python -m bench.sprt_pool --agent $(AGENT) --opponent $(OPP) --tag $(TAG) \
+	  --elo0 $(ELO0) --elo1 $(ELO1) --wave-jobs 100 --games 4 --max-waves $(WAVES) --base 120000 --inc 500
+
+# external gauntlet for a shipped version: 400 real-clock games each vs Loki, Zagreus and
+# Stockfish at UCI_Elo 2600 (make condor-calibrate TAG=v12.3); fetch with condor-fetch TAG=<tag>-<bot>
+condor-calibrate:
+	@test -n "$(TAG)" || (echo "usage: make condor-calibrate TAG=v12.3 [AGENT=.]" && exit 1)
+	ssh $(CLUSTER) 'cd $(CLUSTER_ROOT) && $(CONDOR_ENV) && for o in loki zagreus stockfish-2600; do \
+	  mkdir -p results/condor/$(TAG)-$$o && \
+	  condor_submit agent=$(AGENT) opp=opponents/$$o games=4 jobs=100 base=120000 inc=500 tag=$(TAG)-$$o \
+	    env="CHESSATHON_INIT_COMPILE_WAIT=58" condor/gauntlet.submit | tail -n 1; done'
+
 condor-status:
 	ssh $(CLUSTER) '$(CONDOR_ENV) && condor_q; condor_status -total | tail -3'
 
