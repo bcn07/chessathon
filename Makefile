@@ -74,9 +74,10 @@ condor-gauntlet:
 # self-play data for Texel/NNUE: make condor-datagen GAMES=3000 JOBS=100 TAG=gen1
 NODES ?= 20000
 SEED_BASE ?= 1000
+ENGINE ?= .
 condor-datagen:
 	ssh $(CLUSTER) 'cd $(CLUSTER_ROOT) && $(CONDOR_ENV) && mkdir -p results/datagen/$(TAG) && \
-	  condor_submit games=$(GAMES) jobs=$(JOBS) nodes=$(NODES) seed_base=$(SEED_BASE) tag=$(TAG) condor/datagen.submit'
+	  condor_submit games=$(GAMES) jobs=$(JOBS) nodes=$(NODES) seed_base=$(SEED_BASE) tag=$(TAG) engine=$(ENGINE) condor/datagen.submit'
 
 condor-status:
 	ssh $(CLUSTER) '$(CONDOR_ENV) && condor_q; condor_status -total | tail -3'

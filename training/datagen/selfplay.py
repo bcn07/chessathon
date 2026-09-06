@@ -24,8 +24,9 @@ from pathlib import Path
 
 os.environ.setdefault("NUMBA_OPT", "3")
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+ENGINE = Path(os.environ.get("CHESSATHON_DATAGEN_ENGINE", ROOT)).resolve()  # engine to play with
 sys.path.insert(0, str(ROOT / "work" / "nnue"))
+sys.path.insert(0, str(ENGINE))
 
 import chess  # noqa: E402
 import encoding  # noqa: E402
@@ -107,6 +108,12 @@ class Player:
                 0,
                 searcher.rep_keys,
                 rep_count,
+                searcher.tt_keys,
+                searcher.tt_depth,
+                searcher.tt_scores,
+                searcher.tt_flags,
+                searcher.tt_moves,
+                searcher.tt_mask,
                 searcher.killers,
                 searcher.history,
                 searcher.move_buffers,
@@ -180,7 +187,9 @@ def main() -> None:
                     f"{total / elapsed:.1f} positions/s",
                     flush=True,
                 )
-    print(f"done: {total} positions in {time.time() - started:.0f}s -> {args.out}")
+    print(
+        f"done: {total} positions in {time.time() - started:.0f}s -> {args.out} (engine {ENGINE})"
+    )
 
 
 if __name__ == "__main__":
