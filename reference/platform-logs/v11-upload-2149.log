@@ -1,0 +1,48 @@
+[20:49:30Z] building
+[20:49:30Z] upload expands to 127,778 bytes
+[20:49:30Z] docker build
+Sending build context to Docker daemon  132.7kB
+
+Step 1/2 : FROM aichessathon/agent-base:latest
+ ---> eeaf64b96a67
+Step 2/2 : COPY . /agent
+ ---> b398381b9d16
+Successfully built b398381b9d16
+Successfully tagged aichessathon/agent:6979dd5b-63f8-4749-b788-7f3aecb5c1cf
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+[20:49:47Z] pushed aichessathon.azurecr.io/agents:6979dd5b-63f8-4749-b788-7f3aecb5c1cf
+[20:49:47Z] image aichessathon.azurecr.io/agents@sha256:b398381b9d16f417f64a85bed07b1dd4b305808683c09d41366ab7f4809ee54e
+[20:49:47Z] smoke
+[20:49:47Z] your process is suspended while your opponent moves, so anything you compute between your own moves does not run
+[20:49:47Z] smoke game: 20 plies as white from r1bq1rk1/pppnbpp1/4pn1p/3p4/2PP3B/2N1PN2/PP3PPP/R2QKB1R w KQ - 2 8
+[20:50:08Z] ready in 0.6 s of the 90 s init budget
+[20:50:08Z] played 9 moves, slowest 4.9 s
+[20:50:08Z] game ended white by checkmate
+[20:50:08Z] your agent wrote to stderr
+pyengine f1d3 depth 7 score 19 nodes 46295 2908ms clock 120000
+pyengine c4d5 depth 7 score 101 nodes 24172 2775ms clock 117588
+pyengine d5e6 depth 6 score 164 nodes 15260 1474ms clock 115310
+pyengine e6d7 depth 7 score 756 nodes 24570 3245ms clock 114331
+pyengine d7c8q depth 7 score 1098 nodes 15079 2016ms clock 111580
+pyengine c8f5 depth 6 score 1834 nodes 18051 2200ms clock 110061
+pyengine c3d5 depth 6 score 2446 nodes 62205 4852ms clock 108339
+pyengine d5f6 depth 1 score 99995 nodes 105 3ms clock 103984
+pyengine f5h7 depth 1 score 99999 nodes 103 3ms clock 104473
+[20:50:08Z] smoke game: 20 plies as black from rnbq1rk1/p1p2ppp/1p3n2/3p4/1b1P4/2NBPN2/PP3PPP/R1BQ1RK1 b - - 1 8
+[20:50:35Z] ready in 0.5 s of the 90 s init budget
+[20:50:35Z] played 10 moves, slowest 6.1 s
+[20:50:35Z] game ended black by checkmate
+[20:50:35Z] your agent wrote to stderr
+pyengine b8c6 depth 7 score -47 nodes 50681 2368ms clock 120000
+pyengine c8f5 depth 7 score 374 nodes 40285 1927ms clock 118129
+pyengine f5c2 depth 6 score 1389 nodes 22899 1046ms clock 116696
+pyengine f8e8 depth 7 score 1390 nodes 131621 6100ms clock 116147
+pyengine a8c8 depth 6 score 1422 nodes 70044 3319ms clock 110528
+pyengine f6e4 depth 7 score 1546 nodes 45900 2382ms clock 107703
+pyengine d8h4 depth 9 score 1925 nodes 66120 4311ms clock 105818
+pyengine c2b1 depth 8 score 2358 nodes 43745 2589ms clock 102001
+pyengine h4h3 depth 5 score 2769 nodes 15109 807ms clock 99909
+pyengine h3f1 depth 1 score 99999 nodes 116 5ms clock 99600
+[20:50:35Z] valid

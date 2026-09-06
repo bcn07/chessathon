@@ -1,0 +1,17 @@
+[20:49:30Z] building
+[20:49:30Z] upload expands to 127,778 bytes
+[20:49:30Z] docker build
+Sending build context to Docker daemon  132.7kB
+
+Step 1/2 : FROM aichessathon/agent-base:latest
+ ---> eeaf64b96a67
+Step 2/2 : COPY . /agent
+ ---> b398381b9d16
+Successfully built b398381b9d16
+Successfully tagged aichessathon/agent:6979dd5b-63f8-4749-b788-7f3aecb5c1cf
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+[20:49:47Z] pushed aichessathon.azurecr.io/agents:6979dd5b-63f8-4749-b788-7f3aecb5c1cf
+[20:49:47Z] image aichessathon.azurecr.io/agents@sha256:b398381b9d16f417f64a85bed07b1dd4b305808683c09d41366ab7f4809ee54e
+[20:49:47Z] smoke

@@ -1,0 +1,53 @@
+[20:59:57Z] building
+[20:59:57Z] upload expands to 128,532 bytes
+[20:59:57Z] docker build
+Sending build context to Docker daemon  133.2kB
+
+Step 1/2 : FROM aichessathon/agent-base:latest
+ ---> eeaf64b96a67
+Step 2/2 : COPY . /agent
+ ---> 0d6c4bef2582
+Successfully built 0d6c4bef2582
+Successfully tagged aichessathon/agent:423f3d75-c331-4c0b-adb4-245a5d3ed0eb
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+[21:00:12Z] pushed aichessathon.azurecr.io/agents:423f3d75-c331-4c0b-adb4-245a5d3ed0eb
+[21:00:12Z] image aichessathon.azurecr.io/agents@sha256:0d6c4bef258208f7a2cee771de3aaedf2fe07d348874a3c5fd91230688811491
+[21:00:12Z] smoke
+[21:00:12Z] your process is suspended while your opponent moves, so anything you compute between your own moves does not run
+[21:00:12Z] smoke game: 20 plies as white from rnbqkb1r/ppp2ppp/8/3p4/3Pn3/P4N2/1PP2PPP/RNBQKB1R b KQkq - 0 6
+[21:01:36Z] ready in 55.8 s of the 90 s init budget
+[21:01:36Z] played 10 moves, slowest 3.7 s
+[21:01:36Z] game ended draw by ply_cap
+[21:01:36Z] your agent wrote to stderr
+init: native engine still compiling after 55.0s
+pyengine c1e3 depth 6 score 24 nodes 23678 2385ms clock 120000
+native engine ready after 58.4s
+pyengine f1d3 depth 7 score 63 nodes 68281 3556ms clock 118111
+nativesearch c2c4 depth 11 score 187 nodes 1065323 1524ms clock 115046
+nativesearch c4d5 depth 13 score 222 nodes 2413597 3483ms clock 113987
+nativesearch e1g1 depth 12 score 249 nodes 2147269 3450ms clock 110998
+nativesearch b1c3 depth 13 score 740 nodes 2606038 3721ms clock 108044
+nativesearch f1e1 depth 11 score 1148 nodes 1137402 1735ms clock 104819
+nativesearch g2h3 depth 12 score 1453 nodes 1572215 2163ms clock 103577
+nativesearch e3g5 depth 11 score 2080 nodes 1839437 2552ms clock 101910
+nativesearch a1a3 depth 12 score 2379 nodes 1487696 1958ms clock 99853
+[21:01:36Z] smoke game: 20 plies as black from r1bqk1nr/pp3pbp/2np2p1/2p1p3/4P3/P1NP2PP/1PP2PB1/R1BQK1NR b KQkq - 0 7
+[21:03:00Z] ready in 54.7 s of the 90 s init budget
+[21:03:00Z] played 10 moves, slowest 7.5 s
+[21:03:00Z] game ended draw by ply_cap
+[21:03:00Z] your agent wrote to stderr
+native engine ready after 54.1s
+init: native engine ready after 54.1s
+nativesearch g8f6 depth 13 score 12 nodes 5990071 7509ms clock 120000
+nativesearch e8g8 depth 12 score 66 nodes 2000554 2357ms clock 112987
+nativesearch c8e6 depth 11 score 125 nodes 2271323 2814ms clock 111126
+nativesearch g7h6 depth 13 score 452 nodes 1757052 2164ms clock 108809
+nativesearch d8b6 depth 11 score 555 nodes 1422462 1867ms clock 107141
+nativesearch h6c1 depth 14 score 1556 nodes 1695018 2000ms clock 105770
+nativesearch c1f4 depth 12 score 1970 nodes 2238308 2920ms clock 104266
+nativesearch f4h2 depth 11 score 2253 nodes 899357 1255ms clock 101842
+nativesearch b6b2 depth 11 score 2585 nodes 3599708 3852ms clock 101083
+nativesearch h2g3 depth 12 score 2802 nodes 1712213 1955ms clock 97727
+[21:03:00Z] valid

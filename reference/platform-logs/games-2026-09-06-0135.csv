@@ -1,0 +1,2 @@
+round,colour,opponent,result,termination,init_s,moves,time_used_s,slowest_s,fastest_s,average_s,clock_left_s,machine,finished_at
+Rated 30,Black,Terminal,Win,Checkmate,0.6,40,84.9,7.0,0.0,2.1,55.1,w-71e58d,2026-09-05T21:18:28.423303+00:00
