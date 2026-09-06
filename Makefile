@@ -58,7 +58,7 @@ TAG  ?= run
 condor-sync:
 	rsync -az --delete --exclude .venv --exclude .git --exclude __pycache__ --exclude '*.pgn' \
 	  --exclude results --exclude .mypy_cache --exclude .ruff_cache --exclude .pytest_cache \
-	  --exclude work/nnue/data --exclude 'work/*/codex.log' \
+	  --exclude work/nnue/data --exclude 'work/*/codex.log' --exclude tools \
 	  ./ $(CLUSTER):$(CLUSTER_ROOT)/
 
 condor-setup:
