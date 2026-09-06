@@ -3,7 +3,7 @@
 Two engines ship in this zip. ``pyengine`` (python-chess, ~20 knps) is ready the moment it is
 imported. ``nativesearch`` (numba on ``fastboard``, ~2 M nps here) is a hundred times faster but
 needs 20-40 s of compilation. The platform allows 90 s before the ready line, so the compile is
-waited for at start-up (capped at 72 s; the platform needs 54-58 s); should it still be
+waited for at start-up (capped at 80 s; the platform has needed 52-78 s); should it still be
 running, the python engine answers the first moves and the driver switches over the instant
 compilation finishes. If the native module ever fails to load, the python engine plays the game.
 
@@ -74,8 +74,9 @@ _compile_thread.start()
 # came up), and the init budget is 90 s ("ready in 0.6 s of the 90 s init budget"). So the compile
 # is waited for *before* the ready line, capped so that a 60 s budget would still be met; if the
 # cap is hit the hybrid start-up below carries on exactly as before. The platform's core needs
-# 54-58 s (its smoke logs), so the cap sits at 72 s: ready by ~73 s of the 90 s budget.
-INIT_COMPILE_WAIT_S = float(os.environ.get("CHESSATHON_INIT_COMPILE_WAIT", "72"))
+# 52-78 s (its smoke logs, host-dependent), so the cap sits at 80 s: ready by ~81 s of the 90 s
+# budget.
+INIT_COMPILE_WAIT_S = float(os.environ.get("CHESSATHON_INIT_COMPILE_WAIT", "80"))
 if os.environ.get("CHESSATHON_NATIVE_ONLY"):
     # Benchmarking switch: compile however long it takes, so fast-clock games measure the native
     # engine alone.

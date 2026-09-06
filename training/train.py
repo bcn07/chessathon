@@ -28,9 +28,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import numba
 from encoding import MAX_PIECES, NUM_FEATURES
-from nnue_eval import CP_SCALE, QA, QB
 
 import fastboard as fb
+from nnue_eval import CP_SCALE, QA, QB
 
 torch.set_num_threads(4)
 
@@ -89,10 +89,10 @@ def accumulator_bound(weight: np.ndarray, bias: np.ndarray) -> int:
 
 
 def quantise(model: Nnue) -> dict[str, np.ndarray]:
-    weight1 = model.embed.weight.detach().numpy().astype(np.float64)
-    bias1 = model.bias1.detach().numpy().astype(np.float64)
-    weight2 = model.out.weight.detach().numpy().reshape(-1).astype(np.float64)
-    bias2 = float(model.out.bias.detach().numpy()[0])
+    weight1 = model.embed.weight.detach().cpu().numpy().astype(np.float64)
+    bias1 = model.bias1.detach().cpu().numpy().astype(np.float64)
+    weight2 = model.out.weight.detach().cpu().numpy().reshape(-1).astype(np.float64)
+    bias2 = float(model.out.bias.detach().cpu().numpy()[0])
     w1 = np.rint(weight1 * QA).astype(np.int16)
     b1 = np.rint(bias1 * QA).astype(np.int16)
     w2 = np.rint(weight2 * QB).astype(np.int16)
@@ -117,13 +117,14 @@ def report(model: Nnue, weights: dict[str, np.ndarray], occ: np.ndarray, nib: np
            scores: np.ndarray, rows: np.ndarray, quant_sample: int) -> dict[str, float]:
     """Held-out centipawn MAE / correlation for the float net and for the quantised net."""
     model.eval()
+    device = next(model.parameters()).device
     predictions = np.empty(len(rows), dtype=np.float32)
     with torch.no_grad():
         for start in range(0, len(rows), 65536):
             chunk = rows[start : start + 65536]
             flat, offsets = decode_batch(occ, nib, chunk)
-            value = model(torch.from_numpy(flat), torch.from_numpy(offsets))
-            predictions[start : start + len(chunk)] = value.numpy()
+            value = model(torch.from_numpy(flat).to(device), torch.from_numpy(offsets).to(device))
+            predictions[start : start + len(chunk)] = value.cpu().numpy()
     target = scores[rows].astype(np.float32)
     float_cp = np.clip(predictions * CP_SCALE, -2000, 2000)
     metrics = {
@@ -164,6 +165,11 @@ def main() -> None:
     parser.add_argument("--checkpoint", type=Path, default=Path("work/nnue/data/nnue_float.pt"))
     parser.add_argument("--curve", type=Path, default=Path("work/nnue/data/curve.json"))
     parser.add_argument("--quantise-only", action="store_true")
+    parser.add_argument(
+        "--device",
+        default="cuda" if torch.cuda.is_available() else "cpu",
+        help="torch device for the float training (the data pipeline stays on the CPU)",
+    )
     args = parser.parse_args()
 
     records = np.load(args.data, mmap_mode="r")
@@ -180,13 +186,16 @@ def main() -> None:
         train_rows = train_rows[: args.train_limit]
     print(f"{total:,} positions: {len(train_rows):,} train / {len(holdout):,} held out")
 
+    device = torch.device(args.device)
+    print(f"device {device}", flush=True)
     model = Nnue(args.hidden)
     if args.quantise_only:
-        model.load_state_dict(torch.load(args.checkpoint))
-    else:
+        model.load_state_dict(torch.load(args.checkpoint, map_location="cpu"))
+    model.to(device)
+    if not args.quantise_only:
         optimiser = torch.optim.Adam(model.parameters(), lr=args.lr)
         schedule = torch.optim.lr_scheduler.StepLR(optimiser, step_size=1, gamma=0.7)
-        targets = torch.sigmoid(torch.from_numpy(scores.astype(np.float32)) / CP_SCALE)
+        targets = torch.sigmoid(torch.from_numpy(scores.astype(np.float32)) / CP_SCALE).to(device)
         curve = []
         for epoch in range(args.epochs):
             model.train()
@@ -197,8 +206,11 @@ def main() -> None:
             for start in range(0, len(epoch_rows) - args.batch + 1, args.batch):
                 chunk = epoch_rows[start : start + args.batch]
                 flat, offsets = decode_batch(occ, nib, chunk)
-                value = model(torch.from_numpy(flat), torch.from_numpy(offsets))
-                loss = torch.mean((torch.sigmoid(value) - targets[chunk]) ** 2)
+                value = model(
+                    torch.from_numpy(flat).to(device), torch.from_numpy(offsets).to(device)
+                )
+                target = targets[torch.from_numpy(chunk).to(device)]
+                loss = torch.mean((torch.sigmoid(value) - target) ** 2)
                 optimiser.zero_grad(set_to_none=True)
                 loss.backward()
                 optimiser.step()
