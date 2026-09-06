@@ -90,11 +90,14 @@ def load_book(name: str = "big") -> list[tuple[str, str]]:
     """``classic``: the 24 curated lines above. ``big``: ``bench/book.json`` — 1,000 balanced
     positions taken from our own real-clock games (``bench.build_book``), so a 400-game run
     plays 200 distinct openings instead of 24 repeated eight times. Falls back to classic."""
-    if name == "classic" or not BOOK_FILE.exists():
+    if name == "classic" or (name == "big" and not BOOK_FILE.exists()):
         return OPENINGS
-    if name != "big":
+    if name == "platform":  # the ladder's own start positions, crawled from public games
+        entries = json.loads(BOOK_FILE.with_name("platform_book.json").read_text())
+    elif name == "big":
+        entries = json.loads(BOOK_FILE.read_text())
+    else:
         raise ValueError(f"unknown book {name!r}")
-    entries = json.loads(BOOK_FILE.read_text())
     return [(entry["name"], entry["fen"]) for entry in entries]
 
 

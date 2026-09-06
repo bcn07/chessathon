@@ -65,10 +65,11 @@ def main() -> None:
     parser.add_argument("--ply-cap", type=int, default=PLY_CAP)
     parser.add_argument(
         "--book",
-        choices=("big", "classic"),
+        choices=("big", "classic", "platform"),
         default="big",
         help="opening set: big = bench/book.json (1,000 balanced positions from our games), "
-        "classic = the 24 curated lines; each opening is played with both colours",
+        "classic = the 24 curated lines, platform = the ladder's crawled start positions; "
+        "each opening is played with both colours",
     )
     parser.add_argument("--workers", type=int, default=max(1, min(8, (os.cpu_count() or 2) - 2)))
     parser.add_argument("--pgn", type=Path, default=None, help="write every game here")
