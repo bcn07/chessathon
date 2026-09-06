@@ -33,7 +33,7 @@ CP_SCALE = 400
 # self-play positions (mean +51 cp for the side to move, median +20), so the net learns a mover
 # bonus of its own; `tempo_check.py` measures it and this constant brings it back to the +10 that
 # the search's draw scores and pruning margins were tuned around.
-MOVER_BIAS = 1  # measured 11.4 cp learned tempo, PeSTO has 10
+MOVER_BIAS = -10  # measured 0.1 cp learned tempo, PeSTO has 10
 WEIGHTS_PATH = Path(__file__).resolve().parent / "weights" / "nnue.npz"
 
 
