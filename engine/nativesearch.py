@@ -808,10 +808,40 @@ def _order_moves(
     killers: np.ndarray,
     history: np.ndarray,
 ) -> None:
-    """Score every move once; _pick_next then selects the best remaining move on demand, so a
-    node that cuts off after one or two moves never pays for sorting the rest."""
+    """Score every move once (same scores as _move_score; side and killers read once per node,
+    the capture test from the move's flag bit)."""
+    side = int(state[fb.SIDE])
+    killer0 = killers[ply, 0]
+    killer1 = killers[ply, 1]
     for index in range(count):
-        scores[index] = _move_score(state, moves[index], tt_move, ply, killers, history)
+        move = moves[index]
+        bits = int(move)
+        if move == tt_move and tt_move != 0:
+            scores[index] = ORDER_TT
+            continue
+        promotion = (bits >> fb.PROMOTION_SHIFT) & fb.PROMOTION_MASK
+        if bits & fb.FLAG_CAPTURE:
+            victim = _captured_type(state, move)
+            attacker = _piece_type_at(state, bits & 63)
+            if attacker != fb.NO_PIECE and SEARCH_VALUE[victim] < SEARCH_VALUE[attacker]:
+                gain = see(state, move)
+                if gain < 0:
+                    scores[index] = ORDER_KILLER - 1000 + gain
+                    continue
+            score = ORDER_CAPTURE + int(SEARCH_VALUE[victim]) * 10
+            if attacker != fb.NO_PIECE:
+                score -= int(SEARCH_VALUE[attacker]) // 10
+            if promotion:
+                score += int(SEARCH_VALUE[promotion])
+            scores[index] = score
+        elif promotion:
+            scores[index] = ORDER_PROMOTION + int(SEARCH_VALUE[promotion])
+        elif move == killer0:
+            scores[index] = ORDER_KILLER
+        elif move == killer1:
+            scores[index] = ORDER_KILLER - 1
+        else:
+            scores[index] = history[side, (bits & 63) * 64 + ((bits >> 6) & 63)]
 
 
 @numba.njit
@@ -936,7 +966,10 @@ def _quiesce(
     rep_keys[rep_count] = _canonical_key(state)
     moves = move_buffers[ply]
     scores = score_buffers[ply]
-    count = fb.generate_pseudo_into(state, moves)
+    if in_check:
+        count = fb.generate_pseudo_into(state, moves)
+    else:
+        count = fb.generate_captures_into(state, moves)
     _order_moves(state, moves, scores, count, tt_move, ply, killers, history)
     moving_color = int(state[fb.SIDE])
     legal_count = 0
@@ -1164,7 +1197,7 @@ def _negamax(
     for index in range(count):
         _pick_next(moves, scores, index, count)
         move = moves[index]
-        quiet = _captured_type(state, move) == fb.NO_PIECE and fb.move_promotion(move) == 0
+        quiet = int(move) & (fb.FLAG_CAPTURE | (fb.PROMOTION_MASK << fb.PROMOTION_SHIFT)) == 0
         if futile and quiet and legal_count > 0:
             continue
         undo = fb.make_move(state, move)

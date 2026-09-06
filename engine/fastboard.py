@@ -579,6 +579,80 @@ def generate_pseudo_into(state: np.ndarray, moves: np.ndarray) -> int:
 
 
 @numba.njit
+def generate_captures_into(state: np.ndarray, moves: np.ndarray) -> int:
+    """Captures, en passant, capture-promotions (all four) and queen push promotions, emitted in
+    the same relative order as generate_pseudo_into, so quiescence searches the same tree."""
+    count = 0
+    color = int(state[SIDE])
+    offset = color * 6
+    enemy = state[BLACK_OCC - color]
+    occupied = state[ALL_OCC]
+    ep_square = int(state[EP_SQUARE])
+    pawns = state[offset + PAWN]
+    while pawns:
+        from_square = lsb_square(pawns)
+        pawns &= pawns - U64_ONE
+        rank_index = from_square >> 3
+        if color == WHITE:
+            promotion_rank = rank_index == 6
+            to_square = from_square + 8
+        else:
+            promotion_rank = rank_index == 1
+            to_square = from_square - 8
+        if promotion_rank and not occupied & (U64_ONE << np.uint64(to_square)):
+            moves[count] = encode_move(from_square, to_square, 4, 0)
+            count += 1
+        captures = PAWN_ATTACKS[color, from_square] & enemy
+        while captures:
+            to_square = lsb_square(captures)
+            captures &= captures - U64_ONE
+            if promotion_rank:
+                count = _append_promotions(moves, count, from_square, to_square, FLAG_CAPTURE)
+            else:
+                moves[count] = encode_move(from_square, to_square, 0, FLAG_CAPTURE)
+                count += 1
+        if ep_square != NO_SQUARE and PAWN_ATTACKS[color, from_square] & (
+            U64_ONE << np.uint64(ep_square)
+        ):
+            captured_square = ep_square - 8 if color == WHITE else ep_square + 8
+            if state[(1 - color) * 6 + PAWN] & (U64_ONE << np.uint64(captured_square)):
+                moves[count] = encode_move(
+                    from_square, ep_square, 0, FLAG_CAPTURE | FLAG_EN_PASSANT
+                )
+                count += 1
+    pieces = state[offset + KNIGHT]
+    while pieces:
+        from_square = lsb_square(pieces)
+        pieces &= pieces - U64_ONE
+        targets = KNIGHT_ATTACKS[from_square] & enemy
+        count = _append_targets(moves, count, from_square, targets, enemy)
+    pieces = state[offset + BISHOP]
+    while pieces:
+        from_square = lsb_square(pieces)
+        pieces &= pieces - U64_ONE
+        targets = bishop_attacks(from_square, occupied) & enemy
+        count = _append_targets(moves, count, from_square, targets, enemy)
+    pieces = state[offset + ROOK]
+    while pieces:
+        from_square = lsb_square(pieces)
+        pieces &= pieces - U64_ONE
+        targets = rook_attacks(from_square, occupied) & enemy
+        count = _append_targets(moves, count, from_square, targets, enemy)
+    pieces = state[offset + QUEEN]
+    while pieces:
+        from_square = lsb_square(pieces)
+        pieces &= pieces - U64_ONE
+        slides = rook_attacks(from_square, occupied) | bishop_attacks(from_square, occupied)
+        targets = slides & enemy
+        count = _append_targets(moves, count, from_square, targets, enemy)
+    kings = state[offset + KING]
+    if kings:
+        from_square = lsb_square(kings)
+        count = _append_targets(moves, count, from_square, KING_ATTACKS[from_square] & enemy, enemy)
+    return count
+
+
+@numba.njit
 def _generate_pseudo_moves(state: np.ndarray) -> tuple[np.ndarray, int]:
     """Compatibility wrapper for the accepted allocating move-generator API."""
     moves = np.empty(MAX_MOVES, dtype=np.uint32)
@@ -946,6 +1020,7 @@ def warm_up() -> float:
         unmake_move(state, moves[0], undo)
     scratch = np.empty(MAX_MOVES, dtype=np.uint32)
     generate_pseudo_into(state, scratch)
+    generate_captures_into(state, scratch)
     perft(state, 2)
     return time.perf_counter() - started
 
@@ -969,6 +1044,7 @@ __all__ = [
     "encode_move",
     "find_legal_move",
     "from_fen",
+    "generate_captures_into",
     "generate_moves",
     "generate_pseudo_into",
     "is_in_check",

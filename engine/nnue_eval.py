@@ -75,9 +75,11 @@ def nnue_evaluate(
 ) -> int:
     """Static centipawn score relative to the state's side to move."""
     hidden = b1.shape[0]
-    acc = b1.copy()
+    feats = np.empty(32, dtype=np.int64)
+    acc = np.empty(hidden, dtype=np.int16)
     stm = int(state[fb.SIDE])
     one = np.uint64(1)
+    nf = 0
     for piece in range(12):
         piece_type = piece % 6
         code = piece_type if piece // 6 == stm else piece_type + 6
@@ -88,9 +90,24 @@ def nnue_evaluate(
             bits &= bits - one
             if stm == fb.BLACK:
                 square ^= 56
-            row = w1[base + square]
-            for j in range(hidden):
-                acc[j] += row[j]
+            feats[nf] = base + square
+            nf += 1
+    for j in range(hidden):
+        acc[j] = b1[j]
+    i = 0
+    while i + 3 < nf:
+        r1 = feats[i]
+        r2 = feats[i + 1]
+        r3 = feats[i + 2]
+        r4 = feats[i + 3]
+        for j in range(hidden):
+            acc[j] += (w1[r1, j] + w1[r2, j]) + (w1[r3, j] + w1[r4, j])
+        i += 4
+    while i < nf:
+        r1 = feats[i]
+        for j in range(hidden):
+            acc[j] += w1[r1, j]
+        i += 1
     total = np.int32(b2)
     for j in range(hidden):
         value = acc[j]
