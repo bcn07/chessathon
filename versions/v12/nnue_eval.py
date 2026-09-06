@@ -60,7 +60,7 @@ def active_features(state: np.ndarray) -> tuple[int, np.ndarray]:
         base = code * 64
         bits = state[piece]
         while bits:
-            square = int(fb.lsb_square(bits))
+            square = int(fb.lsb_square(bits))  # type: ignore[call-overload]
             bits &= bits - one
             if stm == fb.BLACK:
                 square ^= 56
@@ -84,7 +84,7 @@ def nnue_evaluate(
         base = code * 64
         bits = state[piece]
         while bits:
-            square = int(fb.lsb_square(bits))
+            square = int(fb.lsb_square(bits))  # type: ignore[call-overload]
             bits &= bits - one
             if stm == fb.BLACK:
                 square ^= 56
