@@ -1,0 +1,51 @@
+[09:54:30Z] building
+[09:54:31Z] upload expands to 542,938 bytes
+[09:54:31Z] docker build
+Sending build context to Docker daemon  549.4kB
+
+Step 1/2 : FROM aichessathon/agent-base:latest
+ ---> eeaf64b96a67
+Step 2/2 : COPY . /agent
+ ---> 3092fea015ee
+Successfully built 3092fea015ee
+Successfully tagged aichessathon/agent:05298c83-96ed-4a65-a23f-9ae141a81e53
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+[09:54:37Z] pushed aichessathon.azurecr.io/agents:05298c83-96ed-4a65-a23f-9ae141a81e53
+[09:54:37Z] image aichessathon.azurecr.io/agents@sha256:3092fea015eed604e91d5bde1b263aa3f34af3a3b1da84d476203a1e2c4a4e00
+[09:54:37Z] smoke
+[09:54:37Z] your process is suspended while your opponent moves, so anything you compute between your own moves does not run
+[09:54:37Z] smoke game: 20 plies as white from r1bqk2r/pppp1ppp/2n2n2/8/1b1NP3/3Q4/PPPB1PPP/RN2KB1R b KQkq - 4 6
+[09:55:37Z] ready in 42.5 s of the 90 s init budget
+[09:55:37Z] played 8 moves, slowest 3.5 s
+[09:55:37Z] game ended white by checkmate
+[09:55:37Z] your agent wrote to stderr
+native engine ready after 42.0s
+init: native engine ready after 42.0s
+nativesearch e4d5 depth 12 score 273 nodes 1967899 2001ms clock 120000
+nativesearch f1e2 depth 13 score 326 nodes 3352428 3531ms clock 118496
+nativesearch d3e2 depth 12 score 1172 nodes 2322604 2521ms clock 115464
+nativesearch d5c6 depth 14 score 1258 nodes 3248189 3123ms clock 113440
+nativesearch d2b4 depth 12 score 1548 nodes 1020078 1095ms clock 110815
+nativesearch d4b5 depth 14 score 1868 nodes 2401549 2413ms clock 110218
+nativesearch b5c7 depth 14 score 2371 nodes 1624929 1673ms clock 108302
+nativesearch e2e8 depth 1 score 99999 nodes 97 0ms clock 107128
+[09:55:37Z] smoke game: 20 plies as black from r1bqk2r/2p1bppp/p2p1n2/np2p3/4P3/1B1P1N2/PPP2PPP/RNBQR1K1 w kq - 1 9
+[09:56:42Z] ready in 42.0 s of the 90 s init budget
+[09:56:42Z] played 10 moves, slowest 4.2 s
+[09:56:42Z] game ended draw by ply_cap
+[09:56:42Z] your agent wrote to stderr
+native engine ready after 41.5s
+init: native engine ready after 41.5s
+nativesearch b5c4 depth 12 score 152 nodes 1936321 2301ms clock 120000
+nativesearch c4d3 depth 12 score 188 nodes 3105405 3327ms clock 118196
+nativesearch a5c6 depth 13 score 252 nodes 3787028 4178ms clock 115367
+nativesearch c8g4 depth 12 score 338 nodes 1601528 2553ms clock 111685
+nativesearch c6d4 depth 12 score 350 nodes 1137951 1817ms clock 109627
+nativesearch g4d1 depth 14 score 704 nodes 1483315 1630ms clock 108307
+nativesearch e5d4 depth 14 score 1057 nodes 1314436 2259ms clock 107174
+nativesearch d4e3 depth 11 score 1686 nodes 749660 1513ms clock 105412
+nativesearch e3f2 depth 10 score 2292 nodes 1103735 2098ms clock 104395
+nativesearch f2f1q depth 2 score 99997 nodes 549 2ms clock 102793
+[09:56:42Z] valid
