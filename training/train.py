@@ -209,9 +209,16 @@ def main() -> None:
         schedule = torch.optim.lr_scheduler.StepLR(optimiser, step_size=1, gamma=0.7)
         targets = torch.sigmoid(torch.from_numpy(scores.astype(np.float32)) / CP_SCALE)
         if results is not None:
-            wdl = torch.from_numpy((results + 1.0) / 2.0)
-            targets = (1.0 - args.wdl) * targets + args.wdl * wdl
-            print(f"target: {1 - args.wdl:.2f} * eval + {args.wdl:.2f} * result", flush=True)
+            # result -2 marks rows without a game result (e.g. Lichess evaluations): eval only
+            has_result = torch.from_numpy(results != -2)
+            lam = torch.where(has_result, torch.tensor(args.wdl), torch.tensor(0.0))
+            wdl = torch.from_numpy(np.clip((results + 1.0) / 2.0, 0.0, 1.0).astype(np.float32))
+            targets = (1.0 - lam) * targets + lam * wdl
+            print(
+                f"target: {1 - args.wdl:.2f} * eval + {args.wdl:.2f} * result on "
+                f"{int(has_result.sum()):,} rows with a result, eval only on the rest",
+                flush=True,
+            )
         targets = targets.to(device)
         curve = []
         for epoch in range(args.epochs):
