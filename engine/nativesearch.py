@@ -1458,7 +1458,9 @@ def budget(time_left_ms: int, fullmove: int = 1) -> tuple[float, float]:
     The hard target bounds a single move. The platform suspends the process while the opponent
     thinks, so nothing is ever banked from the opponent's clock and the budget must stand alone."""
     usable = max(time_left_ms - RESERVE_MS, 10)
-    moves_to_go = max(14.0, 36.0 - 0.5 * fullmove)
+    # front-loaded since v12.6 (+44 +/- 22 at the real clock): ladder rounds 33 and 36 were lost on
+    # 2-4 s thinks with 70-110 s on the clock; the 0.5 s increment carries the ending
+    moves_to_go = max(12.0, 26.0 - 0.5 * fullmove)
     soft = usable / moves_to_go + INCREMENT_MS * 0.6
     hard = min(soft * 3.0, usable * 0.25)
     return min(soft, hard), hard
