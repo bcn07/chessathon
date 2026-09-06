@@ -166,6 +166,13 @@ def main() -> None:
     parser.add_argument("--curve", type=Path, default=Path("work/nnue/data/curve.json"))
     parser.add_argument("--quantise-only", action="store_true")
     parser.add_argument(
+        "--wdl",
+        type=float,
+        default=0.0,
+        help="weight of the game result in the target: (1-wdl)*sigmoid(score/CP_SCALE) + "
+        "wdl*(result+1)/2; needs a set built with build_set.py --with-result",
+    )
+    parser.add_argument(
         "--device",
         default="cuda" if torch.cuda.is_available() else "cpu",
         help="torch device for the float training (the data pipeline stays on the CPU)",
@@ -176,6 +183,11 @@ def main() -> None:
     occ = np.ascontiguousarray(records["occ"])
     nib = np.ascontiguousarray(records["nib"])
     scores = np.ascontiguousarray(records["score"]).astype(np.int16)
+    results = None
+    if args.wdl > 0:
+        if "result" not in (records.dtype.names or ()):
+            raise SystemExit("--wdl needs a set built with build_set.py --with-result")
+        results = np.ascontiguousarray(records["result"]).astype(np.float32)
     del records
     total = len(occ)
     rng = np.random.default_rng(20260904)
@@ -195,7 +207,12 @@ def main() -> None:
     if not args.quantise_only:
         optimiser = torch.optim.Adam(model.parameters(), lr=args.lr)
         schedule = torch.optim.lr_scheduler.StepLR(optimiser, step_size=1, gamma=0.7)
-        targets = torch.sigmoid(torch.from_numpy(scores.astype(np.float32)) / CP_SCALE).to(device)
+        targets = torch.sigmoid(torch.from_numpy(scores.astype(np.float32)) / CP_SCALE)
+        if results is not None:
+            wdl = torch.from_numpy((results + 1.0) / 2.0)
+            targets = (1.0 - args.wdl) * targets + args.wdl * wdl
+            print(f"target: {1 - args.wdl:.2f} * eval + {args.wdl:.2f} * result", flush=True)
+        targets = targets.to(device)
         curve = []
         for epoch in range(args.epochs):
             model.train()

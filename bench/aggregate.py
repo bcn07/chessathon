@@ -12,9 +12,23 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 from bench.stats import SPRT_BOUND, llr, summarise, verdict
+
+
+def suspended_jobs(directory: Path) -> dict[int, int]:
+    """Process id -> number of Condor suspensions, from the cluster logs in the results directory.
+
+    Condor suspends a job when the desktop machine's owner returns; the referee's wall clock keeps
+    running, so a flag in a suspended job is the pool's doing, not the engine's."""
+    counts: dict[int, int] = {}
+    for log in directory.glob("condor_*.log"):
+        for match in re.finditer(r"^010 \(\d+\.(\d+)\.\d+\)", log.read_text(), re.M):
+            process = int(match.group(1))
+            counts[process] = counts.get(process, 0) + 1
+    return counts
 
 
 def collect(paths: list[str]) -> dict:
@@ -28,8 +42,18 @@ def collect(paths: list[str]) -> dict:
     tracebacks = {"agent": 0, "opponent": 0}
     header = None
     next_index = 0
+    suspended = suspended_jobs(Path(paths[0]).parent) if paths else {}
+    suspect_flags: list[str] = []
     for path in sorted(paths):
         data = json.loads(Path(path).read_text())
+        start = re.search(r"results_(\d+)\.json$", Path(path).name)
+        games_per_job = len(data["results"])
+        process = int(start.group(1)) // games_per_job if start and games_per_job else None
+        if process in suspended and data["terminations"].get("flag"):
+            suspect_flags.append(
+                f"{Path(path).name}: {data['terminations']['flag']} flag(s) in a job Condor "
+                f"suspended {suspended[process]}x"
+            )
         header = header or (data["agent"], data["opponent"], data["base_ms"], data["increment_ms"])
         games = data["results"]
         results += games
@@ -53,6 +77,7 @@ def collect(paths: list[str]) -> dict:
         "header": header, "results": results, "order": order, "white": white, "black": black,
         "terminations": terminations, "plies": plies, "failures": failures,
         "tracebacks": tracebacks, "files": len(paths),
+        "suspended_jobs": len(suspended), "suspect_flags": suspect_flags,
     }
 
 
@@ -90,7 +115,12 @@ def report(data: dict, sprt: tuple[float, float] | None = None) -> str | None:
         f"opponent {tracebacks['opponent']}"
     )
     if data["failures"]:
-        print("FAILURES:\n  " + "\n  ".join(data["failures"]))
+        print("FAILURES:\n  " + "\n  ".join(f for f in data["failures"] if f))
+    if data.get("suspended_jobs"):
+        print(
+            f"condor suspended {data['suspended_jobs']} job(s) mid-run"
+            + (": " + "; ".join(data["suspect_flags"]) if data["suspect_flags"] else "")
+        )
     return decided
 
 

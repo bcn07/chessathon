@@ -23,6 +23,9 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[2]
 CHUNK = np.dtype([("occ", "<u8"), ("nib", "u1", (16,)), ("score", "<i2"), ("result", "i1")])
 RECORD = np.dtype([("occ", "<u8"), ("nib", "u1", (16,)), ("score", "<i2")])
+RECORD_WDL = np.dtype(
+    [("occ", "<u8"), ("nib", "u1", (16,)), ("score", "<i2"), ("result", "i1")]
+)  # --with-result: keeps the mover-relative game result for a WDL-blended target
 MATE_CLAMP = 2000  # selfplay.py clamps mate scores to +/-2000; those records are dropped
 
 
@@ -36,7 +39,11 @@ def main() -> None:
     parser.add_argument("--gens", nargs="+", required=True, help="results/datagen/<gen> names")
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--datagen", type=Path, default=ROOT / "results/datagen")
+    parser.add_argument(
+        "--with-result", action="store_true", help="keep the game result byte (train.py --wdl)"
+    )
     args = parser.parse_args()
+    record = RECORD_WDL if args.with_result else RECORD
 
     parts: list[np.ndarray] = []
     for gen in args.gens:
@@ -47,8 +54,8 @@ def main() -> None:
         for chunk in chunks:
             raw = np.fromfile(chunk, dtype=CHUNK)
             raw = raw[np.abs(raw["score"].astype(np.int32)) < MATE_CLAMP]
-            records = np.empty(len(raw), dtype=RECORD)
-            for field in RECORD.names:
+            records = np.empty(len(raw), dtype=record)
+            for field in record.names:
                 records[field] = raw[field]
             parts.append(records)
             count += len(raw)
