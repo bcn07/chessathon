@@ -23,10 +23,17 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("sets", nargs="+", type=Path)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument(
+        "--keep-clamped", action="store_true", help="keep rows at the +/-2000 mate clamp"
+    )
     args = parser.parse_args()
     parts = []
     for path in args.sets:
         src = np.load(path, mmap_mode="r")
+        if not args.keep_clamped:
+            keep = np.abs(src["score"].astype(np.int32)) < 2000
+            print(f"{path.name}: dropping {int((~keep).sum()):,} clamped rows")
+            src = src[keep]
         out = np.empty(len(src), dtype=RECORD_WDL)
         for field in ("occ", "nib", "score"):
             out[field] = src[field]
