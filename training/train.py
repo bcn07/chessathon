@@ -8,8 +8,8 @@ Target: ``sigmoid(cp / CP_SCALE)`` win probability, loss MSE in probability spac
 raw output is therefore a logit and ``output * CP_SCALE`` is a centipawn score.
 
 The first-layer weights are clipped after every step so that the worst-case int16 accumulator
-(bias plus the 32 largest same-sign weights of a column) cannot overflow; ``--quantise-only``
-re-runs the quantisation and the held-out report from a saved checkpoint.
+(bias plus the largest same-sign weights any legal piece placement can select) cannot overflow;
+``--quantise-only`` re-runs the quantisation and the held-out report from a saved checkpoint.
 """
 
 from __future__ import annotations
@@ -80,8 +80,41 @@ class Nnue(nn.Module):
         return self.out(torch.clamp(accumulator, 0.0, 1.0)).squeeze(1)
 
 
+# Per side: one king plus at most 15 other pieces, with at most 8 pawns (never on ranks 1 or 8),
+# 10 knights, 10 bishops, 10 rooks or 9 queens.  Promotions cannot exceed these caps.
+PIECE_CAPS = {0: 8, 1: 10, 2: 10, 3: 10, 4: 9}
+
+
+def _legal_side_sum(weight: np.ndarray, sign: int) -> np.ndarray:
+    """Largest same-sign contribution of both sides' pieces under the legal piece caps.
+
+    Only the positive (``sign`` = +1) or negative (-1) parts of the weights are summed, so the
+    result also bounds every partial sum the engine forms while recomputing the accumulator.
+    """
+    part = np.clip(sign * weight, 0, None)
+    total = np.zeros(weight.shape[1], dtype=np.int64)
+    for colour in (0, 6):
+        king = part[(colour + 5) * 64:(colour + 6) * 64].max(axis=0)
+        pool = []
+        for piece, cap in PIECE_CAPS.items():
+            block = part[(colour + piece) * 64:(colour + piece + 1) * 64].copy()
+            if piece == 0:
+                block[:8] = 0
+                block[56:] = 0
+            pool.append(np.sort(block, axis=0)[-cap:])
+        total += king + np.sort(np.concatenate(pool, axis=0), axis=0)[-15:].sum(axis=0)
+    return total
+
+
 def accumulator_bound(weight: np.ndarray, bias: np.ndarray) -> int:
-    """Worst-case |int16 accumulator| over any placement of at most 32 pieces."""
+    """Worst-case |int16 accumulator| over any legal placement of pieces (and any partial sum)."""
+    high = np.abs(bias + _legal_side_sum(weight, 1)).max()
+    low = np.abs(bias - _legal_side_sum(weight, -1)).max()
+    return int(max(high, low))
+
+
+def accumulator_bound_any32(weight: np.ndarray, bias: np.ndarray) -> int:
+    """The older, looser bound: bias plus the 32 largest same-sign weights of any piece type."""
     ordered = np.sort(weight, axis=0)
     high = np.abs(bias + ordered[-MAX_PIECES:].sum(axis=0)).max()
     low = np.abs(bias + ordered[:MAX_PIECES].sum(axis=0)).max()
@@ -264,8 +297,10 @@ def main() -> None:
             args.curve.write_text(json.dumps(curve, indent=2))
 
     weights = quantise(model)
-    bound = accumulator_bound(weights["w1"].astype(np.int32), weights["b1"].astype(np.int32))
-    print(f"worst-case |accumulator| = {bound} (int16 limit 32767)")
+    w1_wide, b1_wide = weights["w1"].astype(np.int64), weights["b1"].astype(np.int64)
+    bound = accumulator_bound(w1_wide, b1_wide)
+    print(f"worst-case |accumulator| = {bound} over legal placements (int16 limit 32767; "
+          f"any-32-pieces bound {accumulator_bound_any32(w1_wide, b1_wide)})")
     if bound > 32767:
         raise SystemExit("accumulator would overflow int16: lower --clip and retrain")
     np.savez_compressed(args.out, **weights)

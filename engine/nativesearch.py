@@ -481,7 +481,13 @@ ORDER_TT = 10_000_000
 ORDER_CAPTURE = 1_000_000
 ORDER_PROMOTION = 900_000
 ORDER_KILLER = 800_000
-HISTORY_CAP = 700_000
+# Quiet history with gravity: every update moves a score toward +/-HISTORY_MAX by a step that
+# shrinks as it gets there, so scores stay bounded (and below the losing captures at
+# ORDER_KILLER - 1000 + gain) without a cap, and old evidence fades as new evidence arrives.
+# A cutoff gives its quiet move the bonus and every quiet tried before it the same-sized malus.
+HISTORY_MAX = 16384
+HISTORY_BONUS_CAP = 1500
+SKIPPED_SCORE = -(1 << 30)  # marks a move the loop did not search (illegal or futile)
 
 # Selective search. Margins in centipawns; the LMR table is floor(ln(depth) * ln(index + 1) / 2.25),
 # at least one ply, indexed by depth and by the number of legal moves already searched.
@@ -776,7 +782,7 @@ def _move_score(
     if victim != fb.NO_PIECE:
         attacker = _piece_type_at(state, fb.move_from(move))
         # A capture that loses material drops below the killers but stays above every quiet:
-        # it is still forcing, and history scores cannot exceed HISTORY_CAP.
+        # it is still forcing, and history scores stay within +/-HISTORY_MAX.
         if attacker != fb.NO_PIECE and SEARCH_VALUE[victim] < SEARCH_VALUE[attacker]:
             gain = see(state, move)
             if gain < 0:
@@ -858,21 +864,24 @@ def _pick_next(moves: np.ndarray, scores: np.ndarray, start: int, count: int) ->
         scores[start], scores[best] = scores[best], scores[start]
 
 
+@numba.njit(inline="always")
+def _history_bonus(depth: int) -> int:
+    return min(16 * depth * depth + 32 * depth, HISTORY_BONUS_CAP)
+
+
+@numba.njit(inline="always")
+def _bump_history(history: np.ndarray, side: int, move: np.uint32, bonus: int) -> None:
+    """Gravity update: the step shrinks as the score approaches +/-HISTORY_MAX."""
+    slot = fb.move_from(move) * 64 + fb.move_to(move)
+    value = int(history[side, slot])
+    history[side, slot] = value + bonus - _div_toward_zero(value * abs(bonus), HISTORY_MAX)
+
+
 @numba.njit
-def _store_killer(
-    move: np.uint32,
-    depth: int,
-    ply: int,
-    side: int,
-    killers: np.ndarray,
-    history: np.ndarray,
-) -> None:
+def _store_killer(move: np.uint32, ply: int, killers: np.ndarray) -> None:
     if killers[ply, 0] != move:
         killers[ply, 1] = killers[ply, 0]
         killers[ply, 0] = move
-    slot = fb.move_from(move) * 64 + fb.move_to(move)
-    value = int(history[side, slot]) + depth * depth
-    history[side, slot] = min(value, HISTORY_CAP)
 
 
 @numba.njit
@@ -885,7 +894,7 @@ def _make_null(state: np.ndarray) -> tuple[np.uint64, np.uint64, np.uint64]:
         key ^= fb.ZOBRIST_EP[int(old_ep)]
     state[fb.EP_SQUARE] = fb.NO_SQUARE
     state[fb.HALFMOVE] = old_halfmove + fb.U64_ONE
-    state[fb.SIDE] = 1 - state[fb.SIDE]
+    state[fb.SIDE] = state[fb.SIDE] ^ fb.U64_ONE
     state[fb.ZOBRIST] = key ^ fb.ZOBRIST_SIDE
     return old_ep, old_halfmove, old_hash
 
@@ -895,7 +904,7 @@ def _unmake_null(
     state: np.ndarray, undo: tuple[np.uint64, np.uint64, np.uint64]
 ) -> None:
     old_ep, old_halfmove, old_hash = undo
-    state[fb.SIDE] = 1 - state[fb.SIDE]
+    state[fb.SIDE] = state[fb.SIDE] ^ fb.U64_ONE
     state[fb.EP_SQUARE] = old_ep
     state[fb.HALFMOVE] = old_halfmove
     state[fb.ZOBRIST] = old_hash
@@ -1082,6 +1091,13 @@ def _negamax(
         return evaluate_state(state)
     if ply > 0 and _is_draw(state, ply, rep_keys, rep_count):
         return _draw_score(ply)
+    if ply > 0:  # mate-distance pruning: no line from here can beat a mate already known
+        if alpha < -MATE + ply:
+            alpha = -MATE + ply
+        if beta > MATE - ply - 1:
+            beta = MATE - ply - 1
+        if alpha >= beta:
+            return alpha
 
     in_check = fb.is_in_check(state, int(state[fb.SIDE]))
     if in_check:
@@ -1123,16 +1139,32 @@ def _negamax(
             ):
                 return tt_score
 
+    if tt_move == 0 and depth >= 4 and not in_check:
+        depth -= 1  # internal iterative reduction: no hash move, search a ply shallower first
+
     rep_keys[rep_count] = _canonical_key(state)
     side = int(state[fb.SIDE])
-    if (
+    zero_window = beta - alpha == 1
+    nmp_ok = (
         depth >= 3
         and ply > 0
         and not in_check
         and beta < MATE_BOUND
         and state[fb.WHITE_OCC + side]
         & ~(state[side * 6 + fb.PAWN] | state[side * 6 + fb.KING])
-    ):
+        != 0
+    )
+    rfp_ok = (
+        depth <= 3
+        and not in_check
+        and zero_window
+        and -MATE_BOUND < beta < MATE_BOUND
+        and state[fb.WHITE_OCC + side] != state[side * 6 + fb.KING]
+    )
+    static_eval = -INF
+    if nmp_ok or rfp_ok:
+        static_eval = evaluate_state(state)
+    if nmp_ok and static_eval >= beta:
         reduction = 3 if depth >= 6 else 2
         null_undo = _make_null(state)
         null_score = -_negamax(
@@ -1166,18 +1198,8 @@ def _negamax(
     # above beta proves the bound without a search. Futility (in the loop below): a quiet move
     # cannot lift a static score far below alpha. Neither fires in check, with mate bounds, or
     # for a bare king, whose stalemates are exactly what a static score gets wrong.
-    zero_window = beta - alpha == 1
-    static_eval = -INF
-    if (
-        depth <= 3
-        and not in_check
-        and zero_window
-        and -MATE_BOUND < beta < MATE_BOUND
-        and state[fb.WHITE_OCC + side] != state[side * 6 + fb.KING]
-    ):
-        static_eval = evaluate_state(state)
-        if static_eval - REVERSE_FUTILITY_MARGIN * depth >= beta:
-            return static_eval
+    if rfp_ok and static_eval - REVERSE_FUTILITY_MARGIN * depth >= beta:
+        return static_eval
     futile = (
         depth <= 2
         and static_eval != -INF
@@ -1199,10 +1221,12 @@ def _negamax(
         move = moves[index]
         quiet = int(move) & (fb.FLAG_CAPTURE | (fb.PROMOTION_MASK << fb.PROMOTION_SHIFT)) == 0
         if futile and quiet and legal_count > 0:
+            scores[index] = SKIPPED_SCORE
             continue
         undo = fb.make_move(state, move)
         if fb.is_in_check(state, side):
             fb.unmake_move(state, move, undo)
+            scores[index] = SKIPPED_SCORE
             continue
         reduction = 0
         if (
@@ -1214,6 +1238,13 @@ def _negamax(
             reduction = int(LMR_TABLE[depth, legal_count])
             if move == killers[ply, 0] or move == killers[ply, 1]:
                 reduction -= 1
+            # history-scaled: a quiet with a strong record is reduced up to two plies less, one
+            # with a poor record up to two plies more
+            reduction -= _div_toward_zero(
+                int(history[side, fb.move_from(move) * 64 + fb.move_to(move)]), HISTORY_MAX // 2
+            )
+            if reduction < 0:
+                reduction = 0
         if legal_count == 0:
             score = -_negamax(
                 state,
@@ -1313,7 +1344,15 @@ def _negamax(
             alpha = score
             if alpha >= beta:
                 if quiet:
-                    _store_killer(move, depth, ply, side, killers, history)
+                    _store_killer(move, ply, killers)
+                    bonus = _history_bonus(depth)
+                    _bump_history(history, side, move, bonus)
+                    for earlier in range(index):
+                        tried = moves[earlier]
+                        if scores[earlier] != SKIPPED_SCORE and int(tried) & (
+                            fb.FLAG_CAPTURE | (fb.PROMOTION_MASK << fb.PROMOTION_SHIFT)
+                        ) == 0:
+                            _bump_history(history, side, tried, -bonus)
                 break
 
     if legal_count == 0:
