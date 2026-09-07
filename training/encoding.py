@@ -25,6 +25,27 @@ NUM_FEATURES = 768
 MAX_PIECES = 32
 SCORE_CLAMP = 2000
 
+# King-bucketed inputs: the board is mirrored left-right when the side to move's king stands on
+# files e-h (so every king sits on a-d), and the 768 features are offset by KING_BUCKET[king] * 768.
+# Eight buckets: rank 1 split castled (a/b = h/g) vs centre (c/d = f/e), rank 2 the same, then
+# ranks 3, 4, 5-6, 7-8. The engine's ``nnue_eval.py`` carries the same table; ``verify_encoding``
+# checks the two agree. A net with a 768-row table uses no buckets.
+KING_BUCKETS = 8
+_BUCKET_BY_RANK_FILE = (
+    (0, 0, 1, 1), (2, 2, 3, 3), (4, 4, 4, 4), (5, 5, 5, 5),
+    (6, 6, 6, 6), (6, 6, 6, 6), (7, 7, 7, 7), (7, 7, 7, 7),
+)
+KING_BUCKET = np.array(
+    [_BUCKET_BY_RANK_FILE[sq >> 3][(sq & 7) if (sq & 7) < 4 else 7 - (sq & 7)] for sq in range(64)],
+    dtype=np.int64,
+)
+
+
+def king_transform(king_square: int) -> tuple[int, int]:
+    """(mirror xor, feature offset) for a side-to-move king on ``king_square``."""
+    mirror = 7 if (king_square & 7) >= 4 else 0
+    return mirror, int(KING_BUCKET[king_square ^ mirror]) * NUM_FEATURES
+
 RECORD_DTYPE = np.dtype([("occ", "<u8"), ("nib", "u1", 16), ("score", "<i2")])
 
 _DIGITS = frozenset("12345678")
@@ -67,9 +88,8 @@ def pack_placement(placement: str, black_to_move: bool) -> tuple[int, bytes]:
     return occ, bytes(nib)
 
 
-def features_from_record(occ: int, nib: np.ndarray) -> list[int]:
-    """Active feature indices (``code * 64 + square``) for one packed record."""
-    features: list[int] = []
+def _pieces_from_record(occ: int, nib: np.ndarray) -> list[tuple[int, int]]:
+    pieces: list[tuple[int, int]] = []
     count = 0
     bits = int(occ)
     while bits:
@@ -77,9 +97,21 @@ def features_from_record(occ: int, nib: np.ndarray) -> list[int]:
         bits &= bits - 1
         byte = int(nib[count >> 1])
         code = (byte >> 4) if (count & 1) else (byte & 15)
-        features.append(code * 64 + square)
+        pieces.append((code, square))
         count += 1
-    return features
+    return pieces
+
+
+def features_from_record(occ: int, nib: np.ndarray, king_buckets: int = 1) -> list[int]:
+    """Active feature indices (``code * 64 + square``, plus the king-bucket offset and left-right
+    mirror when ``king_buckets`` > 1) for one packed record."""
+    pieces = _pieces_from_record(occ, nib)
+    mirror, offset = 0, 0
+    if king_buckets > 1:
+        king = [square for code, square in pieces if code == 5]
+        if king:
+            mirror, offset = king_transform(king[0])
+    return [offset + code * 64 + (square ^ mirror) for code, square in pieces]
 
 
 def bitboards_from_record(occ: int, nib: np.ndarray) -> np.ndarray:

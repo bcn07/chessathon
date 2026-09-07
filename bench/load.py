@@ -10,10 +10,14 @@ what it can observe: the move and the wall time.
 from __future__ import annotations
 
 import importlib
+import os
 import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
+
+# Benchmarks measure the search, not the opponent's clock: never ponder under bench tooling.
+os.environ.setdefault("CHESSATHON_PONDER", "0")
 from types import ModuleType
 
 import chess

@@ -41,21 +41,7 @@ gc.disable()
 
 # The platform suspends the process while the opponent thinks (validation log), so pondering
 # gains nothing there and only adds a thread hand-off per move; off unless asked for.
-# On by default. The rules say the process keeps its core after get_move returns and call this
-# "probably the largest single Elo lever available here"; a platform validation log says the
-# process is suspended instead. If the log is right this thread is suspended too and costs
-# nothing, so the bet is free either way -- and the between-moves probe below reports which it
-# is. Our own benchmarks disable it (CHESSATHON_PONDER=0), because on the pool both engines
-# share one core and a pondering side would steal the opponent's time.
-PONDER = os.environ.get("CHESSATHON_PONDER", "1").lower() not in ("0", "", "false", "no")
-
-# Does the process actually run between our moves? The docs say we keep our core and call
-# pondering "probably the largest single Elo lever available here"; a platform validation log
-# says the opposite ("your process is suspended while your opponent moves"). These two clocks
-# settle it: perf_counter is wall time and advances even while suspended, process_time is our
-# own CPU and does not. A gap with wall >> cpu means suspended and pondering is worthless; wall
-# close to cpu means we are alive on the opponent's clock and pondering is worth turning on.
-_last_move_exit: tuple[float, float] | None = None
+PONDER = bool(os.environ.get("CHESSATHON_PONDER"))
 
 # ------------------------------------------------------------------------------------------
 # Native engine, compiled in the background
@@ -94,52 +80,12 @@ _compile_thread.start()
 # (get_move waits up to LATE_COMPILE_WAIT_S, charged to our clock) before the Python fallback.
 INIT_COMPILE_WAIT_S = float(os.environ.get("CHESSATHON_INIT_COMPILE_WAIT", "40"))
 LATE_COMPILE_WAIT_S = float(os.environ.get("CHESSATHON_LATE_COMPILE_WAIT", "30"))
-INIT_BUDGET_S = 90.0  # what the platform's own logs report ("Budget 90.0 s")
-INIT_SAFETY_S = 10.0  # left for the ready line, the referee's handshake and any slack
-
-
-def _container_age_s() -> float | None:
-    """Seconds since PID 1 started, or None when that cannot be trusted.
-
-    Inside the platform's container PID 1 is the entrypoint, so this is the time already spent
-    on the init budget before our process existed -- the part we cannot see from perf_counter.
-    Round 46 (2026-09-07) lost 44 s of the budget that way while round 48 lost none, and we have
-    no other way to tell those hosts apart. Outside a container (the Condor pool, a laptop) PID 1
-    is the machine's init and the age is days, which the sanity check below rejects.
-    """
-    try:
-        with open("/proc/uptime") as handle:
-            uptime = float(handle.read().split()[0])
-        with open("/proc/1/stat") as handle:
-            fields = handle.read().rsplit(")", 1)[1].split()
-        started = int(fields[19]) / os.sysconf("SC_CLK_TCK")
-        age = uptime - started
-    except (OSError, ValueError, IndexError):
-        return None
-    return age if 0.0 <= age < INIT_BUDGET_S else None
-
-
-def _init_wait_s() -> float:
-    """How long the import may wait for the compile without risking the init budget."""
-    if os.environ.get("CHESSATHON_INIT_COMPILE_WAIT"):
-        return INIT_COMPILE_WAIT_S  # explicit setting (benchmarks) always wins
-    age = _container_age_s()
-    if age is None:
-        return INIT_COMPILE_WAIT_S
-    # Spend what is actually left rather than a fixed 40 s: on a host that wasted none of the
-    # budget this waits ~75 s and the compile finishes inside init, instead of costing 30 s of
-    # match clock on move one; on a host that has already burned 44 s it waits 36 s and still
-    # reports ready by ~80 s.
-    # The floor is 2 s, not a comfortable minimum: if the platform has already spent most of the
-    # budget, returning at once is the only way to get the ready line out before it expires. The
-    # compile then finishes on the match clock, which costs time but does not forfeit the game.
-    return min(75.0, max(2.0, INIT_BUDGET_S - age - INIT_SAFETY_S))
 if os.environ.get("CHESSATHON_NATIVE_ONLY"):
     # Benchmarking switch: compile however long it takes, so fast-clock games measure the native
     # engine alone.
     _compile_thread.join()
 else:
-    _compile_thread.join(_init_wait_s())
+    _compile_thread.join(INIT_COMPILE_WAIT_S)
 print(
     f"init: native engine {'ready' if _native is not None else 'still compiling'} "
     f"after {time.perf_counter() - _started_at:.1f}s",
@@ -307,15 +253,6 @@ def analyse(fen: str, ms: float, max_depth: int = 40) -> Any:
 
 
 def get_move(fen: str, time_left_ms: int) -> str:
-    global _last_move_exit
-    if _last_move_exit is not None:
-        wall = time.perf_counter() - _last_move_exit[0]
-        cpu = time.process_time() - _last_move_exit[1]
-        print(
-            f"between-moves wall {wall:.2f}s cpu {cpu:.2f}s "
-            f"({'ALIVE' if cpu > wall * 0.5 else 'SUSPENDED'})",
-            file=sys.stderr,
-        )
     try:
         _stop_pondering()
         board = _sync(fen)
@@ -348,7 +285,6 @@ def get_move(fen: str, time_left_ms: int) -> str:
             file=sys.stderr,
         )
         _start_pondering(engine)
-        _last_move_exit = (time.perf_counter(), time.process_time())
         return move.uci()
     except Exception:
         # Whatever went wrong, a legal move beats a crash. History is lost, the game is not.

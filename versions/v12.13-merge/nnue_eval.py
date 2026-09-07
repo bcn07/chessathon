@@ -42,36 +42,23 @@ KING_BUCKET = np.array(
     dtype=np.int64,
 )
 NUM_FEATURES = 768
-# Output buckets: the output layer is (buckets, hidden) and the bucket is chosen by how many
-# pieces are on the board, so endgames and middlegames get their own output weights; a net with
-# one bucket behaves exactly as before. SCRELU squares the clipped activation for a smoother,
-# wider response at the same accumulator cost. Both are compile-time constants for numba.
-BUCKET_DIVISOR = 4
-SCRELU = True
 
 # Tempo learned from the training labels. The labels are the engine's own search scores on
 # self-play positions (mean +51 cp for the side to move, median +20), so the net learns a mover
 # bonus of its own; `tempo_check.py` measures it and this constant brings it back to the +10 that
 # the search's draw scores and pruning margins were tuned around.
-MOVER_BIAS = 40  # measured 50.2 cp learned tempo, PeSTO has 10
+MOVER_BIAS = 20  # measured 29.8 cp learned tempo, PeSTO has 10
 WEIGHTS_PATH = Path(__file__).resolve().parent / "weights" / "nnue.npz"
 
 
-def load_weights(
-    path: Path | str = WEIGHTS_PATH,
-) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    """Return (w1, b1, w2, b2) ready for ``nnue_evaluate``. The output layer is always shaped
-    (buckets, hidden): a net trained without output buckets loads as one bucket."""
+def load_weights(path: Path | str = WEIGHTS_PATH) -> tuple[np.ndarray, np.ndarray, np.ndarray, int]:
+    """Return (w1, b1, w2, b2) as C-contiguous arrays ready for ``nnue_evaluate``."""
     with np.load(path) as data:
         w1 = np.ascontiguousarray(data["w1"], dtype=np.int16)
         b1 = np.ascontiguousarray(data["b1"], dtype=np.int16)
-        w2 = np.asarray(data["w2"], dtype=np.int16)
-        b2 = np.asarray(data["b2"], dtype=np.int32)
-    if w2.ndim == 1:
-        w2 = w2.reshape(1, -1)
-    if b2.ndim == 0:
-        b2 = b2.reshape(1)
-    return w1, b1, np.ascontiguousarray(w2), np.ascontiguousarray(b2)
+        w2 = np.ascontiguousarray(data["w2"], dtype=np.int16)
+        b2 = np.int32(data["b2"])
+    return w1, b1, w2, int(b2)
 
 
 @numba.njit(inline="always")
@@ -111,7 +98,7 @@ def active_features(state: np.ndarray, king_buckets: int) -> tuple[int, np.ndarr
 
 @numba.njit
 def nnue_evaluate(
-    state: np.ndarray, w1: np.ndarray, b1: np.ndarray, w2: np.ndarray, b2: np.ndarray
+    state: np.ndarray, w1: np.ndarray, b1: np.ndarray, w2: np.ndarray, b2: int
 ) -> int:
     """Static centipawn score relative to the state's side to move (allocating wrapper for
     tests and tools; the search calls ``nnue_evaluate_into`` with its own scratch buffers)."""
@@ -126,7 +113,7 @@ def nnue_evaluate_into(
     w1: np.ndarray,
     b1: np.ndarray,
     w2: np.ndarray,
-    b2: np.ndarray,
+    b2: int,
     feats: np.ndarray,
     acc: np.ndarray,
 ) -> int:
@@ -165,22 +152,12 @@ def nnue_evaluate_into(
         for j in range(hidden):
             acc[j] += w1[r1, j]
         i += 1
-    bucket = 0
-    buckets = w2.shape[0]
-    if buckets > 1:
-        bucket = (nf - 2) // BUCKET_DIVISOR
-        if bucket < 0:
-            bucket = 0
-        elif bucket >= buckets:
-            bucket = buckets - 1
-    total = np.int64(b2[bucket])
+    total = np.int32(b2)
     for j in range(hidden):
-        value = np.int64(acc[j])
+        value = acc[j]
         if value < 0:
-            value = np.int64(0)
+            value = 0
         elif value > QA:
-            value = np.int64(QA)
-        if SCRELU:
-            value = value * value // QA
-        total += value * np.int64(w2[bucket, j])
+            value = QA
+        total += np.int32(value) * np.int32(w2[j])
     return int(total) * CP_SCALE // (QA * QB)

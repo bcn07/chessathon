@@ -17,22 +17,33 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from encoding import PIECE_FROM_SYMBOL, features_from_record, pack_placement
-from nnue_eval import active_features
+from encoding import (
+    KING_BUCKETS,
+    PIECE_FROM_SYMBOL,
+    features_from_record,
+    king_transform,
+    pack_placement,
+)
 from parse_evals import in_check_mask
 
 import fastboard as fb
+from nnue_eval import active_features
 
 
-def reference_features(board: chess.Board) -> set[int]:
+def reference_features(board: chess.Board, king_buckets: int = 1) -> set[int]:
     """Feature indices computed straight from python-chess, independent of the packer."""
     features = set()
+    king = board.king(board.turn)
+    assert king is not None
+    if board.turn == chess.BLACK:
+        king ^= 56
+    mirror, offset = king_transform(king) if king_buckets > 1 else (0, 0)
     for square, piece in board.piece_map().items():
         code = PIECE_FROM_SYMBOL[piece.symbol()]
         if board.turn == chess.BLACK:
             code = code - 6 if code >= 6 else code + 6
             square ^= 56
-        features.add(code * 64 + square)
+        features.add(offset + code * 64 + (square ^ mirror))
     return features
 
 
@@ -61,17 +72,21 @@ def main() -> None:
         nib[index] = np.frombuffer(packed_nib, dtype=np.uint8)
 
     for index, board in enumerate(boards):
-        expected = reference_features(board)
-        packed = set(features_from_record(int(occ[index]), nib[index]))
-        assert packed == expected, f"packed features differ at {board.fen()}"
         state = fb.from_fen(board.fen(en_passant="fen"))
-        count, buffer = active_features(state)
-        assert set(int(v) for v in buffer[:count]) == expected, f"njit differ at {board.fen()}"
+        for buckets in (1, KING_BUCKETS):
+            expected = reference_features(board, buckets)
+            packed = set(features_from_record(int(occ[index]), nib[index], buckets))
+            assert packed == expected, f"packed features differ at {board.fen()} ({buckets})"
+            count, buffer = active_features(state, buckets)
+            assert set(int(v) for v in buffer[:count]) == expected, \
+                f"njit differ at {board.fen()} ({buckets})"
+        assert max(reference_features(board, KING_BUCKETS)) < KING_BUCKETS * 768
 
     mask = in_check_mask(occ, nib)
     expected_mask = np.array([b.is_check() for b in boards])
     assert np.array_equal(mask, expected_mask), "check filter disagrees with python-chess"
-    print(f"ok: {len(boards)} positions, features + check filter match python-chess")
+    print(f"ok: {len(boards)} positions, features (plain and {KING_BUCKETS} king buckets) + "
+          "check filter match python-chess")
     print(f"    in check: {int(expected_mask.sum())}")
 
 

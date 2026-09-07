@@ -499,24 +499,11 @@ ORDER_KILLER = 800_000
 # A cutoff gives its quiet move the bonus and every quiet tried before it the same-sized malus.
 HISTORY_MAX = 16384
 HISTORY_BONUS_CAP = 1500
-# Singular extensions: at depth >= 6 with a deep-enough hash score that is not an upper bound.
-SINGULAR_MIN_DEPTH = 6
-SINGULAR_MARGIN = 2  # sbeta = hash score - MARGIN * depth
-SINGULAR_DOUBLE_MARGIN = 20  # a fail-low this far below sbeta extends two plies (non-PV only)
-# Losing-move pruning in the main search (not late-move pruning, which lost three times here):
-# outside the PV, near the leaves, a quiet whose static exchange loses material or whose history
-# is bad, and a capture that loses material outright, are skipped rather than searched.
-SEE_QUIET_MARGIN = -70  # per ply of remaining depth
-SEE_CAPTURE_MARGIN = -30  # per ply squared
-HISTORY_PRUNE_MARGIN = -1024  # per ply, at depth <= 3
-SEE_PRUNE_MAX_DEPTH = 8
 SKIPPED_SCORE = -(1 << 30)  # marks a move the loop did not search (illegal or futile)
 # Continuation history: indexed by (piece code * 64 + to-square) of the previous move and of the
 # move being scored; the same gravity update as the main history. Correction history: per side
 # and pawn structure (16-bit hash of the two pawn bitboards), an exponential average of
 # (search score - static eval) in 1/CORR_SCALE cp, added to the static eval before pruning.
-# The improving flag: whether our static score rose since our previous turn. A node that is
-# improving can afford a larger reverse-futility margin and one ply less reduction.
 CONT_SIZE = 12 * 64
 CORR_ENTRIES = 1 << 16
 CORR_SCALE = 256
@@ -939,17 +926,6 @@ def _piece_code(state: np.ndarray, side: int, square: int) -> int:
 
 
 @numba.njit(inline="always")
-def _nonpawn_slot(state: np.ndarray) -> int:
-    """Hash of both sides' pieces other than pawns and kings: a second correction table, since
-    the evaluation's error depends on the material left as well as on the pawn structure."""
-    key = np.uint64(0)
-    for piece in (fb.KNIGHT, fb.BISHOP, fb.ROOK, fb.QUEEN):
-        key ^= (state[piece] + np.uint64(piece)) * np.uint64(0x9E3779B97F4A7C15)
-        key ^= (state[6 + piece] + np.uint64(piece)) * np.uint64(0xC2B2AE3D27D4EB4F)
-    return int(key >> np.uint64(48))
-
-
-@numba.njit(inline="always")
 def _pawn_slot(state: np.ndarray) -> int:
     key = state[fb.PAWN] * np.uint64(0x9E3779B97F4A7C15)
     key ^= state[6 + fb.PAWN] * np.uint64(0xC2B2AE3D27D4EB4F)
@@ -1014,8 +990,6 @@ def _quiesce(
     move_stack: np.ndarray,
     eval_feats: np.ndarray,
     eval_acc: np.ndarray,
-    corr_np: np.ndarray,
-    eval_stack: np.ndarray,
 ) -> int:
     stats[0] += 1
     if stats[1] or stats[0] >= node_limit or (stats[0] & 16383 == 0 and _out_of_time(stats)):
@@ -1124,8 +1098,6 @@ def _quiesce(
             move_stack,
             eval_feats,
             eval_acc,
-            corr_np,
-            eval_stack,
         )
         fb.unmake_move(state, move, undo)
         if stats[1]:
@@ -1181,13 +1153,7 @@ def _negamax(
     move_stack: np.ndarray,
     eval_feats: np.ndarray,
     eval_acc: np.ndarray,
-    corr_np: np.ndarray,
-    eval_stack: np.ndarray,
-    excluded: np.uint32,
 ) -> int:
-    """``excluded`` != 0 marks a singular-test search: that move is skipped and the node does not
-    read or write the transposition table, prune with the null move, or reduce for a missing hash
-    move, since none of those describe the position with a move removed."""
     stats[0] += 1
     if stats[1] or stats[0] >= node_limit or (stats[0] & 16383 == 0 and _out_of_time(stats)):
         stats[1] = 1
@@ -1233,47 +1199,33 @@ def _negamax(
             move_stack,
             eval_feats,
             eval_acc,
-            corr_np,
-            eval_stack,
         )
 
     raw_key = state[fb.ZOBRIST]
     slot = int(raw_key & np.uint64(tt_mask))
     tt_move = np.uint32(0)
-    tt_hit_depth = -1
-    tt_hit_score = 0
-    tt_hit_flag = EXACT
     if tt_depth[slot] >= 0 and tt_keys[slot] == raw_key:
         tt_move = tt_moves[slot]
-        tt_hit_depth = int(tt_depth[slot])
-        tt_hit_score = _from_tt(int(tt_scores[slot]), ply)
-        tt_hit_flag = int(tt_flags[slot])
-        if (
-            excluded == 0
-            and tt_hit_depth >= depth
-            and (
-                tt_hit_flag == EXACT
-                or (tt_hit_flag == LOWER and tt_hit_score >= beta)
-                or (tt_hit_flag == UPPER and tt_hit_score <= alpha)
-            )
-        ):
-            return tt_hit_score
+        if tt_depth[slot] >= depth:
+            tt_score = _from_tt(int(tt_scores[slot]), ply)
+            tt_flag = int(tt_flags[slot])
+            if (
+                tt_flag == EXACT
+                or (tt_flag == LOWER and tt_score >= beta)
+                or (tt_flag == UPPER and tt_score <= alpha)
+            ):
+                return tt_score
 
-    if tt_move == 0 and depth >= 4 and not in_check and excluded == 0:
+    if tt_move == 0 and depth >= 4 and not in_check:
         depth -= 1  # internal iterative reduction: no hash move, search a ply shallower first
 
-    if ply + 1 < MAX_PLY:  # the child inherits no stale killers from a sibling subtree
-        killers[ply + 1, 0] = np.uint32(0)
-        killers[ply + 1, 1] = np.uint32(0)
     rep_keys[rep_count] = node_key
     side = int(state[fb.SIDE])
     prev_idx = int(move_stack[ply - 1]) if ply > 0 else -1
     corr_slot = _pawn_slot(state)
-    corr_np_slot = _nonpawn_slot(state)
     zero_window = beta - alpha == 1
     nmp_ok = (
-        excluded == 0
-        and depth >= 3
+        depth >= 3
         and ply > 0
         and not in_check
         and beta < MATE_BOUND
@@ -1282,8 +1234,7 @@ def _negamax(
         != 0
     )
     rfp_ok = (
-        excluded == 0
-        and depth <= 3
+        depth <= 3
         and not in_check
         and zero_window
         and -MATE_BOUND < beta < MATE_BOUND
@@ -1291,21 +1242,11 @@ def _negamax(
     )
     raw_static = -INF
     static_eval = -INF
-    improving = False
     if nmp_ok or rfp_ok:
         raw_static = evaluate_state_into(state, eval_feats, eval_acc)
-        static_eval = raw_static + _div_toward_zero(
-            int(corr_hist[side, corr_slot]) + int(corr_np[side, corr_np_slot]), CORR_SCALE
-        )
-        eval_stack[ply] = static_eval
-        if ply >= 2 and eval_stack[ply - 2] != -INF:
-            improving = static_eval > eval_stack[ply - 2]
+        static_eval = raw_static + _div_toward_zero(int(corr_hist[side, corr_slot]), CORR_SCALE)
     if nmp_ok and static_eval >= beta:
-        # a static score far above beta makes the null move safer: reduce more
-        extra = (static_eval - beta) // 200
-        if extra > 3:
-            extra = 3
-        reduction = 2 + depth // 6 + int(extra)
+        reduction = 3 if depth >= 6 else 2
         move_stack[ply] = -1
         null_undo = _make_null(state)
         null_score = -_negamax(
@@ -1333,9 +1274,6 @@ def _negamax(
             move_stack,
             eval_feats,
             eval_acc,
-            corr_np,
-            eval_stack,
- np.uint32(0),
         )
         _unmake_null(state, null_undo)
         if stats[1]:
@@ -1347,7 +1285,7 @@ def _negamax(
     # above beta proves the bound without a search. Futility (in the loop below): a quiet move
     # cannot lift a static score far below alpha. Neither fires in check, with mate bounds, or
     # for a bare king, whose stalemates are exactly what a static score gets wrong.
-    if rfp_ok and static_eval - REVERSE_FUTILITY_MARGIN * (depth - improving) >= beta:
+    if rfp_ok and static_eval - REVERSE_FUTILITY_MARGIN * depth >= beta:
         return static_eval
     futile = (
         depth <= 2
@@ -1355,61 +1293,6 @@ def _negamax(
         and -MATE_BOUND < alpha < MATE_BOUND
         and static_eval + FUTILITY_MARGIN * depth <= alpha
     )
-
-    # Singular extension. When the hash move is the only move that holds, the position turns on
-    # it, so search it deeper. The test searches this node with that move excluded, at half depth
-    # against a beta well below the hash score: a fail-low means nothing else comes close. Done
-    # before the move list is generated, because the test search reuses move_buffers[ply].
-    singular_extension = 0
-    if (
-        excluded == 0
-        and depth >= SINGULAR_MIN_DEPTH
-        and tt_move != 0
-        and ply > 0
-        and tt_hit_depth >= depth - 3
-        and tt_hit_flag != UPPER
-        and -MATE_BOUND < tt_hit_score < MATE_BOUND
-    ):
-        sbeta = tt_hit_score - SINGULAR_MARGIN * depth
-        singular_score = _negamax(
-            state,
-            (depth - 1) // 2,
-            sbeta - 1,
-            sbeta,
-            ply,
-            rep_keys,
-            rep_count,
-            tt_keys,
-            tt_depth,
-            tt_scores,
-            tt_flags,
-            tt_moves,
-            tt_mask,
-            killers,
-            history,
-            move_buffers,
-            score_buffers,
-            stats,
-            node_limit,
-            corr_hist,
-            cont_hist,
-            move_stack,
-            eval_feats,
-            eval_acc,
-            corr_np,
-            eval_stack,
- tt_move,
-        )
-        if stats[1]:
-            return 0
-        if singular_score < sbeta:
-            singular_extension = 1
-            if zero_window and singular_score < sbeta - SINGULAR_DOUBLE_MARGIN:
-                singular_extension = 2  # by a distance: worth two plies outside the PV
-        elif sbeta >= beta:
-            return sbeta  # multicut: a second move already beats beta at reduced depth
-        elif tt_hit_score >= beta:
-            singular_extension = -1  # many moves fail high here; this one need not be extended
 
     moves = move_buffers[ply]
     scores = score_buffers[ply]
@@ -1420,33 +1303,13 @@ def _negamax(
     best_move = np.uint32(0)
     legal_count = 0
     can_reduce = depth >= 3 and not in_check
-    prune_ok = zero_window and not in_check and depth <= SEE_PRUNE_MAX_DEPTH
     for index in range(count):
         _pick_next(moves, scores, index, count)
         move = moves[index]
-        if move == excluded:
-            scores[index] = SKIPPED_SCORE
-            continue
         quiet = int(move) & (fb.FLAG_CAPTURE | (fb.PROMOTION_MASK << fb.PROMOTION_SHIFT)) == 0
         if futile and quiet and legal_count > 0:
             scores[index] = SKIPPED_SCORE
             continue
-        if prune_ok and legal_count > 0 and best_score > -MATE_BOUND:
-            # One exchange evaluation against one threshold. Written with a single `see` call
-            # site on purpose: numba inlines it, and the two-call-site form cost 45% more compile
-            # for exactly the same search.
-            skip = False
-            if quiet:
-                slot_q = (int(move) & 63) * 64 + fb.move_to(move)
-                threshold = SEE_QUIET_MARGIN * depth
-                skip = depth <= 3 and int(history[side, slot_q]) < HISTORY_PRUNE_MARGIN * depth
-            else:
-                threshold = SEE_CAPTURE_MARGIN * depth * depth
-            if not skip:
-                skip = see(state, move) < threshold
-            if skip:
-                scores[index] = SKIPPED_SCORE
-                continue
         undo = fb.make_move(state, move)
         if fb.is_in_check(state, side):
             fb.unmake_move(state, move, undo)
@@ -1454,7 +1317,6 @@ def _negamax(
             continue
         to_square = fb.move_to(move)
         move_stack[ply] = _piece_code(state, side, to_square) * 64 + to_square
-        child_depth = depth - 1 + (singular_extension if move == tt_move else 0)
         reduction = 0
         if (
             can_reduce
@@ -1464,8 +1326,6 @@ def _negamax(
         ):
             reduction = int(LMR_TABLE[depth, legal_count])
             if move == killers[ply, 0] or move == killers[ply, 1]:
-                reduction -= 1
-            if improving:
                 reduction -= 1
             # history-scaled: a quiet with a strong record is reduced up to two plies less, one
             # with a poor record up to two plies more
@@ -1477,7 +1337,7 @@ def _negamax(
         if legal_count == 0:
             score = -_negamax(
                 state,
-                child_depth,
+                depth - 1,
                 -beta,
                 -alpha,
                 ply + 1,
@@ -1500,14 +1360,11 @@ def _negamax(
                 move_stack,
                 eval_feats,
                 eval_acc,
-                corr_np,
-                eval_stack,
- np.uint32(0),
             )
         else:
             score = -_negamax(
                 state,
-                child_depth - reduction,
+                depth - 1 - reduction,
                 -alpha - 1,
                 -alpha,
                 ply + 1,
@@ -1530,14 +1387,11 @@ def _negamax(
                 move_stack,
                 eval_feats,
                 eval_acc,
-                corr_np,
-                eval_stack,
- np.uint32(0),
             )
             if reduction and score > alpha and not stats[1]:
                 score = -_negamax(
                     state,
-                    child_depth,
+                    depth - 1,
                     -alpha - 1,
                     -alpha,
                     ply + 1,
@@ -1560,14 +1414,11 @@ def _negamax(
                     move_stack,
                     eval_feats,
                     eval_acc,
-                    corr_np,
-                    eval_stack,
- np.uint32(0),
                 )
             if score > alpha and score < beta and not stats[1]:
                 score = -_negamax(
                     state,
-                    child_depth,
+                    depth - 1,
                     -beta,
                     -alpha,
                     ply + 1,
@@ -1590,9 +1441,6 @@ def _negamax(
                     move_stack,
                     eval_feats,
                     eval_acc,
-                    corr_np,
-                    eval_stack,
- np.uint32(0),
                 )
         fb.unmake_move(state, move, undo)
         if stats[1]:
@@ -1630,11 +1478,7 @@ def _negamax(
                 break
 
     if legal_count == 0:
-        if excluded != 0:
-            return alpha  # only the excluded move was legal: not a mate, just nothing to try
         return -MATE + ply if in_check else _draw_score(ply)
-    if excluded != 0:
-        return best_score  # the table describes the position with every move available
     flag = UPPER
     if best_score >= beta:
         flag = LOWER
@@ -1660,12 +1504,6 @@ def _negamax(
             CORR_SCALE,
         )
         corr_hist[side, corr_slot] = max(-CORR_MAX, min(CORR_MAX, value))
-        value_np = _div_toward_zero(
-            int(corr_np[side, corr_np_slot]) * (CORR_SCALE - weight)
-            + (best_score - raw_static) * CORR_SCALE * weight,
-            CORR_SCALE,
-        )
-        corr_np[side, corr_np_slot] = max(-CORR_MAX, min(CORR_MAX, value_np))
     tt_keys[slot] = raw_key
     tt_depth[slot] = depth
     tt_scores[slot] = _to_tt(best_score, ply)
@@ -1699,8 +1537,6 @@ def search_root(
     move_stack: np.ndarray,
     eval_feats: np.ndarray,
     eval_acc: np.ndarray,
-    corr_np: np.ndarray,
-    eval_stack: np.ndarray,
 ) -> tuple[int, np.uint32, bool]:
     """Search one completed iteration, aborting exactly at the caller's node limit."""
     stats[0] += 1
@@ -1760,9 +1596,6 @@ def search_root(
                 move_stack,
                 eval_feats,
                 eval_acc,
-                corr_np,
-                eval_stack,
- np.uint32(0),
             )
         else:
             score = -_negamax(
@@ -1790,9 +1623,6 @@ def search_root(
                 move_stack,
                 eval_feats,
                 eval_acc,
-                corr_np,
-                eval_stack,
- np.uint32(0),
             )
             if score > alpha and score < beta and not stats[1]:
                 score = -_negamax(
@@ -1820,9 +1650,6 @@ def search_root(
                     move_stack,
                     eval_feats,
                     eval_acc,
-                    corr_np,
-                    eval_stack,
- np.uint32(0),
                 )
         fb.unmake_move(state, move, undo)
         if stats[1]:
@@ -1888,8 +1715,6 @@ class Searcher:
         self.history = np.zeros((2, 4096), dtype=np.int32)
         self.cont_hist = np.zeros((CONT_SIZE, CONT_SIZE), dtype=np.int32)
         self.corr_hist = np.zeros((2, CORR_ENTRIES), dtype=np.int32)
-        self.corr_np = np.zeros((2, CORR_ENTRIES), dtype=np.int32)
-        self.eval_stack = np.full(MAX_PLY + 4, -INF, dtype=np.int32)
         self.move_stack = np.full(MAX_PLY + 2, -1, dtype=np.int64)
         self.eval_feats = np.zeros(32, dtype=np.int64)  # nnue scratch, no allocation per node
         self.eval_acc = np.zeros(NNUE_B1.shape[0], dtype=np.int16)
@@ -1934,8 +1759,6 @@ class Searcher:
             self.move_stack,
             self.eval_feats,
             self.eval_acc,
-            self.corr_np,
-            self.eval_stack,
         )
 
     def think(
