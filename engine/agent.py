@@ -41,21 +41,14 @@ gc.disable()
 
 # The platform suspends the process while the opponent thinks (validation log), so pondering
 # gains nothing there and only adds a thread hand-off per move; off unless asked for.
-# On by default. The rules say the process keeps its core after get_move returns and call this
-# "probably the largest single Elo lever available here"; a platform validation log says the
-# process is suspended instead. If the log is right this thread is suspended too and costs
-# nothing, so the bet is free either way -- and the between-moves probe below reports which it
-# is. Our own benchmarks disable it (CHESSATHON_PONDER=0), because on the pool both engines
-# share one core and a pondering side would steal the opponent's time.
-PONDER = os.environ.get("CHESSATHON_PONDER", "1").lower() not in ("0", "", "false", "no")
+# Measured, not assumed: round 59 (2026-09-07, 122 moves) reported gaps of 1.4-3.7 s of wall
+# time between our moves against a flat 0.04-0.05 s of our own CPU -- the platform really does
+# suspend the process while the opponent thinks, exactly as its validation log says and contrary
+# to the written rules, which call pondering "probably the largest single Elo lever available
+# here". A ponder thread gets no CPU there and only costs the ~45 ms per move it takes to spawn
+# it and tear it down. Off unless CHESSATHON_PONDER says otherwise.
+PONDER = os.environ.get("CHESSATHON_PONDER", "0").lower() not in ("0", "", "false", "no")
 
-# Does the process actually run between our moves? The docs say we keep our core and call
-# pondering "probably the largest single Elo lever available here"; a platform validation log
-# says the opposite ("your process is suspended while your opponent moves"). These two clocks
-# settle it: perf_counter is wall time and advances even while suspended, process_time is our
-# own CPU and does not. A gap with wall >> cpu means suspended and pondering is worthless; wall
-# close to cpu means we are alive on the opponent's clock and pondering is worth turning on.
-_last_move_exit: tuple[float, float] | None = None
 
 # ------------------------------------------------------------------------------------------
 # Native engine, compiled in the background
@@ -307,15 +300,6 @@ def analyse(fen: str, ms: float, max_depth: int = 40) -> Any:
 
 
 def get_move(fen: str, time_left_ms: int) -> str:
-    global _last_move_exit
-    if _last_move_exit is not None:
-        wall = time.perf_counter() - _last_move_exit[0]
-        cpu = time.process_time() - _last_move_exit[1]
-        print(
-            f"between-moves wall {wall:.2f}s cpu {cpu:.2f}s "
-            f"({'ALIVE' if cpu > wall * 0.5 else 'SUSPENDED'})",
-            file=sys.stderr,
-        )
     try:
         _stop_pondering()
         board = _sync(fen)
@@ -348,7 +332,6 @@ def get_move(fen: str, time_left_ms: int) -> str:
             file=sys.stderr,
         )
         _start_pondering(engine)
-        _last_move_exit = (time.perf_counter(), time.process_time())
         return move.uci()
     except Exception:
         # Whatever went wrong, a legal move beats a crash. History is lost, the game is not.
