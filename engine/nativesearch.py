@@ -524,6 +524,7 @@ CORR_MAX = 96 * CORR_SCALE
 
 # Selective search. Margins in centipawns; the LMR table is floor(ln(depth) * ln(index + 1) / 2.25),
 # at least one ply, indexed by depth and by the number of legal moves already searched.
+ASPIRATION_WINDOW = 30  # opening half-width for the aspiration window (was a fixed 50)
 REVERSE_FUTILITY_MARGIN = 120
 FUTILITY_MARGIN = 120
 LMR_TABLE = np.zeros((MAX_DEPTH + 2, 256), dtype=np.int8)
@@ -534,6 +535,11 @@ for _depth in range(MAX_DEPTH + 2):
         )
 SEARCH_VALUE = np.array((100, 320, 330, 500, 900, 20_000), dtype=np.int32)
 
+# A static evaluation is a pure function of the position, so one cached in the table and read
+# back on a key match is the number the net would have returned: this changes speed, not the tree.
+# Worth more since the 768-unit net, where the evaluation is over half of node time.
+NO_EVAL = -32768  # int16 sentinel: this slot carries no evaluation
+EVAL_STORE_LIMIT = 30000  # only cache evaluations that survive the int16 round trip exactly
 TT_BITS = 22
 QS_STORE_STAND_PAT = False  # also record stand-pat fail-highs (compile-time constant for numba)
 TT_SIZE = 1 << TT_BITS
@@ -1016,6 +1022,7 @@ def _quiesce(
     eval_acc: np.ndarray,
     corr_np: np.ndarray,
     eval_stack: np.ndarray,
+    tt_eval: np.ndarray,
 ) -> int:
     stats[0] += 1
     if stats[1] or stats[0] >= node_limit or (stats[0] & 16383 == 0 and _out_of_time(stats)):
@@ -1033,7 +1040,8 @@ def _quiesce(
     raw_key = state[fb.ZOBRIST]
     slot = int(raw_key & np.uint64(tt_mask))
     tt_move = np.uint32(0)
-    if tt_depth[slot] >= 0 and tt_keys[slot] == raw_key:
+    tt_own = tt_depth[slot] >= 0 and tt_keys[slot] == raw_key
+    if tt_own:
         tt_move = tt_moves[slot]
         tt_score = _from_tt(int(tt_scores[slot]), ply)
         tt_flag = int(tt_flags[slot])
@@ -1046,10 +1054,19 @@ def _quiesce(
     alpha_original = alpha
 
     in_check = fb.is_in_check(state, int(state[fb.SIDE]))
-    stand_pat = -INF if in_check else evaluate_state_into(state, eval_feats, eval_acc)
+    stand_pat = -INF
+    if not in_check:
+        if tt_own and tt_eval[slot] != NO_EVAL:
+            stand_pat = int(tt_eval[slot])
+        else:
+            stand_pat = evaluate_state_into(state, eval_feats, eval_acc)
+            if tt_own and -EVAL_STORE_LIMIT < stand_pat < EVAL_STORE_LIMIT:
+                tt_eval[slot] = stand_pat
     if not in_check:
         if stand_pat >= beta:
             if QS_STORE_STAND_PAT and tt_depth[slot] <= 0:
+                if tt_keys[slot] != raw_key:
+                    tt_eval[slot] = NO_EVAL
                 tt_keys[slot] = raw_key
                 tt_depth[slot] = 0
                 tt_scores[slot] = _to_tt(stand_pat, ply)
@@ -1126,6 +1143,7 @@ def _quiesce(
             eval_acc,
             corr_np,
             eval_stack,
+            tt_eval,
         )
         fb.unmake_move(state, move, undo)
         if stats[1]:
@@ -1147,6 +1165,8 @@ def _quiesce(
         flag = EXACT
     # Depth 0 never evicts a main-search entry: only empty or quiescence slots are overwritten.
     if tt_depth[slot] <= 0:
+        if tt_keys[slot] != raw_key:
+            tt_eval[slot] = NO_EVAL
         tt_keys[slot] = raw_key
         tt_depth[slot] = 0
         tt_scores[slot] = _to_tt(best, ply)
@@ -1183,6 +1203,7 @@ def _negamax(
     eval_acc: np.ndarray,
     corr_np: np.ndarray,
     eval_stack: np.ndarray,
+    tt_eval: np.ndarray,
     excluded: np.uint32,
 ) -> int:
     """``excluded`` != 0 marks a singular-test search: that move is skipped and the node does not
@@ -1235,6 +1256,7 @@ def _negamax(
             eval_acc,
             corr_np,
             eval_stack,
+            tt_eval,
         )
 
     raw_key = state[fb.ZOBRIST]
@@ -1243,7 +1265,8 @@ def _negamax(
     tt_hit_depth = -1
     tt_hit_score = 0
     tt_hit_flag = EXACT
-    if tt_depth[slot] >= 0 and tt_keys[slot] == raw_key:
+    tt_own = tt_depth[slot] >= 0 and tt_keys[slot] == raw_key
+    if tt_own:
         tt_move = tt_moves[slot]
         tt_hit_depth = int(tt_depth[slot])
         tt_hit_score = _from_tt(int(tt_scores[slot]), ply)
@@ -1293,7 +1316,12 @@ def _negamax(
     static_eval = -INF
     improving = False
     if nmp_ok or rfp_ok:
-        raw_static = evaluate_state_into(state, eval_feats, eval_acc)
+        if tt_own and tt_eval[slot] != NO_EVAL:
+            raw_static = int(tt_eval[slot])
+        else:
+            raw_static = evaluate_state_into(state, eval_feats, eval_acc)
+            if tt_own and -EVAL_STORE_LIMIT < raw_static < EVAL_STORE_LIMIT:
+                tt_eval[slot] = raw_static
         static_eval = raw_static + _div_toward_zero(
             int(corr_hist[side, corr_slot]) + int(corr_np[side, corr_np_slot]), CORR_SCALE
         )
@@ -1335,6 +1363,7 @@ def _negamax(
             eval_acc,
             corr_np,
             eval_stack,
+            tt_eval,
  np.uint32(0),
         )
         _unmake_null(state, null_undo)
@@ -1398,6 +1427,7 @@ def _negamax(
             eval_acc,
             corr_np,
             eval_stack,
+            tt_eval,
  tt_move,
         )
         if stats[1]:
@@ -1502,6 +1532,7 @@ def _negamax(
                 eval_acc,
                 corr_np,
                 eval_stack,
+                tt_eval,
  np.uint32(0),
             )
         else:
@@ -1532,6 +1563,7 @@ def _negamax(
                 eval_acc,
                 corr_np,
                 eval_stack,
+                tt_eval,
  np.uint32(0),
             )
             if reduction and score > alpha and not stats[1]:
@@ -1562,6 +1594,7 @@ def _negamax(
                     eval_acc,
                     corr_np,
                     eval_stack,
+                    tt_eval,
  np.uint32(0),
                 )
             if score > alpha and score < beta and not stats[1]:
@@ -1592,6 +1625,7 @@ def _negamax(
                     eval_acc,
                     corr_np,
                     eval_stack,
+                    tt_eval,
  np.uint32(0),
                 )
         fb.unmake_move(state, move, undo)
@@ -1666,6 +1700,10 @@ def _negamax(
             CORR_SCALE,
         )
         corr_np[side, corr_np_slot] = max(-CORR_MAX, min(CORR_MAX, value_np))
+    if -EVAL_STORE_LIMIT < raw_static < EVAL_STORE_LIMIT:
+        tt_eval[slot] = raw_static
+    elif tt_keys[slot] != raw_key:
+        tt_eval[slot] = NO_EVAL
     tt_keys[slot] = raw_key
     tt_depth[slot] = depth
     tt_scores[slot] = _to_tt(best_score, ply)
@@ -1701,6 +1739,7 @@ def search_root(
     eval_acc: np.ndarray,
     corr_np: np.ndarray,
     eval_stack: np.ndarray,
+    tt_eval: np.ndarray,
 ) -> tuple[int, np.uint32, bool]:
     """Search one completed iteration, aborting exactly at the caller's node limit."""
     stats[0] += 1
@@ -1762,6 +1801,7 @@ def search_root(
                 eval_acc,
                 corr_np,
                 eval_stack,
+                tt_eval,
  np.uint32(0),
             )
         else:
@@ -1792,6 +1832,7 @@ def search_root(
                 eval_acc,
                 corr_np,
                 eval_stack,
+                tt_eval,
  np.uint32(0),
             )
             if score > alpha and score < beta and not stats[1]:
@@ -1822,6 +1863,7 @@ def search_root(
                     eval_acc,
                     corr_np,
                     eval_stack,
+                    tt_eval,
  np.uint32(0),
                 )
         fb.unmake_move(state, move, undo)
@@ -1843,6 +1885,8 @@ def search_root(
         flag = LOWER
     elif best_score > alpha_original:
         flag = EXACT
+    if tt_keys[slot] != raw_key:
+        tt_eval[slot] = NO_EVAL
     tt_keys[slot] = raw_key
     tt_depth[slot] = effective_depth
     tt_scores[slot] = _to_tt(best_score, 0)
@@ -1883,6 +1927,7 @@ class Searcher:
         self.tt_scores = np.zeros(size, dtype=np.int32)
         self.tt_flags = np.zeros(size, dtype=np.int8)
         self.tt_moves = np.zeros(size, dtype=np.uint32)
+        self.tt_eval = np.full(size, NO_EVAL, dtype=np.int16)  # cached static evaluations
         self.tt_mask = size - 1
         self.killers = np.zeros((MAX_PLY + 2, 2), dtype=np.uint32)
         self.history = np.zeros((2, 4096), dtype=np.int32)
@@ -1936,6 +1981,7 @@ class Searcher:
             self.eval_acc,
             self.corr_np,
             self.eval_stack,
+            self.tt_eval,
         )
 
     def think(
@@ -1985,9 +2031,13 @@ class Searcher:
             node_limit = int(self.stats[0]) + allowance
             self.stats[1] = 0
             self.stats[2] = time.perf_counter_ns() + int(remaining_ms * 1e6)
+            # Aspiration windows. Progressive widening (20 -> 50 -> 125 -> ...) was tried and
+            # is a clear regression here: every re-search is full-width from scratch, so extra
+            # steps cost more than the narrower window saves (depth 11.8 -> 9.2). One re-search
+            # only, as before; the opening half-width is the single tunable left.
             if depth >= 4:
-                alpha = max(-INF, previous_score - 50)
-                beta = min(INF, previous_score + 50)
+                alpha = max(-INF, previous_score - ASPIRATION_WINDOW)
+                beta = min(INF, previous_score + ASPIRATION_WINDOW)
             else:
                 alpha, beta = -INF, INF
             score, native_move, aborted = self._iteration(
