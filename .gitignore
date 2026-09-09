@@ -19,3 +19,7 @@ tools/src/
 # multi-GB datasets and multi-MB agent transcripts
 work/nnue/data/
 work/*/codex.log
+
+# candidate weight copies: 6 MB each and reconstructable from versions/ or a retrain
+work/**/weights/
+work/**/*.npz

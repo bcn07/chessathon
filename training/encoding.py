@@ -4,10 +4,16 @@ A position is stored as 27 bytes: an occupancy bitboard over *canonical* squares
 of 4-bit piece codes (one per occupied square, least-significant square first), and an int16
 centipawn score.  Canonical means "as if the side to move were White": squares are flipped
 vertically for a black-to-move position and the piece codes are re-coloured, so a feature index
-is simply ``code * 64 + square`` and the same 768 inputs describe both perspectives.
+is simply ``code * 64 + square`` and one 768-input block describes the **mover's** perspective.
 
-The engine-side twin of ``features_from_record`` is ``nnue_eval.accumulate``; the round-trip is
-checked against python-chess in ``test_encoding.py``.
+That block is the mover's view alone: it says nothing about where the opponent's king sits
+relative to the opponent's own pieces (with king buckets it cannot even see the opponent's
+bucket).  ``opponent_features_from_record`` is the second perspective a dual-perspective net
+needs — the same function of the colour-swapped, vertically flipped position — and both index one
+shared weight table.
+
+The engine-side twin of ``features_from_record`` is ``nnue_eval.active_features``; the round-trip
+is checked against python-chess in ``verify_encoding.py``.
 """
 
 from __future__ import annotations
@@ -41,10 +47,26 @@ KING_BUCKET = np.array(
 )
 
 
-def king_transform(king_square: int) -> tuple[int, int]:
+# A finer variant used by the 32-bucket nets (`work/v13-kb32`): the same left-right mirror, then
+# one bucket per (rank, file a-d) square, i.e. 8 x 4 = 32 buckets and a 24576-row input table.
+# The 8-bucket table above stays the default; a net selects its table by ``w1.shape[0] // 768``.
+KING_BUCKETS_32 = 32
+KING_BUCKET_32 = np.array(
+    [(sq >> 3) * 4 + ((sq & 7) if (sq & 7) < 4 else 7 - (sq & 7)) for sq in range(64)],
+    dtype=np.int64,
+)
+
+
+def bucket_table(king_buckets: int) -> np.ndarray:
+    """The king-bucket table for ``king_buckets`` inputs (32 = per-square, anything else = the
+    default 8-bucket table)."""
+    return KING_BUCKET_32 if king_buckets == KING_BUCKETS_32 else KING_BUCKET
+
+
+def king_transform(king_square: int, king_buckets: int = KING_BUCKETS) -> tuple[int, int]:
     """(mirror xor, feature offset) for a side-to-move king on ``king_square``."""
     mirror = 7 if (king_square & 7) >= 4 else 0
-    return mirror, int(KING_BUCKET[king_square ^ mirror]) * NUM_FEATURES
+    return mirror, int(bucket_table(king_buckets)[king_square ^ mirror]) * NUM_FEATURES
 
 RECORD_DTYPE = np.dtype([("occ", "<u8"), ("nib", "u1", 16), ("score", "<i2")])
 
@@ -110,7 +132,35 @@ def features_from_record(occ: int, nib: np.ndarray, king_buckets: int = 1) -> li
     if king_buckets > 1:
         king = [square for code, square in pieces if code == 5]
         if king:
-            mirror, offset = king_transform(king[0])
+            mirror, offset = king_transform(king[0], king_buckets)
+    return [offset + code * 64 + (square ^ mirror) for code, square in pieces]
+
+
+def opponent_pieces(pieces: list[tuple[int, int]]) -> list[tuple[int, int]]:
+    """The same position seen from the *non-mover's* side: swap the colour of every code and flip
+    every square vertically. Applied to a canonical (side-to-move) piece list this yields the
+    canonical piece list the record would hold if the other side were to move."""
+    return [(code - 6 if code >= 6 else code + 6, square ^ 56) for code, square in pieces]
+
+
+def opponent_features_from_record(
+    occ: int, nib: np.ndarray, king_buckets: int = 1
+) -> list[int]:
+    """Active feature indices from the **non-mover's** perspective (P1 of a dual net).
+
+    The records store the position canonically for the side to move, so P1 is the same function as
+    ``features_from_record`` applied to the colour-swapped, vertically flipped position: codes are
+    relative to the non-mover, squares are flipped, and the left-right mirror plus king-bucket
+    offset come from the *non-mover's* king (code 5 after the swap). The mover's own view P0 stays
+    exactly what ``features_from_record`` returns, so a dual net's two index sets are the same
+    function of two different perspectives and share one weight table.
+    """
+    pieces = opponent_pieces(_pieces_from_record(occ, nib))
+    mirror, offset = 0, 0
+    if king_buckets > 1:
+        king = [square for code, square in pieces if code == 5]
+        if king:
+            mirror, offset = king_transform(king[0], king_buckets)
     return [offset + code * 64 + (square ^ mirror) for code, square in pieces]
 
 
