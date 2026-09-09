@@ -1,0 +1,8 @@
+round,colour,opponent,result,termination,init_s,moves,time_used_s,slowest_s,fastest_s,average_s,clock_left_s,machine,finished_at
+Rated 36,Black,Stonkfish,Loss,Checkmate,42.7,62,126.9,7.5,0.0,2.0,24.1,w-933051,2026-09-06T12:09:26.903854+00:00
+Rated 35,Black,APEX,Win,Checkmate,41.1,51,111.1,6.4,0.0,2.2,34.4,w-91996f,2026-09-06T11:11:20.90396+00:00
+Rated 34,White,Magnus.AI,Win,Checkmate,41.4,23,31.8,2.9,0.0,1.4,99.7,w-6272d4,2026-09-06T10:16:05.570094+00:00
+Rated 33,White,Kaamuli,Loss,Checkmate,47.7,113,166.0,8.4,0.0,1.5,10.5,w-6a9647,2026-09-06T09:08:50.056384+00:00
+Rated 32,Black,Trio Duo,Win,Checkmate,40.9,56,109.1,9.1,0.0,1.9,38.9,w-d63238,2026-09-06T08:16:53.619206+00:00
+Rated 31,White,neomatica,Win,Checkmate,51.6,34,64.7,4.8,0.0,1.9,72.3,w-f6de86,2026-09-06T07:19:22.43369+00:00
+Rated 30,Black,Terminal,Win,Checkmate,0.6,40,84.9,7.0,0.0,2.1,55.1,w-71e58d,2026-09-05T21:18:28.423303+00:00
