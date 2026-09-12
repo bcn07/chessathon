@@ -1,6 +1,6 @@
 """Train the second-generation net: (768 -> H)x2 -> 8 buckets -> 1, SCReLU, and quantise it.
 
-    uv run python work/nnue/train2.py --data work/nnue/data/positions_gen345.npy --hidden 384 ...
+    uv run python training/train2.py --data training/data/positions_gen345.npy --hidden 384 ...
 
 Two perspectives share one first layer: the side to move sees the canonical features the records
 store; the opponent sees the same position with the roles swapped and the board flipped

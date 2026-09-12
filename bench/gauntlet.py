@@ -57,7 +57,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    parser.add_argument("--agent", type=Path, default=Path("."))
+    parser.add_argument("--agent", type=Path, default=Path("engine"))
     parser.add_argument("--opponent", type=Path, default=Path("baselines/minimax"))
     parser.add_argument("--games", type=int, default=40, help="rounded up to an even number")
     parser.add_argument("--base-ms", type=int, default=10_000)

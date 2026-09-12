@@ -1,6 +1,6 @@
 """Stockfish self-play data generation: diverse positions with strong labels.
 
-    uv run python work/datagen/sfgen.py --games 200 --seed 1 --nodes 8000 \
+    uv run python training/datagen/sfgen.py --games 200 --seed 1 --nodes 8000 \
         --engine tools/engines/stockfish --out results/datagen/sf1/chunk_0.bin
 
 Each game starts from the initial position, plays 8-12 random plies to diversify the opening

@@ -125,7 +125,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    parser.add_argument("--agent", type=Path, default=Path("."))
+    parser.add_argument("--agent", type=Path, default=Path("engine"))
     parser.add_argument("--ms", type=float, default=3000.0, help="time per position")
     args = parser.parse_args()
 

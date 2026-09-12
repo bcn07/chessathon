@@ -2,7 +2,7 @@
 
     uv run python -m bench.build_book --out bench/book.json --target 1000
 
-One position per game at a random ply in [8, 16] from ``results/condor/*/games_*.pgn`` (real-clock
+One position per game at a random ply in [8, 16] from ``results/*/games_*.pgn`` (real-clock
 runs first), duplicates dropped (FEN without move counters), positions in check dropped, and only
 positions the root engine scores within ``--max-cp`` at ``--ms`` per search kept. The gauntlet
 plays every entry once with each colour, so the side to move does not need balancing.
@@ -25,9 +25,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def candidates(rng: random.Random, low: int, high: int) -> list[tuple[str, str]]:
-    files = sorted(glob.glob(str(ROOT / "results/condor/*-real/games_*.pgn")))
+    files = sorted(glob.glob(str(ROOT / "results/*-real/games_*.pgn")))
     files += sorted(
-        f for f in glob.glob(str(ROOT / "results/condor/*/games_*.pgn")) if "-real/" not in f
+        f for f in glob.glob(str(ROOT / "results/*/games_*.pgn")) if "-real/" not in f
     )
     seen: set[str] = set()
     found: list[tuple[str, str]] = []

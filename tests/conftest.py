@@ -1,4 +1,4 @@
-"""The contract tests exercise the repo-root engine by default. To test a candidate copy instead:
+"""The contract tests exercise engine/ by default. To test a candidate copy instead:
 
     CHESSATHON_AGENT_DIR=work/see uv run pytest -q -p no:cacheprovider tests
 
@@ -12,7 +12,8 @@ import os
 import sys
 from pathlib import Path
 
-_agent_dir = os.environ.get("CHESSATHON_AGENT_DIR")
+_default_dir = Path(__file__).resolve().parents[1] / "engine"
+_agent_dir = os.environ.get("CHESSATHON_AGENT_DIR") or str(_default_dir)
 if _agent_dir:
     _path = Path(_agent_dir).resolve()
     if not (_path / "agent.py").is_file():

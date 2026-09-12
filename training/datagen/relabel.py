@@ -1,6 +1,6 @@
 """Relabel self-play chunks with Stockfish.
 
-    uv run python work/datagen/relabel.py --input results/datagen/gen3/chunk_0.bin \
+    uv run python training/datagen/relabel.py --input results/datagen/gen3/chunk_0.bin \
         --output results/datagen/gen3sf/chunk_0.bin --engine tools/engines/stockfish --nodes 20000
 
 Reads selfplay.py's 27-byte records (occ, 16 nibbles, mover score, mover result), rebuilds the

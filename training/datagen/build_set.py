@@ -1,7 +1,7 @@
-"""Assemble a training set for work/nnue/train.py from self-play chunks.
+"""Assemble a training set for training/train.py from self-play chunks.
 
-    uv run python work/datagen/build_set.py --gens gen3 gen4 \
-        --out work/nnue/data/positions_gen34.npy
+    uv run python training/datagen/build_set.py --gens gen3 gen4 \
+        --out training/data/positions_gen34.npy
 
 Reads every ``chunk_*.bin`` under ``results/datagen/<gen>/`` (27-byte records written by
 selfplay.py: occ, 16 nibbles, mover score, mover result), drops the result byte and the records

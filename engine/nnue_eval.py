@@ -31,7 +31,7 @@ CP_SCALE = 400
 
 # King-bucketed inputs (a net whose ``w1`` has more than 768 rows): the board is mirrored
 # left-right when the side to move's king stands on files e-h, and the 768 features are offset by
-# KING_BUCKET[king square] * 768. Same table as ``work/nnue/encoding.py``; eight buckets: rank 1
+# KING_BUCKET[king square] * 768. Same table as ``training/encoding.py``; eight buckets: rank 1
 # split castled (a/b) vs centre (c/d), rank 2 the same, then ranks 3, 4, 5-6, 7-8.
 _BUCKET_BY_RANK_FILE = (
     (0, 0, 1, 1), (2, 2, 3, 3), (4, 4, 4, 4), (5, 5, 5, 5),

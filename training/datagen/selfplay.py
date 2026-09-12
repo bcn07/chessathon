@@ -1,6 +1,7 @@
 """Generate quiet, engine-labelled positions from self-play, for Texel tuning and NNUE training.
 
-    uv run python work/datagen/selfplay.py --games 200 --seed 7 --out work/datagen/out/chunk_7.bin
+    uv run python training/datagen/selfplay.py --games 200 --seed 7 --out
+training/datagen/out/chunk_7.bin
 
 One process, one core, deterministic for a seed. Each game starts from the initial position after
 8-12 random plies, then the native engine plays both sides with a fixed node budget per move.
@@ -9,7 +10,7 @@ capture or promotion, and the quiescence score agrees with the static evaluation
 QUIET_MARGIN (the "quiet" test from the NNUE dataset study). Its label is the score of the search
 that chose the move, from the mover's side, clipped to +-2000, plus the game result from the
 mover's side (1 won, 0 drew, -1 lost). Records are the 27-byte packed board of
-work/nnue/encoding.py followed by an int16 score and an int8 result, so both trainers read them.
+training/encoding.py followed by an int16 score and an int8 result, so both trainers read them.
 """
 
 from __future__ import annotations

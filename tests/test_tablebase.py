@@ -17,7 +17,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 # the agent directory under test (CHESSATHON_AGENT_DIR, else the repo root, else the build dir)
 _env_dir = os.environ.get("CHESSATHON_AGENT_DIR")
-_candidates = ([Path(_env_dir)] if _env_dir else []) + [ROOT, ROOT / "work" / "v13-tb"]
+_candidates = ([Path(_env_dir)] if _env_dir else []) + [ROOT / "engine", ROOT]
 _found = [d.resolve() for d in _candidates if (d / "tablebase.py").is_file()]
 TB_DIR = _found[0] if _found else ROOT / "work" / "v13-tb"
 SYZYGY = TB_DIR / "weights" / "syzygy"

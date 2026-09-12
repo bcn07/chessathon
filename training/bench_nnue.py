@@ -21,10 +21,9 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import nnue_eval as nn
-
 import fastboard as fb
 import nativesearch as ns
+import nnue_eval as nn
 
 
 def sample_states(count: int, seed: int = 11) -> np.ndarray:

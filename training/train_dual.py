@@ -1,8 +1,8 @@
 """Train the dual-perspective NNUE ``(768 * king_buckets -> N) x 2 -> buckets -> 1``.
 
-    uv run python work/nnue/train_dual.py --data work/nnue/data/positions_bal.npy \
+    uv run python training/train_dual.py --data training/data/positions_bal.npy \
         --hidden 512 --epochs 6 --king-buckets 8 --buckets 8 --clip 1.0 --wdl 0.3 \
-        --holdout 500000 --out work/nnue/data/nnue_dual_h512.npz
+        --holdout 500000 --out training/data/nnue_dual_h512.npz
 
 Training tooling only (torch); nothing here runs on the competition platform.  It is ``train.py``
 with one change: **two accumulators sharing one input table**.
@@ -347,7 +347,7 @@ def report_dual(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data", type=Path, default=Path("work/nnue/data/positions_bal.npy"))
+    parser.add_argument("--data", type=Path, default=Path("training/data/positions_bal.npy"))
     parser.add_argument("--hidden", type=int, default=512, help="units per perspective (N)")
     parser.add_argument("--epochs", type=int, default=6)
     parser.add_argument("--batch", type=int, default=16384)
@@ -356,12 +356,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--train-limit", type=int, default=0, help="0 = all remaining positions")
     parser.add_argument("--quant-sample", type=int, default=100_000)
     parser.add_argument("--clip", type=float, default=1.0, help="first-layer weight clip")
-    parser.add_argument("--out", type=Path, default=Path("work/nnue/data/nnue_dual_h512.npz"))
+    parser.add_argument("--out", type=Path, default=Path("training/data/nnue_dual_h512.npz"))
     parser.add_argument(
-        "--checkpoint", type=Path, default=Path("work/nnue/data/nnue_dual_h512.pt")
+        "--checkpoint", type=Path, default=Path("training/data/nnue_dual_h512.pt")
     )
     parser.add_argument(
-        "--curve", type=Path, default=Path("work/nnue/data/curve_dual_h512.json")
+        "--curve", type=Path, default=Path("training/data/curve_dual_h512.json")
     )
     parser.add_argument("--quantise-only", action="store_true")
     parser.add_argument("--buckets", type=int, default=8,

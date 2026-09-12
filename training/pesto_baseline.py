@@ -59,7 +59,7 @@ def _pesto_scores(occ: np.ndarray, nib: np.ndarray) -> np.ndarray:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data", type=Path, default=Path("work/nnue/data/positions.npy"))
+    parser.add_argument("--data", type=Path, default=Path("training/data/positions.npy"))
     parser.add_argument("--holdout", type=int, default=1_000_000)
     args = parser.parse_args()
 

@@ -1,7 +1,7 @@
 """Concatenate packed position sets into one training set with a result column.
 
-    uv run python work/nnue/mix_sets.py --out work/nnue/data/positions_mix.npy \
-        work/nnue/data/positions_lichess.npy work/nnue/data/positions_gen34567r.npy
+    uv run python training/mix_sets.py --out training/data/positions_mix.npy \
+        training/data/positions_lichess.npy training/data/positions_gen34567r.npy
 
 Sets without a ``result`` field get result = -2 ("no game result"), which train.py treats as
 eval-only rows when ``--wdl`` is set.

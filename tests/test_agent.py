@@ -17,7 +17,7 @@ import agent
 
 ROOT = Path(__file__).resolve().parents[1]
 # the engine under test; tests/conftest.py imports `agent` from the same directory
-AGENT_DIR = Path(os.environ.get("CHESSATHON_AGENT_DIR", ROOT)).resolve()
+AGENT_DIR = Path(os.environ.get("CHESSATHON_AGENT_DIR", ROOT / "engine")).resolve()
 
 
 def legal(fen: str, uci: str) -> bool:

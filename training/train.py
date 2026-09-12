@@ -295,7 +295,7 @@ def report(model: Nnue, weights: dict[str, np.ndarray], occ: np.ndarray, nib: np
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data", type=Path, default=Path("work/nnue/data/positions.npy"))
+    parser.add_argument("--data", type=Path, default=Path("training/data/positions.npy"))
     parser.add_argument("--hidden", type=int, default=128)
     parser.add_argument("--epochs", type=int, default=8)
     parser.add_argument("--batch", type=int, default=16384)
@@ -304,9 +304,9 @@ def main() -> None:
     parser.add_argument("--train-limit", type=int, default=0, help="0 = all remaining positions")
     parser.add_argument("--quant-sample", type=int, default=100_000)
     parser.add_argument("--clip", type=float, default=1.98, help="first-layer weight clip")
-    parser.add_argument("--out", type=Path, default=Path("work/nnue/nnue.npz"))
-    parser.add_argument("--checkpoint", type=Path, default=Path("work/nnue/data/nnue_float.pt"))
-    parser.add_argument("--curve", type=Path, default=Path("work/nnue/data/curve.json"))
+    parser.add_argument("--out", type=Path, default=Path("training/nnue.npz"))
+    parser.add_argument("--checkpoint", type=Path, default=Path("training/data/nnue_float.pt"))
+    parser.add_argument("--curve", type=Path, default=Path("training/data/curve.json"))
     parser.add_argument("--quantise-only", action="store_true")
     parser.add_argument("--buckets", type=int, default=1,
                         help="output buckets chosen by piece count ((pieces - 2) // 4)")

@@ -1,10 +1,10 @@
 """Label-quality gate for the self-play data (docs/PLAN.md §4).
 
-    uv run python work/datagen/gate.py --count 20000 --nodes 20000
+    uv run python training/datagen/gate.py --count 20000 --nodes 20000
 
-Takes a random sample of quiet Lichess positions with Stockfish scores (work/nnue/data/
+Takes a random sample of quiet Lichess positions with Stockfish scores (training/data/
 positions_quiet.npy, mover-relative cp), labels each with the same node-budget search that
-work/datagen/selfplay.py uses, and reports the correlation with Stockfish next to PeSTO's static
+training/datagen/selfplay.py uses, and reports the correlation with Stockfish next to PeSTO's static
 evaluation on the same positions. The plan asks for a clear margin over PeSTO's 0.68 (target
 ≥ 0.85) before anything is trained on the self-play labels. Castling rights and en passant are
 not in the records, so both evaluations see the position without them.
@@ -111,7 +111,7 @@ def quiescence(searcher: ns.Searcher, state: np.ndarray) -> int:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data", type=Path, default=ROOT / "work/nnue/data/positions_quiet.npy")
+    parser.add_argument("--data", type=Path, default=ROOT / "training/data/positions_quiet.npy")
     parser.add_argument("--count", type=int, default=20_000)
     parser.add_argument("--nodes", type=int, default=20_000)
     parser.add_argument("--seed", type=int, default=5)

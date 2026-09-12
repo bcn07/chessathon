@@ -1,10 +1,10 @@
 """Turn a trained net into an engine candidate directory, the way v12.1/v12.2 were built.
 
-    uv run python work/nnue/candidate.py --net work/nnue/data/nnue_gen34_h384.npz \
+    uv run python training/candidate.py --net training/data/nnue_gen34_h384.npz \
         --name v12-g34 [--bench]
 
 Copies ``--base`` (default the v12.1 build) to ``work/<name>``, swaps ``weights/nnue.npz``, runs
-``work/nnue2/tempo_check.py`` inside the copy, sets ``MOVER_BIAS = round(net tempo - 10)`` in its
+``training/tempo_check.py`` inside the copy, sets ``MOVER_BIAS = round(net tempo - 10)`` in its
 ``nnue_eval.py`` (so the search sees PeSTO's 10 cp tempo), lints, and with ``--bench`` runs the
 depth-8 speed bench and the 3 s tactics suite. Ends by printing the fast-SPRT submit line.
 """
@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-TEMPO_CHECK = ROOT / "work/nnue2/tempo_check.py"
+TEMPO_CHECK = ROOT / "training/tempo_check.py"
 
 
 def run(command: list[str], cwd: Path | None = None) -> str:
@@ -79,12 +79,7 @@ def main() -> None:
         run(["uv", "run", "python", "-m", "bench.tactics", "--agent", str(dest), "--ms", "3000"])
 
     rel = dest.relative_to(ROOT)
-    print(
-        "\nfast SPRT (after make condor-sync and a test -f on the pool):\n"
-        f"  condor_submit agent={rel} opp=work/v12-g3h512 games=8 jobs=25 base=10000 inc=100 "
-        f"tag={args.name}-fast env=\"CHESSATHON_NATIVE_ONLY=1 CHESSATHON_INIT_COMPILE_WAIT=58\" "
-        "condor/gauntlet.submit"
-    )
+    print(f"\nnext: a real-clock gauntlet, e.g. bench.gauntlet --agent {rel} --opponent engine")
 
 
 if __name__ == "__main__":

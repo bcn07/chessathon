@@ -1,6 +1,6 @@
-"""Combine the --json outputs of many gauntlet runs (e.g. one per Condor job) into one result.
+"""Combine the --json outputs of many gauntlet runs (e.g. one per cluster job) into one result.
 
-    uv run python -m bench.aggregate results/condor/<tag>/results_*.json [--sprt ELO0 ELO1]
+    uv run python -m bench.aggregate results/<run>/results_*.json [--sprt ELO0 ELO1]
 
 Scores are summarised by opening pairs (pentanomial); with ``--sprt`` the GSPRT log-likelihood
 ratio and its verdict are printed so a sequential pool run can decide whether to submit another

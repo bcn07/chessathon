@@ -25,6 +25,7 @@ explicit = true
 dev = ["mypy>=1.18", "ruff>=0.14", "pytest>=8"]
 
 [tool.ruff]
+src = [".", "engine"]
 line-length = 100
 target-version = "py312"
 
@@ -34,7 +35,7 @@ ignore = ["N818"]
 
 [tool.mypy]
 strict = true
-files = ["agent.py", "pyengine.py", "harness"]
+files = ["engine/agent.py", "engine/pyengine.py", "harness"]
 
 [[tool.mypy.overrides]]
 # numba-compiled modules: numba's decorators and numpy scalar arithmetic defeat strict typing

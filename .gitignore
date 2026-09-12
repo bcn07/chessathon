@@ -18,10 +18,9 @@ tools/engines/*
 !tools/engines/README.md
 tools/src/
 
-# multi-GB datasets and multi-MB agent transcripts
-work/nnue/data/
-work/*/codex.log
+# multi-GB training sets and generated candidates
+training/data/
+work/
 
-# candidate weight copies: 6 MB each and reconstructable from versions/ or a retrain
-work/**/weights/
-work/**/*.npz
+# spare submission archives (submission.zip is the canonical one and is ignored above)
+submission-*.zip
