@@ -11,16 +11,13 @@ from __future__ import annotations
 
 import argparse
 import random
-import sys
 import time
-from pathlib import Path
 
 import chess
 import numba
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
+import _paths  # noqa: F401  (training/ and engine/ on sys.path)
 import fastboard as fb
 import nativesearch as ns
 import nnue_eval as nn

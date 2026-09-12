@@ -28,7 +28,8 @@ from pathlib import Path
 import chess
 import chess.engine
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "nnue"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import _paths  # noqa: F401
 from encoding import pack_placement
 
 RECORD = struct.Struct("<Q16shb")  # occ, nibbles, score (mover cp), result (mover)

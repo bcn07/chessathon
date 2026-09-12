@@ -16,7 +16,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 import time
 from pathlib import Path
 
@@ -24,12 +23,10 @@ import numpy as np
 import torch
 from torch import nn
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
+import _paths  # noqa: F401  (training/ and engine/ on sys.path)
 from encoding import NUM_FEATURES
-from train import accumulator_bound, decode_batch
-
 from nnue_eval import CP_SCALE, QA, QB
+from train import accumulator_bound, decode_batch
 
 BUCKETS = 8
 

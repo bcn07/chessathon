@@ -19,14 +19,12 @@ import sys
 import time
 from pathlib import Path
 
+import numba
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
-import numba
-from encoding import RECORD_DTYPE, SCORE_CLAMP, pack_placement
-
+import _paths  # noqa: F401  (training/ and engine/ on sys.path)
 import fastboard as fb
+from encoding import RECORD_DTYPE, SCORE_CLAMP, pack_placement
 
 _PVS = b'"pvs":[{'
 _DEPTH = b'"depth":'

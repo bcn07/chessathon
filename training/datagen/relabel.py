@@ -21,7 +21,8 @@ import chess
 import chess.engine
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "nnue"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import _paths  # noqa: F401
 from encoding import SYMBOL_FROM_PIECE
 
 CHUNK = np.dtype([("occ", "<u8"), ("nib", "u1", (16,)), ("score", "<i2"), ("result", "i1")])

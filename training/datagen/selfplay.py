@@ -25,14 +25,15 @@ from pathlib import Path
 
 os.environ.setdefault("NUMBA_OPT", "3")
 ROOT = Path(__file__).resolve().parents[2]
-ENGINE = Path(os.environ.get("CHESSATHON_DATAGEN_ENGINE", ROOT)).resolve()  # engine to play with
-sys.path.insert(0, str(ROOT / "work" / "nnue"))
+# the engine that plays the games; override with CHESSATHON_DATAGEN_ENGINE
+ENGINE = Path(os.environ.get("CHESSATHON_DATAGEN_ENGINE", ROOT / "engine")).resolve()
+sys.path.insert(0, str(ROOT / "training"))
 sys.path.insert(0, str(ENGINE))
 
 import chess  # noqa: E402
-import encoding  # noqa: E402
 import numpy as np  # noqa: E402
 
+import encoding  # noqa: E402
 import fastboard as fb  # noqa: E402
 import nativesearch as ns  # noqa: E402
 

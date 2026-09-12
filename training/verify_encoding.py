@@ -9,14 +9,12 @@ against ``encoding.features_from_record`` (which reads the training record).
 from __future__ import annotations
 
 import random
-import sys
-from pathlib import Path
 
 import chess
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
+import _paths  # noqa: F401  (training/ and engine/ on sys.path)
+import fastboard as fb
 from encoding import (
     KING_BUCKETS,
     PIECE_FROM_SYMBOL,
@@ -24,10 +22,8 @@ from encoding import (
     king_transform,
     pack_placement,
 )
-from parse_evals import in_check_mask
-
-import fastboard as fb
 from nnue_eval import active_features
+from parse_evals import in_check_mask
 
 
 def reference_features(board: chess.Board, king_buckets: int = 1) -> set[int]:

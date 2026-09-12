@@ -3,7 +3,7 @@
     uv run python training/candidate.py --net training/data/nnue_gen34_h384.npz \
         --name v12-g34 [--bench]
 
-Copies ``--base`` (default the v12.1 build) to ``work/<name>``, swaps ``weights/nnue.npz``, runs
+Copies ``--base`` (default ``engine/``) to ``work/<name>``, swaps ``weights/nnue.npz``, runs
 ``training/tempo_check.py`` inside the copy, sets ``MOVER_BIAS = round(net tempo - 10)`` in its
 ``nnue_eval.py`` (so the search sees PeSTO's 10 cp tempo), lints, and with ``--bench`` runs the
 depth-8 speed bench and the 3 s tactics suite. Ends by printing the fast-SPRT submit line.
@@ -18,7 +18,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 TEMPO_CHECK = ROOT / "training/tempo_check.py"
 
 
@@ -35,8 +35,8 @@ def run(command: list[str], cwd: Path | None = None) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--net", type=Path, required=True, help="trained .npz from train.py")
-    parser.add_argument("--name", required=True, help="directory name under work/")
-    parser.add_argument("--base", type=Path, default=ROOT / "work/v12-h384")
+    parser.add_argument("--name", required=True, help="candidate dir name under work/")
+    parser.add_argument("--base", type=Path, default=ROOT / "engine")
     parser.add_argument(
         "--bench", action="store_true", help="also run bench.speed and bench.tactics"
     )

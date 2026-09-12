@@ -1,6 +1,6 @@
 """Measure the net's learned tempo and its cost, next to the hand-written evaluation.
 
-    uv run python work/nnue2/tempo_check.py
+    uv run python training/tempo_check.py
 
 Tempo: eval(P, white to move) + eval(P, black to move) over random positions is twice the mover
 bonus of a side-symmetric evaluation (PeSTO's is exactly 2 * TEMPO = 20)."""
@@ -8,14 +8,12 @@ bonus of a side-symmetric evaluation (PeSTO's is exactly 2 * TEMPO = 20)."""
 from __future__ import annotations
 
 import random
-import sys
 import time
-from pathlib import Path
 
 import chess
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _paths  # noqa: F401  (training/ and engine/ on sys.path)
 import fastboard as fb
 import nativesearch as ns
 import nnue_eval as nn

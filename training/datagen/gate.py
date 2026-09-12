@@ -20,14 +20,14 @@ from pathlib import Path
 
 os.environ.setdefault("NUMBA_OPT", "3")
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "work" / "nnue"))
+sys.path.insert(0, str(ROOT / "engine"))
+sys.path.insert(0, str(ROOT / "training"))
 
 import numpy as np  # noqa: E402
-from encoding import RECORD_DTYPE  # noqa: E402
 
 import fastboard as fb  # noqa: E402
 import nativesearch as ns  # noqa: E402
+from encoding import RECORD_DTYPE  # noqa: E402
 
 SYMBOLS = "PNBRQKpnbrqk"
 NO_LIMIT = 1 << 62

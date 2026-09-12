@@ -24,7 +24,7 @@ def suspended_jobs(directory: Path) -> dict[int, int]:
     Condor suspends a job when the desktop machine's owner returns; the referee's wall clock keeps
     running, so a flag in a suspended job is the pool's doing, not the engine's."""
     counts: dict[int, int] = {}
-    for log in directory.glob("condor_*.log"):
+    for log in directory.glob("condor_*.log"):  # HTCondor job logs, when the games ran on a pool
         for match in re.finditer(r"^010 \(\d+\.(\d+)\.\d+\)", log.read_text(), re.M):
             process = int(match.group(1))
             counts[process] = counts.get(process, 0) + 1

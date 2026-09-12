@@ -1,107 +1,173 @@
-# cory — a Python chess engine for the AI Chessathon 2026
+# Cory — AI Chessathon quarter-finalist
 
-A pure-Python chess engine, compiled at start-up with numba, that reached the quarter-finals of the
-[AI Chessathon](https://aichessathon.com) London final (12 September 2026) as team **catfish**, bot
-**cory**. Qualifier ladder: rank 7 of 400. Final day: 8-3-2 in the 13-round Swiss, then wins over zak and
-Opus Carlsen in the knockout before losing 1-3 to omega3 fish in the quarter-final. Estimated strength of
-the final build is about 3000 ± 50 on the scale anchored to Stockfish at fixed Elo (see below); the field's
-top four were roughly 350 to 450 above that.
+**7th of 400 on the qualifier ladder · London quarter-finalist · Team catfish**
 
-The repository holds the final submission unchanged, the training pipeline that produced its network,
-the measurement tooling that decided every change, and the full measured record of what worked and what
-did not. The competition constraints shaped everything: one CPU core, 120 s + 0.5 s per move, Python
-source only with numba as the only route to speed, a 30 s start-up budget (of which numba compilation takes
-22 to 27 s on the platform), 50 MB unzipped, no network, and any network you ship must be one you trained.
+Cory is a Python chess engine with a neural evaluation network trained from scratch. It competed in the
+[AI Chessathon](https://aichessathon.com) London final on **12 September 2026**, under a single-core CPU
+limit, a 30-second startup budget, and a 50 MB submission cap.
 
-## The final build (v12.31)
+The project combines search algorithms, neural-network training, runtime optimization, and experimental
+evaluation. Over one week, development included a **574-million-position training set** and roughly
+**66,000 benchmark games** to decide which changes improved play.
 
-| component | what it is |
+[Engineering decisions](#three-engineering-decisions) · [Try it](#try-it) ·
+[Architecture](#architecture) · [Results](#results-and-measurement)
+
+## What this project contains
+
+- **A chess engine:** board representation, search, neural evaluation, and a driver that manages the clock
+  and startup compilation.
+- **A training pipeline:** position encoding, data generation and mixing, PyTorch training, and export to
+  compact integer weights for CPU inference.
+- **An evaluation framework:** paired games, statistical comparisons, speed and tactics benchmarks, and
+  tests for legality, protocol handling, time limits, and endgames.
+
+The competition runner and starter opponents are organiser-provided code. Cory's network was trained
+within the project; Stockfish supplied training labels and reference opponents. The repository includes
+the final engine, eight milestone snapshots, training and benchmark code, and recorded competition games.
+
+## Three engineering decisions
+
+### 1. Treat startup time as part of performance
+
+Numba made Python search fast enough to compete, but compilation could take about **50 seconds**—longer
+than the final's entire startup allowance. Compilation work brought a milestone build down to about
+**18 seconds**. The final build compiled in roughly **22–27 seconds on the competition platform**.
+
+The driver starts compilation in a background thread, signals readiness before the deadline, and uses
+opening-table moves or a Python fallback while compilation finishes. This made startup reliability an
+explicit part of the engine design, alongside search speed.
+
+Explore: [runtime driver](engine/agent.py), [fallback engine](engine/pyengine.py),
+[v12.27 snapshot](versions/v12.27-fastcompile/).
+
+### 2. Choose training data by playing strength
+
+The final network learned from **574 million positions**, combining human-game positions from the Lichess
+evaluation database, relabelled engine games, and Stockfish self-play. Training ran on a single A30 GPU;
+the exported network occupies approximately **7.1 MB** and uses integer arithmetic for inference.
+
+Adding more self-play data did not reliably make the engine stronger. A mix near **one human position per
+self-play position** worked better than pushing volume further. Likewise, wider and more complex networks
+were rejected when better training metrics failed to translate into stronger play.
+
+Explore: [training recipe](training/README.md), [trainer](training/train.py),
+[data mixing](training/mix_sets.py), [CPU evaluation](engine/nnue_eval.py).
+
+### 3. Measure the outcome that matters
+
+Candidates were screened with inexpensive checks before spending hundreds of games at the competition's
+**120-second + 0.5-second-per-move** clock. Games used paired openings with colours reversed, statistical
+comparisons, and external reference opponents. Roughly **66,000 games** ran as single-core jobs on a
+university HTCondor pool during the week.
+
+Eighteen additional approaches measured at or below zero, including variants that searched deeper or
+evaluated positions faster. These experiments pointed toward evaluation quality as the late-stage
+constraint: a faster or deeper search was not sufficient evidence to ship a change.
+
+Explore: [game runner](bench/gauntlet.py), [paired-game statistics](bench/stats.py),
+[result aggregation](bench/aggregate.py), [contract and regression tests](tests/).
+
+## Try it
+
+With `uv` and `make` installed, run these from the repository root. Setup uses the competition's pinned
+dependencies and requires Python 3.12 or newer. The first engine run includes Numba compilation, which
+can take tens of seconds depending on the machine.
+
+```sh
+make setup                          # Install dependencies
+make speed                          # Analyse eight positions; print moves, depth, and speed
+make play                           # Play against the supplied minimax baseline
+make test                           # Run engine, protocol, endgame, and statistics tests
+```
+
+`make play` runs a bot-versus-bot game in the terminal. To compare with an earlier build:
+
+```sh
+make play OPP=versions/v12.27-fastcompile
+```
+
+The engine implements the competition interface, `get_move(fen, time_left_ms) -> uci`.
+Each game has its own process, which the platform suspends while the opponent thinks.
+`make zip` packages `engine/` into `submission.zip`, with `agent.py` at the archive root.
+
+## Architecture
+
+The driver checks the opening table and supported endgames before searching. Search uses the compiled
+engine when it is ready, and the Python fallback otherwise; endgame tables can also correct a search move.
+
+```mermaid
+flowchart LR
+    Input["Position + remaining time"] --> Driver["Game driver"]
+    Driver --> Tables["Opening / endgame tables"]
+    Driver --> Search["Numba search"]
+    Driver --> Fallback["Python fallback"]
+    Search <--> Eval["Neural evaluation"]
+    Tables --> Move["Chosen move"]
+    Search --> Check["Endgame correction"]
+    Fallback --> Check
+    Check --> Move
+```
+
+| Component | Implementation |
 |---|---|
-| **Search** (`engine/nativesearch.py`, numba) | alpha-beta with principal-variation search, aspiration windows, transposition table (16 M entries), null move gated on static eval, late-move reductions scaled by history, singular extensions with multicut, SEE and history pruning of losing moves, continuation and correction history, mate-distance pruning, quiescence with TT. About 625 knps on the platform core, depth 14 in 3 s. |
-| **Evaluation** (`engine/nnue_eval.py`, `engine/weights/nnue.npz`) | our own NNUE: 768 piece-square inputs × 8 mirrored king buckets → 768 SCReLU units → 8 output buckets by piece count, int16 arithmetic, 7.1 MB. Trained on 574 M positions: Lichess evaluation-database positions with Stockfish labels, our own games relabelled by Stockfish, and Stockfish self-play, kept near 1:1 human-to-self-play (the ratio, not the size, is what mattered). |
-| **Opening table** (`engine/weights/book.json`) | 92,638 positions answered instantly, generated by Stockfish trees from the platform's known start positions and the lines opponents actually played; each table move also banks 4 to 5 s of clock. The rules allow shipped tables for positions up to move 20. |
-| **Endgame tables** (`engine/tablebase.py`, `engine/weights/syzygy/`) | Syzygy probing at the root for 3 to 5-man endings (33 MB): proven-win moves only, plus a post-search veto that blocks a class drop. |
-| **Time and start-up** (`engine/agent.py`) | front-loaded time budget; a compile thread that yields the ready line at about 20 s and finishes on the first moves; a Python fallback engine (`engine/pyengine.py`) that answers legally if the compile is ever late. |
-| **Board** (`engine/fastboard.py`) | bitboards with kindergarten slider attacks, written for numba. |
+| [Search](engine/nativesearch.py) | Alpha-beta search with principal-variation search, move ordering, pruning, and a 16-million-entry transposition table. About 625,000 nodes/second on the platform core. |
+| [Board](engine/fastboard.py) | Bitboards and sliding-piece attacks designed for Numba compilation. |
+| [Evaluation](engine/nnue_eval.py) | Efficiently updatable neural network (NNUE): piece-square inputs, 8 mirrored king buckets, 768 hidden units, and 8 output buckets by piece count. |
+| [Opening table](engine/weights/book.json) | 92,638 positions generated with Stockfish; table moves save search time in the opening. |
+| [Endgame probing](engine/tablebase.py) | Approximately 33 MB of Syzygy data for selected 3–5-piece endings, providing exact outcomes for supported positions. |
 
-Everything in the zip is readable Python plus data files; there are no binaries.
+The submission contains Python source and data files; native machine code is generated at startup.
 
-## Running it
+## Results and measurement
 
-```
-make setup      # uv sync: Python 3.12 and the platform's five pinned packages
-make test       # contract tests: legality, edge cases, clock, protocol, tablebase, red-team probes
-make play OPP=versions/v12.27-fastcompile     # one game at 120 s + 0.5 s against an earlier snapshot
-make zip        # submission.zip from engine/, agent.py at the archive root as the platform requires
-uv run python -m bench.validate_zip submission.zip   # unpack cleanly, time the ready line, play three moves
-```
+**Qualifier:** 7th of 400. **London final:** 8 wins, 3 draws, and 2 losses in the 13-round Swiss, followed by
+knockout wins over zak and Opus Carlsen, then a 1–3 quarter-final loss to omega3 fish.
 
-The agent interface is the competition's: `get_move(fen, time_left_ms) -> uci`, one process per game,
-suspended while the opponent thinks. `harness/` is the platform's own runner and referee.
+The final build's estimated strength was approximately **3000 ± 50 on the project's benchmark scale**,
+anchored to reference engines and Stockfish's fixed-Elo settings. This is a calibration estimate under
+the tested conditions, rather than an official human or competition rating.
 
-## How strength was measured
+Real-clock comparisons typically used 400 games, with sequential testing at −5/+15 Elo bounds. Gains
+against earlier Cory builds did not transfer fully to external opponents, so both comparisons informed
+decisions. The table below preserves selected development measurements; raw cluster benchmark outputs
+and site-specific HTCondor/Slurm job files are not included.
 
-Nothing shipped on a benchmark or a training-loss number. Each candidate went through four gates, cheapest
-first: static checks and identical node counts (proves a change did not alter the search); a fast-clock
-screen of a few hundred fast games; a 400-game real-clock run at 120 s + 0.5 s decided by a generalised
-sequential probability ratio test with bounds −5/+15 Elo, 1,000 balanced openings played with both
-colours; and anchoring against house bots with published CCRL ratings and Stockfish at fixed `UCI_Elo`.
-Self-play gains transferred to anchored strength at about half their size, consistently enough that the
-convention is built into every estimate here. Late in the project the decisive test for evaluation changes
-became move agreement plus Stockfish adjudication of the changed decisions: 400 positions settled in minutes
-what 800 games could not.
+<details>
+<summary>Eight milestone builds and measured improvements</summary>
 
-Tools: `bench/gauntlet.py` (parallel games, opening books, pentanomial pairs), `bench/aggregate.py` (Elo, error bars, terminations, crash detection), `bench/speed.py`,
-`bench/tactics.py`, `bench/agreement.py`-style adjudication, `bench/book_gen.py` and `bench/book_merge.py`
-(the opening table), `bench/ship.sh` (snapshot, gates, package, validate); `opponents/` wraps the reference
-engines. The real-clock runs were farmed out as one-core jobs on a university HTCondor pool (about 66,000
-games over the week), and network training ran on a single A30 through Slurm; the job files were site-specific
-and are not included.
+Self-play figures are changes against the comparison build, not cumulative gains. Runs used 400 games
+unless noted; final-build entries include separate component experiments.
 
-## Milestones
-
-Measured in 400 real-clock games against the previous snapshot unless noted; anchored Elo is against
-Loki 3.0, Zagreus 5.0 and Stockfish at fixed Elo. Snapshots of these eight builds are in `versions/`.
-
-| build | change | self-play | anchored |
+| Build | Main change | Self-play Elo change | Estimated anchored Elo |
 |---|---|---|---|
-| v6 | first numba search: 19 knps → 2 M nps, depth 5.8 → 11.6 | +360 ± 66 | ≈ 2250 |
-| v12 | first own-trained NNUE (768→256→1) replaces the hand-written evaluation | +94 ± 46 | ≈ 2495 |
-| v12.8 | network trained on Lichess positions with Stockfish labels | +174 ± 26 | ≈ 2720 |
-| v12.13 | history heuristics, continuation and correction history, faster evaluation, start-up fix | +25 ± 14 (800) | ≈ 2850 |
-| v12.21 | singular extensions, SEE/history pruning, 454 M-row network | +42 ± 21 | ≈ 2940 |
-| v12.27 | 768-unit network on a 1:1 data mix, mate-conversion fix, compile 50 s → 18 s | +25 ± 19 | ≈ 2990 |
-| v12.29 | opening table and Syzygy probing | +19 ± 20, +16 ± 20 | ≈ 3000 |
-| v12.31 | table extended to 92 k positions, 16 M-entry TT, start-up margin for the 30 s budget | +10 ± 18 (TT) | ≈ 3000 |
+| [v6](versions/v6-native/) | First Numba search | +360 ± 66 | ≈ 2250 |
+| [v12](versions/v12/) | First trained NNUE replaces handwritten evaluation | +94 ± 46 | ≈ 2495 |
+| [v12.8](versions/v12.8-lichessmix/) | Lichess positions with Stockfish labels | +174 ± 26 | ≈ 2720 |
+| [v12.13](versions/v12.13-merge/) | History heuristics, faster evaluation, startup fix | +25 ± 14 (800 games) | ≈ 2850 |
+| [v12.21](versions/v12.21-alldata/) | Search pruning and a 454-million-position network | +42 ± 21 | ≈ 2940 |
+| [v12.27](versions/v12.27-fastcompile/) | Balanced data mix, mate conversion, faster compilation | +25 ± 19 | ≈ 2990 |
+| [v12.29](versions/v12.29-final/) | Opening table and Syzygy probing | +19 ± 20; +16 ± 20 | ≈ 3000 |
+| [v12.31](versions/v12.31-table2/) | Expanded opening table and larger transposition table | +10 ± 18 (transposition table) | ≈ 3000 |
 
-Eighteen further levers measured at or below zero over the same week, among them more training data past a
-1:1 self-play-to-human ratio, wider networks, dual-perspective and pairwise heads, extra search depth (+1.8
-plies bought nothing), faster evaluation, time-management variants and contempt changes. Evaluation quality,
-not search depth or speed, was the binding constraint at the end.
+</details>
 
-## Training the network
+## Repository guide
 
-`training/` holds the pipeline: `parse_evals.py` (Lichess evaluation database → packed positions),
-`datagen/` (self-play generation on the pool, Stockfish relabelling, set building), `mix_sets.py`,
-`train.py` and variants (PyTorch, int16 quantisation with an accumulator-bound check), `candidate.py`
-(swap a net into an engine copy, measure the learned tempo, run the benches) and `encoding.py`, shared
-with the engine. Training data is not in the repository; `training/README.md` records the recipes and the
-sizes. A 574 M-row set trains in minutes per epoch on a single A30.
+| Directory | Contents |
+|---|---|
+| [`engine/`](engine/) | Final submission source, trained weights, opening and endgame tables |
+| [`training/`](training/) | Data preparation, neural-network trainers, export and evaluation tools; large training datasets are excluded |
+| [`bench/`](bench/) | Match running, statistical analysis, speed, tactics, and opening-table generation |
+| [`tests/`](tests/) | Engine behaviour, protocol, clock, endgame, and statistical checks |
+| [`versions/`](versions/) | Eight historical engine snapshots for comparison |
+| [`reference/`](reference/) | Competition rules, recorded games in PGN format, and agent logs |
+| [`opponents/`](opponents/) | Wrappers for reference engines; binaries are built locally |
+| [`harness/`](harness/), [`baselines/`](baselines/) | Organisers' runner, referee, and starter bots |
 
-## Layout
+## Licence and acknowledgements
 
-```
-engine/       the submission: agent.py, nativesearch.py, nnue_eval.py, fastboard.py, pyengine.py, tablebase.py, weights/
-bench/        measurement: gauntlets, SPRT, aggregation, speed, tactics, opening-table generation, ship
-tests/        contract tests, tablebase tests, red-team probes
-training/     NNUE data pipeline and trainers
-versions/     the eight milestone builds above
-opponents/    reference engines as agent directories (binaries built locally, never shipped)
-harness/ baselines/   the competition platform's runner, referee and starter bots (unchanged)
-reference/    the platform's docs and rules verbatim, every platform game with clocks, agent logs
-```
-
-## Licence
-
-MIT, see [LICENSE](LICENSE). The competition's harness under `harness/` and `baselines/` is the
-organisers' starter code and keeps its own terms.
+Project code is available under the [MIT licence](LICENSE). The organisers' starter code retains its
+[original MIT notice](harness/LICENSE-starter.txt). Cory uses python-chess and Numba, was trained with
+PyTorch, and uses Lichess evaluation data, Stockfish-generated labels and opening moves, and Syzygy
+endgame tables.

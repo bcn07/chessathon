@@ -47,7 +47,7 @@ KING_BUCKET = np.array(
 )
 
 
-# A finer variant used by the 32-bucket nets (`work/v13-kb32`): the same left-right mirror, then
+# A finer variant used by the 32-bucket nets (`train_kb32.py`): the same left-right mirror, then
 # one bucket per (rank, file a-d) square, i.e. 8 x 4 = 32 buckets and a 24576-row input table.
 # The 8-bucket table above stays the default; a net selects its table by ``w1.shape[0] // 768``.
 KING_BUCKETS_32 = 32

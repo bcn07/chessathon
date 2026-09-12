@@ -1,17 +1,21 @@
-"""AI Chessathon entry: the driver that chooses between two engines and manages the game.
+"""AI Chessathon entry: the driver that answers get_move(fen, time_left_ms) and manages the game.
 
 Two engines ship in this zip. ``pyengine`` (python-chess, ~20 knps) is ready the moment it is
-imported. ``nativesearch`` (numba on ``fastboard``, ~2 M nps here) is a hundred times faster but
-needs 20-40 s of compilation. The platform allows 90 s before the ready line, so the compile is
-waited for at start-up (capped at 80 s; the platform has needed 52-78 s); should it still be
-running, the python engine answers the first moves and the driver switches over the instant
-compilation finishes. If the native module ever fails to load, the python engine plays the game.
+imported. ``nativesearch`` (numba on ``fastboard``, ~1 M nps on the platform's core) is far
+stronger but needs 20-27 s of compilation there, against a 30 s init budget at the final. The
+compile runs in a background thread; import waits for it only as long as the budget allows
+(``INIT_BUDGET_S`` minus the container's age minus ``INIT_SAFETY_S``) and then prints the ready
+line. A compile still running finishes during the first moves: the opening table answers those
+instantly and lends the compile a bounded slice of clock, otherwise the first searched move waits
+up to ``LATE_COMPILE_WAIT_S``. Only if the native module fails to load does the python engine play.
 
-Between moves the active engine ponders: it keeps searching the position the opponent is looking
-at, so the transposition table already holds what the next call needs. The next request stops
-that search within a millisecond or two (the native search runs without the GIL and polls an
-abort flag at every node). The game is rebuilt move by move from the FENs we are handed, so both
-engines see the repetitions the referee would claim.
+Move selection, in order: the opening table (``weights/book.json``, positions at move 20 or
+earlier, skipped once a position has repeated), the Syzygy root probe (``tablebase.py``, proven
+wins only), then the search, whose move the tablebase may veto if it drops a win to a draw.
+
+The platform suspends the process while the opponent thinks, so nothing runs between moves
+(pondering is off unless ``CHESSATHON_PONDER`` is set). The game is rebuilt move by move from the
+FENs we are handed, so the search sees the repetitions the referee would claim.
 """
 
 from __future__ import annotations

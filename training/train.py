@@ -16,20 +16,17 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 import time
 from pathlib import Path
 
+import numba
 import numpy as np
 import torch
 from torch import nn
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
-import numba
-from encoding import KING_BUCKET, MAX_PIECES, NUM_FEATURES
-
+import _paths  # noqa: F401  (training/ and engine/ on sys.path)
 import fastboard as fb
+from encoding import KING_BUCKET, MAX_PIECES, NUM_FEATURES
 from nnue_eval import BUCKET_DIVISOR, CP_SCALE, QA, QB
 
 QB2 = 256  # scale of the second layer's weights (int16); its sums are formed in int64

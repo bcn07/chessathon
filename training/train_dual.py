@@ -50,22 +50,19 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 import time
 from pathlib import Path
 
+import numba
 import numpy as np
 import torch
 from torch import nn
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
-import numba
-from encoding import KING_BUCKET, KING_BUCKET_32, KING_BUCKETS_32, MAX_PIECES, NUM_FEATURES
-from train import accumulator_bound, accumulator_bound_any32
-
+import _paths  # noqa: F401  (training/ and engine/ on sys.path)
 import fastboard as fb
+from encoding import KING_BUCKET, KING_BUCKET_32, KING_BUCKETS_32, MAX_PIECES, NUM_FEATURES
 from nnue_eval import BUCKET_DIVISOR, CP_SCALE, QA, QB
+from train import accumulator_bound, accumulator_bound_any32
 
 torch.set_num_threads(4)
 
