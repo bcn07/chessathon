@@ -1,0 +1,12 @@
+[Event "AI Chessathon"]
+[Site "aichessathon.com"]
+[Date "2026.09.12"]
+[Round "Practice round 1"]
+[White "Miskeen"]
+[Black "catfish"]
+[Result "0-1"]
+[FEN "r1bq1rk1/pp1n1ppp/2pbpn2/3p4/2PP4/1PN1PN2/P3BPPP/R1BQ1RK1 b - - 0 8"]
+[SetUp "1"]
+[Termination "init"]
+
+0-1

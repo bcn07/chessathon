@@ -9,6 +9,8 @@ __pycache__/
 # generated locally
 submission.zip
 *.pgn
+# platform games with per-move clocks are reference data (1.6 MB), kept like the logs
+!reference/games/*.pgn
 results/
 
 # reference engines are local builds; only the notes are tracked

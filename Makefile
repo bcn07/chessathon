@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: setup test play arena gauntlet speed tactics snapshot zip gate engines
+.PHONY: setup test play arena gauntlet speed tactics snapshot zip gate engines games games-login games-watch
 
 AGENT ?= .
 OPP   ?= baselines/minimax
@@ -108,3 +108,15 @@ condor-fetch:
 # reference engines for local sparring (house bots + Stockfish); never shipped
 engines:
 	tools/build_engines.sh
+
+# platform games + agent logs -> reference/games, reference/platform-logs (tools/platform_sync.py)
+games-login:
+	python3 tools/platform_sync.py login
+
+games:
+	python3 tools/platform_sync.py sync
+
+# background launchd job, every EVERY (default 10m); `make games-watch EVERY=off` removes it
+EVERY ?= 10m
+games-watch:
+	$(if $(filter off,$(EVERY)),python3 tools/platform_sync.py uninstall-agent,python3 tools/platform_sync.py install-agent --every $(EVERY))
