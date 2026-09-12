@@ -1,0 +1,2180 @@
+[
+ {
+  "fen": "r1bq1rk1/pp1pnppp/1bn1p3/6B1/4P3/PNN5/1PPQ1PPP/R3KB1R b KQ - 8 9",
+  "name": "practice-010-black-vs-dgs-elo ply4",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1br2k1/p4ppp/1pnqpn2/2pp4/3P4/2P1PN1P/PP1NBPP1/R2QR1K1 b - - 1 11",
+  "name": "practice-009-black-vs-rmfe ply5",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qk2r/pp1nbpp1/2p1pn1p/8/3P1B1P/3Q1NN1/PPP2PP1/2KR3R w kq - 4 12",
+  "name": "practice-008-white-vs-miskeen ply11",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb1r1k1/ppp3b1/6pp/3Np3/2Pnp1nN/8/PP1BBPPP/3RR1K1 w - - 4 17",
+  "name": "knockout-111-white-vs-dogwarts ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1b1qbp1p/p2p2p1/1p2p2n/1B2P3/3P1N1P/1PP2PP1/RN1QR1K1 b - - 0 17",
+  "name": "knockout-113-black-vs-stonkfish ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pb2q1pp/1p1bp3/2ppNp2/P2PnB1P/2PBP3/1P3PP1/R2QK2R w KQ - 3 17",
+  "name": "knockout-115-white-vs-alphabeta ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3qrk1/1bp1b1p1/1p1pp2p/p4p2/P1PPn3/1P3NP1/2Q1PPBP/R1BR2K1 w - - 0 17",
+  "name": "knockout-121-white-vs-opus-carlsen ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/pp3pbp/3pb3/2p3p1/P4B2/2PP2PP/1P3PB1/R2QR1K1 w - - 0 17",
+  "name": "swiss-034-white-vs-magnus-ai ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp1qbpp1/4pn1p/2P5/5P1P/3Q2N1/PPP3P1/1KBR3R b - - 0 17",
+  "name": "swiss-036-black-vs-stonkfish ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/2pbqpbp/1p1p2p1/p2Pp2n/PnP1P3/1NN1BB1P/1P1Q1PP1/R4RK1 w - - 7 17",
+  "name": "swiss-037-white-vs-keep-kann-and-caro-on ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1r2k1/1pN2pbp/6p1/p7/PnP1Ppb1/1P3N2/4BPPP/3R1RK1 b - - 0 17",
+  "name": "swiss-038-black-vs-french-carlsen ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p1q2ppp/2pb1n2/1p2Nb2/1n1P4/1B3N1P/PP3PP1/R1BQ1RK1 w - - 4 17",
+  "name": "swiss-045-white-vs-kaamuli ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "rn1qr1k1/pp3pp1/3b3B/8/2pPb2N/6P1/PPP4P/R2QRNK1 b - - 0 17",
+  "name": "swiss-056-black-vs-no-more-ammo ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r2k1/r1q2ppp/1p2pn2/8/8/P1P1P2P/5PP1/R1BQ1RK1 w - - 1 17",
+  "name": "swiss-060-white-vs-cornelius ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb2rk1/p3Qp1p/2p1p3/5q2/8/5NP1/P3PPBP/3R2K1 w - - 3 17",
+  "name": "swiss-062-white-vs-danya-s-disciple ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/1p3ppp/2nbbn2/p1Pp4/5B2/P4N2/1P2BPPP/R2Q1RK1 w - - 0 17",
+  "name": "swiss-068-white-vs-opus-carlsen ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3r1k/3q1ppp/p1npb3/1p1Np1b1/1N2P3/P1P5/1P2BPPP/R2Q1RK1 b - - 2 17",
+  "name": "swiss-069-black-vs-what-even-is-en-passant ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/5pp1/3pbb1p/ppp1p3/4P3/RP1PNN1P/1PPQ1PP1/4R1K1 b - - 3 17",
+  "name": "swiss-076-black-vs-pheanup ply14",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/ppq1bpp1/4b2p/3p4/8/2PQBNPP/PP4P1/R3R1K1 w - - 1 17",
+  "name": "swiss-081-white-vs-ai-fellows ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b2rk1/ppq2pp1/3b1n1p/3p4/3P4/2PBBN2/P1Q2PPP/4RRK1 w - - 0 17",
+  "name": "swiss-088-white-vs-danya-s-disciple ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3rk1/p1q1npbp/1p1p2p1/3P4/1p1p2P1/P2P3P/2P2PBK/1RBQ1R2 w - - 0 17",
+  "name": "swiss-090-white-vs-stonkfish ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p3npbp/bpn1p1p1/1N6/P3P3/1q2B1P1/1PP2PBP/R1N2RK1 w - - 0 17",
+  "name": "swiss-092-white-vs-gladiator ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4b1r/pp1k1pp1/7p/1N1pn3/5nP1/NPP2PB1/1P5P/R3K2R b KQ - 2 17",
+  "name": "swiss-093-black-vs-e-2 ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/1b2bppp/2p1nB2/pp1p4/1P1P4/PQN1PNP1/5PBP/R2R2K1 b - - 0 17",
+  "name": "swiss-095-black-vs-pheanup ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rn1rk1/p4pbp/3q1np1/1Rp1pb2/N1Pp4/P2P1NP1/3BPPBP/3Q1RK1 w - - 4 17",
+  "name": "swiss-097-white-vs-slopfish ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qrbk1/1bp2pp1/3p1n1p/p3p3/1pP1P3/1P1P1NNP/1PQ2PP1/R1B1R1K1 w - - 0 17",
+  "name": "swiss-098-white-vs-e-2 ply13",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp2ppb1/2n2n2/q6p/3Np1pR/2N1B3/PPPQ1PP1/2K4R w - - 4 17",
+  "name": "swiss-099-white-vs-stonkfish ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/pp3ppp/2n2n2/1q6/2N5/P4N2/1PQ2PPP/3R1RK1 b - - 4 17",
+  "name": "swiss-101-black-vs-the-roooookkk ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3rnr1k/pb1q1p1p/1pn1p1p1/2ppP3/P2P1P2/2N3PP/1PPQN1B1/R4RK1 b - - 0 17",
+  "name": "swiss-102-black-vs-miskeen ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq2k1/p2n1ppp/2p1rn2/b7/R3p3/2N1P3/1P2BPPP/2BQ1RK1 w - - 0 17",
+  "name": "swiss-105-white-vs-gators ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r1nrk1/pp2qpp1/4b2p/P1ppN3/3P4/2PBPQ2/5PPP/RR4K1 b - - 0 17",
+  "name": "swiss-106-black-vs-zak ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rr3k1/2qbppb1/2np1npp/1p6/1P5P/2NP1NP1/3BPPB1/1RRQ2K1 b - - 7 17",
+  "name": "swiss-109-black-vs-binvengers ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3rk1/3qppbp/3p2p1/pppP2B1/1n2P3/1P1P1bPP/P2Q1PB1/1R3RK1 w - - 0 18",
+  "name": "knockout-117-white-vs-ryan-vincent ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p4ppp/bqp1p3/3nP1B1/Pb2N3/1p4P1/1P2PPBP/RQ1R2K1 w - - 4 18",
+  "name": "knockout-120-white-vs-danya-s-disciple ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3kb1r/1b3ppp/p3pn2/3q4/Np6/1P1QPN2/P4PPP/R1BR2K1 w kq - 0 18",
+  "name": "practice-002-white-vs-rmfe ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bqrbk1/5pp1/5n1p/ppp1p3/2PpP3/1P1P2NP/RP1B1PPN/3QR1K1 w - - 0 18",
+  "name": "practice-007-white-vs-ryan-vincent ply15",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b2rk1/pp3ppp/3p1B2/2p5/P1qn4/2N5/1P3PPP/R2QR1K1 w - - 2 18",
+  "name": "swiss-033-white-vs-kaamuli ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qbr1k/ppp2pbp/3p4/3P2p1/1PP1Pp2/5N1P/P2QBPP1/1R2R1K1 w - - 2 18",
+  "name": "swiss-039-white-vs-jsp ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/p4pbp/1pn3p1/4p3/2p1P1bP/2P1BNP1/P2P1PB1/1R1QR1K1 w - - 2 18",
+  "name": "swiss-049-white-vs-leetbeaters ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "rn2k2r/1pq2pp1/3p4/1p4p1/4P3/1PN5/1PP2Q1P/2KR3R w kq - 0 18",
+  "name": "swiss-050-white-vs-make-no-mistakes ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q1rkb/pp5p/3p2pP/3Ppb2/4B3/2PP2p1/P4P2/1RBQK2R w K - 0 18",
+  "name": "swiss-055-white-vs-amplifirm ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "4rbk1/1qp2ppp/1p1p1n2/8/3QPB2/2N5/1PP2PPP/4RK2 w - - 5 18",
+  "name": "swiss-063-white-vs-what-even-is-en-passant ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1br2k1/2p2pp1/7p/4N3/Pp2n3/1P6/5PPP/R1B2RK1 w - - 0 18",
+  "name": "swiss-071-white-vs-sobriety ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/1b3ppp/2Np4/pp1Qp1b1/4P3/2P5/PP2BPPP/R3K2R w KQ - 2 18",
+  "name": "swiss-077-white-vs-opus-carlsen ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r1q1k1/p1n2pp1/1p2rn1p/P1ppN3/3P4/2P1PP2/R5PP/1QB2RK1 w - - 1 18",
+  "name": "swiss-084-white-vs-dgs-elo ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/p1qn1ppp/4bn2/1p2p3/2P5/PN2P2P/1BQ1BPP1/R4RK1 w - - 0 18",
+  "name": "swiss-085-white-vs-pheanup ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r2rk1/p2bqp1p/1pn3pQ/2p1p3/6nP/2NP1NP1/PP2PPB1/R2R2K1 w - - 3 18",
+  "name": "swiss-094-white-vs-betago ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/pp1pnpp1/1bn1p2p/6B1/4P3/PNN5/1PPQ1PPP/R3KB1R w KQ - 0 10",
+  "name": "practice-010-black-vs-dgs-elo ply5",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/pp1pnpp1/1bn1p2p/8/4P2B/PNN5/1PPQ1PPP/R3KB1R b KQ - 1 10",
+  "name": "practice-010-black-vs-dgs-elo ply6",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/pp2npp1/1bn1p2p/3p4/4P2B/PNN5/1PPQ1PPP/R3KB1R w KQ - 0 11",
+  "name": "practice-010-black-vs-dgs-elo ply7",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/pp2npp1/1bn1p2p/3P4/7B/PNN5/1PPQ1PPP/R3KB1R b KQ - 0 11",
+  "name": "practice-010-black-vs-dgs-elo ply8",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qk2r/pp1nbpp1/2p1pn1p/8/3P1B1P/3Q1NN1/PPP2PP1/1K1R3R b kq - 5 12",
+  "name": "practice-008-white-vs-miskeen ply12",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1br2k1/p4pp1/1pnqpn1p/2pp4/3P4/2P1PN1P/PP1NBPP1/R2QR1K1 w - - 0 12",
+  "name": "practice-009-black-vs-rmfe ply6",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1br2k1/p4pp1/1pnqpn1p/1Bpp4/3P4/2P1PN1P/PP1N1PP1/R2QR1K1 b - - 1 12",
+  "name": "practice-009-black-vs-rmfe ply7",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/pp2npp1/1bn4p/3p4/7B/PNN5/1PPQ1PPP/R3KB1R w KQ - 0 12",
+  "name": "practice-010-black-vs-dgs-elo ply9",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/pp2npp1/1bn4p/3p4/7B/PNN5/1PPQ1PPP/2KR1B1R b - - 1 12",
+  "name": "practice-010-black-vs-dgs-elo ply10",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q1rk1/pp1nbpp1/2p1pn1p/8/3P1B1P/3Q1NN1/PPP2PP1/1K1R3R w - - 6 13",
+  "name": "practice-008-white-vs-miskeen ply13",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q1rk1/pp1nbpp1/2p1pn1p/8/3P1B1P/5NN1/PPPQ1PP1/1K1R3R b - - 7 13",
+  "name": "practice-008-white-vs-miskeen ply14",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/pb3pp1/1pnqpn1p/1Bpp4/3P4/2P1PN1P/PP1N1PP1/R2QR1K1 w - - 2 13",
+  "name": "practice-009-black-vs-rmfe ply8",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/pb3pp1/1pnqpn1p/1Bpp4/3P4/2P1PN1P/PP1NQPP1/R3R1K1 b - - 3 13",
+  "name": "practice-009-black-vs-rmfe ply9",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q1rk1/pp2npp1/1bn1b2p/3p4/7B/PNN5/1PPQ1PPP/2KR1B1R w - - 2 13",
+  "name": "practice-010-black-vs-dgs-elo ply11",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q1rk1/pp2npp1/1bn1b2p/3p4/N6B/PN6/1PPQ1PPP/2KR1B1R b - - 3 13",
+  "name": "practice-010-black-vs-dgs-elo ply12",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp1nbpp1/1qp1pn1p/8/3P1B1P/5NN1/PPPQ1PP1/1K1R3R w - - 8 14",
+  "name": "practice-008-white-vs-miskeen ply15",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp1nbpp1/1qp1pn1B/8/3P3P/5NN1/PPPQ1PP1/1K1R3R b - - 0 14",
+  "name": "practice-008-white-vs-miskeen ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1r2k1/pb3pp1/1pnqpn1p/1Bpp4/3P4/2P1PN1P/PP1NQPP1/R3R1K1 w - - 4 14",
+  "name": "practice-009-black-vs-rmfe ply10",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1r2k1/pb3pp1/1pnqpn1p/1Bpp4/3P4/P1P1PN1P/1P1NQPP1/R3R1K1 b - - 0 14",
+  "name": "practice-009-black-vs-rmfe ply11",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/pp2npp1/1bn1b2p/3p4/N6B/PN6/1PPQ1PPP/2KR1B1R w - - 4 14",
+  "name": "practice-010-black-vs-dgs-elo ply13",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/pp2npp1/1bn1b2p/3p4/N6B/PN6/1PPQ1PPP/1K1R1B1R b - - 5 14",
+  "name": "practice-010-black-vs-dgs-elo ply14",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp1nbp2/1qp1pn1p/8/3P3P/5NN1/PPPQ1PP1/1K1R3R w - - 0 15",
+  "name": "practice-008-white-vs-miskeen ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp1nbp2/1qp1pn1Q/8/3P3P/5NN1/PPP2PP1/1K1R3R b - - 0 15",
+  "name": "practice-008-white-vs-miskeen ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pb3pp1/1pnqpn1p/1Bpp4/3P4/P1P1PN1P/1P1NQPP1/R3R1K1 w - - 1 15",
+  "name": "practice-009-black-vs-rmfe ply12",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pb3pp1/1pnqpn1p/1Bpp4/3P4/P1P1PN1P/1P1NQPP1/2R1R1K1 b - - 2 15",
+  "name": "practice-009-black-vs-rmfe ply13",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/pp2n1p1/1bn1bp1p/3p4/N6B/PN6/1PPQ1PPP/1K1R1B1R w - - 0 15",
+  "name": "practice-010-black-vs-dgs-elo ply15",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/pp2n1p1/1bn1bp1p/3p4/N6B/PN1B4/1PPQ1PPP/1K1R3R b - - 1 15",
+  "name": "practice-010-black-vs-dgs-elo ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/pp1nbp2/1qp1pn1Q/8/3P3P/5NN1/PPP2PP1/1K1R3R w - - 1 16",
+  "name": "practice-008-white-vs-miskeen ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/pp1nbp2/1qp1pn1Q/7N/3P3P/5N2/PPP2PP1/1K1R3R b - - 2 16",
+  "name": "practice-008-white-vs-miskeen ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pbq2pp1/1pn1pn1p/1Bpp4/3P4/P1P1PN1P/1P1NQPP1/2R1R1K1 w - - 3 16",
+  "name": "practice-009-black-vs-rmfe ply14",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pbq2pp1/1pn1pn1p/1Bpp4/3P4/P1P1PN1P/1P2QPP1/2R1RNK1 b - - 4 16",
+  "name": "practice-009-black-vs-rmfe ply15",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/pp2n1p1/1b2bp1p/3pn3/N6B/PN1B4/1PPQ1PPP/1K1R3R w - - 2 16",
+  "name": "practice-010-black-vs-dgs-elo ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/pp2n1p1/1b2bp1p/3pn3/N6B/PN1B4/1PPQ1PPP/1K1RR3 b - - 3 16",
+  "name": "practice-010-black-vs-dgs-elo ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1q2rk1/p1p2ppp/2nb4/6N1/P1BP4/2p4P/5PK1/R1BQ1R2 b - - 1 17",
+  "name": "knockout-110-white-vs-trio-duo ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb1r1k1/ppp3b1/6Np/3Np3/2Pnp1n1/8/PP1BBPPP/3RR1K1 b - - 0 17",
+  "name": "knockout-111-white-vs-dogwarts ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "br1q1rk1/p4pbn/1pnp2p1/2p1pPP1/P3P3/3P4/1PP1N1BN/R1BQ1RK1 b - - 0 17",
+  "name": "knockout-112-white-vs-the-pershore-gambit ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bqr1k1/1p1nbppp/8/p1p5/2PpPP2/1P1P3P/P2N2B1/R1BQ1RK1 b - - 1 17",
+  "name": "knockout-114-white-vs-hal9000 ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pb2q1pp/1p1bp3/P1ppNp2/3PnB1P/2PBP3/1P3PP1/R2QK2R b KQ - 0 17",
+  "name": "knockout-115-white-vs-alphabeta ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/bpp2pp1/3p1nnp/pP6/3BP3/2P2NNP/1P3PP1/R2QR1K1 b - - 0 17",
+  "name": "knockout-118-white-vs-team1 ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/2p2ppp/2p5/7b/p3P3/3BK1bP/PPPB2P1/R6R w - - 2 17",
+  "name": "knockout-119-black-vs-lubina ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/2p2ppp/2p5/7b/p3P3/3BK1bP/PPPB2P1/R4R2 b - - 3 17",
+  "name": "knockout-119-black-vs-lubina ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3qrk1/1bp1b1p1/1p1pp2p/p4p2/P1PPn3/1P2PNP1/2Q2PBP/R1BR2K1 b - - 0 17",
+  "name": "knockout-121-white-vs-opus-carlsen ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b2rk1/5pp1/2p4p/p2p3n/7q/1PNB3P/P1PQ1PP1/R3R1K1 w - - 0 17",
+  "name": "knockout-122-black-vs-betago ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b2rk1/5pp1/2p4p/p2p3n/7q/1PNB3P/P1PQ1PP1/3RR1K1 b - - 1 17",
+  "name": "knockout-122-black-vs-betago ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3rk1/4pp1p/1qnp1bp1/2p5/1p2P3/2PPBBPP/1P1Q1P2/R4RK1 w - - 0 17",
+  "name": "practice-003-black-vs-gladiator ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3rk1/4pp1p/1qnp1bp1/2p5/1p2P3/2PPBBPP/1P1Q1P2/R2R2K1 b - - 1 17",
+  "name": "practice-003-black-vs-gladiator ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/1b2npbp/1p1p2p1/2pPp3/PP6/1Q1P2P1/3N1PBP/1RB1R1K1 b - - 2 17",
+  "name": "practice-005-white-vs-sobriety ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1q2rk1/3nbpp1/pp5p/2pQ4/P7/4PNB1/1P3PPP/R4RK1 w - - 1 17",
+  "name": "practice-006-black-vs-opus-carlsen ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1q2rk1/3nbpp1/pp5p/2pQ4/P7/4PNB1/1P3PPP/R2R2K1 b - - 2 17",
+  "name": "practice-006-black-vs-opus-carlsen ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/pp1nbp2/1qp1p2Q/7n/3P3P/5N2/PPP2PP1/1K1R3R w - - 0 17",
+  "name": "practice-008-white-vs-miskeen ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/pp1nbp2/1qp1p3/7Q/3P3P/5N2/PPP2PP1/1K1R3R b - - 0 17",
+  "name": "practice-008-white-vs-miskeen ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pb2qpp1/1pn1pn1p/1Bpp4/3P4/P1P1PN1P/1P2QPP1/2R1RNK1 w - - 5 17",
+  "name": "practice-009-black-vs-rmfe ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pb2qpp1/1pn1pn1p/1Bpp4/3P4/P1P1PNNP/1P2QPP1/2R1R1K1 b - - 6 17",
+  "name": "practice-009-black-vs-rmfe ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/pp2n1p1/1b3p1p/3pn3/N5bB/PN1B4/1PPQ1PPP/1K1RR3 w - - 4 17",
+  "name": "practice-010-black-vs-dgs-elo ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/pp2n1p1/1N3p1p/3pn3/6bB/PN1B4/1PPQ1PPP/1K1RR3 b - - 0 17",
+  "name": "practice-010-black-vs-dgs-elo ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/1p3pp1/p2P1n1p/2N2P2/P3p1Pb/4B3/1PP3BP/R2Q1K1R b - - 1 17",
+  "name": "swiss-031-white-vs-neomatica ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b3k1/1p2bqp1/p2p1n1p/4p3/PP2P3/2N1P3/2P3PP/R2Q1R1K w - - 0 17",
+  "name": "swiss-032-black-vs-trio-duo ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b3k1/1p2bqp1/p2p1n1p/3Np3/PP2P3/4P3/2P3PP/R2Q1R1K b - - 1 17",
+  "name": "swiss-032-black-vs-trio-duo ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/pp3pbp/3pb3/2p3p1/P7/2PPB1PP/1P3PB1/R2QR1K1 b - - 1 17",
+  "name": "swiss-034-white-vs-magnus-ai ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pp1b2pp/q1n1pb2/3p1p2/2PPn3/1P2NNP1/PB2QPBP/3RR1K1 w - - 6 17",
+  "name": "swiss-035-black-vs-apex ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pp1b2pp/q1n1pb2/3pNp2/2PPn3/1P2N1P1/PB2QPBP/3RR1K1 b - - 7 17",
+  "name": "swiss-035-black-vs-apex ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/2pbqpbp/1p1p2p1/p2Pp2B/PnP1P3/1NN1B2P/1P1Q1PP1/R4RK1 b - - 0 17",
+  "name": "swiss-037-white-vs-keep-kann-and-caro-on ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r2rk1/1bq1bppp/1Nnppn2/8/pp2PP2/PN2BB2/1PPQ2PP/3R1RK1 w - - 0 17",
+  "name": "swiss-040-black-vs-talos ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2N2rk1/1bq1bppp/2nppn2/8/pp2PP2/PN2BB2/1PPQ2PP/3R1RK1 b - - 0 17",
+  "name": "swiss-040-black-vs-talos ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2b2rk1/2q1bppp/p2p1n2/n3p1B1/Br2P3/1Pp2NN1/P1P2PPP/R2QR1K1 w - - 2 17",
+  "name": "swiss-041-black-vs-pawnstorm ply14",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2b2rk1/2q1bppp/p2p1n2/n3p1B1/Br2P3/1Pp2NN1/P1P2PPP/2RQR1K1 b - - 3 17",
+  "name": "swiss-041-black-vs-pawnstorm ply15",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b1r1k1/2p2ppp/2p4q/p2n4/7P/P1B1pP2/1PP1B1P1/1K1RQ2R b - - 0 17",
+  "name": "swiss-042-white-vs-ryan-vincent ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qrbk1/1p3ppb/1np4p/p2p1N2/3PNB2/P5PB/1PQ2P1P/4RRK1 b - - 0 17",
+  "name": "swiss-044-white-vs-tensortortoise ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p1q2ppp/2pb1n2/1p2NbB1/1n1P4/1B3N1P/PP3PP1/R2Q1RK1 b - - 5 17",
+  "name": "swiss-045-white-vs-kaamuli ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1rk1/pb2qpp1/1pp1pn1p/8/2PP4/bP1B1N2/P1Q2PPP/B3RRK1 b - - 3 17",
+  "name": "swiss-046-white-vs-dgs-elo ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rq2rk1/3bppb1/p1np2pn/1pp4p/P1P4P/1PNPP1P1/3Q1PBN/1RB2RK1 w - - 0 17",
+  "name": "swiss-047-black-vs-bitsentangled ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rq2rk1/3bppb1/p1np2pn/1Pp4p/2P4P/1PNPP1P1/3Q1PBN/1RB2RK1 b - - 0 17",
+  "name": "swiss-047-black-vs-bitsentangled ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4k2/p3ppbp/2p3p1/3r4/8/B1P1P1P1/P4P1P/R1R3K1 w - - 4 17",
+  "name": "swiss-048-black-vs-ms ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4k2/p3ppbp/2p3p1/3r4/8/B1P1P1P1/P4P1P/1RR3K1 b - - 5 17",
+  "name": "swiss-048-black-vs-ms ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3qr1k1/1b1nbppp/pp1r1n2/2pp2P1/3P3P/PPN2N1B/1B2PP2/2RQ1RK1 w - - 1 17",
+  "name": "swiss-052-black-vs-krishthefish ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3qr1k1/1b1nbppp/pp1r1P2/2pp4/3P3P/PPN2N1B/1B2PP2/2RQ1RK1 b - - 0 17",
+  "name": "swiss-052-black-vs-krishthefish ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p1nq1bp/2pp2p1/p2Ppb1P/2P1Nn2/4B1P1/PP1N1P2/2RQKB1R b K - 0 17",
+  "name": "swiss-053-white-vs-zak ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/pp2pp1p/3p1bpP/2pPn3/P4P2/2BP2PB/1PP5/R2QK2R b KQ - 0 17",
+  "name": "swiss-054-white-vs-dgs-elo ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2kr3r/Bp2bpp1/2b5/4p3/7p/1N3P2/PPP3PP/2KR3R w - - 0 17",
+  "name": "swiss-057-black-vs-leetbeaters ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2kr3r/Bp2bpp1/2b5/N3p3/7p/5P2/PPP3PP/2KR3R b - - 1 17",
+  "name": "swiss-057-black-vs-leetbeaters ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2k4r/1pp2pp1/pb2bn2/4B3/7p/P1N2P2/1PP1B1PP/1K1R4 w - - 3 17",
+  "name": "swiss-058-black-vs-stonkfish ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2k4r/1pp2pp1/pb2bn2/4B3/7p/P1NB1P2/1PP3PP/1K1R4 b - - 4 17",
+  "name": "swiss-058-black-vs-stonkfish ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1rk1/1b1q1pb1/ppn1p1p1/2ppPn1p/P2P1P1P/N1P2NP1/1P3BB1/R2Q1RK1 b - - 1 17",
+  "name": "swiss-059-white-vs-team1 ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r2k1/r1q2ppp/1p2pn2/8/8/PQP1P2P/5PP1/R1B2RK1 b - - 2 17",
+  "name": "swiss-060-white-vs-cornelius ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/1pp3b1/n2p3p/3Pp3/2P2n2/p1N1BN1P/PP1QBP2/2KR2R1 w - - 0 17",
+  "name": "swiss-061-black-vs-omega3-fish ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/1pp3b1/n2p3p/3Pp3/2P2n2/P1N1BN1P/P2QBP2/2KR2R1 b - - 0 17",
+  "name": "swiss-061-black-vs-omega3-fish ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb2rk1/p3Qp1p/2p1p3/5q2/3N4/6P1/P3PPBP/3R2K1 b - - 4 17",
+  "name": "swiss-062-white-vs-danya-s-disciple ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "rn2k2r/p3bpp1/2p3b1/1p2q2p/7P/1Q6/PP1NBPP1/R1B2K1R w kq - 0 17",
+  "name": "swiss-064-black-vs-ms ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "rn2k2r/p3bpp1/2p3b1/1p2q2p/7P/1Q3N2/PP2BPP1/R1B2K1R b kq - 1 17",
+  "name": "swiss-064-black-vs-ms ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1nb1r1k1/4rp1p/pp1q2p1/3p4/P2Nn3/2P2N2/1P2BPPP/R2Q1RK1 w - - 0 17",
+  "name": "swiss-065-black-vs-zak ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1nb1r1k1/4rp1p/pp1q2p1/3p4/P2Nn3/2P2N2/1P2BPPP/R2QR1K1 b - - 1 17",
+  "name": "swiss-065-black-vs-zak ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4r1k/1p4p1/1qn1pn1p/p2p4/8/1P2N1P1/P2QPPBP/2R2RK1 b - - 3 17",
+  "name": "swiss-066-white-vs-ryan-vincent ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/1p3ppp/2nBbn2/p1Pp4/8/P4N2/1P2BPPP/R2Q1RK1 b - - 0 17",
+  "name": "swiss-068-white-vs-opus-carlsen ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3kbr1/1p1n1p2/2p1pp1p/q7/p2P3P/P1PN2B1/1P2QPP1/R3K2R b KQq - 3 17",
+  "name": "swiss-070-white-vs-ms ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1br2k1/p2qbppp/1p2pn2/8/5B2/P1N4P/1P2BPP1/RQ1R2K1 b - - 0 17",
+  "name": "swiss-072-white-vs-ai-fellows ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/pp1b1pp1/5P1p/Pp4B1/3p4/P1pP1Q2/2P2PPP/4RRK1 w - - 0 17",
+  "name": "swiss-073-black-vs-lehmanbro ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/pp1b1pp1/5P1p/Pp6/3p3B/P1pP1Q2/2P2PPP/4RRK1 b - - 1 17",
+  "name": "swiss-073-black-vs-lehmanbro ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rqr1k1/1p1b1pp1/p2b1n1p/3p4/2Pn4/P3BN1P/1P3PP1/2RQRBK1 w - - 0 17",
+  "name": "swiss-075-black-vs-gladiator ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rqr1k1/1p1b1pp1/p2b1n1p/3p4/2PQ4/P3BN1P/1P3PP1/2R1RBK1 b - - 0 17",
+  "name": "swiss-075-black-vs-gladiator ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/2p1bppp/3p4/p2Pp3/1P6/1P1P3P/1P3PP1/R1BQR1K1 b - - 0 17",
+  "name": "swiss-078-white-vs-edward ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r5k1/p1p2ppp/1p6/2Pnr3/8/4P3/P4PPP/R1B2RK1 w - - 0 17",
+  "name": "swiss-079-black-vs-danya-s-disciple ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r5k1/p1p2ppp/1p6/2Pnr3/8/4P3/PB3PPP/R4RK1 b - - 1 17",
+  "name": "swiss-079-black-vs-danya-s-disciple ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3rr1k1/1b1nqppp/1p3n2/pNppp3/P1PP4/1P2PN1P/2Q1BPP1/2R2RK1 w - - 0 17",
+  "name": "swiss-080-black-vs-zak ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3rr1k1/1b1nqppp/1p3n2/pNppN3/P1PP4/1P2P2P/2Q1BPP1/2R2RK1 b - - 0 17",
+  "name": "swiss-080-black-vs-zak ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/ppq1bpp1/4b2p/3p4/8/2PQ1NPP/PP3BP1/R3R1K1 b - - 2 17",
+  "name": "swiss-081-white-vs-ai-fellows ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q2k1/p4ppp/np2rn2/8/2NP4/B4Q2/P4PPP/2R2RK1 b - - 4 17",
+  "name": "swiss-082-white-vs-lubina ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rr3k1/pb1qppbp/1p3np1/8/P2PP3/4B2P/3NBPP1/RQ1R2K1 w - - 1 17",
+  "name": "swiss-086-black-vs-opus-carlsen ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rr3k1/pb1qppbp/1p3np1/3P4/P3P3/4B2P/3NBPP1/RQ1R2K1 b - - 0 17",
+  "name": "swiss-086-black-vs-opus-carlsen ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1r1b1k1/1p3ppp/1q2pn2/p1ppN3/P2P4/2P1P1Q1/1P1N1PPP/R4RK1 w - - 6 17",
+  "name": "swiss-087-black-vs-fuzzybot ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1r1b1k1/1p3ppp/1q2pn2/p1ppN3/P2P4/2P1P1Q1/1P1N1PPP/RR4K1 b - - 7 17",
+  "name": "swiss-087-black-vs-fuzzybot ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b2rk1/ppq2pp1/3b1n1p/3pN3/3P4/2PBB3/P1Q2PPP/4RRK1 b - - 1 17",
+  "name": "swiss-088-white-vs-danya-s-disciple ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4r2/pbp2pkp/1p4p1/8/2P5/2R2B1P/PP3PP1/3q1RK1 w - - 0 17",
+  "name": "swiss-089-black-vs-dgs-elo ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4r2/pbp2pkp/1p4p1/8/2P5/2R2B1P/PP3PP1/3R2K1 b - - 0 17",
+  "name": "swiss-089-black-vs-dgs-elo ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3rk1/p1q1npbp/1p1p2p1/3P4/1P1p2P1/3P3P/2P2PBK/1RBQ1R2 b - - 0 17",
+  "name": "swiss-090-white-vs-stonkfish ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1pqnbppp/2ppn3/p3p3/P1P1P3/1PN1BQ1P/2P2PP1/3RNR1K w - - 6 17",
+  "name": "swiss-091-black-vs-make-no-mistakes ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1pqnbppp/2ppn3/p3p3/P1P1P3/1PNNBQ1P/2P2PP1/3R1R1K b - - 7 17",
+  "name": "swiss-091-black-vs-make-no-mistakes ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p3npbp/bpn1p1p1/1N6/P3P3/1N2B1P1/1PP2PBP/R4RK1 b - - 0 17",
+  "name": "swiss-092-white-vs-gladiator ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p1q1pp1/2n1bb1p/1N2p3/p1Pp4/P2P1NP1/1PQ2PBP/2R1R1K1 w - - 0 17",
+  "name": "swiss-096-black-vs-the-roooookkk ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p1q1pp1/2n1bb1p/1N2p3/p1Pp4/PP1P1NP1/2Q2PBP/2R1R1K1 b - - 0 17",
+  "name": "swiss-096-black-vs-the-roooookkk ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rn1rk1/p4pbp/3q1np1/R1p1pb2/N1Pp4/P2P1NP1/3BPPBP/3Q1RK1 b - - 5 17",
+  "name": "swiss-097-white-vs-slopfish ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qrbk1/1bp2pp1/3p1n1p/p3p3/1pP1P3/1P1PBNNP/1PQ2PP1/R3R1K1 b - - 1 17",
+  "name": "swiss-098-white-vs-e-2 ply14",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp2ppb1/2n2n2/q5Bp/3Np1pR/2N5/PPPQ1PP1/2K4R b - - 5 17",
+  "name": "swiss-099-white-vs-stonkfish ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2k1r3/pppr2pp/4bb2/4p3/P1N2n2/2P5/1P3PPP/R1B1RBK1 w - - 0 17",
+  "name": "swiss-100-black-vs-omega3-fish ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2k1r3/pppr2pp/4bb2/4p3/P1N2B2/2P5/1P3PPP/R3RBK1 b - - 0 17",
+  "name": "swiss-100-black-vs-omega3-fish ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr4/ppq1ppkp/2n1bnp1/2p5/2P3P1/1PN1QN1P/P3PPB1/R4RK1 b - - 1 17",
+  "name": "swiss-103-white-vs-rmfe ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q2k1/pp2rp1p/8/1B1Qbbp1/P3nNP1/4P2P/1P3P2/R1B2RK1 b - - 0 17",
+  "name": "swiss-104-white-vs-slopfish ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq2k1/p2n1ppp/2p1rn2/b7/R3p3/2N1P3/1PQ1BPPP/2B2RK1 b - - 1 17",
+  "name": "swiss-105-white-vs-gators ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p3ppp/p1n5/3p4/P3n3/1N1BPN1q/1PP5/R2Q1R1K w - - 0 17",
+  "name": "swiss-107-black-vs-make-no-mistakes ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p3ppp/p1n5/3p4/P3n3/1N1BPN1q/1PP5/R2Q1RK1 b - - 1 17",
+  "name": "swiss-107-black-vs-make-no-mistakes ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r6r/pN1nkpp1/2p1pn1p/7P/1q1P4/1Q6/PPPN1PP1/R3K2R b KQ - 2 17",
+  "name": "swiss-108-white-vs-ai-fellows ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p1p2ppp/2nb4/5qN1/P1BP4/2p4P/5PK1/R1BQ1R2 w - - 2 18",
+  "name": "knockout-110-white-vs-trio-duo ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p1p2ppp/2nb4/5qN1/P2P4/2pB3P/5PK1/R1BQ1R2 b - - 3 18",
+  "name": "knockout-110-white-vs-trio-duo ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb1r3/ppp2kb1/6Np/3Np3/2Pnp1n1/8/PP1BBPPP/3RR1K1 w - - 1 18",
+  "name": "knockout-111-white-vs-dogwarts ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb1r3/ppp2kb1/7p/3Np3/2Pnp1nN/8/PP1BBPPP/3RR1K1 b - - 2 18",
+  "name": "knockout-111-white-vs-dogwarts ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "br1q1rk1/p4pb1/1pnp2p1/2p1pPn1/P3P3/3P4/1PP1N1BN/R1BQ1RK1 w - - 0 18",
+  "name": "knockout-112-white-vs-the-pershore-gambit ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "br1q1rk1/p4pb1/1pnp2p1/2p1pPn1/P3P3/3P4/1PP1N1BN/R1B1QRK1 b - - 1 18",
+  "name": "knockout-112-white-vs-the-pershore-gambit ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1b1qb2p/p2p2p1/1p2pp1n/1B2P3/3P1N1P/1PP2PP1/RN1QR1K1 w - - 0 18",
+  "name": "knockout-113-black-vs-stonkfish ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1b1qb2p/p2p2p1/1p2pp1n/4P3/3P1N1P/1PPB1PP1/RN1QR1K1 b - - 1 18",
+  "name": "knockout-113-black-vs-stonkfish ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bqr1k1/1p1nbppp/8/2p5/p1PpPP2/1P1P3P/P2N2B1/R1BQ1RK1 w - - 0 18",
+  "name": "knockout-114-white-vs-hal9000 ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bqr1k1/1p1nbppp/8/2p5/p1PpPP2/1P1P3P/P2N2B1/1RBQ1RK1 b - - 1 18",
+  "name": "knockout-114-white-vs-hal9000 ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pb2q1pp/3bp3/p1ppNp2/3PnB1P/2PBP3/1P3PP1/R2QK2R w KQ - 0 18",
+  "name": "knockout-115-white-vs-alphabeta ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pb2q1pp/3bp3/p1ppNp2/Q2PnB1P/2PBP3/1P3PP1/R3K2R b KQ - 1 18",
+  "name": "knockout-115-white-vs-alphabeta ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/bp3ppp/p1n2q2/P2p4/3N4/1NP5/1P2RPPP/R2Q2K1 w - - 0 18",
+  "name": "knockout-116-black-vs-solo-man ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/bp3ppp/p1n2q2/P2p4/8/1NP2N2/1P2RPPP/R2Q2K1 b - - 1 18",
+  "name": "knockout-116-black-vs-solo-man ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3rk1/3qppbp/3p2p1/pppP2B1/1n2P3/1P1P1BPP/P2Q1P2/1R3RK1 b - - 0 18",
+  "name": "knockout-117-white-vs-ryan-vincent ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/1pp2pp1/3p1nnp/pPb5/3BP3/2P2NNP/1P3PP1/R2QR1K1 w - - 1 18",
+  "name": "knockout-118-white-vs-team1 ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/1pp2pp1/3p1nnp/pPb5/3BP3/2P1RNNP/1P3PP1/R2Q2K1 b - - 2 18",
+  "name": "knockout-118-white-vs-team1 ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/2p2ppp/2pb4/7b/p3P3/3BK2P/PPPB2P1/R4R2 w - - 4 18",
+  "name": "knockout-119-black-vs-lubina ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/2p2ppp/2pb4/7b/p3P3/P2BK2P/1PPB2P1/R4R2 b - - 0 18",
+  "name": "knockout-119-black-vs-lubina ply26",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p4ppp/bqp1p3/3nP1B1/Pb2N3/1p3BP1/1P2PP1P/RQ1R2K1 b - - 5 18",
+  "name": "knockout-120-white-vs-danya-s-disciple ply26",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3qrk1/1bp1b1p1/1p1pp3/p4p1p/P1PPn3/1P2PNP1/2Q2PBP/R1BR2K1 w - - 0 18",
+  "name": "knockout-121-white-vs-opus-carlsen ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3qrk1/1bp1b1p1/1p1pp3/p4p1p/P1PPn3/BP2PNP1/2Q2PBP/R2R2K1 b - - 1 18",
+  "name": "knockout-121-white-vs-opus-carlsen ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/3b1pp1/2p4p/p2p3n/7q/1PNB3P/P1PQ1PP1/3RR1K1 w - - 2 18",
+  "name": "knockout-122-black-vs-betago ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/3b1pp1/2p4p/p2p3n/N6q/1P1B3P/P1PQ1PP1/3RR1K1 b - - 3 18",
+  "name": "knockout-122-black-vs-betago ply26",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3kb1r/1b3ppp/p3pn2/3q4/Np6/1P1QPN2/PB3PPP/R2R2K1 b kq - 1 18",
+  "name": "practice-002-white-vs-rmfe ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rr3k1/4pp1p/1qnp1bp1/2p5/1p2P3/2PPBBPP/1P1Q1P2/R2R2K1 w - - 2 18",
+  "name": "practice-003-black-vs-gladiator ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rr3k1/4pp1p/1qnp1bp1/2p5/1p1PP3/2P1BBPP/1P1Q1P2/R2R2K1 b - - 0 18",
+  "name": "practice-003-black-vs-gladiator ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/1b2npbp/1p1p2p1/3Pp3/Pp6/1Q1P2P1/3N1PBP/1RB1R1K1 w - - 0 18",
+  "name": "practice-005-white-vs-sobriety ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/1b2npbp/1p1p2p1/3Pp3/Pp6/1Q1P2P1/5PBP/1RB1RNK1 b - - 1 18",
+  "name": "practice-005-white-vs-sobriety ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1qr2k1/3nbpp1/pp5p/2pQ4/P7/4PNB1/1P3PPP/R2R2K1 w - - 3 18",
+  "name": "practice-006-black-vs-opus-carlsen ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1qr2k1/3nbpp1/pp5p/2pQ4/P7/4PNBP/1P3PP1/R2R2K1 b - - 0 18",
+  "name": "practice-006-black-vs-opus-carlsen ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bqrbk1/5pp1/5n1p/ppp1p3/2PpP3/1P1P2NP/RPQB1PPN/4R1K1 b - - 1 18",
+  "name": "practice-007-white-vs-ryan-vincent ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/pp2bp2/1qp1pn2/7Q/3P3P/5N2/PPP2PP1/1K1R3R w - - 1 18",
+  "name": "practice-008-white-vs-miskeen ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/pp2bp2/1qp1pn1Q/8/3P3P/5N2/PPP2PP1/1K1R3R b - - 2 18",
+  "name": "practice-008-white-vs-miskeen ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pb2qp2/1pn1pnpp/1Bpp4/3P4/P1P1PNNP/1P2QPP1/2R1R1K1 w - - 0 18",
+  "name": "practice-009-black-vs-rmfe ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pb2qp2/1pn1pnpp/1Bpp4/1P1P4/P1P1PNNP/4QPP1/2R1R1K1 b - - 0 18",
+  "name": "practice-009-black-vs-rmfe ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/1p2n1p1/1p3p1p/3pn3/6bB/PN1B4/1PPQ1PPP/1K1RR3 w - - 0 18",
+  "name": "practice-010-black-vs-dgs-elo ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq1rk1/1p2n1p1/1p3p1p/3pn3/6bB/PN6/1PPQBPPP/1K1RR3 b - - 1 18",
+  "name": "practice-010-black-vs-dgs-elo ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1rk1/1pp2pp1/1bbp2qp/8/2B1P3/1p3N1P/PP2QPP1/3R1K1R w - - 0 18",
+  "name": "swiss-030-black-vs-terminal ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1rk1/1pp2pp1/1bbp2qp/8/4P3/1B3N1P/PP2QPP1/3R1K1R b - - 0 18",
+  "name": "swiss-030-black-vs-terminal ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bqr1k1/1p3pp1/p2P1n1p/2N2P2/P3p1Pb/4B3/1PP3BP/R2Q1K1R w - - 2 18",
+  "name": "swiss-031-white-vs-neomatica ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bqr1k1/1p3pp1/p2P1n1p/P1N2P2/4p1Pb/4B3/1PP3BP/R2Q1K1R b - - 0 18",
+  "name": "swiss-031-white-vs-neomatica ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r5k1/1p2bqp1/p2pbn1p/3Np3/PP2P3/4P3/2P3PP/R2Q1R1K w - - 2 18",
+  "name": "swiss-032-black-vs-trio-duo ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r5k1/1p2bqp1/p2pbn1p/3Np3/PPP1P3/4P3/6PP/R2Q1R1K b - - 0 18",
+  "name": "swiss-032-black-vs-trio-duo ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b2rk1/pp3ppp/3p1B2/2p5/P1qnN3/8/1P3PPP/R2QR1K1 b - - 3 18",
+  "name": "swiss-033-white-vs-kaamuli ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1qr1k1/pp3pbp/3pb3/2p3p1/P7/2PPB1PP/1P3PB1/R2QR1K1 w - - 2 18",
+  "name": "swiss-034-white-vs-magnus-ai ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1qr1k1/pp3pbp/3pb3/2p3pQ/P7/2PPB1PP/1P3PB1/R3R1K1 b - - 3 18",
+  "name": "swiss-034-white-vs-magnus-ai ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pp1b2pp/q3pb2/3pnp2/2PPn3/1P2N1P1/PB2QPBP/3RR1K1 w - - 0 18",
+  "name": "swiss-035-black-vs-apex ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/pp1b2pp/q3pb2/3pPp2/2P1n3/1P2N1P1/PB2QPBP/3RR1K1 b - - 0 18",
+  "name": "swiss-035-black-vs-apex ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp2bpp1/4pn1p/2P5/5P1P/3q2N1/PPP3P1/1KBR3R w - - 0 18",
+  "name": "swiss-036-black-vs-stonkfish ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp2bpp1/4pn1p/2P5/5P1P/3R2N1/PPP3P1/1KB4R b - - 0 18",
+  "name": "swiss-036-black-vs-stonkfish ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/2pbqpbp/1p1p4/p2Pp2p/PnP1P3/1NN1B2P/1P1Q1PP1/R4RK1 w - - 0 18",
+  "name": "swiss-037-white-vs-keep-kann-and-caro-on ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2r2k1/2pbqpbp/1p1p4/p2Pp2p/PnP1PP2/1NN1B2P/1P1Q2P1/R4RK1 b - - 0 18",
+  "name": "swiss-037-white-vs-keep-kann-and-caro-on ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1r2k1/1pN2pbp/6p1/p7/PnP1Pp2/1P3b2/4BPPP/3R1RK1 w - - 0 18",
+  "name": "swiss-038-black-vs-french-carlsen ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1r2k1/1pN2pbp/6p1/p7/PnP1Pp2/1P3B2/5PPP/3R1RK1 b - - 0 18",
+  "name": "swiss-038-black-vs-french-carlsen ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qbr1k/ppp2pbp/3p4/2PP2p1/1P2Pp2/5N1P/P2QBPP1/1R2R1K1 b - - 0 18",
+  "name": "swiss-039-white-vs-jsp ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r3k1/1bq1bppp/2nppn2/8/pp2PP2/PN2BB2/1PPQ2PP/3R1RK1 w - - 0 18",
+  "name": "swiss-040-black-vs-talos ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r3k1/1bq1bppp/2nppn2/8/pp1NPP2/P3BB2/1PPQ2PP/3R1RK1 b - - 1 18",
+  "name": "swiss-040-black-vs-talos ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2b2rk1/2q1bppp/p2p1n2/4p1B1/Brn1P3/1Pp2NN1/P1P2PPP/2RQR1K1 w - - 4 18",
+  "name": "swiss-041-black-vs-pawnstorm ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2b2rk1/2q1bppp/p2p1n2/4p1B1/Brn1P3/PPp2NN1/2P2PPP/2RQR1K1 b - - 0 18",
+  "name": "swiss-041-black-vs-pawnstorm ply17",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/2p2ppp/b1p4q/p2n4/7P/P1B1pP2/1PP1B1P1/1K1RQ2R w - - 1 18",
+  "name": "swiss-042-white-vs-ryan-vincent ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/2p2ppp/B1p4q/p2n4/7P/P1B1pP2/1PP3P1/1K1RQ2R b - - 0 18",
+  "name": "swiss-042-white-vs-ryan-vincent ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb1k2r/p2p1p2/2p1p3/q1b1P1p1/6Pn/2N1Q2P/PPP2P1B/2KR1B1R w k - 3 18",
+  "name": "swiss-043-black-vs-pgn ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb1k2r/p2p1p2/2p1p3/q1b1P1p1/6Pn/2NQ3P/PPP2P1B/2KR1B1R b k - 4 18",
+  "name": "swiss-043-black-vs-pgn ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qrbk1/1p3ppb/1np4p/p4N2/3PpB2/P5PB/1PQ2P1P/4RRK1 w - - 0 18",
+  "name": "swiss-044-white-vs-tensortortoise ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qrbk1/1p3ppb/1np4p/p4N2/3PRB2/P5PB/1PQ2P1P/5RK1 b - - 0 18",
+  "name": "swiss-044-white-vs-tensortortoise ply26",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "4rrk1/p1q2ppp/2pb1n2/1p2NbB1/1n1P4/1B3N1P/PP3PP1/R2Q1RK1 w - - 6 18",
+  "name": "swiss-045-white-vs-kaamuli ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "4rrk1/p1q2ppp/2pb1B2/1p2Nb2/1n1P4/1B3N1P/PP3PP1/R2Q1RK1 b - - 0 18",
+  "name": "swiss-045-white-vs-kaamuli ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1rk1/pb2qpp1/1pp1pn1p/8/1bPP4/1P1B1N2/P1Q2PPP/B3RRK1 w - - 4 18",
+  "name": "swiss-046-white-vs-dgs-elo ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1rk1/pb2qpp1/1pp1pn1p/8/1bPP4/1P1BRN2/P1Q2PPP/B4RK1 b - - 5 18",
+  "name": "swiss-046-white-vs-dgs-elo ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rq2rk1/3bpp2/p1np2pn/1Pp4p/2P4P/1PbPP1P1/3Q1PBN/1RB2RK1 w - - 0 18",
+  "name": "swiss-047-black-vs-bitsentangled ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rq2rk1/3bpp2/p1np2pn/1Pp4p/2P4P/1PQPP1P1/5PBN/1RB2RK1 b - - 0 18",
+  "name": "swiss-047-black-vs-bitsentangled ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4k2/p3ppbp/2p3p1/r7/8/B1P1P1P1/P4P1P/1RR3K1 w - - 6 18",
+  "name": "swiss-048-black-vs-ms ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4k2/p3ppbp/2p3p1/r7/8/BRP1P1P1/P4P1P/2R3K1 b - - 7 18",
+  "name": "swiss-048-black-vs-ms ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/p4pbp/1pn3p1/4p3/2p1P1bP/2P1BNP1/P1QP1PB1/1R2R1K1 b - - 3 18",
+  "name": "swiss-049-white-vs-leetbeaters ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "rn2k2r/1pq2pp1/3p4/1p4p1/1P2P3/2N5/1PP2Q1P/2KR3R b kq - 0 18",
+  "name": "swiss-050-white-vs-make-no-mistakes ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp3ppp/q7/3pp3/bP1N4/P1PnP3/3NQPPP/RR4K1 w - - 0 18",
+  "name": "swiss-051-black-vs-stonkfish ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp3ppp/q7/3ppN2/bP6/P1PnP3/3NQPPP/RR4K1 b - - 1 18",
+  "name": "swiss-051-black-vs-stonkfish ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3qr1k1/1b1nbppp/pp3r2/2pp4/3P3P/PPN2N1B/1B2PP2/2RQ1RK1 w - - 0 18",
+  "name": "swiss-052-black-vs-krishthefish ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3qr1k1/1b1nbppp/pp3r2/2pp3P/3P4/PPN2N1B/1B2PP2/2RQ1RK1 b - - 0 18",
+  "name": "swiss-052-black-vs-krishthefish ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p1nq1bp/2pp4/p2Ppb1p/2P1Nn2/4B1P1/PP1N1P2/2RQKB1R w K - 0 18",
+  "name": "swiss-053-white-vs-zak ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p1nq1bp/2pp4/p1PPpb1p/4Nn2/4B1P1/PP1N1P2/2RQKB1R b K - 0 18",
+  "name": "swiss-053-white-vs-zak ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/pp1npp1p/3p1bpP/2pP4/P4P2/2BP2PB/1PP5/R2QK2R w KQ - 1 18",
+  "name": "swiss-054-white-vs-dgs-elo ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/pp1npp1p/3p1bpP/2pP4/P4P2/2BP2PB/1PP5/R2Q1RK1 b - - 2 18",
+  "name": "swiss-054-white-vs-dgs-elo ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q1rkb/pp5p/3p2pP/3Ppb2/4B3/2PP2P1/P7/1RBQK2R b K - 0 18",
+  "name": "swiss-055-white-vs-amplifirm ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "rn1qrbk1/pp3pp1/7B/8/2pPb2N/6P1/PPP4P/R2QRNK1 w - - 1 18",
+  "name": "swiss-056-black-vs-no-more-ammo ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "rn1qrbk1/pp3pp1/7B/8/2pPb2N/6P1/PPPN3P/R2QR1K1 b - - 2 18",
+  "name": "swiss-056-black-vs-no-more-ammo ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2kr3r/Bp2bpp1/8/Nb2p3/7p/5P2/PPP3PP/2KR3R w - - 2 18",
+  "name": "swiss-057-black-vs-leetbeaters ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2kr3r/Bp2bpp1/8/Nb2p3/2P4p/5P2/PP4PP/2KR3R b - - 0 18",
+  "name": "swiss-057-black-vs-leetbeaters ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2k5/1pp2pp1/pb2bn2/4B2r/7p/P1NB1P2/1PP3PP/1K1R4 w - - 5 18",
+  "name": "swiss-058-black-vs-stonkfish ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2k5/1pp2pp1/pb2bn2/7r/5B1p/P1NB1P2/1PP3PP/1K1R4 b - - 6 18",
+  "name": "swiss-058-black-vs-stonkfish ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1rk1/1b1q1pb1/ppn1p1p1/3pPn1p/P2p1P1P/N1P2NP1/1P3BB1/R2Q1RK1 w - - 0 18",
+  "name": "swiss-059-white-vs-team1 ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1rk1/1b1q1pb1/ppn1p1p1/3pPn1p/P2P1P1P/N4NP1/1P3BB1/R2Q1RK1 b - - 0 18",
+  "name": "swiss-059-white-vs-team1 ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r2k1/r1q2ppp/1p2p3/8/4n3/PQP1P2P/5PP1/R1B2RK1 w - - 3 18",
+  "name": "swiss-060-white-vs-cornelius ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r2k1/r1q2ppp/1p2p3/8/2P1n3/PQ2P2P/5PP1/R1B2RK1 b - - 0 18",
+  "name": "swiss-060-white-vs-cornelius ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/1pp3b1/3p3p/2nPp3/2P2n2/P1N1BN1P/P2QBP2/2KR2R1 w - - 1 18",
+  "name": "swiss-061-black-vs-omega3-fish ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1bq1rk1/1pp3b1/3p3p/2nPN3/2P2n2/P1N1B2P/P2QBP2/2KR2R1 b - - 0 18",
+  "name": "swiss-061-black-vs-omega3-fish ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb2rk1/p3Qp1p/2p1p1q1/8/3N4/6P1/P3PPBP/3R2K1 w - - 5 18",
+  "name": "swiss-062-white-vs-danya-s-disciple ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rb2rk1/p3Qp1p/2p1p1q1/8/3N4/5BP1/P3PP1P/3R2K1 b - - 6 18",
+  "name": "swiss-062-white-vs-danya-s-disciple ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "4rbk1/1qp2ppp/1p1p1n2/8/1P1QPB2/2N5/2P2PPP/4RK2 b - - 0 18",
+  "name": "swiss-063-white-vs-what-even-is-en-passant ply26",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "rn2k2r/p1q1bpp1/2p3b1/1p5p/7P/1Q3N2/PP2BPP1/R1B2K1R w kq - 2 18",
+  "name": "swiss-064-black-vs-ms ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "rn2k2r/p1q1bpp1/2p3b1/1p5p/7P/1Q1B1N2/PP3PP1/R1B2K1R b kq - 3 18",
+  "name": "swiss-064-black-vs-ms ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2b1r1k1/3nrp1p/pp1q2p1/3p4/P2Nn3/2P2N2/1P2BPPP/R2QR1K1 w - - 2 18",
+  "name": "swiss-065-black-vs-zak ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2b1r1k1/3nrp1p/pp1q2p1/3p4/P2Nn3/2P2N1P/1P2BPP1/R2QR1K1 b - - 0 18",
+  "name": "swiss-065-black-vs-zak ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1r1k/1p4p1/1qn1pn1p/p2p4/8/1P2N1P1/P2QPPBP/2R2RK1 w - - 4 18",
+  "name": "swiss-066-white-vs-ryan-vincent ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3r1r1k/1p4p1/1qn1pn1p/p2p4/8/1P4P1/P2QPPBP/2RN1RK1 b - - 5 18",
+  "name": "swiss-066-white-vs-ryan-vincent ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/pp1nbpp1/2p1pn1p/8/3P3P/P1P2NN1/1P2QPP1/2BRR1K1 w - - 9 18",
+  "name": "swiss-067-black-vs-lightning-tree ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/pp1nbpp1/2p1pn1p/4N3/3P3P/P1P3N1/1P2QPP1/2BRR1K1 b - - 10 18",
+  "name": "swiss-067-black-vs-lightning-tree ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rqr1k1/1p3ppp/2nBbn2/p1Pp4/8/P4N2/1P2BPPP/R2Q1RK1 w - - 1 18",
+  "name": "swiss-068-white-vs-opus-carlsen ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rqr1k1/1p3ppp/2nBbn2/p1Pp2N1/8/P7/1P2BPPP/R2Q1RK1 b - - 2 18",
+  "name": "swiss-068-white-vs-opus-carlsen ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3r1k/3q1ppp/2npb3/pp1Np1b1/1N2P3/P1P5/1P2BPPP/R2Q1RK1 w - - 0 18",
+  "name": "swiss-069-black-vs-what-even-is-en-passant ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3r1k/3q1ppp/N1npb3/pp1Np1b1/4P3/P1P5/1P2BPPP/R2Q1RK1 b - - 1 18",
+  "name": "swiss-069-black-vs-what-even-is-en-passant ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3kbr1/1p1n1p2/2p1pp2/q6p/p2P3P/P1PN2B1/1P2QPP1/R3K2R w KQq - 0 18",
+  "name": "swiss-070-white-vs-ms ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3kbr1/1p1n1p2/2p1pp2/q6p/p2P3P/P1PN2B1/1P2QPP1/R4RK1 b q - 1 18",
+  "name": "swiss-070-white-vs-ms ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1br2k1/2p2pp1/2N4p/8/Pp2n3/1P6/5PPP/R1B2RK1 b - - 1 18",
+  "name": "swiss-071-white-vs-sobriety ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1br2k1/p2qbppp/1p2p3/3n4/5B2/P1N4P/1P2BPP1/RQ1R2K1 w - - 1 18",
+  "name": "swiss-072-white-vs-ai-fellows ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1br2k1/p2qbppp/1p2p3/1B1n4/5B2/P1N4P/1P3PP1/RQ1R2K1 b - - 2 18",
+  "name": "swiss-072-white-vs-ai-fellows ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q2k1/pp1b1pp1/5P1p/Pp6/3p3B/P1pP1Q2/2P2PPP/4rRK1 w - - 0 18",
+  "name": "swiss-073-black-vs-lehmanbro ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q2k1/pp1b1pp1/5P1p/Pp6/3p3B/P1pP1Q2/2P2PPP/4R1K1 b - - 0 18",
+  "name": "swiss-073-black-vs-lehmanbro ply26",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p2n1p1p/qpn1p1pP/2ppP3/3P2P1/P1P5/2PBNPK1/1R1Q3R w - - 3 18",
+  "name": "swiss-074-black-vs-what-even-is-en-passant ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p2n1p1p/qpn1p1pP/2ppP1B1/3P2P1/P1P5/2P1NPK1/1R1Q3R b - - 4 18",
+  "name": "swiss-074-black-vs-what-even-is-en-passant ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rqr1k1/1p1b1pp1/p4n1p/2bp4/2PQ4/P3BN1P/1P3PP1/2R1RBK1 w - - 1 18",
+  "name": "swiss-075-black-vs-gladiator ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rqr1k1/1p1b1pp1/p4n1p/2bp4/2P5/P3BN1P/1P1Q1PP1/2R1RBK1 b - - 2 18",
+  "name": "swiss-075-black-vs-gladiator ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/2q2pp1/3pbb1p/ppp1p3/4P3/RP1PNN1P/1PPQ1PP1/4R1K1 w - - 4 18",
+  "name": "swiss-076-black-vs-pheanup ply15",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/2q2pp1/3pbb1p/ppp1p3/2P1P3/RP1PNN1P/1P1Q1PP1/4R1K1 b - - 0 18",
+  "name": "swiss-076-black-vs-pheanup ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/1b3ppp/2Np4/pp1Qp1b1/4P2P/2P5/PP2BPP1/R3K2R b KQ - 0 18",
+  "name": "swiss-077-white-vs-opus-carlsen ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/2p1bppp/3p4/3Pp3/1p6/1P1P3P/1P3PP1/R1BQR1K1 w - - 0 18",
+  "name": "swiss-078-white-vs-edward ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r1q1rk1/2p1bppp/3p4/3Pp3/1p6/1P1P3P/1PQ2PP1/R1B1R1K1 b - - 1 18",
+  "name": "swiss-078-white-vs-edward ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/p1p2ppp/1p6/2Pn4/8/4P3/PB3PPP/R4RK1 w - - 2 18",
+  "name": "swiss-079-black-vs-danya-s-disciple ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/p1p2ppp/1p6/2Pn4/8/4P3/PB3PPP/R2R2K1 b - - 3 18",
+  "name": "swiss-079-black-vs-danya-s-disciple ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3rr1k1/1b2qppp/1p3n2/pNppn3/P1PP4/1P2P2P/2Q1BPP1/2R2RK1 w - - 0 18",
+  "name": "swiss-080-black-vs-zak ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3rr1k1/1b2qppp/1p3n2/pNppP3/P1P5/1P2P2P/2Q1BPP1/2R2RK1 b - - 0 18",
+  "name": "swiss-080-black-vs-zak ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/pp2bpp1/4b2p/3p4/2q5/2PQ1NPP/PP3BP1/R3R1K1 w - - 3 18",
+  "name": "swiss-081-white-vs-ai-fellows ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r3r1k1/pp2bpp1/4b2p/3p4/2Q5/2P2NPP/PP3BP1/R3R1K1 b - - 0 18",
+  "name": "swiss-081-white-vs-ai-fellows ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q2k1/p4ppp/np2r3/3n4/2NP4/B4Q2/P4PPP/2R2RK1 w - - 5 18",
+  "name": "swiss-082-white-vs-lubina ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q2k1/p4ppp/np2r3/3n4/2NP4/B4Q2/P4PPP/2R1R1K1 b - - 6 18",
+  "name": "swiss-082-white-vs-lubina ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q2k1/pp2rpp1/3bbn1p/3p4/3P4/1QRBBN1P/PP3PP1/R5K1 w - - 1 18",
+  "name": "swiss-083-black-vs-stonkfish ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q2k1/pp2rpp1/3bbn1p/3p4/3P4/1Q1BBN1P/PPR2PP1/R5K1 b - - 2 18",
+  "name": "swiss-083-black-vs-stonkfish ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r1q1k1/p1n2pp1/1P2rn1p/2ppN3/3P4/2P1PP2/R5PP/1QB2RK1 b - - 0 18",
+  "name": "swiss-084-white-vs-dgs-elo ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr2k1/p1qn1ppp/4bn2/1p2p3/2P5/PN2P2P/1BQ1BPP1/R1R3K1 b - - 1 18",
+  "name": "swiss-085-white-vs-pheanup ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rr3k1/pb2ppbp/1p1q1np1/3P4/P3P3/4B2P/3NBPP1/RQ1R2K1 w - - 1 18",
+  "name": "swiss-086-black-vs-opus-carlsen ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rr3k1/pb2ppbp/1p1q1np1/3P4/P1N1P3/4B2P/4BPP1/RQ1R2K1 b - - 2 18",
+  "name": "swiss-086-black-vs-opus-carlsen ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1r1b1k1/1pq2ppp/4pn2/p1ppN3/P2P4/2P1P1Q1/1P1N1PPP/RR4K1 w - - 8 18",
+  "name": "swiss-087-black-vs-fuzzybot ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b1r1k1/ppq2pp1/3b1n1p/3pN3/3P4/2PBB3/P1Q2PPP/4RRK1 w - - 2 18",
+  "name": "swiss-088-white-vs-danya-s-disciple ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r1b1r1k1/ppq2pp1/3b1n1p/3pN3/3P4/2PBB2P/P1Q2PP1/4RRK1 b - - 0 18",
+  "name": "swiss-088-white-vs-danya-s-disciple ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4r2/p1p2pkp/1p4p1/8/2P5/2R2b1P/PP3PP1/3R2K1 w - - 0 18",
+  "name": "swiss-089-black-vs-dgs-elo ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4r2/p1p2pkp/1p4p1/8/2P5/5R1P/PP3PP1/3R2K1 b - - 0 18",
+  "name": "swiss-089-black-vs-dgs-elo ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3rk1/2q1npbp/1p1p2p1/p2P4/1P1p2P1/3P3P/2P2PBK/1RBQ1R2 w - - 0 18",
+  "name": "swiss-090-white-vs-stonkfish ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1r3rk1/2q1npbp/1p1p2p1/p2P4/1P1p2P1/B2P3P/2P2PBK/1R1Q1R2 b - - 1 18",
+  "name": "swiss-090-white-vs-stonkfish ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "4rrk1/1pqnbppp/2ppn3/p3p3/P1P1P3/1PNNBQ1P/2P2PP1/3R1R1K w - - 8 18",
+  "name": "swiss-091-black-vs-make-no-mistakes ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "4rrk1/1pqnbppp/2ppn3/p3p3/P1P1P1Q1/1PNNB2P/2P2PP1/3R1R1K b - - 9 18",
+  "name": "swiss-091-black-vs-make-no-mistakes ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p3np1p/bpn1p1p1/1N6/P3P3/1N2B1P1/1bP2PBP/R4RK1 w - - 0 18",
+  "name": "swiss-092-white-vs-gladiator ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/p3np1p/bpn1p1p1/1N6/P3P3/1N2B1P1/1bP2PBP/1R3RK1 b - - 1 18",
+  "name": "swiss-092-white-vs-gladiator ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4b1r/pp1k1pp1/7p/1N1p4/5nP1/NPPn1PB1/1P5P/R3K2R w KQ - 3 18",
+  "name": "swiss-093-black-vs-e-2 ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4b1r/pp1k1pp1/7p/1N1p4/5nP1/NPPn1PB1/1P1K3P/R6R b - - 4 18",
+  "name": "swiss-093-black-vs-e-2 ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r2rk1/p2bqp1p/1pn3p1/2p1p3/6nP/2NP1NP1/PP1QPPB1/R2R2K1 b - - 4 18",
+  "name": "swiss-094-white-vs-betago ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/1b3ppp/2p1nb2/pp1p4/1P1P4/PQN1PNP1/5PBP/R2R2K1 w - - 0 18",
+  "name": "swiss-095-black-vs-pheanup ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qr1k1/1b3ppp/2p1nb2/pp1p4/1P1P3P/PQN1PNP1/5PB1/R2R2K1 b - - 0 18",
+  "name": "swiss-095-black-vs-pheanup ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p1q1pp1/2n1bb1p/1N2p3/2Pp4/Pp1P1NP1/2Q2PBP/2R1R1K1 w - - 0 18",
+  "name": "swiss-096-black-vs-the-roooookkk ply20",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p1q1pp1/2n1bb1p/1N2p3/2Pp4/PQ1P1NP1/5PBP/2R1R1K1 b - - 0 18",
+  "name": "swiss-096-black-vs-the-roooookkk ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3n1rk1/p1r2pbp/3q1np1/R1p1pb2/N1Pp4/P2P1NP1/3BPPBP/3Q1RK1 w - - 6 18",
+  "name": "swiss-097-white-vs-slopfish ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3n1rk1/p1r2pbp/3q1np1/R1p1pb2/N1Pp4/P2P1NPP/3BPPB1/3Q1RK1 b - - 0 18",
+  "name": "swiss-097-white-vs-slopfish ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qrbk1/1b3pp1/3p1n1p/p1p1p3/1pP1P3/1P1PBNNP/1PQ2PP1/R3R1K1 w - - 0 18",
+  "name": "swiss-098-white-vs-e-2 ply15",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2qrbk1/1b3pp1/3p1n1p/p1p1p3/1pP1P3/1P1PBNNP/1PQ2PP1/R4RK1 b - - 1 18",
+  "name": "swiss-098-white-vs-e-2 ply16",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp2ppb1/5n2/q5Bp/3np1pR/2N5/PPPQ1PP1/2K4R w - - 0 18",
+  "name": "swiss-099-white-vs-stonkfish ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/pp2ppb1/5B2/q6p/3np1pR/2N5/PPPQ1PP1/2K4R b - - 0 18",
+  "name": "swiss-099-white-vs-stonkfish ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2k1r3/pppr2pp/4bb2/8/P1N2p2/2P5/1P3PPP/R3RBK1 w - - 0 18",
+  "name": "swiss-100-black-vs-omega3-fish ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2k1r3/pppr2pp/4bb2/8/P1N1Rp2/2P5/1P3PPP/R4BK1 b - - 1 18",
+  "name": "swiss-100-black-vs-omega3-fish ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r5k1/pp3ppp/2n2n2/1q6/2N5/P4N2/1PQ2PPP/3r1RK1 w - - 0 18",
+  "name": "swiss-101-black-vs-the-roooookkk ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r5k1/pp3ppp/2n2n2/1q6/2N5/P4N2/1PQ2PPP/3R2K1 b - - 0 18",
+  "name": "swiss-101-black-vs-the-roooookkk ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3rnr1k/p2q1p1p/bpn1p1p1/2ppP3/P2P1P2/2N3PP/1PPQN1B1/R4RK1 w - - 1 18",
+  "name": "swiss-102-black-vs-miskeen ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "3rnr1k/p2q1p1p/bpn1p1p1/1NppP3/P2P1P2/6PP/1PPQN1B1/R4RK1 b - - 2 18",
+  "name": "swiss-102-black-vs-miskeen ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr4/p1q1ppkp/1pn1bnp1/2p5/2P3P1/1PN1QN1P/P3PPB1/R4RK1 w - - 0 18",
+  "name": "swiss-103-white-vs-rmfe ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rr4/p1q1ppkp/1pn1bnp1/1Np5/2P3P1/1P2QN1P/P3PPB1/R4RK1 b - - 1 18",
+  "name": "swiss-103-white-vs-rmfe ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2q2k1/pp2rp1p/8/1B1Qbb2/P3npP1/4P2P/1P3P2/R1B2RK1 w - - 0 18",
+  "name": "swiss-104-white-vs-slopfish ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r2Q2k1/pp2rp1p/8/1B2bb2/P3npP1/4P2P/1P3P2/R1B2RK1 b - - 0 18",
+  "name": "swiss-104-white-vs-slopfish ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq2k1/p4ppp/2p1rn2/b1n5/R3p3/2N1P3/1PQ1BPPP/2B2RK1 w - - 2 18",
+  "name": "swiss-105-white-vs-gators ply23",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2rq2k1/p4ppp/2p1rn2/b1n5/2R1p3/2N1P3/1PQ1BPPP/2B2RK1 b - - 3 18",
+  "name": "swiss-105-white-vs-gators ply24",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r2rk1/pp2qpp1/3nb2p/P1ppN3/3P4/2PBPQ2/5PPP/RR4K1 w - - 1 18",
+  "name": "swiss-106-black-vs-zak ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "2r2rk1/pp2qpp1/3nb2p/P1ppN3/3P4/2PBP1Q1/5PPP/RR4K1 b - - 2 18",
+  "name": "swiss-106-black-vs-zak ply19",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p3ppp/p1n5/3p4/P3n1q1/1N1BPN2/1PP5/R2Q1RK1 w - - 2 18",
+  "name": "swiss-107-black-vs-make-no-mistakes ply25",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r4rk1/1p3ppp/p1n5/3p4/P3n1q1/1N1BPN2/1PP5/R2Q1R1K b - - 3 18",
+  "name": "swiss-107-black-vs-make-no-mistakes ply26",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r6r/pN1nkpp1/2p1pn1p/7P/3q4/1Q6/PPPN1PP1/R3K2R w KQ - 0 18",
+  "name": "swiss-108-white-vs-ai-fellows ply21",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "r6r/pN1nkpp1/2p1pn1p/7P/3q4/Q7/PPPN1PP1/R3K2R b KQ - 1 18",
+  "name": "swiss-108-white-vs-ai-fellows ply22",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rrq2k1/3bppb1/2np1npp/1p6/1P5P/2NP1NP1/3BPPB1/1RRQ2K1 w - - 8 18",
+  "name": "swiss-109-black-vs-binvengers ply18",
+  "games": 1,
+  "source": "gaps"
+ },
+ {
+  "fen": "1rrq2k1/3bppb1/2np1npp/1p6/1P5P/2NPBNP1/4PPB1/1RRQ2K1 b - - 9 18",
+  "name": "swiss-109-black-vs-binvengers ply19",
+  "games": 1,
+  "source": "gaps"
+ }
+]

@@ -1,0 +1,309 @@
+AI CHESSATHON MATCH LOG
+=======================
+
+MATCH
+  Round          Qualifier round 59
+  Team           catfish
+  Colour         White
+  Opponent       Team1
+  Opening        Sicilian Closed
+  Start FEN      r1bqk1nr/pp3pbp/2npp1p1/2p5/4PP2/2NP1NP1/PPP3BP/R1BQK2R b KQkq - 1 7
+  You moved      Second
+  Machine        w-4005df
+  Finished       2026-09-07 20:07:28 UTC
+  Match ID       6e160598-822f-471a-ac56-02113c71cd73
+
+INIT
+  Ready in       40.7 s
+  Budget         90.0 s
+  Used           45 percent
+
+CLOCK
+  Base           120.0 s plus 0.5 s per move
+  Moves          122
+  Time used      173.8 s
+  Slowest        25.8 s on move 1
+  Fastest        0.0 s on move 122
+  Average        1.4 s
+  Left at end    7.2 s
+
+RESULT
+  Won by checkmate
+  Game lasted 351.5 s
+
+MOVES
+    #  move          time     clock left
+    1  h4           25.8 s       94.7 s
+    2  O-O           1.3 s       93.9 s
+    3  a4            2.5 s       91.9 s
+    4  Nb5           3.0 s       89.4 s
+    5  c3            2.0 s       87.9 s
+    6  Be3           5.8 s       82.7 s
+    7  Bf2           2.0 s       81.1 s
+    8  e5            2.5 s       79.1 s
+    9  d4            1.2 s       78.4 s
+   10  Na3           1.7 s       77.2 s
+   11  cxd4          1.4 s       76.4 s
+   12  Nc2           2.6 s       74.2 s
+   13  Re1           3.2 s       71.5 s
+   14  Bf1           4.8 s       67.3 s
+   15  Bb5           1.4 s       66.4 s
+   16  Ne3           4.0 s       62.9 s
+   17  Bxe3          1.0 s       62.3 s
+   18  Bd2           1.6 s       61.2 s
+   19  Bd3           4.7 s       57.0 s
+   20  Bxf5          0.8 s       56.7 s
+   21  Qe2          10.1 s       47.2 s
+   22  Qb5           1.2 s       46.4 s
+   23  Re3           1.3 s       45.6 s
+   24  Rae1          1.3 s       44.8 s
+   25  Ng5           2.7 s       42.5 s
+   26  b4            7.0 s       36.0 s
+   27  bxa5          2.7 s       33.8 s
+   28  Bxa5          1.4 s       32.8 s
+   29  Qxd5          1.7 s       31.7 s
+   30  Qg2           2.0 s       30.1 s
+   31  d5            1.7 s       28.9 s
+   32  Bc3           1.1 s       28.3 s
+   33  e6            2.8 s       26.0 s
+   34  Qf2           2.8 s       23.7 s
+   35  d6            1.3 s       23.0 s
+   36  Bxf6          0.4 s       23.1 s
+   37  Qb2           2.7 s       20.9 s
+   38  Qe5           1.9 s       19.5 s
+   39  Qb8+          1.1 s       18.9 s
+   40  Nf3           1.4 s       18.0 s
+   41  Qe5           1.3 s       17.1 s
+   42  Bh8           1.4 s       16.3 s
+   43  Nd4           3.0 s       13.8 s
+   44  Qxd5          0.7 s       13.6 s
+   45  Bf6           1.4 s       12.7 s
+   46  Rc3           2.2 s       11.0 s
+   47  Rc7           0.5 s       11.0 s
+   48  Rg7+          2.1 s        9.4 s
+   49  Rf7+          0.4 s        9.6 s
+   50  Re7+          0.5 s        9.6 s
+   51  Rf7+          0.9 s        9.2 s
+   52  Rg7+          0.4 s        9.3 s
+   53  Rxg6+         0.6 s        9.1 s
+   54  Rg7+          1.0 s        8.6 s
+   55  Rd7+          1.4 s        7.8 s
+   56  Rxd5          1.3 s        7.0 s
+   57  Kh1           1.2 s        6.2 s
+   58  Bxd4          0.7 s        6.1 s
+   59  Bg1           0.2 s        6.4 s
+   60  e7            0.8 s        6.0 s
+   61  Re5           0.3 s        6.3 s
+   62  Kh2           0.4 s        6.4 s
+   63  Bc5           0.4 s        6.5 s
+   64  Rd5           0.8 s        6.2 s
+   65  Kg1           0.1 s        6.5 s
+   66  Bb4           0.6 s        6.5 s
+   67  Re5           0.3 s        6.6 s
+   68  Bc5           0.1 s        7.0 s
+   69  Kf1           0.3 s        7.2 s
+   70  Kf2           0.5 s        7.2 s
+   71  Ke3           1.5 s        6.2 s
+   72  Kd4           0.2 s        6.5 s
+   73  Kc3           0.3 s        6.7 s
+   74  Kd2           1.3 s        5.9 s
+   75  Kd3           0.3 s        6.1 s
+   76  Rd5           0.6 s        6.0 s
+   77  Kc4           0.7 s        5.8 s
+   78  Kc3           1.3 s        5.1 s
+   79  Kd2           0.4 s        5.2 s
+   80  Rd8           0.3 s        5.3 s
+   81  e8=Q          0.8 s        5.0 s
+   82  Rxe8          0.2 s        5.3 s
+   83  Rg8           0.3 s        5.4 s
+   84  Rg5           0.6 s        5.4 s
+   85  Ke2           0.4 s        5.5 s
+   86  Kf2           0.3 s        5.7 s
+   87  Kf3           0.1 s        6.1 s
+   88  Kg2           1.2 s        5.3 s
+   89  Kh3           0.3 s        5.6 s
+   90  Rxh5          0.2 s        5.8 s
+   91  Kg2           0.0 s        6.3 s
+   92  Rg5           0.4 s        6.4 s
+   93  Kh3           1.1 s        5.8 s
+   94  h5            0.2 s        6.1 s
+   95  Rg6+          0.3 s        6.3 s
+   96  Kh4           0.5 s        6.3 s
+   97  Ra6           0.3 s        6.5 s
+   98  Rc6           1.2 s        5.8 s
+   99  h6            0.7 s        5.6 s
+  100  h7            0.7 s        5.4 s
+  101  Rc7+          0.8 s        5.0 s
+  102  Rc5           0.2 s        5.3 s
+  103  Rxf5          0.4 s        5.4 s
+  104  Rc5           0.3 s        5.7 s
+  105  f5+           0.4 s        5.8 s
+  106  g4            0.4 s        6.0 s
+  107  Kg3           0.0 s        6.5 s
+  108  Rc6+          0.3 s        6.7 s
+  109  Rg6+          0.2 s        7.0 s
+  110  Rb6           0.3 s        7.2 s
+  111  Rc6           0.5 s        7.2 s
+  112  Kh4           0.3 s        7.4 s
+  113  Kg5           0.5 s        7.4 s
+  114  Rb6           1.5 s        6.4 s
+  115  Rb8+          0.2 s        6.7 s
+  116  Rb7+          0.9 s        6.3 s
+  117  f6            0.9 s        5.9 s
+  118  Kf5           1.2 s        5.3 s
+  119  g5            0.0 s        5.7 s
+  120  Kg6           0.0 s        6.2 s
+  121  Rxb1          0.0 s        6.7 s
+  122  Rb8#          0.0 s        7.2 s
+
+OUTPUT
+  8,215 bytes on stderr
+
+  init: native engine still compiling after 40.0s
+  native engine ready after 69.8s
+  compile wait 22716 ms in get_move: native engine ready
+  nativesearch h2h4 depth 12 score -14 nodes 2226800 3060ms clock 97284
+  between-moves wall 1.99s cpu 0.05s (SUSPENDED)
+  nativesearch e1g1 depth 12 score -14 nodes 942658 1286ms clock 94714
+  between-moves wall 3.22s cpu 0.05s (SUSPENDED)
+  nativesearch a2a4 depth 13 score -2 nodes 1769030 2516ms clock 93924
+  between-moves wall 2.86s cpu 0.04s (SUSPENDED)
+  nativesearch c3b5 depth 14 score 5 nodes 2017946 3026ms clock 91904
+  between-moves wall 3.38s cpu 0.04s (SUSPENDED)
+  nativesearch c2c3 depth 12 score -6 nodes 1341772 1961ms clock 89373
+  between-moves wall 3.71s cpu 0.04s (SUSPENDED)
+  nativesearch c1e3 depth 14 score 13 nodes 3822841 5746ms clock 87907
+  between-moves wall 2.87s cpu 0.05s (SUSPENDED)
+  nativesearch e3f2 depth 13 score 9 nodes 1340322 2030ms clock 82657
+  between-moves wall 3.57s cpu 0.04s (SUSPENDED)
+  nativesearch e4e5 depth 14 score 19 nodes 1689726 2522ms clock 81124
+  between-moves wall 1.71s cpu 0.04s (SUSPENDED)
+  nativesearch d3d4 depth 14 score 19 nodes 784458 1174ms clock 79100
+  between-moves wall 1.96s cpu 0.04s (SUSPENDED)
+  nativesearch b5a3 depth 14 score 36 nodes 1176259 1708ms clock 78423
+  between-moves wall 1.42s cpu 0.04s (SUSPENDED)
+  nativesearch c3d4 depth 14 score 20 nodes 944997 1348ms clock 77209
+  between-moves wall 3.63s cpu 0.04s (SUSPENDED)
+  nativesearch a3c2 depth 14 score 16 nodes 1835037 2620ms clock 76357
+  between-moves wall 3.42s cpu 0.04s (SUSPENDED)
+  nativesearch f1e1 depth 14 score -4 nodes 2175357 3192ms clock 74234
+  between-moves wall 3.36s cpu 0.05s (SUSPENDED)
+  nativesearch g2f1 depth 16 score 7 nodes 3289677 4774ms clock 71539
+  between-moves wall 2.45s cpu 0.05s (SUSPENDED)
+  nativesearch f1b5 depth 15 score 7 nodes 964617 1395ms clock 67260
+  between-moves wall 4.16s cpu 0.04s (SUSPENDED)
+  nativesearch c2e3 depth 14 score -5 nodes 2789460 3978ms clock 66362
+  between-moves wall 2.40s cpu 0.05s (SUSPENDED)
+  nativesearch f2e3 depth 13 score -8 nodes 748337 1031ms clock 62878
+  between-moves wall 3.05s cpu 0.06s (SUSPENDED)
+  nativesearch e3d2 depth 12 score 39 nodes 1202685 1630ms clock 62342
+  between-moves wall 1.97s cpu 0.05s (SUSPENDED)
+  nativesearch b5d3 depth 15 score 17 nodes 3290845 4671ms clock 61209
+  between-moves wall 2.33s cpu 0.04s (SUSPENDED)
+  nativesearch d3f5 depth 13 score 52 nodes 597175 807ms clock 57035
+  between-moves wall 1.34s cpu 0.04s (SUSPENDED)
+  nativesearch d1e2 depth 15 score 31 nodes 7214496 10071ms clock 56725
+  between-moves wall 2.49s cpu 0.04s (SUSPENDED)
+  nativesearch e2b5 depth 14 score 19 nodes 887102 1230ms clock 47150
+  between-moves wall 2.49s cpu 0.05s (SUSPENDED)
+  nativesearch e1e3 depth 13 score 8 nodes 951269 1329ms clock 46414
+  between-moves wall 3.45s cpu 0.04s (SUSPENDED)
+  nativesearch a1e1 depth 13 score 47 nodes 934678 1320ms clock 45581
+  between-moves wall 4.04s cpu 0.04s (SUSPENDED)
+  nativesearch f3g5 depth 13 score 82 nodes 1991815 2733ms clock 44758
+  between-moves wall 2.33s cpu 0.05s (SUSPENDED)
+  nativesearch b2b4 depth 16 score 68 nodes 5004256 6995ms clock 42520
+  between-moves wall 2.79s cpu 0.05s (SUSPENDED)
+  nativesearch b4a5 depth 14 score 48 nodes 2016886 2739ms clock 36022
+  between-moves wall 1.61s cpu 0.05s (SUSPENDED)
+  nativesearch d2a5 depth 14 score 48 nodes 1062221 1433ms clock 33778
+  between-moves wall 1.65s cpu 0.06s (SUSPENDED)
+  nativesearch b5d5 depth 15 score 51 nodes 1218864 1649ms clock 32840
+  between-moves wall 4.18s cpu 0.05s (SUSPENDED)
+  nativesearch d5g2 depth 15 score 77 nodes 1551105 2047ms clock 31687
+  between-moves wall 2.99s cpu 0.05s (SUSPENDED)
+  nativesearch d4d5 depth 12 score 50 nodes 1299766 1739ms clock 30137
+  between-moves wall 1.59s cpu 0.04s (SUSPENDED)
+  nativesearch a5c3 depth 12 score 73 nodes 785758 1058ms clock 28891
+  between-moves wall 3.43s cpu 0.05s (SUSPENDED)
+  nativesearch e5e6 depth 12 score 104 nodes 2065057 2830ms clock 28329
+  between-moves wall 1.26s cpu 0.04s (SUSPENDED)
+  nativesearch g2f2 depth 12 score 58 nodes 2061694 2767ms clock 25994
+  between-moves wall 2.20s cpu 0.04s (SUSPENDED)
+  nativesearch d5d6 depth 12 sc
+  [5,861 bytes dropped]
+   clock 5507
+  between-moves wall 0.61s cpu 0.05s (SUSPENDED)
+  nativesearch f2f3 depth 17 score 355 nodes 160776 124ms clock 5709
+  between-moves wall 0.96s cpu 0.04s (SUSPENDED)
+  nativesearch f3g2 depth 16 score 352 nodes 1623300 1243ms clock 6081
+  between-moves wall 0.74s cpu 0.04s (SUSPENDED)
+  nativesearch g2h3 depth 18 score 352 nodes 317275 251ms clock 5335
+  between-moves wall 1.05s cpu 0.04s (SUSPENDED)
+  nativesearch g5h5 depth 16 score 352 nodes 308110 233ms clock 5581
+  between-moves wall 0.80s cpu 0.04s (SUSPENDED)
+  nativesearch h3g2 depth 0 score 0 nodes 0 0ms clock 5843
+  between-moves wall 1.10s cpu 0.04s (SUSPENDED)
+  nativesearch h5g5 depth 18 score 352 nodes 527967 403ms clock 6339
+  between-moves wall 0.74s cpu 0.04s (SUSPENDED)
+  nativesearch g2h3 depth 18 score 352 nodes 1417606 1115ms clock 6434
+  between-moves wall 1.07s cpu 0.05s (SUSPENDED)
+  nativesearch h4h5 depth 13 score 390 nodes 318127 243ms clock 5815
+  between-moves wall 0.55s cpu 0.04s (SUSPENDED)
+  nativesearch g5g6 depth 13 score 411 nodes 374485 288ms clock 6067
+  between-moves wall 0.54s cpu 0.04s (SUSPENDED)
+  nativesearch h3h4 depth 18 score 439 nodes 639632 490ms clock 6276
+  between-moves wall 0.50s cpu 0.04s (SUSPENDED)
+  nativesearch g6a6 depth 18 score 439 nodes 393521 320ms clock 6283
+  between-moves wall 0.99s cpu 0.04s (SUSPENDED)
+  nativesearch a6c6 depth 18 score 391 nodes 1584450 1202ms clock 6460
+  between-moves wall 0.85s cpu 0.04s (SUSPENDED)
+  nativesearch h5h6 depth 15 score 400 nodes 868799 660ms clock 5755
+  between-moves wall 0.51s cpu 0.05s (SUSPENDED)
+  nativesearch h6h7 depth 15 score 405 nodes 976957 706ms clock 5590
+  between-moves wall 0.72s cpu 0.05s (SUSPENDED)
+  nativesearch c6c7 depth 15 score 404 nodes 1131525 837ms clock 5381
+  between-moves wall 0.72s cpu 0.05s (SUSPENDED)
+  nativesearch c7c5 depth 17 score 404 nodes 299341 221ms clock 5040
+  between-moves wall 0.75s cpu 0.04s (SUSPENDED)
+  nativesearch c5f5 depth 14 score 403 nodes 555737 372ms clock 5315
+  between-moves wall 0.81s cpu 0.04s (SUSPENDED)
+  nativesearch f5c5 depth 13 score 422 nodes 362776 249ms clock 5439
+  between-moves wall 1.04s cpu 0.05s (SUSPENDED)
+  nativesearch f4f5 depth 13 score 428 nodes 512896 360ms clock 5686
+  between-moves wall 0.92s cpu 0.04s (SUSPENDED)
+  nativesearch g3g4 depth 15 score 428 nodes 477998 358ms clock 5822
+  between-moves wall 0.75s cpu 0.04s (SUSPENDED)
+  nativesearch h4g3 depth 0 score 0 nodes 0 0ms clock 5961
+  between-moves wall 0.92s cpu 0.04s (SUSPENDED)
+  nativesearch c5c6 depth 15 score 428 nodes 335720 255ms clock 6456
+  between-moves wall 0.84s cpu 0.04s (SUSPENDED)
+  nativesearch c6g6 depth 15 score 429 nodes 295711 207ms clock 6697
+  between-moves wall 0.91s cpu 0.04s (SUSPENDED)
+  nativesearch g6b6 depth 15 score 428 nodes 408101 325ms clock 6986
+  between-moves wall 0.94s cpu 0.04s (SUSPENDED)
+  nativesearch b6c6 depth 15 score 428 nodes 658142 465ms clock 7158
+  between-moves wall 0.80s cpu 0.05s (SUSPENDED)
+  nativesearch g3h4 depth 15 score 427 nodes 414090 288ms clock 7190
+  between-moves wall 0.86s cpu 0.04s (SUSPENDED)
+  nativesearch h4g5 depth 16 score 428 nodes 627316 450ms clock 7398
+  between-moves wall 0.83s cpu 0.04s (SUSPENDED)
+  nativesearch c6b6 depth 14 score 428 nodes 1998526 1518ms clock 7443
+  between-moves wall 0.89s cpu 0.04s (SUSPENDED)
+  nativesearch b6b8 depth 12 score 729 nodes 318218 242ms clock 6422
+  between-moves wall 0.65s cpu 0.04s (SUSPENDED)
+  nativesearch b8b7 depth 14 score 896 nodes 1086320 852ms clock 6677
+  between-moves wall 0.83s cpu 0.04s (SUSPENDED)
+  nativesearch f5f6 depth 14 score 1167 nodes 1091990 867ms clock 6322
+  between-moves wall 0.81s cpu 0.04s (SUSPENDED)
+  nativesearch g5f5 depth 14 score 1180 nodes 1482672 1166ms clock 5949
+  between-moves wall 0.76s cpu 0.04s (SUSPENDED)
+  nativesearch g4g5 depth 9 score 99985 nodes 46512 35ms clock 5278
+  between-moves wall 0.84s cpu 0.00s (SUSPENDED)
+  nativesearch f5g6 depth 4 score 99985 nodes 307 1ms clock 5739
+  between-moves wall 0.83s cpu 0.00s (SUSPENDED)
+  nativesearch b7b1 depth 1 score 99997 nodes 37 0ms clock 6235
+  between-moves wall 0.81s cpu 0.00s (SUSPENDED)
+  nativesearch b1b8 depth 1 score 99999 nodes 19 0ms clock 6732
+
+Email hello@aichessathon.com with this file if anything here is unclear.

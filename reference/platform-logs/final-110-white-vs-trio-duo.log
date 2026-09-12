@@ -1,0 +1,89 @@
+AI CHESSATHON MATCH LOG
+=======================
+
+MATCH
+  Round          Swiss round 1
+  Team           catfish
+  Colour         White
+  Opponent       Trio Duo
+  Opening        Petroff Defence
+  Start FEN      rnbqk2r/ppp2ppp/3b4/3p4/2PPn3/P4N2/1P3PPP/RNBQKB1R b KQkq - 0 7
+  You moved      Second
+  Machine        w-d07f0a
+  Finished       2026-09-11 12:16:19 UTC
+  Match ID       ff80fc55-6445-4854-a286-665569cac10e
+
+INIT
+  Ready in       32.7 s
+  Budget         90.0 s
+  Used           36 percent
+
+CLOCK
+  Base           120.0 s plus 0.5 s per move
+  Moves          23
+  Time used      46.5 s
+  Slowest        7.7 s on move 1
+  Fastest        0.0 s on move 21
+  Average        2.0 s
+  Left at end    85.0 s
+
+RESULT
+  Won by checkmate
+  Game lasted 174.3 s
+
+MOVES
+    #  move          time     clock left
+    1  Be2           7.7 s      112.8 s
+    2  O-O           1.7 s      111.7 s
+    3  h3            4.1 s      108.0 s
+    4  gxh3          2.2 s      106.3 s
+    5  Kg2           1.0 s      105.8 s
+    6  Nc3           1.9 s      104.4 s
+    7  bxc3          1.8 s      103.1 s
+    8  a4            5.9 s       97.7 s
+    9  Bxc4          2.4 s       95.8 s
+   10  Ng5           4.0 s       92.3 s
+   11  Bd3           2.1 s       90.7 s
+   12  Be4           1.4 s       89.8 s
+   13  Qf3           1.4 s       88.9 s
+   14  Bxh7+         2.4 s       87.0 s
+   15  Qh5           1.6 s       85.9 s
+   16  Bxg6+         3.1 s       83.3 s
+   17  Ne6+          1.5 s       82.2 s
+   18  Qh6+          0.2 s       82.5 s
+   19  Qg5+          0.0 s       83.0 s
+   20  Bf5+          0.0 s       83.5 s
+   21  Qg6+          0.0 s       84.0 s
+   22  Qxe6+         0.0 s       84.5 s
+   23  Qd7#          0.0 s       85.0 s
+
+OUTPUT
+  1,659 bytes on stderr
+
+  native engine ready after 24.7s
+  init: native engine ready after 24.7s
+  nativesearch f1e2 depth 14 score 10 nodes 4761905 7688ms clock 120000
+  nativesearch e1g1 depth 13 score 11 nodes 1044734 1657ms clock 112809
+  nativesearch h2h3 depth 15 score -9 nodes 2589320 4144ms clock 111650
+  nativesearch g2h3 depth 13 score 234 nodes 1321216 2154ms clock 108004
+  nativesearch g1g2 depth 11 score 234 nodes 638345 1043ms clock 106348
+  nativesearch b1c3 depth 12 score 261 nodes 1163243 1863ms clock 105803
+  nativesearch b2c3 depth 14 score 288 nodes 1110747 1791ms clock 104437
+  nativesearch a3a4 depth 15 score 261 nodes 3728253 5917ms clock 103144
+  nativesearch e2c4 depth 13 score 362 nodes 1514937 2383ms clock 97725
+  nativesearch f3g5 depth 15 score 439 nodes 2610625 4007ms clock 95839
+  nativesearch c4d3 depth 12 score 801 nodes 1484679 2145ms clock 92330
+  nativesearch d3e4 depth 10 score 816 nodes 989586 1361ms clock 90683
+  nativesearch d1f3 depth 12 score 869 nodes 978854 1410ms clock 89820
+  nativesearch e4h7 depth 14 score 1071 nodes 1761285 2426ms clock 88908
+  nativesearch f3h5 depth 15 score 1086 nodes 1182001 1573ms clock 86980
+  nativesearch h7g6 depth 15 score 99977 nodes 2729629 3140ms clock 85904
+  nativesearch g5e6 depth 15 score 99979 nodes 1396772 1533ms clock 83262
+  nativesearch h5h6 depth 11 score 99989 nodes 194325 213ms clock 82227
+  nativesearch h6g5 depth 9 score 99991 nodes 4329 5ms clock 82512
+  nativesearch g6f5 depth 7 score 99993 nodes 1633 2ms clock 83005
+  nativesearch g5g6 depth 5 score 99995 nodes 369 1ms clock 83502
+  nativesearch g6e6 depth 3 score 99997 nodes 147 1ms clock 83999
+  nativesearch e6d7 depth 1 score 99999 nodes 47 0ms clock 84496
+
+Email hello@aichessathon.com with this file if anything here is unclear.

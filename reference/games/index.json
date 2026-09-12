@@ -10,7 +10,8 @@
   "id": "69704066-ccce-4bfa-9155-e1e47b84f9b5",
   "stage": "Qualifier round 30",
   "init_s": 0.6,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-030-black-vs-terminal.log"
  },
  {
   "round": 31,
@@ -23,7 +24,8 @@
   "id": "f9de76b5-ff66-40c2-ba74-a9647829aa3a",
   "stage": "Qualifier round 31",
   "init_s": 51.6,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-031-white-vs-neomatica.log"
  },
  {
   "round": 32,
@@ -36,7 +38,8 @@
   "id": "c747685b-aa12-449f-87f9-7b418a55a1ab",
   "stage": "Qualifier round 32",
   "init_s": 40.9,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-032-black-vs-trio-duo.log"
  },
  {
   "round": 33,
@@ -49,7 +52,8 @@
   "id": "12d6c8d5-b41e-40bb-ae86-20a7839d3997",
   "stage": "Qualifier round 33",
   "init_s": 47.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-033-white-vs-kaamuli.log"
  },
  {
   "round": 34,
@@ -62,7 +66,8 @@
   "id": "c39e0a21-efbb-42a8-a709-f31496ef264e",
   "stage": "Qualifier round 34",
   "init_s": 41.4,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-034-white-vs-magnus-ai.log"
  },
  {
   "round": 35,
@@ -75,7 +80,8 @@
   "id": "b670c9db-65c2-4512-9a9e-2534b526e4f6",
   "stage": "Qualifier round 35",
   "init_s": 41.1,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-035-black-vs-apex.log"
  },
  {
   "round": 36,
@@ -88,7 +94,8 @@
   "id": "1fb99660-98ce-4f6f-ae62-9ae69f4b2006",
   "stage": "Qualifier round 36",
   "init_s": 42.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-036-black-vs-stonkfish.log"
  },
  {
   "round": 37,
@@ -101,7 +108,8 @@
   "id": "9566793d-46ea-4e17-81f1-b39dfeb50651",
   "stage": "Qualifier round 37",
   "init_s": 40.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-037-white-vs-keep-kann-and-caro-on.log"
  },
  {
   "round": 38,
@@ -114,7 +122,8 @@
   "id": "95504b74-c3c3-4fd3-b7d5-dc7c8a58e31f",
   "stage": "Qualifier round 38",
   "init_s": 41.8,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-038-black-vs-french-carlsen.log"
  },
  {
   "round": 39,
@@ -127,7 +136,8 @@
   "id": "f2307dbf-bdba-40ab-aa9d-6ed5047e0184",
   "stage": "Qualifier round 39",
   "init_s": 43.4,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-039-white-vs-jsp.log"
  },
  {
   "round": 40,
@@ -140,7 +150,8 @@
   "id": "7f2e0cff-df33-47c1-b8e9-d9e23f4b54e5",
   "stage": "Qualifier round 40",
   "init_s": 42.1,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-040-black-vs-talos.log"
  },
  {
   "round": 41,
@@ -153,7 +164,8 @@
   "id": "a4a2ea7c-cb64-461a-b2dd-17152245dace",
   "stage": "Qualifier round 41",
   "init_s": 42.9,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-041-black-vs-pawnstorm.log"
  },
  {
   "round": 42,
@@ -166,7 +178,8 @@
   "id": "b74aa0db-6f38-4835-ae3b-29b3429f4ed9",
   "stage": "Qualifier round 42",
   "init_s": 42.3,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-042-white-vs-ryan-vincent.log"
  },
  {
   "round": 43,
@@ -179,7 +192,8 @@
   "id": "5622fc98-a1d4-4915-a9e4-0461227546ac",
   "stage": "Qualifier round 43",
   "init_s": 42.2,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-043-black-vs-pgn.log"
  },
  {
   "round": 44,
@@ -192,7 +206,8 @@
   "id": "9345b38c-8c6e-4370-946e-ea90f16ec583",
   "stage": "Qualifier round 44",
   "init_s": 41.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-044-white-vs-tensortortoise.log"
  },
  {
   "round": 45,
@@ -205,7 +220,8 @@
   "id": "de6bbb4e-20f7-4777-a9f4-d45bc6d5edfe",
   "stage": "Qualifier round 45",
   "init_s": 44.9,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-045-white-vs-kaamuli.log"
  },
  {
   "round": 46,
@@ -218,7 +234,8 @@
   "id": "2b6dba74-9fed-443a-b6b9-4770ab0cd8b8",
   "stage": "Qualifier round 46",
   "init_s": 88.5,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-046-white-vs-dgs-elo.log"
  },
  {
   "round": 47,
@@ -231,7 +248,8 @@
   "id": "cd22d72a-90d2-4aeb-a9ca-5653eaf399f8",
   "stage": "Qualifier round 47",
   "init_s": 40.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-047-black-vs-bitsentangled.log"
  },
  {
   "round": 48,
@@ -244,7 +262,8 @@
   "id": "e561f461-90c6-4db2-96f8-1a60f6a57192",
   "stage": "Qualifier round 48",
   "init_s": 40.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-048-black-vs-ms.log"
  },
  {
   "round": 49,
@@ -257,7 +276,8 @@
   "id": "69599ff0-0de2-4edd-922e-b52491384105",
   "stage": "Qualifier round 49",
   "init_s": 40.8,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-049-white-vs-leetbeaters.log"
  },
  {
   "round": 50,
@@ -270,7 +290,8 @@
   "id": "646e6aa3-18ca-4706-baa9-856b1f2e7374",
   "stage": "Qualifier round 50",
   "init_s": 40.6,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-050-white-vs-make-no-mistakes.log"
  },
  {
   "round": 51,
@@ -283,7 +304,8 @@
   "id": "1bb5be40-bc33-4a86-b0d0-b1fc78dc0256",
   "stage": "Qualifier round 51",
   "init_s": 40.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-051-black-vs-stonkfish.log"
  },
  {
   "round": 52,
@@ -296,7 +318,8 @@
   "id": "3ed538c9-caa1-46dd-b8b0-a86cefca851b",
   "stage": "Qualifier round 52",
   "init_s": 40.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-052-black-vs-krishthefish.log"
  },
  {
   "round": 53,
@@ -309,7 +332,8 @@
   "id": "e056b2e1-d721-4c8f-bdc0-c9f93087591d",
   "stage": "Qualifier round 53",
   "init_s": 40.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-053-white-vs-zak.log"
  },
  {
   "round": 54,
@@ -322,7 +346,8 @@
   "id": "06e191ef-f243-4431-8d09-1aa1ae7bfe6b",
   "stage": "Qualifier round 54",
   "init_s": 40.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-054-white-vs-dgs-elo.log"
  },
  {
   "round": 55,
@@ -335,7 +360,8 @@
   "id": "d79a3bfb-0d03-4892-8a34-ad2705b6f46f",
   "stage": "Qualifier round 55",
   "init_s": 48.1,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-055-white-vs-amplifirm.log"
  },
  {
   "round": 56,
@@ -348,7 +374,8 @@
   "id": "b80e15cf-f385-41d2-a3fe-43429b9dccef",
   "stage": "Qualifier round 56",
   "init_s": 40.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-056-black-vs-no-more-ammo.log"
  },
  {
   "round": 57,
@@ -361,7 +388,8 @@
   "id": "0bdb73e7-8541-4b9b-ad0c-ca1656417f31",
   "stage": "Qualifier round 57",
   "init_s": 40.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-057-black-vs-leetbeaters.log"
  },
  {
   "round": 58,
@@ -374,7 +402,8 @@
   "id": "bcec5747-c284-4a0e-a3e4-3f58cd2fa4d7",
   "stage": "Qualifier round 58",
   "init_s": 40.8,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-058-black-vs-stonkfish.log"
  },
  {
   "round": 59,
@@ -387,7 +416,8 @@
   "id": "6e160598-822f-471a-ac56-02113c71cd73",
   "stage": "Qualifier round 59",
   "init_s": 40.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-059-white-vs-team1.log"
  },
  {
   "round": 60,
@@ -400,7 +430,8 @@
   "id": "05ed8a72-5424-4e6b-8c1e-a15442c0a90c",
   "stage": "Qualifier round 60",
   "init_s": 68.8,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-060-white-vs-cornelius.log"
  },
  {
   "round": 61,
@@ -413,7 +444,8 @@
   "id": "64904ccd-073f-42d0-a78e-2f5b028a1a83",
   "stage": "Qualifier round 61",
   "init_s": 71.3,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-061-black-vs-omega3-fish.log"
  },
  {
   "round": 62,
@@ -426,7 +458,8 @@
   "id": "0acb34bd-786d-4a76-a4dc-d395215de6f0",
   "stage": "Qualifier round 62",
   "init_s": 72.5,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-062-white-vs-danya-s-disciple.log"
  },
  {
   "round": 63,
@@ -439,7 +472,8 @@
   "id": "0c6278b5-3a11-4651-abb8-0fce1d5c1606",
   "stage": "Qualifier round 63",
   "init_s": 72.5,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-063-white-vs-what-even-is-en-passant.log"
  },
  {
   "round": 64,
@@ -452,7 +486,8 @@
   "id": "f21ae4cc-35b7-469e-8c05-9491da5472dd",
   "stage": "Qualifier round 64",
   "init_s": 68.1,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-064-black-vs-ms.log"
  },
  {
   "round": 65,
@@ -465,7 +500,8 @@
   "id": "eab18664-e095-458e-beea-69f3686e0437",
   "stage": "Qualifier round 65",
   "init_s": 75.6,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-065-black-vs-zak.log"
  },
  {
   "round": 66,
@@ -478,7 +514,8 @@
   "id": "1176bdc7-6ac2-4043-896f-3ded379b1ac9",
   "stage": "Qualifier round 66",
   "init_s": 75.7,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-066-white-vs-ryan-vincent.log"
  },
  {
   "round": 67,
@@ -491,7 +528,8 @@
   "id": "d64030e5-b10a-4786-979a-1addc21f3b8b",
   "stage": "Qualifier round 67",
   "init_s": 73.3,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-067-black-vs-lightning-tree.log"
  },
  {
   "round": 68,
@@ -504,7 +542,8 @@
   "id": "6e61d991-f16d-4127-9bae-ac9595c363e6",
   "stage": "Qualifier round 68",
   "init_s": 75.7,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-068-white-vs-opus-carlsen.log"
  },
  {
   "round": 69,
@@ -517,7 +556,8 @@
   "id": "4c86df04-d487-4bff-8ab0-048a298deff9",
   "stage": "Qualifier round 69",
   "init_s": 75.6,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-069-black-vs-what-even-is-en-passant.log"
  },
  {
   "round": 70,
@@ -530,7 +570,8 @@
   "id": "468b5554-a29f-4285-bd18-7f7bafca06c5",
   "stage": "Qualifier round 70",
   "init_s": 75.6,
-  "init_near": true
+  "init_near": true,
+  "log": "rated-070-white-vs-ms.log"
  },
  {
   "round": 71,
@@ -543,7 +584,8 @@
   "id": "e8c7ed33-5fbf-4f15-9f65-f802cb4f721d",
   "stage": "Qualifier round 71",
   "init_s": 28.1,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-071-white-vs-sobriety.log"
  },
  {
   "round": 72,
@@ -556,7 +598,8 @@
   "id": "bd0b6c32-2711-42a8-aae4-44696e293c91",
   "stage": "Qualifier round 72",
   "init_s": 26.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-072-white-vs-ai-fellows.log"
  },
  {
   "round": 73,
@@ -569,7 +612,8 @@
   "id": "e66839d8-b445-4b0c-b5f0-4bf5ed59031b",
   "stage": "Qualifier round 73",
   "init_s": 24.3,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-073-black-vs-lehmanbro.log"
  },
  {
   "round": 74,
@@ -582,7 +626,8 @@
   "id": "475ee81a-9dd6-46cb-93bf-4d30bf8fb342",
   "stage": "Qualifier round 74",
   "init_s": 26.2,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-074-black-vs-what-even-is-en-passant.log"
  },
  {
   "round": 75,
@@ -595,7 +640,8 @@
   "id": "258fd3bd-15f2-4e9d-9b1c-973c641d6b07",
   "stage": "Qualifier round 75",
   "init_s": 26.9,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-075-black-vs-gladiator.log"
  },
  {
   "round": 76,
@@ -608,7 +654,8 @@
   "id": "5abf858d-d06e-464e-96ce-80a38632775c",
   "stage": "Qualifier round 76",
   "init_s": 27.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-076-black-vs-pheanup.log"
  },
  {
   "round": 77,
@@ -621,7 +668,8 @@
   "id": "335b9480-a59b-4627-879a-9f7e8a17457e",
   "stage": "Qualifier round 77",
   "init_s": 24.5,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-077-white-vs-opus-carlsen.log"
  },
  {
   "round": 78,
@@ -634,7 +682,8 @@
   "id": "f870009b-ed32-48d6-9b33-06d4621b5c86",
   "stage": "Qualifier round 78",
   "init_s": 26.4,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-078-white-vs-edward.log"
  },
  {
   "round": 79,
@@ -647,7 +696,8 @@
   "id": "a7cd52bc-7d19-40c5-bc44-b8c0e7cb732e",
   "stage": "Qualifier round 79",
   "init_s": 27.3,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-079-black-vs-danya-s-disciple.log"
  },
  {
   "round": 80,
@@ -660,7 +710,8 @@
   "id": "141d3aea-c7eb-4a80-b8dc-7215d27af663",
   "stage": "Qualifier round 80",
   "init_s": 26.1,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-080-black-vs-zak.log"
  },
  {
   "round": 81,
@@ -673,7 +724,8 @@
   "id": "9ab0e8b2-9358-4f79-b562-c4d8e08c00d3",
   "stage": "Qualifier round 81",
   "init_s": 26.9,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-081-white-vs-ai-fellows.log"
  },
  {
   "round": 82,
@@ -686,7 +738,8 @@
   "id": "d16ec483-4bf1-4c75-b73c-b2e3decb53e0",
   "stage": "Qualifier round 82",
   "init_s": 27.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-082-white-vs-lubina.log"
  },
  {
   "round": 83,
@@ -699,7 +752,8 @@
   "id": "9bcd49a6-33af-4fdd-9d9a-dbebc2b10db1",
   "stage": "Qualifier round 83",
   "init_s": 26.9,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-083-black-vs-stonkfish.log"
  },
  {
   "round": 84,
@@ -712,7 +766,8 @@
   "id": "8255c362-ff58-4ada-8864-b06cd2ba6599",
   "stage": "Qualifier round 84",
   "init_s": 26.0,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-084-white-vs-dgs-elo.log"
  },
  {
   "round": 85,
@@ -725,7 +780,8 @@
   "id": "a8f6b1d1-2b0d-4446-bb7e-34feb5e28c76",
   "stage": "Qualifier round 85",
   "init_s": 27.8,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-085-white-vs-pheanup.log"
  },
  {
   "round": 86,
@@ -738,7 +794,8 @@
   "id": "70df07dd-1bc1-484f-89a9-7bfd05f1dc27",
   "stage": "Qualifier round 86",
   "init_s": 25.8,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-086-black-vs-opus-carlsen.log"
  },
  {
   "round": 87,
@@ -751,7 +808,8 @@
   "id": "a5ec1241-a5c5-4975-bf4b-608eb8888f9c",
   "stage": "Qualifier round 87",
   "init_s": 26.8,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-087-black-vs-fuzzybot.log"
  },
  {
   "round": 88,
@@ -764,7 +822,8 @@
   "id": "80b21c38-672a-4221-8b0b-e7e344b55b6a",
   "stage": "Qualifier round 88",
   "init_s": 24.9,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-088-white-vs-danya-s-disciple.log"
  },
  {
   "round": 89,
@@ -777,7 +836,8 @@
   "id": "9a0a7f87-6aad-49a0-aee0-c1212d7073a7",
   "stage": "Qualifier round 89",
   "init_s": 24.8,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-089-black-vs-dgs-elo.log"
  },
  {
   "round": 90,
@@ -790,7 +850,8 @@
   "id": "9c3f0577-2ca5-415b-824c-9a2b08e13b70",
   "stage": "Qualifier round 90",
   "init_s": 27.6,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-090-white-vs-stonkfish.log"
  },
  {
   "round": 91,
@@ -803,7 +864,8 @@
   "id": "e569be8b-1817-4de7-ad5e-f025a21aab36",
   "stage": "Qualifier round 91",
   "init_s": 29.4,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-091-black-vs-make-no-mistakes.log"
  },
  {
   "round": 92,
@@ -816,7 +878,8 @@
   "id": "dcd71acd-34f9-46ae-9565-b57d5ec4f6e4",
   "stage": "Qualifier round 92",
   "init_s": 26.8,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-092-white-vs-gladiator.log"
  },
  {
   "round": 93,
@@ -829,7 +892,8 @@
   "id": "3782bdc1-28ba-40ab-aff7-b586b13ce2b6",
   "stage": "Qualifier round 93",
   "init_s": 29.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-093-black-vs-e-2.log"
  },
  {
   "round": 94,
@@ -842,7 +906,8 @@
   "id": "acf324ee-7970-4391-9e49-52b4be50f902",
   "stage": "Qualifier round 94",
   "init_s": 26.9,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-094-white-vs-betago.log"
  },
  {
   "round": 95,
@@ -855,7 +920,8 @@
   "id": "17b899b1-50de-4f06-ace0-1c4253dc4909",
   "stage": "Qualifier round 95",
   "init_s": 29.1,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-095-black-vs-pheanup.log"
  },
  {
   "round": 96,
@@ -868,7 +934,8 @@
   "id": "3ba57c5c-bf4a-4180-970f-d08d9f78c2e1",
   "stage": "Qualifier round 96",
   "init_s": 26.1,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-096-black-vs-the-roooookkk.log"
  },
  {
   "round": 97,
@@ -881,7 +948,8 @@
   "id": "bd0f3b11-d380-4056-87df-a8042a3519f8",
   "stage": "Qualifier round 97",
   "init_s": 27.2,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-097-white-vs-slopfish.log"
  },
  {
   "round": 98,
@@ -894,7 +962,8 @@
   "id": "6f479cbe-8f7c-425d-aa95-e67a7224895d",
   "stage": "Qualifier round 98",
   "init_s": 26.3,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-098-white-vs-e-2.log"
  },
  {
   "round": 99,
@@ -907,7 +976,8 @@
   "id": "1f49e59a-f819-4b48-b6ce-057aff4defe8",
   "stage": "Qualifier round 99",
   "init_s": 30.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-099-white-vs-stonkfish.log"
  },
  {
   "round": 100,
@@ -920,7 +990,8 @@
   "id": "28e368d3-4f7e-461e-83ac-5df47add03b6",
   "stage": "Qualifier round 100",
   "init_s": 26.2,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-100-black-vs-omega3-fish.log"
  },
  {
   "round": 101,
@@ -933,7 +1004,8 @@
   "id": "c8ec8a68-97cb-44cc-8a7f-516cf417413e",
   "stage": "Qualifier round 101",
   "init_s": 26.3,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-101-black-vs-the-roooookkk.log"
  },
  {
   "round": 102,
@@ -946,7 +1018,8 @@
   "id": "5319c5a9-bf20-4e5a-a74e-18a3f7812f71",
   "stage": "Qualifier round 102",
   "init_s": 26.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-102-black-vs-miskeen.log"
  },
  {
   "round": 103,
@@ -959,7 +1032,8 @@
   "id": "913e5163-7dd5-448b-becd-d02b16f06aa3",
   "stage": "Qualifier round 103",
   "init_s": 27.8,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-103-white-vs-rmfe.log"
  },
  {
   "round": 104,
@@ -972,7 +1046,8 @@
   "id": "25fd951d-4305-4729-810a-385b46b69387",
   "stage": "Qualifier round 104",
   "init_s": 27.0,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-104-white-vs-slopfish.log"
  },
  {
   "round": 105,
@@ -985,7 +1060,8 @@
   "id": "96d7ae5d-5597-4a0e-9bfe-0f87c31a4609",
   "stage": "Qualifier round 105",
   "init_s": 27.0,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-105-white-vs-gators.log"
  },
  {
   "round": 106,
@@ -998,7 +1074,8 @@
   "id": "7db11f13-ce49-44c7-8241-e9e0462b1dd7",
   "stage": "Qualifier round 106",
   "init_s": 26.1,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-106-black-vs-zak.log"
  },
  {
   "round": 107,
@@ -1011,7 +1088,8 @@
   "id": "9f09d40b-a6ed-4c1b-aff8-f4a634881006",
   "stage": "Qualifier round 107",
   "init_s": 25.7,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-107-black-vs-make-no-mistakes.log"
  },
  {
   "round": 108,
@@ -1024,7 +1102,8 @@
   "id": "727c5f9d-2f12-4159-8cdf-2a3066959657",
   "stage": "Qualifier round 108",
   "init_s": 26.6,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-108-white-vs-ai-fellows.log"
  },
  {
   "round": 109,
@@ -1037,10 +1116,11 @@
   "id": "085c16d0-7a21-4c98-8cc8-14e70ce178d0",
   "stage": "Qualifier round 109",
   "init_s": 26.2,
-  "init_near": false
+  "init_near": false,
+  "log": "rated-109-black-vs-binvengers.log"
  },
  {
-  "round": 110,
+  "round": 1,
   "kind": "final",
   "colour": "white",
   "opponent": "Trio Duo",
@@ -1050,10 +1130,11 @@
   "id": "ff80fc55-6445-4854-a286-665569cac10e",
   "stage": "Swiss round 1",
   "init_s": 32.7,
-  "init_near": false
+  "init_near": false,
+  "log": "final-110-white-vs-trio-duo.log"
  },
  {
-  "round": 111,
+  "round": 2,
   "kind": "final",
   "colour": "white",
   "opponent": "Dogwarts",
@@ -1063,10 +1144,11 @@
   "id": "4f161e98-2a5e-4fe0-b3f8-b86a192008cc",
   "stage": "Swiss round 2",
   "init_s": 25.8,
-  "init_near": false
+  "init_near": false,
+  "log": "final-111-white-vs-dogwarts.log"
  },
  {
-  "round": 112,
+  "round": 3,
   "kind": "final",
   "colour": "white",
   "opponent": "The Pershore Gambit",
@@ -1076,10 +1158,11 @@
   "id": "09efa1d3-8b1e-45d8-9b98-dff1f4fc246e",
   "stage": "Swiss round 3",
   "init_s": 24.8,
-  "init_near": false
+  "init_near": false,
+  "log": "final-112-white-vs-the-pershore-gambit.log"
  },
  {
-  "round": 113,
+  "round": 4,
   "kind": "final",
   "colour": "black",
   "opponent": "Stonkfish",
@@ -1089,10 +1172,11 @@
   "id": "ce62f599-30c6-44b7-8637-9959211f4478",
   "stage": "Swiss round 4",
   "init_s": 23.9,
-  "init_near": false
+  "init_near": false,
+  "log": "final-113-black-vs-stonkfish.log"
  },
  {
-  "round": 114,
+  "round": 5,
   "kind": "final",
   "colour": "white",
   "opponent": "HAL9000",
@@ -1102,10 +1186,11 @@
   "id": "e4c642ae-0f88-4ce1-8619-b3a2284b103d",
   "stage": "Swiss round 5",
   "init_s": 26.2,
-  "init_near": false
+  "init_near": false,
+  "log": "final-114-white-vs-hal9000.log"
  },
  {
-  "round": 115,
+  "round": 6,
   "kind": "final",
   "colour": "white",
   "opponent": "AlphaBeta",
@@ -1115,10 +1200,11 @@
   "id": "1757acc8-8299-4d78-83b8-e27ecd490307",
   "stage": "Swiss round 6",
   "init_s": 24.6,
-  "init_near": false
+  "init_near": false,
+  "log": "final-115-white-vs-alphabeta.log"
  },
  {
-  "round": 116,
+  "round": 7,
   "kind": "final",
   "colour": "black",
   "opponent": "Solo Man",
@@ -1128,10 +1214,11 @@
   "id": "0c9743ac-0ecd-47a3-8967-e89b892d6559",
   "stage": "Swiss round 7",
   "init_s": 25.6,
-  "init_near": false
+  "init_near": false,
+  "log": "final-116-black-vs-solo-man.log"
  },
  {
-  "round": 117,
+  "round": 8,
   "kind": "final",
   "colour": "white",
   "opponent": "Ryan Vincent",
@@ -1141,10 +1228,11 @@
   "id": "3fa7274e-7e4a-41a1-bc98-e7cdf9eefd9d",
   "stage": "Swiss round 8",
   "init_s": 24.8,
-  "init_near": false
+  "init_near": false,
+  "log": "final-117-white-vs-ryan-vincent.log"
  },
  {
-  "round": 118,
+  "round": 9,
   "kind": "final",
   "colour": "white",
   "opponent": "Team1",
@@ -1154,10 +1242,11 @@
   "id": "9bdf0852-8e23-4d93-96fc-7892aecaaa5e",
   "stage": "Swiss round 9",
   "init_s": 25.3,
-  "init_near": false
+  "init_near": false,
+  "log": "final-118-white-vs-team1.log"
  },
  {
-  "round": 119,
+  "round": 10,
   "kind": "final",
   "colour": "black",
   "opponent": "Lubina",
@@ -1167,10 +1256,11 @@
   "id": "f08f83c7-ce52-45bd-8eac-319e3d9ee06f",
   "stage": "Swiss round 10",
   "init_s": 24.1,
-  "init_near": false
+  "init_near": false,
+  "log": "final-119-black-vs-lubina.log"
  },
  {
-  "round": 120,
+  "round": 11,
   "kind": "final",
   "colour": "white",
   "opponent": "Danya's Disciple",
@@ -1180,10 +1270,11 @@
   "id": "c64fb513-5105-410e-88a2-55b61d5c3ee2",
   "stage": "Swiss round 11",
   "init_s": 26.4,
-  "init_near": false
+  "init_near": false,
+  "log": "final-120-white-vs-danya-s-disciple.log"
  },
  {
-  "round": 121,
+  "round": 12,
   "kind": "final",
   "colour": "white",
   "opponent": "Opus Carlsen",
@@ -1193,10 +1284,11 @@
   "id": "d96c4bc5-fba3-4ff5-adda-dd0c8f48fad7",
   "stage": "Swiss round 12",
   "init_s": 26.3,
-  "init_near": false
+  "init_near": false,
+  "log": "final-121-white-vs-opus-carlsen.log"
  },
  {
-  "round": 122,
+  "round": 13,
   "kind": "final",
   "colour": "black",
   "opponent": "BetaGo",
@@ -1206,7 +1298,8 @@
   "id": "4a411230-6e2a-460f-9818-f63910a6423a",
   "stage": "Swiss round 13",
   "init_s": 28.4,
-  "init_near": false
+  "init_near": false,
+  "log": "final-122-black-vs-betago.log"
  },
  {
   "file": "practice-001-black-vs-miskeen.pgn",
@@ -1219,7 +1312,8 @@
   "result": "0-1",
   "termination": "init",
   "init_s": 24.1,
-  "init_near": true
+  "init_near": true,
+  "log": "practice-001-black-vs-miskeen.log"
  },
  {
   "file": "practice-002-white-vs-rmfe.pgn",
@@ -1232,7 +1326,8 @@
   "result": "1-0",
   "termination": "checkmate",
   "init_s": 28.0,
-  "init_near": true
+  "init_near": true,
+  "log": "practice-002-white-vs-rmfe.log"
  },
  {
   "file": "practice-003-black-vs-gladiator.pgn",
@@ -1245,7 +1340,8 @@
   "result": "1-0",
   "termination": "checkmate",
   "init_s": 23.9,
-  "init_near": true
+  "init_near": true,
+  "log": "practice-003-black-vs-gladiator.log"
  },
  {
   "file": "practice-004-white-vs-jbg-fam.pgn",
@@ -1258,7 +1354,8 @@
   "result": "1-0",
   "termination": "init",
   "init_s": 24.1,
-  "init_near": true
+  "init_near": true,
+  "log": "practice-004-white-vs-jbg-fam.log"
  },
  {
   "file": "practice-005-white-vs-sobriety.pgn",
@@ -1271,7 +1368,8 @@
   "result": "1/2-1/2",
   "termination": "threefold_repetition",
   "init_s": 20.2,
-  "init_near": false
+  "init_near": false,
+  "log": "practice-005-white-vs-sobriety.log"
  },
  {
   "file": "practice-006-black-vs-opus-carlsen.pgn",
@@ -1284,7 +1382,8 @@
   "result": "1/2-1/2",
   "termination": "threefold_repetition",
   "init_s": 20.1,
-  "init_near": false
+  "init_near": false,
+  "log": "practice-006-black-vs-opus-carlsen.log"
  },
  {
   "file": "practice-007-white-vs-ryan-vincent.pgn",
@@ -1297,6 +1396,175 @@
   "result": "0-1",
   "termination": "checkmate",
   "init_s": 20.4,
-  "init_near": false
+  "init_near": false,
+  "log": "practice-007-white-vs-ryan-vincent.log"
+ },
+ {
+  "file": "practice-008-white-vs-miskeen.pgn",
+  "id": "4f4f4b3d-2cf9-4caa-a4f2-a6d1e73160f6",
+  "round": 8,
+  "stage": "Practice round 8",
+  "kind": "practice",
+  "colour": "white",
+  "opponent": "Miskeen",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "init_s": 20.2,
+  "init_near": false,
+  "log": "practice-008-white-vs-miskeen.log"
+ },
+ {
+  "file": "practice-009-black-vs-rmfe.pgn",
+  "id": "d9e62132-d606-4ae1-97c5-e46ed69d839c",
+  "round": 9,
+  "stage": "Practice round 9",
+  "kind": "practice",
+  "colour": "black",
+  "opponent": "RMFE",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "init_s": 20.2,
+  "init_near": false,
+  "log": "practice-009-black-vs-rmfe.log"
+ },
+ {
+  "file": "practice-010-black-vs-dgs-elo.pgn",
+  "id": "7496bd37-890f-4551-886c-b6cb06579bdd",
+  "round": 10,
+  "stage": "Practice round 10",
+  "kind": "practice",
+  "colour": "black",
+  "opponent": "DGS ELO",
+  "result": "1-0",
+  "termination": "checkmate",
+  "init_s": 20.2,
+  "init_near": false,
+  "log": "practice-010-black-vs-dgs-elo.log"
+ },
+ {
+  "file": "practice-011-white-vs-what-even-is-en-passant.pgn",
+  "id": "e937fd62-7202-42cb-8f3e-81b56938c131",
+  "round": 11,
+  "stage": "Practice round 11",
+  "kind": "practice",
+  "colour": "white",
+  "opponent": "what even is en passant",
+  "result": "0-1",
+  "termination": "checkmate",
+  "init_s": 20.3,
+  "init_near": false,
+  "log": "practice-011-white-vs-what-even-is-en-passant.log"
+ },
+ {
+  "file": "practice-012-black-vs-opus-carlsen.pgn",
+  "id": "266f0a5d-58c9-486f-86ca-6122bd8ebd86",
+  "round": 12,
+  "stage": "Practice round 12",
+  "kind": "practice",
+  "colour": "black",
+  "opponent": "Opus Carlsen",
+  "result": "1-0",
+  "termination": "checkmate",
+  "init_s": 20.2,
+  "init_near": false,
+  "log": "practice-012-black-vs-opus-carlsen.log"
+ },
+ {
+  "file": "practice-013-black-vs-mate-in-one.pgn",
+  "id": "b9ced3fb-7cb0-40a4-83c7-326a2cd9f116",
+  "round": 13,
+  "stage": "Practice round 13",
+  "kind": "practice",
+  "colour": "black",
+  "opponent": "Mate in One",
+  "result": "1-0",
+  "termination": "checkmate",
+  "init_s": 23.1,
+  "init_near": true,
+  "log": "practice-013-black-vs-mate-in-one.log"
+ },
+ {
+  "file": "practice-014-white-vs-zugzwin.pgn",
+  "id": "81a25746-3737-4730-976d-09e72f87f2b8",
+  "round": 14,
+  "stage": "Practice round 14",
+  "kind": "practice",
+  "colour": "white",
+  "opponent": "Zugzwin",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "init_s": 23.3,
+  "init_near": true,
+  "log": "practice-014-white-vs-zugzwin.log"
+ },
+ {
+  "file": "practice-015-black-vs-slopfish.pgn",
+  "id": "833a9716-03c2-4178-bb49-f596642ab6d1",
+  "round": 15,
+  "stage": "Practice round 15",
+  "kind": "practice",
+  "colour": "black",
+  "opponent": "slopfish",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "init_s": 23.2,
+  "init_near": true,
+  "log": "practice-015-black-vs-slopfish.log"
+ },
+ {
+  "file": "practice-016-white-vs-asher-falcon.pgn",
+  "id": "88fcd2e5-3856-4cff-976b-d792b398b601",
+  "round": 16,
+  "stage": "Practice round 16",
+  "kind": "practice",
+  "colour": "white",
+  "opponent": "Asher Falcon",
+  "result": "1-0",
+  "termination": "checkmate",
+  "init_s": 20.4,
+  "init_near": false,
+  "log": "practice-016-white-vs-asher-falcon.log"
+ },
+ {
+  "file": "practice-017-black-vs-binvengers.pgn",
+  "id": "26da574f-4417-4f89-9f86-a54e23031398",
+  "round": 17,
+  "stage": "Practice round 17",
+  "kind": "practice",
+  "colour": "black",
+  "opponent": "Binvengers",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "init_s": 20.2,
+  "init_near": false,
+  "log": "practice-017-black-vs-binvengers.log"
+ },
+ {
+  "file": "practice-018-white-vs-bentheboss1236.pgn",
+  "id": "8cd5d2ec-6eb3-40b8-a36c-9f3501362b36",
+  "round": 18,
+  "stage": "Practice round 18",
+  "kind": "practice",
+  "colour": "white",
+  "opponent": "bentheboss1236",
+  "result": "1-0",
+  "termination": "checkmate",
+  "init_s": 20.2,
+  "init_near": false,
+  "log": "practice-018-white-vs-bentheboss1236.log"
+ },
+ {
+  "file": "practice-019-black-vs-rataturing.pgn",
+  "id": "1406867e-9aa5-49e6-9606-32f143b3b138",
+  "round": 19,
+  "stage": "Practice round 19",
+  "kind": "practice",
+  "colour": "black",
+  "opponent": "Rataturing",
+  "result": "0-1",
+  "termination": "checkmate",
+  "init_s": 20.2,
+  "init_near": false,
+  "log": "practice-019-black-vs-rataturing.log"
  }
 ]

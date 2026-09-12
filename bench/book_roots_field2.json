@@ -1,0 +1,284 @@
+[
+{
+"fen": "r1bq1rk1/pp2ppbp/2np1np1/2p5/P3P3/2NP1NP1/1PP2PBP/R1BQK2R w KQ - 1 8",
+"name": "practice-005-white-vs-sobriety ply1",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pp2ppbp/2np1np1/2p5/P3P3/2NP1NP1/1PP2PBP/R1BQ1RK1 b - - 2 8",
+"name": "practice-005-white-vs-sobriety ply2",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pp3pbp/2nppnp1/2p5/P3P3/2NP1NP1/1PP2PBP/R1BQ1RK1 w - - 0 9",
+"name": "practice-005-white-vs-sobriety ply3",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pp3pbp/2nppnp1/2p5/P3P3/2NP1NP1/1PP2PBP/R1BQR1K1 b - - 1 9",
+"name": "practice-005-white-vs-sobriety ply4",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pp3pbp/2np1np1/2p1p3/P3P3/2NP1NP1/1PP2PBP/R1BQR1K1 w - - 0 10",
+"name": "practice-005-white-vs-sobriety ply5",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pp3pbp/2np1np1/2pNp3/P3P3/3P1NP1/1PP2PBP/R1BQR1K1 b - - 1 10",
+"name": "practice-005-white-vs-sobriety ply6",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pp3pbp/2np2p1/2pnp3/P3P3/3P1NP1/1PP2PBP/R1BQR1K1 w - - 0 11",
+"name": "practice-005-white-vs-sobriety ply7",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pp3pbp/2np2p1/2pPp3/P7/3P1NP1/1PP2PBP/R1BQR1K1 b - - 0 11",
+"name": "practice-005-white-vs-sobriety ply8",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pp2npbp/3p2p1/2pPp3/P7/3P1NP1/1PP2PBP/R1BQR1K1 w - - 1 12",
+"name": "practice-005-white-vs-sobriety ply9",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pp2npbp/3p2p1/2pPp3/P7/3P2P1/1PPN1PBP/R1BQR1K1 b - - 2 12",
+"name": "practice-005-white-vs-sobriety ply10",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/p3npbp/1p1p2p1/2pPp3/P7/3P2P1/1PPN1PBP/R1BQR1K1 w - - 0 13",
+"name": "practice-005-white-vs-sobriety ply11",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/p3npbp/1p1p2p1/2pPp3/P7/2PP2P1/1P1N1PBP/R1BQR1K1 b - - 0 13",
+"name": "practice-005-white-vs-sobriety ply12",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "1rbq1rk1/p3npbp/1p1p2p1/2pPp3/P7/2PP2P1/1P1N1PBP/R1BQR1K1 w - - 1 14",
+"name": "practice-005-white-vs-sobriety ply13",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "1rbq1rk1/p3npbp/1p1p2p1/2pPp3/P7/2PP2P1/1P1N1PBP/1RBQR1K1 b - - 2 14",
+"name": "practice-005-white-vs-sobriety ply14",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "1rbq1rk1/4npbp/1p1p2p1/p1pPp3/P7/2PP2P1/1P1N1PBP/1RBQR1K1 w - - 0 15",
+"name": "practice-005-white-vs-sobriety ply15",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "1rbq1rk1/4npbp/1p1p2p1/p1pPp3/PP6/2PP2P1/3N1PBP/1RBQR1K1 b - - 0 15",
+"name": "practice-005-white-vs-sobriety ply16",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "1rbq1rk1/4npbp/1p1p2p1/2pPp3/Pp6/2PP2P1/3N1PBP/1RBQR1K1 w - - 0 16",
+"name": "practice-005-white-vs-sobriety ply17",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "1rbq1rk1/4npbp/1p1p2p1/2pPp3/PP6/3P2P1/3N1PBP/1RBQR1K1 b - - 0 16",
+"name": "practice-005-white-vs-sobriety ply18",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pppnbpp1/4pn1p/3p4/2PP3B/2N1PN2/PP2BPPP/R2QK2R b KQ - 3 8",
+"name": "practice-006-black-vs-opus-carlsen ply1",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pppnbpp1/4pn1p/8/2pP3B/2N1PN2/PP2BPPP/R2QK2R w KQ - 0 9",
+"name": "practice-006-black-vs-opus-carlsen ply2",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/pppnbpp1/4pn1p/8/2BP3B/2N1PN2/PP3PPP/R2QK2R b KQ - 0 9",
+"name": "practice-006-black-vs-opus-carlsen ply3",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/p1pnbpp1/1p2pn1p/8/2BP3B/2N1PN2/PP3PPP/R2QK2R w KQ - 0 10",
+"name": "practice-006-black-vs-opus-carlsen ply4",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/p1pnbpp1/1p2pn1p/8/2BP3B/2N1PN2/PP3PPP/R2Q1RK1 b - - 1 10",
+"name": "practice-006-black-vs-opus-carlsen ply5",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/pbpnbpp1/1p2pn1p/8/2BP3B/2N1PN2/PP3PPP/R2Q1RK1 w - - 2 11",
+"name": "practice-006-black-vs-opus-carlsen ply6",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/pbpnbpp1/1p2pn1p/8/2BP4/2N1PNB1/PP3PPP/R2Q1RK1 b - - 3 11",
+"name": "practice-006-black-vs-opus-carlsen ply7",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/1bpnbpp1/pp2pn1p/8/2BP4/2N1PNB1/PP3PPP/R2Q1RK1 w - - 0 12",
+"name": "practice-006-black-vs-opus-carlsen ply8",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/1bpnbpp1/pp2pn1p/8/P1BP4/2N1PNB1/1P3PPP/R2Q1RK1 b - - 0 12",
+"name": "practice-006-black-vs-opus-carlsen ply9",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/1b1nbpp1/pp2pn1p/2p5/P1BP4/2N1PNB1/1P3PPP/R2Q1RK1 w - - 0 13",
+"name": "practice-006-black-vs-opus-carlsen ply10",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/1b1nbpp1/pp2pn1p/2pP4/P1B5/2N1PNB1/1P3PPP/R2Q1RK1 b - - 0 13",
+"name": "practice-006-black-vs-opus-carlsen ply11",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/1b1nbpp1/pp3n1p/2pp4/P1B5/2N1PNB1/1P3PPP/R2Q1RK1 w - - 0 14",
+"name": "practice-006-black-vs-opus-carlsen ply12",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/1b1nbpp1/pp3n1p/2pB4/P7/2N1PNB1/1P3PPP/R2Q1RK1 b - - 0 14",
+"name": "practice-006-black-vs-opus-carlsen ply13",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/1b1nbpp1/pp5p/2pn4/P7/2N1PNB1/1P3PPP/R2Q1RK1 w - - 0 15",
+"name": "practice-006-black-vs-opus-carlsen ply14",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/1b1nbpp1/pp5p/2pN4/P7/4PNB1/1P3PPP/R2Q1RK1 b - - 0 15",
+"name": "practice-006-black-vs-opus-carlsen ply15",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/3nbpp1/pp5p/2pb4/P7/4PNB1/1P3PPP/R2Q1RK1 w - - 0 16",
+"name": "practice-006-black-vs-opus-carlsen ply16",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r2q1rk1/3nbpp1/pp5p/2pQ4/P7/4PNB1/1P3PPP/R4RK1 b - - 0 16",
+"name": "practice-006-black-vs-opus-carlsen ply17",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/2p1bppp/p2p1n2/1p2p3/4P3/1n1P1N1P/PPPN1PP1/R1BQR1K1 w - - 0 11",
+"name": "practice-007-white-vs-ryan-vincent ply1",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/2p1bppp/p2p1n2/1p2p3/4P3/1P1P1N1P/1PPN1PP1/R1BQR1K1 b - - 0 11",
+"name": "practice-007-white-vs-ryan-vincent ply2",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/4bppp/p2p1n2/1pp1p3/4P3/1P1P1N1P/1PPN1PP1/R1BQR1K1 w - - 0 12",
+"name": "practice-007-white-vs-ryan-vincent ply3",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/4bppp/p2p1n2/1pp1p3/4P3/1P1P1N1P/1PP2PP1/R1BQRNK1 b - - 1 12",
+"name": "practice-007-white-vs-ryan-vincent ply4",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/4bpp1/p2p1n1p/1pp1p3/4P3/1P1P1N1P/1PP2PP1/R1BQRNK1 w - - 0 13",
+"name": "practice-007-white-vs-ryan-vincent ply5",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/4bpp1/p2p1n1p/1pp1p3/4P3/1P1P3P/1PP2PPN/R1BQRNK1 b - - 1 13",
+"name": "practice-007-white-vs-ryan-vincent ply6",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/4bpp1/3p1n1p/ppp1p3/4P3/1P1P3P/1PP2PPN/R1BQRNK1 w - - 0 14",
+"name": "practice-007-white-vs-ryan-vincent ply7",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bq1rk1/4bpp1/3p1n1p/ppp1p3/4P3/1P1P2NP/1PP2PPN/R1BQR1K1 b - - 1 14",
+"name": "practice-007-white-vs-ryan-vincent ply8",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bqr1k1/4bpp1/3p1n1p/ppp1p3/4P3/1P1P2NP/1PP2PPN/R1BQR1K1 w - - 2 15",
+"name": "practice-007-white-vs-ryan-vincent ply9",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bqr1k1/4bpp1/3p1n1p/ppp1p3/4P3/1P1P2NP/1PPB1PPN/R2QR1K1 b - - 3 15",
+"name": "practice-007-white-vs-ryan-vincent ply10",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bqrbk1/5pp1/3p1n1p/ppp1p3/4P3/1P1P2NP/1PPB1PPN/R2QR1K1 w - - 4 16",
+"name": "practice-007-white-vs-ryan-vincent ply11",
+"games": 1,
+"source": "field2"
+},
+{
+"fen": "r1bqrbk1/5pp1/3p1n1p/ppp1p3/4P3/1P1P2NP/RPPB1PPN/3QR1K1 b - - 5 16",
+"name": "practice-007-white-vs-ryan-vincent ply12",
+"games": 1,
+"source": "field2"
+}
+]

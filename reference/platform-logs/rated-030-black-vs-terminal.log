@@ -1,0 +1,121 @@
+AI CHESSATHON MATCH LOG
+=======================
+
+MATCH
+  Round          Qualifier round 30
+  Team           catfish
+  Colour         Black
+  Opponent       Terminal
+  Opening        Italian Game
+  Start FEN      r1bqk2r/ppp2ppp/2np1n2/2b1p3/2B1P3/2PP1N2/PP1N1PPP/R1BQK2R b KQkq - 1 6
+  You moved      First
+  Machine        w-71e58d
+  Finished       2026-09-05 21:18:28 UTC
+  Match ID       69704066-ccce-4bfa-9155-e1e47b84f9b5
+
+INIT
+  Ready in       0.6 s
+  Budget         90.0 s
+  Used           1 percent
+
+CLOCK
+  Base           120.0 s plus 0.5 s per move
+  Moves          40
+  Time used      84.9 s
+  Slowest        7.0 s on move 6
+  Fastest        0.0 s on move 38
+  Average        2.1 s
+  Left at end    55.1 s
+
+RESULT
+  Won by checkmate
+  Game lasted 167.6 s
+
+MOVES
+    #  move          time     clock left
+    1  O-O           5.2 s      115.3 s
+    2  Bb6           3.0 s      112.8 s
+    3  h6            2.6 s      110.7 s
+    4  Qxf6          2.5 s      108.7 s
+    5  Qg6           4.8 s      104.5 s
+    6  Bd7           7.0 s       97.9 s
+    7  Rad8          0.9 s       97.5 s
+    8  exd4          1.2 s       96.8 s
+    9  a5            3.7 s       93.7 s
+   10  a4            3.4 s       90.7 s
+   11  axb3          2.3 s       88.9 s
+   12  Bxc6          2.6 s       86.8 s
+   13  Bxe4          3.2 s       84.1 s
+   14  Bc2           0.8 s       83.8 s
+   15  Rfe8          2.0 s       82.3 s
+   16  Be4           1.2 s       81.7 s
+   17  Bc5           3.1 s       79.1 s
+   18  Rxe4          1.1 s       78.5 s
+   19  c6            2.0 s       77.0 s
+   20  dxc5          1.7 s       75.7 s
+   21  Kh7           3.1 s       73.1 s
+   22  Ra4           2.5 s       71.1 s
+   23  Rxa2          2.4 s       69.2 s
+   24  Qe4           3.2 s       66.5 s
+   25  Rxb2          0.6 s       66.4 s
+   26  c4            3.2 s       63.7 s
+   27  c3            2.3 s       61.9 s
+   28  Qf4           1.5 s       60.9 s
+   29  c2            4.3 s       57.1 s
+   30  Rb1           0.5 s       57.1 s
+   31  Rxf1+         0.5 s       57.1 s
+   32  Qxf3+         1.0 s       56.5 s
+   33  Rxh1          0.6 s       56.4 s
+   34  c1=Q          1.7 s       55.3 s
+   35  Qd1+          0.9 s       54.9 s
+   36  Qf3+          1.6 s       53.8 s
+   37  Rc1+          0.7 s       53.6 s
+   38  Qd5+          0.0 s       54.1 s
+   39  Re1+          0.0 s       54.6 s
+   40  Qe4#          0.0 s       55.1 s
+
+OUTPUT
+  2,503 bytes on stderr
+
+  pyengine e8g8 depth 7 score 6 nodes 62603 5181ms clock 120000
+  pyengine c5b6 depth 7 score 17 nodes 32494 3007ms clock 115306
+  pyengine h7h6 depth 6 score 24 nodes 28163 2557ms clock 112793
+  pyengine d8f6 depth 7 score 44 nodes 29658 2475ms clock 110729
+  pyengine f6g6 depth 7 score 87 nodes 52151 4782ms clock 108747
+  pyengine c8d7 depth 6 score 107 nodes 82176 7022ms clock 104453
+  pyengine a8d8 depth 4 score 107 nodes 11354 896ms clock 97924
+  pyengine e5d4 depth 4 score 115 nodes 13948 1165ms clock 97512
+  pyengine a7a5 depth 6 score 101 nodes 40737 3683ms clock 96840
+  pyengine a5a4 depth 7 score 139 nodes 36692 3438ms clock 93655
+  pyengine a4b3 depth 7 score 180 nodes 22032 2295ms clock 90706
+  pyengine d7c6 depth 7 score 168 nodes 27689 2583ms clock 88903
+  pyengine c6e4 depth 7 score 220 nodes 33168 3174ms clock 86810
+  pyengine e4c2 depth 6 score 220 nodes 8204 808ms clock 84133
+  pyengine f8e8 depth 7 score 187 nodes 19671 2013ms clock 83823
+  pyengine c2e4 depth 6 score 203 nodes 9653 1149ms clock 82302
+  pyengine b6c5 depth 6 score 201 nodes 31181 3070ms clock 81650
+  pyengine e8e4 depth 5 score 187 nodes 12093 1055ms clock 79077
+  pyengine c7c6 depth 6 score 216 nodes 22329 2047ms clock 78512
+  pyengine d6c5 depth 7 score 294 nodes 18798 1716ms clock 76963
+  pyengine g8h7 depth 6 score 318 nodes 39928 3120ms clock 75736
+  pyengine e4a4 depth 6 score 373 nodes 37488 2538ms clock 73105
+  pyengine a4a2 depth 7 score 467 nodes 32176 2386ms clock 71059
+  pyengine g6e4 depth 8 score 537 nodes 34728 3144ms clock 69157
+  pyengine a2b2 depth 7 score 549 nodes 6452 579ms clock 66501
+  pyengine c5c4 depth 7 score 651 nodes 41139 3197ms clock 66415
+  pyengine c4c3 depth 6 score 755 nodes 30430 2272ms clock 63711
+  pyengine e4f4 depth 6 score 906 nodes 19165 1510ms clock 61936
+  pyengine c3c2 depth 7 score 978 nodes 58368 4325ms clock 60919
+  pyengine b2b1 depth 7 score 1402 nodes 5062 489ms clock 57088
+  pyengine b1f1 depth 6 score 1676 nodes 7416 527ms clock 57093
+  pyengine f4f3 depth 7 score 1708 nodes 11581 1038ms clock 57060
+  pyengine f1h1 depth 7 score 1724 nodes 7616 573ms clock 56519
+  pyengine c2c1q depth 6 score 1794 nodes 21763 1662ms clock 56443
+  pyengine c1d1 depth 5 score 1878 nodes 9721 857ms clock 55279
+  pyengine d1f3 depth 5 score 1978 nodes 15489 1570ms clock 54915
+  pyengine h1c1 depth 4 score 99993 nodes 11591 727ms clock 53842
+  pyengine f3d5 depth 1 score 99995 nodes 68 2ms clock 53613
+  pyengine c1e1 depth 1 score 99997 nodes 77 2ms clock 54103
+  pyengine d5e4 depth 1 score 99999 nodes 84 2ms clock 54591
+
+Email hello@aichessathon.com with this file if anything here is unclear.

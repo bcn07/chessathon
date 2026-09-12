@@ -1,0 +1,171 @@
+AI CHESSATHON MATCH LOG
+=======================
+
+MATCH
+  Round          Qualifier round 39
+  Team           catfish
+  Colour         White
+  Opponent       JSP
+  Opening        King's Indian Classical
+  Start FEN      r1bq1rk1/ppp2pbp/n2p1np1/4p3/2PPP3/2NQ1N2/PP2BPPP/R1B1K2R w KQ - 2 8
+  You moved      First
+  Machine        w-933051
+  Finished       2026-09-06 15:11:17 UTC
+  Match ID       f2307dbf-bdba-40ab-aa9d-6ed5047e0184
+
+INIT
+  Ready in       43.4 s
+  Budget         90.0 s
+  Used           48 percent
+
+CLOCK
+  Base           120.0 s plus 0.5 s per move
+  Moves          64
+  Time used      137.3 s
+  Slowest        9.9 s on move 32
+  Fastest        0.0 s on move 34
+  Average        2.1 s
+  Left at end    14.7 s
+
+RESULT
+  Lost by checkmate
+  Game lasted 276.0 s
+
+MOVES
+    #  move          time     clock left
+    1  d5            2.5 s      118.0 s
+    2  O-O           2.6 s      115.9 s
+    3  Bxf4          0.8 s      115.7 s
+    4  Qd2           2.2 s      114.0 s
+    5  Rfe1          6.1 s      108.4 s
+    6  h3            1.6 s      107.3 s
+    7  Rad1          7.4 s      100.4 s
+    8  b4            2.8 s       98.2 s
+    9  Nxa4          1.1 s       97.6 s
+   10  Rb1           2.2 s       95.9 s
+   11  c5            5.1 s       91.2 s
+   12  Bc4           2.2 s       89.6 s
+   13  e5            4.0 s       86.1 s
+   14  Bb3           1.7 s       84.9 s
+   15  e6            0.8 s       84.6 s
+   16  e7            1.8 s       83.3 s
+   17  Rbd1          2.0 s       81.8 s
+   18  hxg4          1.3 s       81.1 s
+   19  Nd4           1.4 s       80.2 s
+   20  c6            1.9 s       78.7 s
+   21  g3            1.1 s       78.1 s
+   22  Qxh6+         1.8 s       76.8 s
+   23  Nf5           0.9 s       76.4 s
+   24  Re4           2.4 s       74.6 s
+   25  Ne3           1.0 s       74.1 s
+   26  Re6           3.7 s       70.9 s
+   27  Bc2           2.4 s       69.0 s
+   28  Nxf5          1.8 s       67.7 s
+   29  dxe6          3.0 s       65.2 s
+   30  Rd5           2.5 s       63.2 s
+   31  Be4           2.2 s       61.5 s
+   32  Kf1           9.9 s       52.1 s
+   33  Ke1           2.1 s       50.5 s
+   34  Kd2           0.0 s       51.0 s
+   35  Nxd6          1.9 s       49.6 s
+   36  c7            2.8 s       47.3 s
+   37  a4            3.9 s       43.9 s
+   38  axb5          2.1 s       42.4 s
+   39  Rxb5          4.1 s       38.8 s
+   40  Rb7           0.8 s       38.5 s
+   41  b5            1.5 s       37.5 s
+   42  Rxc7+         2.1 s       35.9 s
+   43  Bf5           1.2 s       35.3 s
+   44  e7            1.4 s       34.3 s
+   45  Ke3           0.8 s       34.0 s
+   46  b6            1.3 s       33.2 s
+   47  b7            1.6 s       32.0 s
+   48  Bc8           0.9 s       31.6 s
+   49  Kd3           1.4 s       30.8 s
+   50  Kc2           3.6 s       27.6 s
+   51  Kd3           1.3 s       26.8 s
+   52  Be6           1.5 s       25.8 s
+   53  Bxd5          2.7 s       23.6 s
+   54  Kc3           3.7 s       20.4 s
+   55  b8=Q          3.9 s       17.1 s
+   56  Kc2           1.1 s       16.4 s
+   57  Kd3           2.9 s       14.0 s
+   58  Bc4           1.9 s       12.6 s
+   59  Ke2           0.9 s       12.2 s
+   60  Kxf2          0.0 s       12.7 s
+   61  Ke2           0.0 s       13.2 s
+   62  Kf1           0.0 s       13.7 s
+   63  Ke1           0.0 s       14.2 s
+   64  Kf1           0.0 s       14.7 s
+
+OUTPUT
+  4,537 bytes on stderr
+
+  native engine ready after 42.8s
+  init: native engine ready after 42.8s
+  nativesearch d4d5 depth 12 score -22 nodes 2208146 2482ms clock 120000
+  nativesearch e1g1 depth 12 score -20 nodes 2174977 2569ms clock 118015
+  nativesearch c1f4 depth 11 score -21 nodes 657286 767ms clock 115944
+  nativesearch d3d2 depth 12 score -32 nodes 1890451 2218ms clock 115675
+  nativesearch f1e1 depth 12 score 27 nodes 5146795 6082ms clock 113954
+  nativesearch h2h3 depth 11 score 76 nodes 1445367 1553ms clock 108370
+  nativesearch a1d1 depth 13 score 68 nodes 6493134 7370ms clock 107315
+  nativesearch b2b4 depth 14 score 82 nodes 2439766 2771ms clock 100443
+  nativesearch c3a4 depth 13 score 82 nodes 915219 1064ms clock 98170
+  nativesearch d1b1 depth 12 score 106 nodes 1856163 2232ms clock 97604
+  nativesearch c4c5 depth 13 score 146 nodes 4570789 5128ms clock 95870
+  nativesearch e2c4 depth 12 score 229 nodes 1812353 2165ms clock 91240
+  nativesearch e4e5 depth 12 score 230 nodes 3245565 3958ms clock 89573
+  nativesearch c4b3 depth 12 score 299 nodes 1402690 1700ms clock 86113
+  nativesearch e5e6 depth 10 score 332 nodes 695609 820ms clock 84910
+  nativesearch e6e7 depth 12 score 398 nodes 1473466 1787ms clock 84588
+  nativesearch b1d1 depth 13 score 366 nodes 1658713 1949ms clock 83299
+  nativesearch h3g4 depth 13 score 328 nodes 1066754 1270ms clock 81847
+  nativesearch f3d4 depth 13 score 341 nodes 1178676 1405ms clock 81075
+  nativesearch c5c6 depth 12 score 404 nodes 1517171 1945ms clock 80168
+  nativesearch g2g3 depth 11 score 434 nodes 853567 1118ms clock 78720
+  nativesearch d2h6 depth 14 score 408 nodes 1573557 1796ms clock 78100
+  nativesearch d4f5 depth 14 score 392 nodes 793534 870ms clock 76802
+  nativesearch e1e4 depth 13 score 380 nodes 2110944 2371ms clock 76430
+  nativesearch f5e3 depth 12 score 374 nodes 847739 961ms clock 74557
+  nativesearch e4e6 depth 15 score 370 nodes 3329220 3677ms clock 74094
+  nativesearch b3c2 depth 14 score 357 nodes 2207273 2408ms clock 70914
+  nativesearch e3f5 depth 13 score 273 nodes 1719222 1848ms clock 69005
+  nativesearch d5e6 depth 17 score 217 nodes 3203264 2994ms clock 67655
+  nativesearch d1d5 depth 14 score 263 nodes 2474232 2462ms clock 65159
+  nativesearch c2e4 depth 15 score 212 nodes 2418728 2215ms clock 63195
+  nativesearch g1f1 depth 14 score 278 nodes 10357720 9912ms clock 61477
+  nativesearch f1e1 depth 15 score 153 nodes 2086481 2092ms clock 52063
+  nativesearch e1d2 depth 0 score 0 nodes 0 0ms clock 50469
+  nativesearch f5d6 depth 13 score 192 nodes 1734437 1870ms clock 50967
+  nativesearch c6c7 depth 14 score -225 nodes 2964910 2781ms clock 49595
+  nativesearch a2a4 depth 14 score -396 nodes 3947496 3873ms clock 47313
+  nativesearch a4b5 depth 15 score -390 nodes 2189146 2075ms clock 43938
+  nativesearch d5b5 depth 16 score -526 nodes 4564109 4060ms clock 42361
+  nativesearch b5b7 depth 15 score -553 nodes 917196 804ms clock 38798
+  nativesearch b4b5 depth 15 score -598 nodes 1740506 1486ms clock 38492
+  nativesearch b7c7 depth 15 score -681 nodes 2468960 2054ms clock 37504
+  nativesearch e4f5 depth 16 score -714 nodes 1553725 1182ms clock 35947
+  nativesearch e6e7 depth 13 score -806 nodes 1871049 1447ms clock 35263
+  nativesearch d2e3 depth 14 score -907 nodes 1100785 848ms clock 34315
+  nativesearch b5b6 depth 17 score -961 nodes 1776623 1305ms clock 33965
+  nativesearch b6b7 depth 17 score -1035 nodes 2121367 1610ms clock 33159
+  nativesearch f5c8 depth 16 score -1065 nodes 1191854 917ms clock 32046
+  nativesearch e3d3 depth 17 score -1152 nodes 1896616 1364ms clock 31628
+  nativesearch d3c2 depth 15 score -1412 nodes 4668208 3625ms clock 30762
+  nativesearch c2d3 depth 17 score -1527 nodes 1826537 1343ms clock 27636
+  nativesearch c8e6 depth 17 score -1668 nodes 2028007 1463ms clock 26791
+  nativesearch e6d5 depth 16 score -1743 nodes 3563629 2741ms clock 25826
+  nativesearch d3c3 depth 15 score -1798 nodes 4849158 3653ms clock 23584
+  nativesearch b7b8q depth 12 score -1743 nodes 5549752 3876ms clock 20429
+  nativesearch c3c2 depth 12 score -1854 nodes 1667669 1134ms clock 17051
+  nativesearch c2d3 depth 13 score -2814 nodes 4092995 2893ms clock 16415
+  nativesearch d5c4 depth 12 score -3364 nodes 2875752 1886ms clock 14020
+  nativesearch d3e2 depth 9 score -2827 nodes 1441617 904ms clock 12633
+  nativesearch e2f2 depth 8 score -99988 nodes 28573 15ms clock 12227
+  nativesearch f2e2 depth 7 score -99986 nodes 37337 22ms clock 12710
+  nativesearch e2f1 depth 5 score -99994 nodes 1546 1ms clock 13186
+  nativesearch f1e1 depth 1 score -99996 nodes 5 0ms clock 13684
+  nativesearch e1f1 depth 0 score 0 nodes 0 0ms clock 14182
+
+Email hello@aichessathon.com with this file if anything here is unclear.

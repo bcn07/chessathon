@@ -158,3 +158,28 @@ def test_ponder_stop_is_never_lost() -> None:
         started = time.perf_counter()
         agent._stop_pondering()
         assert time.perf_counter() - started < 0.5, "ponder stop hung"
+
+
+def test_opening_table_entries_are_legal_and_answered_instantly() -> None:
+    """The shipped opening table (weights/book.json) must only hold legal moves, and a position in
+    it must be answered from the table (no search) once the native engine is up."""
+    import random as _random
+
+    path = AGENT_DIR / "weights" / "book.json"
+    if not path.exists():
+        pytest.skip("no opening table in this agent directory")
+    with open(path) as handle:
+        loaded = json.load(handle)
+    table = loaded["book"] if "book" in loaded and isinstance(loaded["book"], dict) else loaded
+    assert table, "empty opening table"
+    sample = _random.Random(1).sample(sorted(table), min(500, len(table)))
+    for fen4 in sample:
+        board = chess.Board(fen4 + " 0 1")
+        assert chess.Move.from_uci(table[fen4][0]) in board.legal_moves, fen4
+        assert board.fullmove_number <= 20
+    fen4 = sample[0]
+    agent.wait_native()
+    started = time.perf_counter()
+    move = agent.get_move(fen4 + " 0 10", 120_000)
+    assert move == table[fen4][0]
+    assert time.perf_counter() - started < 1.0

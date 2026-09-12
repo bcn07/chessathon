@@ -1,0 +1,31 @@
+AI CHESSATHON MATCH LOG
+=======================
+
+MATCH
+  Round          Practice round 4
+  Team           catfish
+  Colour         White
+  Opponent       JBG fam
+  Opening        Queen's Gambit Accepted
+  Start FEN      rnbqkb1r/5ppp/p3pn2/1pp5/3P4/1BN1PN2/PP3PPP/R1BQ1RK1 b kq - 1 8
+  You moved      Second
+  Machine        w-bca728
+  Finished       2026-09-12 10:11:33 UTC
+  Match ID       6495316a-1c32-47e2-8141-48bdd9e5c744
+
+INIT
+  Ready in       24.1 s
+  Budget         30.0 s
+  Used           80 percent
+
+RESULT
+  Won by init
+  No moves were made
+
+OUTPUT
+  70 bytes on stderr
+
+  native engine ready after 23.5s
+  init: native engine ready after 23.5s
+
+Email hello@aichessathon.com with this file if anything here is unclear.

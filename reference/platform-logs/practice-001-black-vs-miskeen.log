@@ -1,0 +1,31 @@
+AI CHESSATHON MATCH LOG
+=======================
+
+MATCH
+  Round          Practice round 1
+  Team           catfish
+  Colour         Black
+  Opponent       Miskeen
+  Opening        Semi-Slav Defence
+  Start FEN      r1bq1rk1/pp1n1ppp/2pbpn2/3p4/2PP4/1PN1PN2/P3BPPP/R1BQ1RK1 b - - 0 8
+  You moved      First
+  Machine        w-7733ab
+  Finished       2026-09-12 09:41:43 UTC
+  Match ID       894a5b76-e1b2-4e50-bdc5-68470d173401
+
+INIT
+  Ready in       24.1 s
+  Budget         30.0 s
+  Used           80 percent
+
+RESULT
+  Won by init
+  No moves were made
+
+OUTPUT
+  70 bytes on stderr
+
+  native engine ready after 23.6s
+  init: native engine ready after 23.6s
+
+Email hello@aichessathon.com with this file if anything here is unclear.

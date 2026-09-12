@@ -1,0 +1,96 @@
+AI CHESSATHON MATCH LOG
+=======================
+
+MATCH
+  Round          Practice round 17
+  Team           catfish
+  Colour         Black
+  Opponent       Binvengers
+  Opening        Sicilian Classical
+  Start FEN      r1bqkb1r/pp2pppp/2np1n2/8/3NP3/2N2P2/PPP3PP/R1BQKB1R b KQkq - 0 6
+  You moved      First
+  Machine        w-e72a35
+  Finished       2026-09-12 12:23:39 UTC
+  Match ID       26da574f-4417-4f89-9f86-a54e23031398
+
+INIT
+  Ready in       20.2 s
+  Budget         30.0 s
+  Used           67 percent
+
+CLOCK
+  Base           120.0 s plus 0.5 s per move
+  Moves          26
+  Time used      80.7 s
+  Slowest        14.7 s on move 15
+  Fastest        0.0 s on move 6
+  Average        3.1 s
+  Left at end    52.3 s
+
+RESULT
+  Drawn by threefold repetition
+  Game lasted 140.7 s
+
+MOVES
+    #  move          time     clock left
+    1  e5            5.0 s      115.5 s
+    2  Be6           2.1 s      113.9 s
+    3  Be7           0.0 s      114.4 s
+    4  O-O           0.0 s      114.9 s
+    5  a5            0.0 s      115.4 s
+    6  Nd7           0.0 s      115.9 s
+    7  Qxe7          0.0 s      116.4 s
+    8  f5            4.8 s      112.1 s
+    9  Bxf5          1.1 s      111.5 s
+   10  Bg6           3.0 s      109.0 s
+   11  a4            1.8 s      107.8 s
+   12  Nc5           3.1 s      105.1 s
+   13  e4            4.7 s      101.0 s
+   14  exf3         10.1 s       91.3 s
+   15  Kh8          14.7 s       77.2 s
+   16  Rxf8          1.3 s       76.4 s
+   17  Ne5           2.0 s       74.9 s
+   18  dxc5          2.2 s       73.2 s
+   19  Bd3           3.4 s       70.3 s
+   20  Qd6           3.7 s       67.1 s
+   21  Qd4+          3.5 s       64.0 s
+   22  Nxd3          2.1 s       62.4 s
+   23  Qd6+          2.8 s       60.1 s
+   24  Qd4+          2.8 s       57.8 s
+   25  Qd6+          2.1 s       56.2 s
+   26  Qd4+          4.4 s       52.3 s
+
+OUTPUT
+  1,651 bytes on stderr
+
+  opening table: 92638 positions
+  init: native engine still compiling after 19.7s
+  book e7e5 cp -25 clock 120000
+  native engine ready after 28.8s
+  book c8e6 cp -24 clock 115491
+  book f8e7 cp -27 clock 113865
+  book e8g8 cp -30 clock 114363
+  book a7a5 cp -19 clock 114862
+  book f6d7 cp -7 clock 115360
+  book d8e7 cp -7 clock 115858
+  nativesearch f7f5 depth 13 score -7 nodes 2703813 4799ms clock 116357
+  nativesearch e6f5 depth 14 score 17 nodes 604984 1057ms clock 112051
+  nativesearch f5g6 depth 12 score -5 nodes 1664302 2982ms clock 111492
+  nativesearch a5a4 depth 11 score -3 nodes 965881 1752ms clock 109007
+  nativesearch d7c5 depth 13 score -12 nodes 1741984 3117ms clock 107752
+  nativesearch e5e4 depth 14 score -21 nodes 2505551 4666ms clock 105133
+  nativesearch e4f3 depth 15 score -38 nodes 5455782 10125ms clock 100966
+  nativesearch g8h8 depth 14 score -38 nodes 8120089 14666ms clock 91339
+  nativesearch a8f8 depth 12 score -30 nodes 813877 1299ms clock 77172
+  nativesearch c6e5 depth 14 score -30 nodes 1215341 1981ms clock 76371
+  nativesearch d6c5 depth 16 score -30 nodes 1412392 2232ms clock 74888
+  nativesearch g6d3 depth 16 score -30 nodes 2198042 3387ms clock 73153
+  nativesearch e7d6 depth 17 score -30 nodes 2476966 3710ms clock 70264
+  nativesearch d6d4 depth 17 score -30 nodes 2420322 3519ms clock 67052
+  nativesearch e5d3 depth 17 score -30 nodes 1426186 2105ms clock 64031
+  nativesearch d4d6 depth 18 score -30 nodes 1979761 2814ms clock 62423
+  nativesearch d6d4 depth 20 score -30 nodes 2034680 2811ms clock 60107
+  nativesearch d4d6 depth 20 score -30 nodes 1541435 2079ms clock 57794
+  nativesearch d6d4 depth 21 score -30 nodes 3419210 4385ms clock 56212
+
+Email hello@aichessathon.com with this file if anything here is unclear.
