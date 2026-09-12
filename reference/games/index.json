@@ -1,0 +1,839 @@
+[
+ {
+  "round": 30,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Terminal",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-030-black-vs-terminal.pgn"
+ },
+ {
+  "round": 31,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "neomatica",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-031-white-vs-neomatica.pgn"
+ },
+ {
+  "round": 32,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Trio Duo",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-032-black-vs-trio-duo.pgn"
+ },
+ {
+  "round": 33,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Kaamuli",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-033-white-vs-kaamuli.pgn"
+ },
+ {
+  "round": 34,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Magnus.AI",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-034-white-vs-magnus-ai.pgn"
+ },
+ {
+  "round": 35,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "APEX",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-035-black-vs-apex.pgn"
+ },
+ {
+  "round": 36,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Stonkfish",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-036-black-vs-stonkfish.pgn"
+ },
+ {
+  "round": 37,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "keep kann and caro on",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-037-white-vs-keep-kann-and-caro-on.pgn"
+ },
+ {
+  "round": 38,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "French Carlsen",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-038-black-vs-french-carlsen.pgn"
+ },
+ {
+  "round": 39,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "JSP",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-039-white-vs-jsp.pgn"
+ },
+ {
+  "round": 40,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Talos",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-040-black-vs-talos.pgn"
+ },
+ {
+  "round": 41,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "PawnStorm",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-041-black-vs-pawnstorm.pgn"
+ },
+ {
+  "round": 42,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Ryan Vincent",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-042-white-vs-ryan-vincent.pgn"
+ },
+ {
+  "round": 43,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "pgn",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-043-black-vs-pgn.pgn"
+ },
+ {
+  "round": 44,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "TensorTortoise",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-044-white-vs-tensortortoise.pgn"
+ },
+ {
+  "round": 45,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Kaamuli",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-045-white-vs-kaamuli.pgn"
+ },
+ {
+  "round": 46,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "DGS ELO",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-046-white-vs-dgs-elo.pgn"
+ },
+ {
+  "round": 47,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "BitsEntangled",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-047-black-vs-bitsentangled.pgn"
+ },
+ {
+  "round": 48,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "ms",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-048-black-vs-ms.pgn"
+ },
+ {
+  "round": 49,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "LeetBeaters",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-049-white-vs-leetbeaters.pgn"
+ },
+ {
+  "round": 50,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Make_no_mistakes",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-050-white-vs-make-no-mistakes.pgn"
+ },
+ {
+  "round": 51,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Stonkfish",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-051-black-vs-stonkfish.pgn"
+ },
+ {
+  "round": 52,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "krishthefish",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-052-black-vs-krishthefish.pgn"
+ },
+ {
+  "round": 53,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "zak",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-053-white-vs-zak.pgn"
+ },
+ {
+  "round": 54,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "DGS ELO",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-054-white-vs-dgs-elo.pgn"
+ },
+ {
+  "round": 55,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Amplifirm",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-055-white-vs-amplifirm.pgn"
+ },
+ {
+  "round": 56,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "No More Ammo",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-056-black-vs-no-more-ammo.pgn"
+ },
+ {
+  "round": 57,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "LeetBeaters",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-057-black-vs-leetbeaters.pgn"
+ },
+ {
+  "round": 58,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Stonkfish",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "file": "rated-058-black-vs-stonkfish.pgn"
+ },
+ {
+  "round": 59,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Team1",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-059-white-vs-team1.pgn"
+ },
+ {
+  "round": 60,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Cornelius",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-060-white-vs-cornelius.pgn"
+ },
+ {
+  "round": 61,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "omega3 fish",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-061-black-vs-omega3-fish.pgn"
+ },
+ {
+  "round": 62,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Danya's Disciple",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-062-white-vs-danya-s-disciple.pgn"
+ },
+ {
+  "round": 63,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "what even is en passant",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-063-white-vs-what-even-is-en-passant.pgn"
+ },
+ {
+  "round": 64,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "ms",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-064-black-vs-ms.pgn"
+ },
+ {
+  "round": 65,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "zak",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "file": "rated-065-black-vs-zak.pgn"
+ },
+ {
+  "round": 66,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Ryan Vincent",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-066-white-vs-ryan-vincent.pgn"
+ },
+ {
+  "round": 67,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Lightning Tree",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-067-black-vs-lightning-tree.pgn"
+ },
+ {
+  "round": 68,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Opus Carlsen",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-068-white-vs-opus-carlsen.pgn"
+ },
+ {
+  "round": 69,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "what even is en passant",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-069-black-vs-what-even-is-en-passant.pgn"
+ },
+ {
+  "round": 70,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "ms",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "file": "rated-070-white-vs-ms.pgn"
+ },
+ {
+  "round": 71,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Sobriety",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-071-white-vs-sobriety.pgn"
+ },
+ {
+  "round": 72,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "AI Fellows",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "file": "rated-072-white-vs-ai-fellows.pgn"
+ },
+ {
+  "round": 73,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "LehmanBro",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-073-black-vs-lehmanbro.pgn"
+ },
+ {
+  "round": 74,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "what even is en passant",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-074-black-vs-what-even-is-en-passant.pgn"
+ },
+ {
+  "round": 75,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Gladiator",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-075-black-vs-gladiator.pgn"
+ },
+ {
+  "round": 76,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "pheanup",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-076-black-vs-pheanup.pgn"
+ },
+ {
+  "round": 77,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Opus Carlsen",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "file": "rated-077-white-vs-opus-carlsen.pgn"
+ },
+ {
+  "round": 78,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Edward",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-078-white-vs-edward.pgn"
+ },
+ {
+  "round": 79,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Danya's Disciple",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "file": "rated-079-black-vs-danya-s-disciple.pgn"
+ },
+ {
+  "round": 80,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "zak",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-080-black-vs-zak.pgn"
+ },
+ {
+  "round": 81,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "AI Fellows",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-081-white-vs-ai-fellows.pgn"
+ },
+ {
+  "round": 82,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Lubina",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-082-white-vs-lubina.pgn"
+ },
+ {
+  "round": 83,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Stonkfish",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-083-black-vs-stonkfish.pgn"
+ },
+ {
+  "round": 84,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "DGS ELO",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-084-white-vs-dgs-elo.pgn"
+ },
+ {
+  "round": 85,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "pheanup",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-085-white-vs-pheanup.pgn"
+ },
+ {
+  "round": 86,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Opus Carlsen",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-086-black-vs-opus-carlsen.pgn"
+ },
+ {
+  "round": 87,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "FuzzyBot",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-087-black-vs-fuzzybot.pgn"
+ },
+ {
+  "round": 88,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Danya's Disciple",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-088-white-vs-danya-s-disciple.pgn"
+ },
+ {
+  "round": 89,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "DGS ELO",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-089-black-vs-dgs-elo.pgn"
+ },
+ {
+  "round": 90,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Stonkfish",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-090-white-vs-stonkfish.pgn"
+ },
+ {
+  "round": 91,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Make_no_mistakes",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-091-black-vs-make-no-mistakes.pgn"
+ },
+ {
+  "round": 92,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Gladiator",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-092-white-vs-gladiator.pgn"
+ },
+ {
+  "round": 93,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "e=\u03c0=2",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "file": "rated-093-black-vs-e-2.pgn"
+ },
+ {
+  "round": 94,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "BetaGo",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-094-white-vs-betago.pgn"
+ },
+ {
+  "round": 95,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "pheanup",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-095-black-vs-pheanup.pgn"
+ },
+ {
+  "round": 96,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "THE ROOOOOKKK!!!!",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-096-black-vs-the-roooookkk.pgn"
+ },
+ {
+  "round": 97,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "slopfish",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-097-white-vs-slopfish.pgn"
+ },
+ {
+  "round": 98,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "e=\u03c0=2",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-098-white-vs-e-2.pgn"
+ },
+ {
+  "round": 99,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Stonkfish",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-099-white-vs-stonkfish.pgn"
+ },
+ {
+  "round": 100,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "omega3 fish",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-100-black-vs-omega3-fish.pgn"
+ },
+ {
+  "round": 101,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "THE ROOOOOKKK!!!!",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-101-black-vs-the-roooookkk.pgn"
+ },
+ {
+  "round": 102,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Miskeen",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-102-black-vs-miskeen.pgn"
+ },
+ {
+  "round": 103,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "RMFE",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "rated-103-white-vs-rmfe.pgn"
+ },
+ {
+  "round": 104,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "slopfish",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "file": "rated-104-white-vs-slopfish.pgn"
+ },
+ {
+  "round": 105,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "Gators",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "rated-105-white-vs-gators.pgn"
+ },
+ {
+  "round": 106,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "zak",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-106-black-vs-zak.pgn"
+ },
+ {
+  "round": 107,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Make_no_mistakes",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-107-black-vs-make-no-mistakes.pgn"
+ },
+ {
+  "round": 108,
+  "kind": "rated",
+  "colour": "white",
+  "opponent": "AI Fellows",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "rated-108-white-vs-ai-fellows.pgn"
+ },
+ {
+  "round": 109,
+  "kind": "rated",
+  "colour": "black",
+  "opponent": "Binvengers",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "rated-109-black-vs-binvengers.pgn"
+ },
+ {
+  "round": 110,
+  "kind": "final",
+  "colour": "white",
+  "opponent": "Trio Duo",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "final-110-white-vs-trio-duo.pgn"
+ },
+ {
+  "round": 111,
+  "kind": "final",
+  "colour": "white",
+  "opponent": "Dogwarts",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "final-111-white-vs-dogwarts.pgn"
+ },
+ {
+  "round": 112,
+  "kind": "final",
+  "colour": "white",
+  "opponent": "The Pershore Gambit",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "final-112-white-vs-the-pershore-gambit.pgn"
+ },
+ {
+  "round": 113,
+  "kind": "final",
+  "colour": "black",
+  "opponent": "Stonkfish",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "final-113-black-vs-stonkfish.pgn"
+ },
+ {
+  "round": 114,
+  "kind": "final",
+  "colour": "white",
+  "opponent": "HAL9000",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "final-114-white-vs-hal9000.pgn"
+ },
+ {
+  "round": 115,
+  "kind": "final",
+  "colour": "white",
+  "opponent": "AlphaBeta",
+  "result": "1/2-1/2",
+  "termination": "insufficient_material",
+  "file": "final-115-white-vs-alphabeta.pgn"
+ },
+ {
+  "round": 116,
+  "kind": "final",
+  "colour": "black",
+  "opponent": "Solo Man",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "final-116-black-vs-solo-man.pgn"
+ },
+ {
+  "round": 117,
+  "kind": "final",
+  "colour": "white",
+  "opponent": "Ryan Vincent",
+  "result": "1/2-1/2",
+  "termination": "threefold_repetition",
+  "file": "final-117-white-vs-ryan-vincent.pgn"
+ },
+ {
+  "round": 118,
+  "kind": "final",
+  "colour": "white",
+  "opponent": "Team1",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "final-118-white-vs-team1.pgn"
+ },
+ {
+  "round": 119,
+  "kind": "final",
+  "colour": "black",
+  "opponent": "Lubina",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "final-119-black-vs-lubina.pgn"
+ },
+ {
+  "round": 120,
+  "kind": "final",
+  "colour": "white",
+  "opponent": "Danya's Disciple",
+  "result": "1-0",
+  "termination": "checkmate",
+  "file": "final-120-white-vs-danya-s-disciple.pgn"
+ },
+ {
+  "round": 121,
+  "kind": "final",
+  "colour": "white",
+  "opponent": "Opus Carlsen",
+  "result": "0-1",
+  "termination": "checkmate",
+  "file": "final-121-white-vs-opus-carlsen.pgn"
+ },
+ {
+  "round": 122,
+  "kind": "final",
+  "colour": "black",
+  "opponent": "BetaGo",
+  "result": "1/2-1/2",
+  "termination": "fifty_moves",
+  "file": "final-122-black-vs-betago.pgn"
+ }
+]

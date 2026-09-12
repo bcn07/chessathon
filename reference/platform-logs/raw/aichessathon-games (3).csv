@@ -1,0 +1,18 @@
+round,colour,opponent,result,termination,init_s,moves,time_used_s,slowest_s,fastest_s,average_s,clock_left_s,machine,finished_at
+Rated 46,White,DGS ELO,Win,Checkmate,88.5,64,133.8,6.3,0.0,2.1,18.2,w-77f393,2026-09-07T07:08:19.333247+00:00
+Rated 45,White,Kaamuli,Win,Checkmate,44.9,68,135.1,7.2,0.0,2.0,18.9,w-ec11e6,2026-09-06T21:11:49.717849+00:00
+Rated 44,White,TensorTortoise,Loss,Checkmate,41.5,91,158.1,5.7,0.0,1.7,7.4,w-ec11e6,2026-09-06T20:11:19.806125+00:00
+Rated 43,Black,pgn,Draw,Fifty moves,42.2,140,180.4,5.5,0.0,1.3,9.6,w-42b8f8,2026-09-06T19:12:30.764252+00:00
+Rated 42,White,Ryan Vincent,Loss,Checkmate,42.3,73,140.1,8.3,0.0,1.9,16.4,w-03ab32,2026-09-06T18:10:46.989733+00:00
+Rated 41,Black,PawnStorm,Win,Checkmate,42.9,43,97.5,8.2,0.0,2.3,44.0,w-03ab32,2026-09-06T17:10:30.407631+00:00
+Rated 40,Black,Hephaestus,Win,Checkmate,42.1,74,145.0,8.9,0.0,2.0,12.0,w-f7e9db,2026-09-06T16:13:00.706464+00:00
+Rated 39,White,JSP,Loss,Checkmate,43.4,64,137.3,9.9,0.0,2.1,14.7,w-933051,2026-09-06T15:11:17.929571+00:00
+Rated 38,Black,French Carlsen,Draw,Fifty moves,41.8,127,175.2,5.1,0.0,1.4,8.3,w-3535e1,2026-09-06T14:13:41.831887+00:00
+Rated 37,White,keep kann and caro on,Win,Checkmate,40.7,55,123.6,10.9,0.0,2.2,23.9,w-91996f,2026-09-06T13:12:33.02412+00:00
+Rated 36,Black,Stonkfish,Loss,Checkmate,42.7,62,126.9,7.5,0.0,2.0,24.1,w-933051,2026-09-06T12:09:26.903854+00:00
+Rated 35,Black,APEX,Win,Checkmate,41.1,51,111.1,6.4,0.0,2.2,34.4,w-91996f,2026-09-06T11:11:20.90396+00:00
+Rated 34,White,Magnus.AI,Win,Checkmate,41.4,23,31.8,2.9,0.0,1.4,99.7,w-6272d4,2026-09-06T10:16:05.570094+00:00
+Rated 33,White,Kaamuli,Loss,Checkmate,47.7,113,166.0,8.4,0.0,1.5,10.5,w-6a9647,2026-09-06T09:08:50.056384+00:00
+Rated 32,Black,Trio Duo,Win,Checkmate,40.9,56,109.1,9.1,0.0,1.9,38.9,w-d63238,2026-09-06T08:16:53.619206+00:00
+Rated 31,White,neomatica,Win,Checkmate,51.6,34,64.7,4.8,0.0,1.9,72.3,w-f6de86,2026-09-06T07:19:22.43369+00:00
+Rated 30,Black,Terminal,Win,Checkmate,0.6,40,84.9,7.0,0.0,2.1,55.1,w-71e58d,2026-09-05T21:18:28.423303+00:00

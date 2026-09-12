@@ -1,0 +1,94 @@
+round,colour,opponent,result,termination,init_s,moves,time_used_s,slowest_s,fastest_s,average_s,clock_left_s,machine,finished_at
+Final 122,Black,BetaGo,Draw,Fifty moves,28.4,122,171.4,9.1,0.0,1.4,9.6,w-58d7c7,2026-09-11T14:45:58.542176+00:00
+Final 121,White,Opus Carlsen,Loss,Checkmate,26.3,65,142.8,12.3,0.0,2.2,9.7,w-7ef5bd,2026-09-11T14:32:39.504543+00:00
+Final 120,White,Danya's Disciple,Win,Checkmate,26.4,74,144.2,7.5,0.0,1.9,12.8,w-97473c,2026-09-11T14:20:16.572338+00:00
+Final 119,Black,Lubina,Win,Checkmate,24.1,82,151.5,8.1,0.0,1.8,9.5,w-91996f,2026-09-11T14:07:44.559831+00:00
+Final 118,White,Team1,Win,Checkmate,25.3,80,154.4,8.2,0.0,1.9,5.6,w-94f091,2026-09-11T13:55:58.207798+00:00
+Final 117,White,Ryan Vincent,Draw,Threefold repetition,24.8,73,149.1,9.2,0.3,2.0,7.4,w-f45c03,2026-09-11T13:42:40.434778+00:00
+Final 116,Black,Solo Man,Win,Checkmate,25.6,54,123.7,12.6,0.0,2.3,23.3,w-e72f1c,2026-09-11T13:29:23.304+00:00
+Final 115,White,AlphaBeta,Draw,Insufficient material,24.6,130,177.7,10.0,0.2,1.4,7.3,w-be9a5e,2026-09-11T13:19:37.697813+00:00
+Final 114,White,HAL9000,Win,Checkmate,26.2,49,130.3,7.4,0.0,2.7,14.2,w-97473c,2026-09-11T13:06:04.160892+00:00
+Final 113,Black,Stonkfish,Loss,Checkmate,23.9,74,152.4,13.9,0.0,2.1,4.6,w-f93023,2026-09-11T12:55:26.582339+00:00
+Final 112,White,The Pershore Gambit,Win,Checkmate,24.8,51,120.1,8.1,0.0,2.4,25.4,w-d07f0a,2026-09-11T12:41:16.594341+00:00
+Final 111,White,Dogwarts,Win,Checkmate,25.8,49,109.1,7.6,0.0,2.2,35.4,w-f93023,2026-09-11T12:29:03.191323+00:00
+Final 110,White,Trio Duo,Win,Checkmate,32.7,23,46.5,7.7,0.0,2.0,85.0,w-d07f0a,2026-09-11T12:16:19.003974+00:00
+Rated 109,Black,Binvengers,Loss,Checkmate,26.2,78,151.8,13.8,0.0,1.9,7.2,w-bc3a48,2026-09-11T10:07:12.293304+00:00
+Rated 108,White,AI Fellows,Loss,Checkmate,26.6,85,153.0,11.3,0.0,1.8,9.5,w-6ad781,2026-09-11T09:26:14.313329+00:00
+Rated 107,Black,Make_no_mistakes,Win,Checkmate,25.7,68,140.6,10.9,0.0,2.1,13.4,w-15a8e4,2026-09-11T08:51:19.024335+00:00
+Rated 106,Black,zak,Win,Checkmate,26.1,53,137.6,15.5,0.0,2.6,8.9,w-f741b4,2026-09-11T07:07:50.461165+00:00
+Rated 105,White,Gators,Draw,Threefold repetition,27.0,106,166.7,11.7,0.2,1.6,6.3,w-82c5b3,2026-09-10T21:07:13.840673+00:00
+Rated 104,White,slopfish,Draw,Insufficient material,27.0,228,224.3,8.2,0.0,1.0,9.7,w-3e66b7,2026-09-10T20:10:45.293575+00:00
+Rated 103,White,RMFE,Draw,Fifty moves,27.8,152,187.4,7.7,0.0,1.2,8.6,w-4e8c1d,2026-09-10T19:08:34.139096+00:00
+Rated 102,Black,Miskeen,Draw,Fifty moves,26.7,102,163.9,11.9,0.2,1.6,7.1,w-75c226,2026-09-10T18:07:17.717605+00:00
+Rated 101,Black,THE ROOOOOKKK!!!!,Draw,Fifty moves,26.3,183,204.4,6.1,0.0,1.1,7.1,w-d5eece,2026-09-10T17:08:52.970821+00:00
+Rated 100,Black,omega3 fish,Win,Checkmate,26.2,75,144.9,10.3,0.0,1.9,12.6,w-4e8c1d,2026-09-10T16:07:00.02798+00:00
+Rated 99,White,Stonkfish,Loss,Checkmate,30.7,99,163.7,11.6,0.0,1.7,5.8,w-507aaa,2026-09-10T15:08:03.007667+00:00
+Rated 98,White,e=π=2,Loss,Checkmate,26.3,57,139.9,7.9,0.0,2.5,8.6,w-bf0e55,2026-09-10T14:06:55.32752+00:00
+Rated 97,White,slopfish,Loss,Checkmate,27.2,79,149.6,9.5,0.0,1.9,9.9,w-a99c3d,2026-09-10T13:07:35.842864+00:00
+Rated 96,Black,THE ROOOOOKKK!!!!,Draw,Threefold repetition,26.1,65,142.0,8.7,0.4,2.2,10.5,w-aac959,2026-09-10T12:06:01.386416+00:00
+Rated 95,Black,pheanup,Draw,Threefold repetition,29.1,135,180.6,9.5,0.2,1.3,6.9,w-ecac47,2026-09-10T11:08:50.944251+00:00
+Rated 94,White,BetaGo,Loss,Checkmate,26.9,82,153.5,8.7,0.0,1.9,7.5,w-4e8c1d,2026-09-10T10:07:26.553288+00:00
+Rated 93,Black,e=π=2,Draw,Insufficient material,29.7,70,147.1,8.1,0.3,2.1,7.9,w-94416c,2026-09-10T09:07:21.587583+00:00
+Rated 92,White,Gladiator,Win,Checkmate,26.8,92,157.4,7.4,0.0,1.7,8.6,w-3e66b7,2026-09-10T08:06:46.646441+00:00
+Rated 91,Black,Make_no_mistakes,Loss,Checkmate,29.4,104,164.6,11.5,0.0,1.6,7.4,w-ecac47,2026-09-10T07:08:37.408304+00:00
+Rated 90,White,Stonkfish,Draw,Threefold repetition,27.6,55,130.7,15.1,0.3,2.4,16.8,w-103c48,2026-09-09T21:06:45.571742+00:00
+Rated 89,Black,DGS ELO,Draw,Fifty moves,24.8,131,177.6,8.4,0.0,1.4,7.9,w-d5046c,2026-09-09T20:07:55.952146+00:00
+Rated 88,White,Danya's Disciple,Draw,Threefold repetition,24.9,164,195.7,7.1,0.1,1.2,6.3,w-e59fd5,2026-09-09T19:08:49.40432+00:00
+Rated 87,Black,FuzzyBot,Win,Checkmate,26.8,74,141.9,8.9,0.0,1.9,15.1,w-f11554,2026-09-09T18:06:33.929232+00:00
+Rated 86,Black,Opus Carlsen,Draw,Threefold repetition,25.8,73,148.2,9.8,0.0,2.0,8.3,w-a7529c,2026-09-09T17:06:35.629453+00:00
+Rated 85,White,pheanup,Loss,Checkmate,27.8,102,163.3,9.1,0.0,1.6,7.7,w-4ddd0e,2026-09-09T16:07:30.188387+00:00
+Rated 84,White,DGS ELO,Draw,Fifty moves,26.0,165,193.9,7.7,0.0,1.2,8.6,w-11cd5c,2026-09-09T15:08:57.529209+00:00
+Rated 83,Black,Stonkfish,Draw,Fifty moves,26.9,201,212.3,7.3,0.0,1.1,8.2,w-28cd1a,2026-09-09T14:09:28.480813+00:00
+Rated 82,White,Lubina,Draw,Threefold repetition,27.7,68,142.3,12.7,0.0,2.1,11.7,w-a271b5,2026-09-09T13:06:21.961148+00:00
+Rated 81,White,AI Fellows,Draw,Fifty moves,26.9,158,189.2,13.6,0.0,1.2,9.8,w-8d3742,2026-09-09T12:08:52.553231+00:00
+Rated 80,Black,zak,Win,Checkmate,26.1,71,143.3,8.3,0.0,2.0,12.2,w-a7529c,2026-09-09T11:06:18.596303+00:00
+Rated 79,Black,Danya's Disciple,Draw,Insufficient material,27.3,65,137.2,6.2,0.4,2.1,15.3,w-4b43cf,2026-09-09T10:06:25.304606+00:00
+Rated 78,White,Edward,Win,Checkmate,26.4,70,145.4,9.8,0.0,2.1,9.6,w-a7529c,2026-09-09T09:06:58.169221+00:00
+Rated 77,White,Opus Carlsen,Draw,Insufficient material,24.5,51,117.8,6.6,0.5,2.3,27.7,w-673b1b,2026-09-09T08:05:27.455637+00:00
+Rated 76,Black,pheanup,Draw,Threefold repetition,27.5,217,211.2,8.6,0.0,1.0,17.3,w-7e09b1,2026-09-09T07:10:21.622233+00:00
+Rated 75,Black,Gladiator,Loss,Checkmate,26.9,105,168.2,9.9,0.0,1.6,4.3,w-14b4d5,2026-09-08T21:07:15.69912+00:00
+Rated 74,Black,what even is en passant,Loss,Checkmate,26.2,58,141.8,9.1,0.0,2.4,7.2,w-a91dab,2026-09-08T20:06:03.210465+00:00
+Rated 73,Black,LehmanBro,Loss,Checkmate,24.3,61,143.6,12.5,0.0,2.4,6.9,w-1111ae,2026-09-08T19:05:37.822862+00:00
+Rated 72,White,AI Fellows,Draw,Insufficient material,26.5,247,237.3,12.4,0.0,1.0,6.2,w-e72a35,2026-09-08T18:10:45.32035+00:00
+Rated 71,White,Sobriety,Draw,Fifty moves,28.1,96,161.5,13.8,0.3,1.7,6.5,w-4079cb,2026-09-08T17:07:28.446238+00:00
+Rated 70,White,ms,Draw,Insufficient material,75.6,73,149.6,9.2,0.0,2.0,6.9,w-4079cb,2026-09-08T16:07:19.856704+00:00
+Rated 69,Black,what even is en passant,Win,Checkmate,75.6,177,198.8,7.3,0.0,1.1,9.7,w-284681,2026-09-08T15:09:20.660329+00:00
+Rated 68,White,Opus Carlsen,Win,Checkmate,75.7,82,154.4,7.9,0.0,1.9,6.6,w-ecee2f,2026-09-08T14:07:27.705461+00:00
+Rated 67,Black,Lightning Tree,Loss,Checkmate,73.3,83,148.8,9.2,0.0,1.8,12.7,w-896745,2026-09-08T13:07:20.239736+00:00
+Rated 66,White,Ryan Vincent,Draw,Threefold repetition,75.7,76,153.4,7.6,0.2,2.0,4.6,w-fa708e,2026-09-08T12:07:30.309341+00:00
+Rated 65,Black,zak,Draw,Insufficient material,75.6,268,246.5,10.3,0.0,0.9,7.5,w-4079cb,2026-09-08T11:11:03.752684+00:00
+Rated 64,Black,ms,Loss,Checkmate,68.1,169,195.2,8.1,0.0,1.2,9.3,w-3e9000,2026-09-08T10:08:55.78553+00:00
+Rated 63,White,what even is en passant,Win,Checkmate,72.5,74,145.6,8.0,0.0,2.0,11.4,w-14b4d5,2026-09-08T09:21:26.552382+00:00
+Rated 62,White,Danya's Disciple,Draw,Threefold repetition,72.5,62,141.4,14.6,0.0,2.3,9.6,w-fc54c5,2026-09-08T08:36:12.970823+00:00
+Rated 61,Black,omega3 fish,Win,Checkmate,71.3,86,150.6,13.9,0.0,1.8,12.4,w-0914e8,2026-09-08T08:18:29.037099+00:00
+Rated 60,White,Cornelius,Win,Checkmate,68.8,92,156.2,11.6,0.0,1.7,9.8,w-26abaf,2026-09-07T21:07:40.047198+00:00
+Rated 59,White,Team1,Win,Checkmate,40.7,122,173.8,25.8,0.0,1.4,7.2,w-4005df,2026-09-07T20:07:28.902848+00:00
+Rated 58,Black,Stonkfish,Draw,Insufficient material,40.8,92,159.4,33.3,0.0,1.7,6.6,w-2131a2,2026-09-07T19:07:31.470341+00:00
+Rated 57,Black,LeetBeaters,Win,Checkmate,40.5,62,134.3,22.8,0.0,2.2,16.7,w-5fdd24,2026-09-07T18:06:34.265791+00:00
+Rated 56,Black,No More Ammo,Draw,Fifty moves,40.5,194,207.6,23.1,0.0,1.1,9.4,w-0a44b0,2026-09-07T17:09:13.299012+00:00
+Rated 55,White,Amplifirm,Draw,Fifty moves,48.1,129,177.3,27.7,0.1,1.4,7.2,w-4005df,2026-09-07T16:08:10.884587+00:00
+Rated 54,White,DGS ELO,Win,Checkmate,40.5,39,113.6,24.1,0.0,2.9,25.9,w-b524ed,2026-09-07T15:10:18.576222+00:00
+Rated 53,White,zak,Loss,Checkmate,40.7,54,135.0,32.8,0.0,2.5,12.0,w-791165,2026-09-07T14:06:18.618521+00:00
+Rated 52,Black,krishthefish,Win,Checkmate,40.5,35,107.8,25.3,0.0,3.1,29.7,w-5fdd24,2026-09-07T13:09:50.763488+00:00
+Rated 51,Black,Stonkfish,Loss,Checkmate,40.5,82,147.3,15.7,0.0,1.8,13.7,w-7733ab,2026-09-07T12:06:42.122056+00:00
+Rated 50,White,Make_no_mistakes,Loss,Checkmate,40.6,66,139.1,17.0,0.0,2.1,13.9,w-52d6d4,2026-09-07T11:06:45.669352+00:00
+Rated 49,White,LeetBeaters,Draw,Threefold repetition,40.8,63,136.7,17.1,0.3,2.2,14.8,w-3173e5,2026-09-07T10:06:43.051156+00:00
+Rated 48,Black,ms,Loss,Checkmate,40.5,40,122.5,16.4,0.0,3.1,17.5,w-9e67d0,2026-09-07T09:05:29.592828+00:00
+Rated 47,Black,BitsEntangled,Win,Checkmate,40.7,51,126.1,15.5,0.0,2.5,19.4,w-04a164,2026-09-07T08:06:37.431534+00:00
+Rated 46,White,DGS ELO,Win,Checkmate,88.5,64,133.8,6.3,0.0,2.1,18.2,w-77f393,2026-09-07T07:08:19.333247+00:00
+Rated 45,White,Kaamuli,Win,Checkmate,44.9,68,135.1,7.2,0.0,2.0,18.9,w-ec11e6,2026-09-06T21:11:49.717849+00:00
+Rated 44,White,TensorTortoise,Loss,Checkmate,41.5,91,158.1,5.7,0.0,1.7,7.4,w-ec11e6,2026-09-06T20:11:19.806125+00:00
+Rated 43,Black,pgn,Draw,Fifty moves,42.2,140,180.4,5.5,0.0,1.3,9.6,w-42b8f8,2026-09-06T19:12:30.764252+00:00
+Rated 42,White,Ryan Vincent,Loss,Checkmate,42.3,73,140.1,8.3,0.0,1.9,16.4,w-03ab32,2026-09-06T18:10:46.989733+00:00
+Rated 41,Black,PawnStorm,Win,Checkmate,42.9,43,97.5,8.2,0.0,2.3,44.0,w-03ab32,2026-09-06T17:10:30.407631+00:00
+Rated 40,Black,Talos,Win,Checkmate,42.1,74,145.0,8.9,0.0,2.0,12.0,w-f7e9db,2026-09-06T16:13:00.706464+00:00
+Rated 39,White,JSP,Loss,Checkmate,43.4,64,137.3,9.9,0.0,2.1,14.7,w-933051,2026-09-06T15:11:17.929571+00:00
+Rated 38,Black,French Carlsen,Draw,Fifty moves,41.8,127,175.2,5.1,0.0,1.4,8.3,w-3535e1,2026-09-06T14:13:41.831887+00:00
+Rated 37,White,keep kann and caro on,Win,Checkmate,40.7,55,123.6,10.9,0.0,2.2,23.9,w-91996f,2026-09-06T13:12:33.02412+00:00
+Rated 36,Black,Stonkfish,Loss,Checkmate,42.7,62,126.9,7.5,0.0,2.0,24.1,w-933051,2026-09-06T12:09:26.903854+00:00
+Rated 35,Black,APEX,Win,Checkmate,41.1,51,111.1,6.4,0.0,2.2,34.4,w-91996f,2026-09-06T11:11:20.90396+00:00
+Rated 34,White,Magnus.AI,Win,Checkmate,41.4,23,31.8,2.9,0.0,1.4,99.7,w-6272d4,2026-09-06T10:16:05.570094+00:00
+Rated 33,White,Kaamuli,Loss,Checkmate,47.7,113,166.0,8.4,0.0,1.5,10.5,w-6a9647,2026-09-06T09:08:50.056384+00:00
+Rated 32,Black,Trio Duo,Win,Checkmate,40.9,56,109.1,9.1,0.0,1.9,38.9,w-d63238,2026-09-06T08:16:53.619206+00:00
+Rated 31,White,neomatica,Win,Checkmate,51.6,34,64.7,4.8,0.0,1.9,72.3,w-f6de86,2026-09-06T07:19:22.43369+00:00
+Rated 30,Black,Terminal,Win,Checkmate,0.6,40,84.9,7.0,0.0,2.1,55.1,w-71e58d,2026-09-05T21:18:28.423303+00:00
