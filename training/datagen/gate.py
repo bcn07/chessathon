@@ -1,11 +1,11 @@
-"""Label-quality gate for the self-play data (docs/PLAN.md §4).
+"""Label-quality gate for the self-play data.
 
     uv run python training/datagen/gate.py --count 20000 --nodes 20000
 
 Takes a random sample of quiet Lichess positions with Stockfish scores (training/data/
 positions_quiet.npy, mover-relative cp), labels each with the same node-budget search that
 training/datagen/selfplay.py uses, and reports the correlation with Stockfish next to PeSTO's static
-evaluation on the same positions. The plan asks for a clear margin over PeSTO's 0.68 (target
+evaluation on the same positions. The bar is a clear margin over PeSTO's 0.68 (target
 ≥ 0.85) before anything is trained on the self-play labels. Castling rights and en passant are
 not in the records, so both evaluations see the position without them.
 """

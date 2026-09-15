@@ -1,4 +1,4 @@
-===== LOG 1/94 https://aichessathon.com/api/platform/logs/export (HTTP 200) =====
+===== LOG 1/94 (HTTP 200) =====
 round,colour,opponent,result,termination,init_s,moves,time_used_s,slowest_s,fastest_s,average_s,clock_left_s,machine,finished_at
 Final 122,Black,BetaGo,Draw,Fifty moves,28.4,122,171.4,9.1,0.0,1.4,9.6,w-58d7c7,2026-09-11T14:45:58.542176+00:00
 Final 121,White,Opus Carlsen,Loss,Checkmate,26.3,65,142.8,12.3,0.0,2.2,9.7,w-7ef5bd,2026-09-11T14:32:39.504543+00:00
@@ -95,7 +95,7 @@ Rated 31,White,neomatica,Win,Checkmate,51.6,34,64.7,4.8,0.0,1.9,72.3,w-f6de86,20
 Rated 30,Black,Terminal,Win,Checkmate,0.6,40,84.9,7.0,0.0,2.1,55.1,w-71e58d,2026-09-05T21:18:28.423303+00:00
 
 
-===== LOG 2/94 https://aichessathon.com/api/platform/logs/4a411230-6e2a-460f-9818-f63910a6423a (HTTP 200) =====
+===== LOG 2/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -385,7 +385,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 3/94 https://aichessathon.com/api/platform/logs/d96c4bc5-fba3-4ff5-adda-dd0c8f48fad7 (HTTP 200) =====
+===== LOG 3/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -561,7 +561,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 4/94 https://aichessathon.com/api/platform/logs/c64fb513-5105-410e-88a2-55b61d5c3ee2 (HTTP 200) =====
+===== LOG 4/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -755,7 +755,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 5/94 https://aichessathon.com/api/platform/logs/f08f83c7-ce52-45bd-8eac-319e3d9ee06f (HTTP 200) =====
+===== LOG 5/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -965,7 +965,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 6/94 https://aichessathon.com/api/platform/logs/9bdf0852-8e23-4d93-96fc-7892aecaaa5e (HTTP 200) =====
+===== LOG 6/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -1171,7 +1171,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 7/94 https://aichessathon.com/api/platform/logs/3fa7274e-7e4a-41a1-bc98-e7cdf9eefd9d (HTTP 200) =====
+===== LOG 7/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -1363,7 +1363,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 8/94 https://aichessathon.com/api/platform/logs/0c9743ac-0ecd-47a3-8967-e89b892d6559 (HTTP 200) =====
+===== LOG 8/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -1517,7 +1517,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 9/94 https://aichessathon.com/api/platform/logs/1757acc8-8299-4d78-83b8-e27ecd490307 (HTTP 200) =====
+===== LOG 9/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -1815,7 +1815,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 10/94 https://aichessathon.com/api/platform/logs/e4c642ae-0f88-4ce1-8619-b3a2284b103d (HTTP 200) =====
+===== LOG 10/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -1959,7 +1959,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 11/94 https://aichessathon.com/api/platform/logs/ce62f599-30c6-44b7-8637-9959211f4478 (HTTP 200) =====
+===== LOG 11/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -2153,7 +2153,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 12/94 https://aichessathon.com/api/platform/logs/09efa1d3-8b1e-45d8-9b98-dff1f4fc246e (HTTP 200) =====
+===== LOG 12/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -2301,7 +2301,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 13/94 https://aichessathon.com/api/platform/logs/4f161e98-2a5e-4fe0-b3f8-b86a192008cc (HTTP 200) =====
+===== LOG 13/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -2445,7 +2445,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 14/94 https://aichessathon.com/api/platform/logs/ff80fc55-6445-4854-a286-665569cac10e (HTTP 200) =====
+===== LOG 14/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -2537,7 +2537,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 15/94 https://aichessathon.com/api/platform/logs/085c16d0-7a21-4c98-8cc8-14e70ce178d0 (HTTP 200) =====
+===== LOG 15/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -2739,7 +2739,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 16/94 https://aichessathon.com/api/platform/logs/727c5f9d-2f12-4159-8cdf-2a3066959657 (HTTP 200) =====
+===== LOG 16/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -2955,7 +2955,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 17/94 https://aichessathon.com/api/platform/logs/9f09d40b-a6ed-4c1b-aff8-f4a634881006 (HTTP 200) =====
+===== LOG 17/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -3137,7 +3137,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 18/94 https://aichessathon.com/api/platform/logs/7db11f13-ce49-44c7-8241-e9e0462b1dd7 (HTTP 200) =====
+===== LOG 18/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -3289,7 +3289,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 19/94 https://aichessathon.com/api/platform/logs/96d7ae5d-5597-4a0e-9bfe-0f87c31a4609 (HTTP 200) =====
+===== LOG 19/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -3547,7 +3547,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 20/94 https://aichessathon.com/api/platform/logs/25fd951d-4305-4729-810a-385b46b69387 (HTTP 200) =====
+===== LOG 20/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -3941,7 +3941,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 21/94 https://aichessathon.com/api/platform/logs/913e5163-7dd5-448b-becd-d02b16f06aa3 (HTTP 200) =====
+===== LOG 21/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -4261,7 +4261,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 22/94 https://aichessathon.com/api/platform/logs/5319c5a9-bf20-4e5a-a74e-18a3f7812f71 (HTTP 200) =====
+===== LOG 22/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -4511,7 +4511,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 23/94 https://aichessathon.com/api/platform/logs/c8ec8a68-97cb-44cc-8a7f-516cf417413e (HTTP 200) =====
+===== LOG 23/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -4862,7 +4862,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 24/94 https://aichessathon.com/api/platform/logs/28e368d3-4f7e-461e-83ac-5df47add03b6 (HTTP 200) =====
+===== LOG 24/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -5058,7 +5058,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 25/94 https://aichessathon.com/api/platform/logs/1f49e59a-f819-4b48-b6ce-057aff4defe8 (HTTP 200) =====
+===== LOG 25/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -5302,7 +5302,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 26/94 https://aichessathon.com/api/platform/logs/6f479cbe-8f7c-425d-aa95-e67a7224895d (HTTP 200) =====
+===== LOG 26/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -5462,7 +5462,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 27/94 https://aichessathon.com/api/platform/logs/bd0f3b11-d380-4056-87df-a8042a3519f8 (HTTP 200) =====
+===== LOG 27/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -5666,7 +5666,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 28/94 https://aichessathon.com/api/platform/logs/3ba57c5c-bf4a-4180-970f-d08d9f78c2e1 (HTTP 200) =====
+===== LOG 28/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -5842,7 +5842,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 29/94 https://aichessathon.com/api/platform/logs/17b899b1-50de-4f06-ace0-1c4253dc4909 (HTTP 200) =====
+===== LOG 29/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -6144,7 +6144,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 30/94 https://aichessathon.com/api/platform/logs/acf324ee-7970-4391-9e49-52b4be50f902 (HTTP 200) =====
+===== LOG 30/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -6354,7 +6354,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 31/94 https://aichessathon.com/api/platform/logs/3782bdc1-28ba-40ab-aff7-b586b13ce2b6 (HTTP 200) =====
+===== LOG 31/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -6540,7 +6540,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 32/94 https://aichessathon.com/api/platform/logs/dcd71acd-34f9-46ae-9565-b57d5ec4f6e4 (HTTP 200) =====
+===== LOG 32/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -6770,7 +6770,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 33/94 https://aichessathon.com/api/platform/logs/e569be8b-1817-4de7-ad5e-f025a21aab36 (HTTP 200) =====
+===== LOG 33/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -7024,7 +7024,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 34/94 https://aichessathon.com/api/platform/logs/9c3f0577-2ca5-415b-824c-9a2b08e13b70 (HTTP 200) =====
+===== LOG 34/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -7180,7 +7180,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 35/94 https://aichessathon.com/api/platform/logs/9a0a7f87-6aad-49a0-aee0-c1212d7073a7 (HTTP 200) =====
+===== LOG 35/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -7479,7 +7479,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 36/94 https://aichessathon.com/api/platform/logs/80b21c38-672a-4221-8b0b-e7e344b55b6a (HTTP 200) =====
+===== LOG 36/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -7811,7 +7811,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 37/94 https://aichessathon.com/api/platform/logs/a5ec1241-a5c5-4975-bf4b-608eb8888f9c (HTTP 200) =====
+===== LOG 37/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -8005,7 +8005,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 38/94 https://aichessathon.com/api/platform/logs/70df07dd-1bc1-484f-89a9-7bfd05f1dc27 (HTTP 200) =====
+===== LOG 38/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -8197,7 +8197,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 39/94 https://aichessathon.com/api/platform/logs/a8f6b1d1-2b0d-4446-bb7e-34feb5e28c76 (HTTP 200) =====
+===== LOG 39/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -8447,7 +8447,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 40/94 https://aichessathon.com/api/platform/logs/8255c362-ff58-4ada-8864-b06cd2ba6599 (HTTP 200) =====
+===== LOG 40/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -8780,7 +8780,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 41/94 https://aichessathon.com/api/platform/logs/9bcd49a6-33af-4fdd-9d9a-dbebc2b10db1 (HTTP 200) =====
+===== LOG 41/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -9149,7 +9149,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 42/94 https://aichessathon.com/api/platform/logs/d16ec483-4bf1-4c75-b73c-b2e3decb53e0 (HTTP 200) =====
+===== LOG 42/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -9331,7 +9331,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 43/94 https://aichessathon.com/api/platform/logs/9ab0e8b2-9358-4f79-b562-c4d8e08c00d3 (HTTP 200) =====
+===== LOG 43/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -9658,7 +9658,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 44/94 https://aichessathon.com/api/platform/logs/141d3aea-c7eb-4a80-b8dc-7215d27af663 (HTTP 200) =====
+===== LOG 44/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -9846,7 +9846,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 45/94 https://aichessathon.com/api/platform/logs/a7cd52bc-7d19-40c5-bc44-b8c0e7cb732e (HTTP 200) =====
+===== LOG 45/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -10022,7 +10022,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 46/94 https://aichessathon.com/api/platform/logs/f870009b-ed32-48d6-9b33-06d4621b5c86 (HTTP 200) =====
+===== LOG 46/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -10208,7 +10208,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 47/94 https://aichessathon.com/api/platform/logs/335b9480-a59b-4627-879a-9f7e8a17457e (HTTP 200) =====
+===== LOG 47/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -10356,7 +10356,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 48/94 https://aichessathon.com/api/platform/logs/5abf858d-d06e-464e-96ce-80a38632775c (HTTP 200) =====
+===== LOG 48/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -10740,7 +10740,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 49/94 https://aichessathon.com/api/platform/logs/258fd3bd-15f2-4e9d-9b1c-973c641d6b07 (HTTP 200) =====
+===== LOG 49/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -10996,7 +10996,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 50/94 https://aichessathon.com/api/platform/logs/475ee81a-9dd6-46cb-93bf-4d30bf8fb342 (HTTP 200) =====
+===== LOG 50/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -11158,7 +11158,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 51/94 https://aichessathon.com/api/platform/logs/e66839d8-b445-4b0c-b5f0-4bf5ed59031b (HTTP 200) =====
+===== LOG 51/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -11326,7 +11326,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 52/94 https://aichessathon.com/api/platform/logs/bd0b6c32-2711-42a8-aae4-44696e293c91 (HTTP 200) =====
+===== LOG 52/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -11741,7 +11741,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 53/94 https://aichessathon.com/api/platform/logs/e8c7ed33-5fbf-4f15-9f65-f802cb4f721d (HTTP 200) =====
+===== LOG 53/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -11979,7 +11979,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 54/94 https://aichessathon.com/api/platform/logs/468b5554-a29f-4285-bd18-7f7bafca06c5 (HTTP 200) =====
+===== LOG 54/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -12172,7 +12172,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 55/94 https://aichessathon.com/api/platform/logs/4c86df04-d487-4bff-8ab0-048a298deff9 (HTTP 200) =====
+===== LOG 55/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -12516,7 +12516,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 56/94 https://aichessathon.com/api/platform/logs/6e61d991-f16d-4127-9bae-ac9595c363e6 (HTTP 200) =====
+===== LOG 56/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -12727,7 +12727,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 57/94 https://aichessathon.com/api/platform/logs/d64030e5-b10a-4786-979a-1addc21f3b8b (HTTP 200) =====
+===== LOG 57/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -12939,7 +12939,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 58/94 https://aichessathon.com/api/platform/logs/1176bdc7-6ac2-4043-896f-3ded379b1ac9 (HTTP 200) =====
+===== LOG 58/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -13137,7 +13137,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 59/94 https://aichessathon.com/api/platform/logs/eab18664-e095-458e-beea-69f3686e0437 (HTTP 200) =====
+===== LOG 59/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -13573,7 +13573,7 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 60/94 https://aichessathon.com/api/platform/logs/f21ae4cc-35b7-469e-8c05-9491da5472dd (HTTP 200) =====
+===== LOG 60/94 (HTTP 200) =====
 AI CHESSATHON MATCH LOG
 =======================
 
@@ -13910,205 +13910,205 @@ OUTPUT
 Email hello@aichessathon.com with this file if anything here is unclear.
 
 
-===== LOG 61/94 https://aichessathon.com/api/platform/logs/0c6278b5-3a11-4651-abb8-0fce1d5c1606 (HTTP 429) =====
+===== LOG 61/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::hmvtq-1789147921357-0f7363813c8e
 
-===== LOG 62/94 https://aichessathon.com/api/platform/logs/0acb34bd-786d-4a76-a4dc-d395215de6f0 (HTTP 429) =====
+===== LOG 62/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::f26qx-1789147921381-c9a60b19ec04
 
-===== LOG 63/94 https://aichessathon.com/api/platform/logs/64904ccd-073f-42d0-a78e-2f5b028a1a83 (HTTP 429) =====
+===== LOG 63/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::8w88g-1789147921399-3f4fbb8e2e2d
 
-===== LOG 64/94 https://aichessathon.com/api/platform/logs/05ed8a72-5424-4e6b-8c1e-a15442c0a90c (HTTP 429) =====
+===== LOG 64/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::khd8h-1789147921416-fd2b29667ae5
 
-===== LOG 65/94 https://aichessathon.com/api/platform/logs/6e160598-822f-471a-ac56-02113c71cd73 (HTTP 429) =====
+===== LOG 65/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::hmvtq-1789147921433-bb3daf4301f6
 
-===== LOG 66/94 https://aichessathon.com/api/platform/logs/bcec5747-c284-4a0e-a3e4-3f58cd2fa4d7 (HTTP 429) =====
+===== LOG 66/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::kf24v-1789147921452-38633edcbd7f
 
-===== LOG 67/94 https://aichessathon.com/api/platform/logs/0bdb73e7-8541-4b9b-ad0c-ca1656417f31 (HTTP 429) =====
+===== LOG 67/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::ghlgx-1789147921469-e9652a78a290
 
-===== LOG 68/94 https://aichessathon.com/api/platform/logs/b80e15cf-f385-41d2-a3fe-43429b9dccef (HTTP 429) =====
+===== LOG 68/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::vzn77-1789147921485-47682c518529
 
-===== LOG 69/94 https://aichessathon.com/api/platform/logs/d79a3bfb-0d03-4892-8a34-ad2705b6f46f (HTTP 429) =====
+===== LOG 69/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::zskxj-1789147921500-decab35db698
 
-===== LOG 70/94 https://aichessathon.com/api/platform/logs/06e191ef-f243-4431-8d09-1aa1ae7bfe6b (HTTP 429) =====
+===== LOG 70/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::dmht6-1789147921516-6bdeec431072
 
-===== LOG 71/94 https://aichessathon.com/api/platform/logs/e056b2e1-d721-4c8f-bdc0-c9f93087591d (HTTP 429) =====
+===== LOG 71/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::j2j6s-1789147921536-1aa1afaa1e02
 
-===== LOG 72/94 https://aichessathon.com/api/platform/logs/3ed538c9-caa1-46dd-b8b0-a86cefca851b (HTTP 429) =====
+===== LOG 72/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::zkcwj-1789147921565-f82fad8914bd
 
-===== LOG 73/94 https://aichessathon.com/api/platform/logs/1bb5be40-bc33-4a86-b0d0-b1fc78dc0256 (HTTP 429) =====
+===== LOG 73/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::qcwzh-1789147921583-bae598d28082
 
-===== LOG 74/94 https://aichessathon.com/api/platform/logs/646e6aa3-18ca-4706-baa9-856b1f2e7374 (HTTP 429) =====
+===== LOG 74/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::8s6mx-1789147921598-8b893daecd4c
 
-===== LOG 75/94 https://aichessathon.com/api/platform/logs/69599ff0-0de2-4edd-922e-b52491384105 (HTTP 429) =====
+===== LOG 75/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::9r6vl-1789147921672-04a28546ab9f
 
-===== LOG 76/94 https://aichessathon.com/api/platform/logs/e561f461-90c6-4db2-96f8-1a60f6a57192 (HTTP 429) =====
+===== LOG 76/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::x95jb-1789147921690-22033dc3ace7
 
-===== LOG 77/94 https://aichessathon.com/api/platform/logs/cd22d72a-90d2-4aeb-a9ca-5653eaf399f8 (HTTP 429) =====
+===== LOG 77/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::d7njg-1789147921709-f89a2ddfedc4
 
-===== LOG 78/94 https://aichessathon.com/api/platform/logs/2b6dba74-9fed-443a-b6b9-4770ab0cd8b8 (HTTP 429) =====
+===== LOG 78/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::m4b4t-1789147921723-a6de62bd47ab
 
-===== LOG 79/94 https://aichessathon.com/api/platform/logs/de6bbb4e-20f7-4777-a9f4-d45bc6d5edfe (HTTP 429) =====
+===== LOG 79/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::hmvtq-1789147921743-78d477e3cbfd
 
-===== LOG 80/94 https://aichessathon.com/api/platform/logs/9345b38c-8c6e-4370-946e-ea90f16ec583 (HTTP 429) =====
+===== LOG 80/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::wfjlt-1789147921763-a5447fb27a81
 
-===== LOG 81/94 https://aichessathon.com/api/platform/logs/5622fc98-a1d4-4915-a9e4-0461227546ac (HTTP 429) =====
+===== LOG 81/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::dcxsp-1789147921782-23eac5724c1f
 
-===== LOG 82/94 https://aichessathon.com/api/platform/logs/b74aa0db-6f38-4835-ae3b-29b3429f4ed9 (HTTP 429) =====
+===== LOG 82/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::dmht6-1789147921855-452716808b52
 
-===== LOG 83/94 https://aichessathon.com/api/platform/logs/a4a2ea7c-cb64-461a-b2dd-17152245dace (HTTP 429) =====
+===== LOG 83/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::mc9hv-1789147921871-9529541d2921
 
-===== LOG 84/94 https://aichessathon.com/api/platform/logs/7f2e0cff-df33-47c1-b8e9-d9e23f4b54e5 (HTTP 429) =====
+===== LOG 84/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::whvpk-1789147921889-875e6eaf07f6
 
-===== LOG 85/94 https://aichessathon.com/api/platform/logs/f2307dbf-bdba-40ab-aa9d-6ed5047e0184 (HTTP 429) =====
+===== LOG 85/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::t2s2j-1789147921905-91b10a20e748
 
-===== LOG 86/94 https://aichessathon.com/api/platform/logs/95504b74-c3c3-4fd3-b7d5-dc7c8a58e31f (HTTP 429) =====
+===== LOG 86/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::sbdzl-1789147921929-83d2f47caa83
 
-===== LOG 87/94 https://aichessathon.com/api/platform/logs/9566793d-46ea-4e17-81f1-b39dfeb50651 (HTTP 429) =====
+===== LOG 87/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::klsmh-1789147921949-af301279289d
 
-===== LOG 88/94 https://aichessathon.com/api/platform/logs/1fb99660-98ce-4f6f-ae62-9ae69f4b2006 (HTTP 429) =====
+===== LOG 88/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::ms8r8-1789147921968-3ea51c7e0220
 
-===== LOG 89/94 https://aichessathon.com/api/platform/logs/b670c9db-65c2-4512-9a9e-2534b526e4f6 (HTTP 429) =====
+===== LOG 89/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::f26qx-1789147921985-c8fbadb9f8fc
 
-===== LOG 90/94 https://aichessathon.com/api/platform/logs/c39e0a21-efbb-42a8-a709-f31496ef264e (HTTP 429) =====
+===== LOG 90/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::8tzpm-1789147922005-b38db439b620
 
-===== LOG 91/94 https://aichessathon.com/api/platform/logs/12d6c8d5-b41e-40bb-ae86-20a7839d3997 (HTTP 429) =====
+===== LOG 91/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::q47z8-1789147922056-6808f5c5122c
 
-===== LOG 92/94 https://aichessathon.com/api/platform/logs/c747685b-aa12-449f-87f9-7b418a55a1ab (HTTP 429) =====
+===== LOG 92/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::ms8r8-1789147922075-f2f67b902964
 
-===== LOG 93/94 https://aichessathon.com/api/platform/logs/f9de76b5-ff66-40c2-ba74-a9647829aa3a (HTTP 429) =====
+===== LOG 93/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
 lhr1::8w88g-1789147922093-3b755bbea91d
 
-===== LOG 94/94 https://aichessathon.com/api/platform/logs/69704066-ccce-4bfa-9155-e1e47b84f9b5 (HTTP 429) =====
+===== LOG 94/94 (HTTP 429) =====
 Too Many Requests
 
 Too Many Requests
