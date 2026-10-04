@@ -1,6 +1,6 @@
 # Cory — AI Chessathon quarter-finalist
 
-**7th of 400 on the qualifier ladder · London quarter-finalist · Team catfish**
+**Top 8 of 465 teams · London quarter-finalist · Team catfish**
 
 Cory is a Python chess engine with a neural evaluation network trained from scratch. It competed in the
 [AI Chessathon](https://aichessathon.com) London final on **12 September 2026**, under a single-core CPU
